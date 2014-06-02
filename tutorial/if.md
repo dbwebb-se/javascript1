@@ -1,24 +1,55 @@
-If, elseif, else
+If, else if, else
 ==============================
 
 
 
-Examples
-------------------------------
-
-
-Do something if a variable has a certain value.
-
 ```
+/**
+ * Do something if a variable has a certain value.
+ */
 var val = true;
 
 if (val) {
     console.log("YES");
 }
+
+// Above is the same as this
+if (val == true) {
+    console.log("YES");
+}
+
+
+
+/**
+ * Add an else statement.
+ */
+if (val) {
+    console.log("YES");
+} 
+else {
+    console.log("NO");
+}
+
+
+
+/**
+ * Use many if-tests.
+ */
+if (val === true) {
+    console.log("TRUE");
+} 
+else if (val === false) {
+    console.log("FALSE");
+} 
+else if (val === null) {
+    console.log("NULL");
+} 
+else {
+    console.log("NO");
+}
+
+
 ```
-
-
-
 
 
 
