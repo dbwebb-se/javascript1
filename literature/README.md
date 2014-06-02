@@ -18,5 +18,5 @@ by Marijn Haverbeke
 
 This work is licensed under the Creative Commons Attribution 3.0 Unported License, http://creativecommons.org/licenses/by/3.0/.
 
-
+There is ongoing (crowd-funded) work for a [2:nd edition of the book](http://eloquentjavascript.net/2nd_edition/). The update will be open licensed. 
 
