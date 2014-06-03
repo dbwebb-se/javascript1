@@ -9,6 +9,7 @@ Append elements
  */
 
 var div = document.createElement("div");
+div.innerHTML = "Hello div!";
 
 document.body.appendChild(div);
 
@@ -20,6 +21,7 @@ document.body.appendChild(div);
 
 var div = document.createElement("div");
 var p = document.createElement("p");
+p.innerHTML = "Hello paragraph!";
 
 div.appendChild(p);
 
