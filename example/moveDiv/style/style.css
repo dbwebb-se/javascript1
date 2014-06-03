@@ -1,17 +1,20 @@
-body{
+body {
 
 }
-#content{
+
+#content {
 	position: absolute;
 	margin: 0 auto;
 	height: 600px;
 	width: 600px;
 }
-.dragMe{
+
+.dragMe {
 	position: relative;
 	float:left;
 }
-.dropZone{
+
+.dropZone {
 	padding: 10px;
 	margin-right: 10px;
 	float: left;
