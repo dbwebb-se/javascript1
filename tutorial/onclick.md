@@ -8,23 +8,30 @@ onclick
  * Use functions on buttons with onclick
  **/
 
-	var myContent = document.getElementById('content'); 					// Create myContent variable
+    var b1 = document.getElementById("button1");			// Declare variables for id with id button1
+    var b2 = document.getElementById("button2");			// Declare variables for id with id button2
 
-    myContent.innerHTML += '<button onclick="buttonone()">Show</button>'	// Add a show button with a onclick function
-    myContent.innerHTML += '<button onclick="buttontwo()">Hide</button>'	// Add a hide button with a onclick function
-
-    myContent.innerHTML += '<p id="hello" class=hide>Hello world</p>'		// Add a paragraph which is hidden
-
-
-function buttonone() {
-	document.getElementById("hello").className = "show";					// Create a function that replaces the class to show
+    b1.addEventListener("click", function() {				// Create a listener that listents to click on b1
+    	document.getElementById("hello").className = "show style";
+    }, false);												// Change the class for item with id=hello to show and style
+    b2.addEventListener("click", function() {				// Same as before but change the class to hide
+    	document.getElementById("hello").className = "hide";
+    }, false);				// Create a function that replaces the class to hide
 }
 
-function buttontwo() {
-	document.getElementById("hello").className = "hide";					// Create a function that replaces the class to hide
-}
+// HTML 
+// index.html
 
-//CSS classes
+<button id="button1">Show</button>
+<button id="button2">Hide</button>
+<p id="hello" class=hide>Hello world</p>
+
+// CSS
+// style.css
+
+.style {
+	background-color: #ccc;
+}
 
 .hide {
 	visibility: hidden;
@@ -37,11 +44,10 @@ function buttontwo() {
 ```
 
 
-
 Reference and read more
 ------------------------------
 
-[MDN onclick](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers.onclick)
+[MDN EventTarget.addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener)
 
 
 
