@@ -1,0 +1,24 @@
+body{
+
+}
+#content{
+	border: 1px solid black;
+	height: 650px;
+	width: 650px;
+	border: 1px solid black;
+}
+#baddie1{
+	position: absolute;
+}
+.baddie{
+	z-index:10;
+	width:32px;
+	height:32px;
+	background-image:url(../img/CharacterBoy.png);
+	background-repeat:no-repeat;
+	
+	
+}
+
+.tile, .t, .block, .b{width:32px;height:32px;float:left;background-repeat:no-repeat;}
+.t12{background-image:url(../img/tiles/DirtBlock.png);}

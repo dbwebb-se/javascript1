@@ -1,0 +1,22 @@
+body{
+
+}
+#content{
+	position: absolute;
+	margin: 0 auto;
+	height: 600px;
+	width: 600px;
+}
+.dragMe{
+	position: relative;
+	float:left;
+}
+.dropZone{
+	padding: 10px;
+	margin-right: 10px;
+	float: left;
+	height: 245px;
+	width: 224px;
+	outline: 1px solid black;
+}
+

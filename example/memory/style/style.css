@@ -1,0 +1,25 @@
+body{
+
+}
+#content{
+	position: absolute;
+	margin: 0 auto;
+	height: 500px;
+	outline: 1px solid black;
+}
+table{
+	
+}
+table td{
+	outline: 1px solid black;
+	width: 150px;
+	height: 200px;
+	text-align: center;
+	font-size: 5em;
+	background-color: #eee;
+	background-repeat: no-repeat;
+}
+table td:hover{
+	cursor: pointer;
+	background-color: #ccc;
+}

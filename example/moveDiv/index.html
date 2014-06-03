@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+	<title>Javascript 1 - Kmom ?</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<h1>Move the image</h1><p>Drag and drop the image and move it into the frame!</p>
+	<div id="content">
+	<div id="dropZoneOne" class="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img src="img/tux.jpg" id="dragMe" class="dragMe" draggable="true" ondragstart="drag(event)">
+	</div>
+	<div id='dropZoneTwo' class="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
