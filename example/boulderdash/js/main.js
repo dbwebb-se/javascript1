@@ -5,7 +5,7 @@
 		tileSize = 32,
 		gridSize = 24,
 		left = area.offsetLeft,
-    top  = area.offsetTop,
+        top  = area.offsetTop,
 		posLeft = 0,
 		posTop = 0,
 
