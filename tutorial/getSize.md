@@ -39,13 +39,14 @@ var content = document.getElementById('content');
 Reference and read more
 ------------------------------
 
-[MDN getElementById](https://developer.mozilla.org/en-US/docs/Web/API/document.getElementById)
-[MDN innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window.innerHeight)
-[MDN innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window.innerWidth)
-[MDN clientHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element.clientHeight)
-[MDN clientWidth](https://developer.mozilla.org/en-US/docs/Web/API/Element.clientWidth)
-[MDN offsetLeft](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.offsetLeft)
-[MDN offsetTop](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.offsetTop)
+* [MDN getElementById](https://developer.mozilla.org/en-US/docs/Web/API/document.getElementById)
+* [MDN innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window.innerHeight)
+* [MDN innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window.innerWidth)
+* [MDN clientHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element.clientHeight)
+* [MDN clientWidth](https://developer.mozilla.org/en-US/docs/Web/API/Element.clientWidth)
+* [MDN offsetLeft](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.offsetLeft)
+* [MDN offsetTop](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.offsetTop)
+* [MDN Determining the dimensions of elments](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements)
 
 
 
