@@ -13,10 +13,10 @@ onclick
 
     b1.addEventListener("click", function() {				// Create a listener that listents to click on b1
     	document.getElementById("hello").className = "show style";
-    }, false);												// Change the class for item with id=hello to show and style
+    });												// Change the class for item with id=hello to show and style
     b2.addEventListener("click", function() {				// Same as before but change the class to hide
     	document.getElementById("hello").className = "hide";
-    }, false);				// Create a function that replaces the class to hide
+    });				// Create a function that replaces the class to hide
 }
 
 // HTML 
