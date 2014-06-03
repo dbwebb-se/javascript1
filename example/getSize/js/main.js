@@ -13,19 +13,18 @@
     divPosY = content.offsetTop,
     divSize = {};
 
-    browserSizeSpan.innerHTML = browserWidth + ' X ' + browserHeight + 'px';
-    divSizeSpan.innerHTML = divWidth + ' X ' + divHeight + 'px';
-    divPositionSpan.innerHTML = 'Left: ' + divPosX + 'px, Top: ' + divPosY + 'px';
-
-
     /**
      * A function that returns the elements height and width
      **/
     function getSize(element) {
-        var elWidth = element.offsetWidth,
-        elHeight = element.offsetHeight;
+        var osWidth = element.offsetWidth,
+        osHeight = element.offsetHeight,
+        clientWidth = element.clientWidth,
+        clientHeight = element.clientHeight,
+        posX = element.offsetLeft,
+        posY = element.offsetTop;
 
-        return {x: elWidth, y: elHeight}
+        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY}
     }
     /**
      * A function for creating a div, 100 x 100px
@@ -38,6 +37,11 @@
         
         return newDiv;         
     }
+
+    browserSizeSpan.innerHTML = browserWidth + ' X ' + browserHeight + 'px';
+    divSize = getSize(content);
+    divSizeSpan.innerHTML = '<br>offsetWidth: ' + divSize.osWidth + 'px, offsetHeight: ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + 'px, clientHeight: ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
+    
     /**
      * Create the first div, pass it to getSize(..) and print out the data
      **/
@@ -47,7 +51,7 @@
     content.appendChild(firstDiv);
     // get the size of the div, can be reached later with divSize.x and divSize.y
     divSize = getSize(firstDiv);
-    spanOne.innerHTML = 'Size: ' + divSize.x + ' X ' + divSize.y + 'px';
+    spanOne.innerHTML = '(border: 0, margin: 0, padding: 0)<br>offsetWidth: ' + divSize.osWidth + 'px, offsetHeight: ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + 'px, clientHeight: ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
     content.appendChild(spanOne);
 
     /**
@@ -60,7 +64,7 @@
     content.appendChild(secondDiv);
     // get the size of the div, can be reached later with divSize.x and divSize.y
     divSize = getSize(secondDiv);
-    spanTwo.innerHTML = 'Size: ' + divSize.x + ' X ' + divSize.y + 'px';
+    spanTwo.innerHTML = '(border: 0, margin: 10, padding: 0)<br>offsetWidth: ' + divSize.osWidth + 'px, offsetHeight: ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + 'px, clientHeight: ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
     content.appendChild(spanTwo);
 
     /**
@@ -74,7 +78,7 @@
     content.appendChild(thirdDiv);
     // get the size of the div, can be reached later with divSize.x and divSize.y
     divSize = getSize(thirdDiv);
-    spanThree.innerHTML = 'Size: ' + divSize.x + ' X ' + divSize.y + 'px';
+    spanThree.innerHTML = '(border: 0, margin: 10, padding: 10)<br>offsetWidth: ' + divSize.osWidth + ' X ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + ' X ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
     content.appendChild(spanThree);
 
     /**
@@ -85,11 +89,11 @@
     fourthDiv.style.backgroundColor = 'blue';
     fourthDiv.style.margin = '10px';
     fourthDiv.style.padding = '10px';
-    fourthDiv.style.border = '1px solid black';
+    fourthDiv.style.border = '10px solid black';
     content.appendChild(fourthDiv);
     // get the size of the div, can be reached later with divSize.x and divSize.y
     divSize = getSize(fourthDiv);
-    spanFour.innerHTML = 'Size: ' + divSize.x + ' X ' + divSize.y + 'px';
+    spanFour.innerHTML = '(border: 10, margin: 10, padding: 10)<br>offsetWidth: ' + divSize.osWidth + ' X ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + ' X ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
     content.appendChild(spanFour);
     
 
