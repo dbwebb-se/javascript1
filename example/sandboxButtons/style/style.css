@@ -21,6 +21,10 @@ h3 {
 	border-radius: 30px;
 }
 
+.style {
+	background-color: #ccc;
+}
+
 .hide {
 	visibility: hidden;
 }
