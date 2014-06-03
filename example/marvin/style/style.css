@@ -1,0 +1,35 @@
+body{
+	background-color: #323232;
+	color: white;
+}
+body a {
+	color: white;
+}
+#wrapper{
+	width: 960px;
+	height: 800px;
+	margin: 0 auto;
+}
+#content{
+	height: 600px;
+}
+#footer{
+	border-top: 1px solid black;
+}
+img{
+	float: right;
+}
+img.hover{
+	cursor: pointer;
+}
+#answerSpan{
+	color: orange;
+	float:left;
+	width: 600px;
+	font-size: 1.5em;
+	font-style: italic;
+}
+#questionSpan{
+	float: left;
+	width: 900px;
+}

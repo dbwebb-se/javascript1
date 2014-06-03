@@ -1,0 +1,41 @@
+body{
+
+}
+h1{
+	text-align: center;
+}
+#content{
+	margin: 0 auto;
+	outline: 1px solid black;
+	height: 640px;
+	width: 640px;
+}
+
+.t11{
+	background-color: green;
+	width:32px;
+	height:32px;
+	float:left;
+}
+.t12{
+	background-color: red;
+	width:32px;
+	height:32px;
+	float:left;
+}
+.t13{
+	background-color: blue;
+	width:32px;
+	height:32px;
+	float:left;
+}
+.t10{
+	width:32px;
+	height:32px;
+	float:left;
+}
+
+
+/*.tile, .t, .block, .b{width:32px;height:32px;float:left;background-repeat:no-repeat;}*/
+/*
+.t12{background-image:url(../img/tiles/DirtBlock.png);}*/
