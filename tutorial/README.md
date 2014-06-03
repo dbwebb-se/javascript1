@@ -12,6 +12,9 @@ Language constructs
 ------------------------------
 
 [if, elseif, else](if.md)
+[for](for.md)
+[while](while.md)
+[do..while](do_while.md)
 
 
 
