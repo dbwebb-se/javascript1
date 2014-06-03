@@ -36,6 +36,14 @@ div.style.position = "absolute";
 div.style.top = 0;
 div.style.left = 0;
 
+
+/**
+ * Set a z-index to be able to place it on top of other elements
+ */
+
+div.style.zindex = 100;
+
+
 ```
 
 
