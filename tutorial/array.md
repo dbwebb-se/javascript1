@@ -35,7 +35,7 @@ console.log(Object.keys(fruits));
 Reference and read more
 ------------------------------
 
-[MDN while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)
+[MDN Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 
 
