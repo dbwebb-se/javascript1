@@ -23,7 +23,7 @@
     });
 
     /**
-     * A function for displaying the duck
+     * A function for displaying the duck in random positions
      **/
     function newDuck() {
         var newX = Math.floor(Math.random() * (areaWidth-duck.width)),
