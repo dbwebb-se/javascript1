@@ -1,0 +1,11 @@
+{
+  "name": "javascript1",
+  "version": "1.0.0",
+  "repository" : { 
+    "type" : "git",
+    "url" : "http://github.com/mosbth/javascript1.git"
+  },
+  "devDependencies": {
+    "htmlhint":       "*"
+  }
+}
