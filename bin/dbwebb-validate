@@ -1,0 +1,221 @@
+#!/bin/sh
+
+VERSION="1.0.0"
+BASEDIR="dbwebb-kurser"
+TARGET="$PWD/me"
+TESTS=0
+ASSERTS=0
+FAULTS=0
+
+
+#
+# Print usage of script
+#
+printUsage()
+{
+    echo
+    echo "Utility dbwebb $VERSION by Mikael Roos, to upload, verify and publish course results when done."
+    echo
+    echo "Usage: dbwebb command user host"
+    echo
+    echo "Command can be any of the following:"
+    echo 
+    echo "  help      Print this message."
+    echo "  structure Check that all items are there."
+    echo "  login     Login to the server using ssh."
+    echo "  init      Init the remote server and create a destination directory."
+    echo "  sshkey    Create and install ssh-keys to avoid using password.."
+    echo "  upload    Upload all files to the server."
+    echo "  validate  Upload your files and Validate that your results passes automatic tests."
+    echo "  publish   Upload, Validate and Publish your course results to the web."
+    echo
+    exit
+}
+
+
+
+#
+# Login to the server
+#
+executeCommand()
+{
+    INTRO=$1
+    echo "\n$INTRO"
+    echo -n "Press a key to continue..."
+    read void
+    
+    COMMAND=$2
+    echo "\nExecuting command:"
+    echo "-----------------------------------------"
+    echo "$COMMAND"
+    sh -c "$COMMAND"
+
+    echo "-----------------------------------------"
+    
+    MESSAGE=$3
+    if [ $? = 0 ]
+    then
+        echo "SUCCESS $MESSAGE\n"
+    else 
+        echo "FAILED $MESSAGE\n"
+    fi 
+}
+
+
+
+#
+# Login to the server
+#
+assert1()
+{
+    EXPECTED=$1
+    TEST=$2
+    ASSERTS=$(( $ASSERTS + 1 ))
+
+    sh -c "$TEST"
+
+    if [ $? -eq $EXPECTED ]
+    then
+        echo -n "."
+
+    else 
+        echo -n "F"
+        FAULTS=$(( $FAULTS + 1 ))
+    fi 
+}
+
+
+
+#
+# Test the connection to the server
+#
+testStructure()
+{
+    TESTS=$(( $TESTS + 1 ))
+    
+    echo "The me-directory has the correct base structure."
+
+    assert 0 "[ -d $TARGET ]"
+    assert 0 "[ -f $TARGET/me.md ]"
+    assert 0 "[ -d $TARGET/kmom01 ]"
+    assert 0 "[ -d $TARGET/kmom02 ]"
+    assert 0 "[ -d $TARGET/kmom03 ]"
+    assert 0 "[ -d $TARGET/kmom04 ]"
+    assert 0 "[ -d $TARGET/kmom05 ]"
+    assert 0 "[ -d $TARGET/kmom06 ]"
+    assert 0 "[ -d $TARGET/kmom10 ]"
+}
+
+
+
+#
+# Perform an assert
+#
+assert()
+{
+    EXPECTED=$1
+    TEST=$2
+    MESSAGE=$3
+    ASSERTS=$(( $ASSERTS + 1 ))
+
+    sh -c "$TEST"
+
+    if [ ! $? -eq $EXPECTED ]
+    then
+        FAULTS=$(( $FAULTS + 1 ))
+        echo "FAILED. $MESSAGE\n"
+        echo "Correct the fault and run the validation again.\n\n"
+        exit 1
+    fi 
+}
+
+
+
+#
+# Test Kmom01
+#
+testKmom01()
+{
+    TESTS=$(( $TESTS + 1 ))
+    KMOM="kmom01"
+
+    echo "Testing Kmom01 structure."
+
+    assert 0 "[ -d $TARGET ]" "Missing directory for me-pages: $TARGET"
+    assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html"
+    assert 0 "[ -d $TARGET/$KMOM ]" "Missing directory: $TARGET/$KMOM"
+}
+
+
+
+#
+# Test kmom01/sandbox
+#
+testKmom01Sandbox()
+{
+    TESTS=$(( $TESTS + 1 ))
+    KMOM="kmom01"
+    DIR="sandbox"
+
+    echo "Testing Kmom01 Sandbox example."
+
+    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR"
+    assert 0 "jshint $TARGET/$KMOM/$DIR/js/*.js" "JSHint failed testing JavaScript files."
+    assert 0 "bin/htmlhint $TARGET/$KMOM/$DIR/index.html" "HTMLHint failed testing HTML files."
+}
+
+
+
+
+
+#
+# Main
+#
+if [ $# != 3 ]
+then
+    echo
+    #printUsage
+fi
+
+CMD=$1
+USER=$2
+HOST=$3
+
+case $CMD in
+    
+    structure)
+        testStructure 
+        ;;
+
+    kmom01)
+        testKmom01
+        testKmom01Sandbox
+        ;;
+
+    init)
+        initServer $USER $HOST
+        ;;
+
+    sshkey)
+        installSshKeys $USER $HOST
+        ;;
+
+    upload)
+        uploadToServer $USER $HOST
+        ;;
+
+    verify)
+        validateUploadedResults $USER $HOST
+        ;;
+
+    publish)
+        publishToWeb $USER $HOST
+        ;;
+
+    *)
+        printUsage
+        ;;
+esac
+
+echo "OK\n\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+exit 0

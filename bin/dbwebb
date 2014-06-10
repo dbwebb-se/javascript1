@@ -1,0 +1,201 @@
+#!/bin/sh
+
+VERSION="1.0.0"
+BASEDIR="dbwebb-kurser"
+
+
+
+#
+# Print usage of script
+#
+printUsage()
+{
+    echo
+    echo "Utility dbwebb $VERSION by Mikael Roos, to upload, verify and publish course results when done."
+    echo
+    echo "Usage: dbwebb command user host"
+    echo
+    echo "Command can be any of the following:"
+    echo 
+    echo "  help      Print this message."
+    echo "  test      Test the connection by loggin in."
+    echo "  login     Login to the server using ssh."
+    echo "  init      Init the remote server and create a destination directory."
+    echo "  sshkey    Create and install ssh-keys to avoid using password.."
+    echo "  upload    Upload all files to the server."
+    echo "  validate  Upload your files and Validate that your results passes automatic tests."
+    echo "  publish   Upload, Validate and Publish your course results to the web."
+    echo
+    exit
+}
+
+
+
+#
+# Login to the server
+#
+executeCommand()
+{
+    INTRO=$1
+    echo "\n$INTRO"
+    echo -n "Press a key to continue..."
+    read void
+    
+    COMMAND=$2
+    echo "\nExecuting command:"
+    echo "-----------------------------------------"
+    echo "$COMMAND"
+    sh -c "$COMMAND"
+
+    echo "-----------------------------------------"
+    
+    MESSAGE=$3
+    if [ $? = 0 ]
+    then
+        echo "SUCCESS $MESSAGE\n"
+    else 
+        echo "FAILED $MESSAGE\n"
+    fi 
+}
+
+
+
+#
+# Test the connection to the server
+#
+testConnection()
+{
+    INTRO="I will now try to establish a connection with the server by loggin in to it."
+    COMMAND="ssh $1@$2 cat /etc/motd"
+    MESSAGE="SUCCESS to establish the connection."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Login to the server
+#
+loginToServer()
+{
+    INTRO="I will now try to establish a connection with the server by loggin in to it."
+    COMMAND="ssh $1@$2"
+    MESSAGE="to establish the connection."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Init directory structure at the server.
+#
+initServer()
+{
+    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    COMMAND="ssh $1@$2 sh -c \"if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser\""
+    MESSAGE="to init the server."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Create and use ssh-keys to login.
+#
+installSshKeys()
+{
+    INTRO="First we need to create a ssh key and store it locally."
+    COMMAND="ssh-keygen -t dsa"
+    MESSAGE="to create the ssh key."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+
+    INTRO="I will now install the ssh-key at the remote server."
+    COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $1@$2 'cat >> .ssh/authorized_keys'"
+    MESSAGE="to install the ssh-keys."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Upload results to the server
+#
+uploadToServer()
+{
+    PROJECT=${PWD##*/}
+    SOURCE="$PWD/"
+    DESTINATION="$1@$2:$BASEDIR/$PROJECT/"
+
+    INTRO="Your current working directory will now be synced to remote server."
+    COMMAND="rsync -av --exclude literature --exclude .git -e ssh $SOURCE $DESTINATION" 
+    MESSAGE="to upload data."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Verify the uploaded files
+#
+validateUploadedResults()
+{
+    PROJECT=${PWD##*/}
+    SOURCE="$PWD/"
+    DESTINATION="$1@$2:$BASEDIR/$PROJECT/"
+
+    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    COMMAND="ssh $1@$2 sh -c \"if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser\""
+    MESSAGE="to init the server."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Main
+#
+if [ $# != 3 ]
+then
+    printUsage
+fi
+
+CMD=$1
+USER=$2
+HOST=$3
+
+case $CMD in
+    
+    test)
+        testConnection $USER $HOST 
+        ;;
+
+    login)
+        loginToServer $USER $HOST
+        ;;
+
+    init)
+        initServer $USER $HOST
+        ;;
+
+    sshkey)
+        installSshKeys $USER $HOST
+        ;;
+
+    upload)
+        uploadToServer $USER $HOST
+        ;;
+
+    verify)
+        validateUploadedResults $USER $HOST
+        ;;
+
+    publish)
+        publishToWeb $USER $HOST
+        ;;
+
+    *)
+        printUsage
+        ;;
+esac
+
+
