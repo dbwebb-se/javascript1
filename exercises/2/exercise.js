@@ -75,3 +75,10 @@
 
  document.writeln('<br>');
 
+/**
+ * Question 12
+ **/
+ document.writeln(fizzBuzz(1, 20));
+
+ document.writeln('<br>');
+

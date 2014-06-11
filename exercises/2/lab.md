@@ -24,6 +24,8 @@ Lab questions
 
 11. Create a function that returns "true" if a given number is higher than 10 and less than 20. If the number is out of range, the function should return "false". The return type should be boolean. Name the function "inRange" and print out the result.
 
+12. Create a function that takes two arguments, "start" and "stop". The arguments represents the starting point and stop point of the game "Fizz Buzz" (http://en.wikipedia.org/wiki/Fizz_buzz). The function should run from start to stop and print out "Fizz", "Buzz" or both at appropriate numbers. If "stop" is equal or lower than "start", the function should throw an exeption. Name the function "fizzBuzz" and print out the result.
+
 ------------------------------
 
 2014-06-03 (Zingo89) PA1 First try.

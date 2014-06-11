@@ -136,3 +136,31 @@
  	}
  	return isInRange;
  }
+
+/**
+ * Question 12
+ **/
+ function fizzBuzz(start, stop) {
+ 	var result = '';
+
+ 	if(stop <= start) {
+ 		result = 'Stop is lower than start or they are the same. Try again!';
+ 	}
+ 	else {
+ 		for(var i = start; i < stop+1; i++) {
+ 			if(i % 3 === 0 && i % 5 !== 0) {
+ 				result += 'Fizz, ';
+ 			}
+ 			else if(i % 5 === 0 && i % 3 !== 0) {
+ 				result += 'Buzz, ';
+ 			}
+ 			else if(i % 3 === 0 && i % 5 === 0) {
+ 				result += 'Fizz Buzz, '
+ 			}
+ 			else {
+ 				result += i + ', ';
+ 			}
+ 		}
+ 	}
+ 	return result;
+ }
