@@ -23,7 +23,7 @@ printUsage()
     echo "  init      Init the remote server and create a destination directory."
     echo "  sshkey    Create and install ssh-keys to avoid using password.."
     echo "  upload    Upload all files to the server."
-    echo "  validate  Upload your files and Validate that your results passes automatic tests."
+    echo "  validate  Upload your files and validate that your results passes automatic tests."
     echo "  publish   Upload, Validate and Publish your course results to the web."
     echo
     exit
@@ -45,12 +45,14 @@ executeCommand()
     echo "\nExecuting command:"
     echo "-----------------------------------------"
     echo "$COMMAND"
+    
     sh -c "$COMMAND"
+    STATUS=$?
 
     echo "-----------------------------------------"
     
     MESSAGE=$3
-    if [ $? = 0 ]
+    if [ $STATUS = 0 ]
     then
         echo "SUCCESS $MESSAGE\n"
     else 
@@ -135,7 +137,7 @@ uploadToServer()
 
 
 #
-# Verify the uploaded files
+# Validate the uploaded files
 #
 validateUploadedResults()
 {
@@ -144,8 +146,25 @@ validateUploadedResults()
     DESTINATION="$1@$2:$BASEDIR/$PROJECT/"
 
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh $1@$2 sh -c \"if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser\""
-    MESSAGE="to init the server."
+    COMMAND="ssh $1@$2 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate all'"
+    MESSAGE="to validate course results."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Validate and Publish the uploaded files
+#
+publishResults()
+{
+    PROJECT=${PWD##*/}
+    SOURCE="$PWD/"
+    DESTINATION="$1@$2:$BASEDIR/$PROJECT/"
+
+    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    COMMAND="ssh $1@$2 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate all'"
+    MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
 
@@ -185,12 +204,12 @@ case $CMD in
         uploadToServer $USER $HOST
         ;;
 
-    verify)
+    validate)
         validateUploadedResults $USER $HOST
         ;;
 
     publish)
-        publishToWeb $USER $HOST
+        publishResults $USER $HOST
         ;;
 
     *)

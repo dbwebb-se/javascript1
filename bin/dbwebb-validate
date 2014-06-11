@@ -3,9 +3,27 @@
 VERSION="1.0.0"
 BASEDIR="dbwebb-kurser"
 TARGET="$PWD/me"
+BUILD1="$HOME/www"
+BUILD2="$BUILD1/dbwebb"
+BUILD="$BUILD2/javascript1"
 TESTS=0
 ASSERTS=0
 FAULTS=0
+
+HTML_MINIFIER="html-minifier --minify-js --minify-css --use-short-doctype --remove-attribute-quotes --collapse-boolean-attributes --conservative-collapse --collapse-whitespace --remove-comments"
+
+UGLIFYJS="uglifyjs"
+UGLIFYJS_OPTIONS="-m -c --screw-ie8 --comments"
+
+CLEANCSS="cleancss --s1"
+
+
+
+#
+# Settings for this script
+#
+umask 022
+export NODE_PATH=/usr/local/lib/node_modules
 
 
 #
@@ -14,96 +32,32 @@ FAULTS=0
 printUsage()
 {
     echo
-    echo "Utility dbwebb $VERSION by Mikael Roos, to upload, verify and publish course results when done."
+    echo "Utility dbwebb-validate $VERSION by Mikael Roos, to validate and publish course results when done."
     echo
-    echo "Usage: dbwebb command user host"
+    echo "Usage: dbwebb-validate [options] <item> [item]"
     echo
-    echo "Command can be any of the following:"
+    echo "Options:"
     echo 
-    echo "  help      Print this message."
-    echo "  structure Check that all items are there."
-    echo "  login     Login to the server using ssh."
-    echo "  init      Init the remote server and create a destination directory."
-    echo "  sshkey    Create and install ssh-keys to avoid using password.."
-    echo "  upload    Upload all files to the server."
-    echo "  validate  Upload your files and Validate that your results passes automatic tests."
-    echo "  publish   Upload, Validate and Publish your course results to the web."
+    echo "  -h, --help         Print this message and exit."
+    echo "  -n, --no-publish   Only validate, do not publish."
+    echo 
+    echo "Item:"
+    echo 
+    echo "  kmom01    Validate (and publish) selected kmom."
+    echo "  kmom02    Validate (and publish) selected kmom."
+    echo "  kmom03    Validate (and publish) selected kmom."
+    echo "  kmom04    Validate (and publish) selected kmom."
+    echo "  kmom05    Validate (and publish) selected kmom."
+    echo "  kmom06    Validate (and publish) selected kmom."
+    echo "  kmom10    Validate (and publish) selected kmom."
+    echo "  all       Validate (and publish) all kmoms."
     echo
+    echo "Example:"
+    echo 
+    echo "  $ dbwebb-validate kmom01"
+    echo "  $ dbwebb-validate --no-publish kmom01"
+    echo 
     exit
-}
-
-
-
-#
-# Login to the server
-#
-executeCommand()
-{
-    INTRO=$1
-    echo "\n$INTRO"
-    echo -n "Press a key to continue..."
-    read void
-    
-    COMMAND=$2
-    echo "\nExecuting command:"
-    echo "-----------------------------------------"
-    echo "$COMMAND"
-    sh -c "$COMMAND"
-
-    echo "-----------------------------------------"
-    
-    MESSAGE=$3
-    if [ $? = 0 ]
-    then
-        echo "SUCCESS $MESSAGE\n"
-    else 
-        echo "FAILED $MESSAGE\n"
-    fi 
-}
-
-
-
-#
-# Login to the server
-#
-assert1()
-{
-    EXPECTED=$1
-    TEST=$2
-    ASSERTS=$(( $ASSERTS + 1 ))
-
-    sh -c "$TEST"
-
-    if [ $? -eq $EXPECTED ]
-    then
-        echo -n "."
-
-    else 
-        echo -n "F"
-        FAULTS=$(( $FAULTS + 1 ))
-    fi 
-}
-
-
-
-#
-# Test the connection to the server
-#
-testStructure()
-{
-    TESTS=$(( $TESTS + 1 ))
-    
-    echo "The me-directory has the correct base structure."
-
-    assert 0 "[ -d $TARGET ]"
-    assert 0 "[ -f $TARGET/me.md ]"
-    assert 0 "[ -d $TARGET/kmom01 ]"
-    assert 0 "[ -d $TARGET/kmom02 ]"
-    assert 0 "[ -d $TARGET/kmom03 ]"
-    assert 0 "[ -d $TARGET/kmom04 ]"
-    assert 0 "[ -d $TARGET/kmom05 ]"
-    assert 0 "[ -d $TARGET/kmom06 ]"
-    assert 0 "[ -d $TARGET/kmom10 ]"
 }
 
 
@@ -124,9 +78,54 @@ assert()
     then
         FAULTS=$(( $FAULTS + 1 ))
         echo "FAILED. $MESSAGE\n"
+        echo "Tests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
         echo "Correct the fault and run the validation again.\n\n"
         exit 1
     fi 
+}
+
+
+
+#
+# Init the build directory
+#
+initBuildDir()
+{
+    echo "Init the build directory."
+
+    if [ ! -d $BUILD1 ] 
+    then
+        mkdir $BUILD1
+    fi
+
+    if [ ! -d $BUILD2 ] 
+    then
+        mkdir $BUILD2
+    fi
+
+    if [ ! -d $BUILD ] 
+    then
+        mkdir $BUILD
+    fi
+}
+
+
+
+#
+# Test me/ at the beginning
+#
+testMeStart()
+{
+    TESTS=$(( $TESTS + 1 ))
+
+    echo "Testing Me-directory items."
+
+    rm -f $BUILD/me.html
+    
+    assert 0 "[ -d $TARGET ]" "Missing directory for me-pages: $TARGET"
+    assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html"
+
+    rsync -a $TARGET/me.html $BUILD/
 }
 
 
@@ -141,9 +140,12 @@ testKmom01()
 
     echo "Testing Kmom01 structure."
 
-    assert 0 "[ -d $TARGET ]" "Missing directory for me-pages: $TARGET"
-    assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html"
     assert 0 "[ -d $TARGET/$KMOM ]" "Missing directory: $TARGET/$KMOM"
+
+    if [ ! -d $BUILD/$KMOM ] 
+    then
+        mkdir $BUILD/$KMOM
+    fi
 }
 
 
@@ -159,12 +161,92 @@ testKmom01Sandbox()
 
     echo "Testing Kmom01 Sandbox example."
 
+    rm -rf $BUILD/$KMOM/$DIR
+
     assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR"
     assert 0 "jshint $TARGET/$KMOM/$DIR/js/*.js" "JSHint failed testing JavaScript files."
     assert 0 "bin/htmlhint $TARGET/$KMOM/$DIR/index.html" "HTMLHint failed testing HTML files."
+
+    rsync -a $TARGET/$KMOM/$DIR/ $BUILD/$KMOM/$DIR/
+
+    $HTML_MINIFIER $BUILD/$KMOM/$DIR/index.html --output $BUILD/$KMOM/$DIR/index.html
+    
+    $UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
+    
+    $CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
 }
 
 
+
+
+#
+# kmom01
+#
+kmom01()
+{
+    testKmom01
+    testKmom01Sandbox
+}
+
+
+
+#
+# kmom02
+#
+kmom02()
+{
+    pass
+}
+
+
+
+#
+# kmom03
+#
+kmom03()
+{
+    pass
+}
+
+
+
+#
+# kmom04
+#
+kmom04()
+{
+    pass
+}
+
+
+
+#
+# kmom05
+#
+kmom05()
+{
+    pass
+}
+
+
+
+#
+# kmom06
+#
+kmom06()
+{
+    pass
+}
+
+
+
+#
+# kmom10
+#
+kmom10()
+{
+    pass
+}
 
 
 
@@ -177,39 +259,64 @@ then
     #printUsage
 fi
 
+echo $0
+
 CMD=$1
-USER=$2
-HOST=$3
 
 case $CMD in
     
-    structure)
-        testStructure 
-        ;;
-
     kmom01)
-        testKmom01
-        testKmom01Sandbox
+        initBuildDir
+        testMeStart
+        kmom01
         ;;
 
-    init)
-        initServer $USER $HOST
+    kmom02)
+        initBuildDir
+        testMeStart
+        kmom02
         ;;
 
-    sshkey)
-        installSshKeys $USER $HOST
+    kmom03)
+        initBuildDir
+        testMeStart
+        kmom03
         ;;
 
-    upload)
-        uploadToServer $USER $HOST
+    kmom04)
+        initBuildDir
+        testMeStart
+        kmom04
         ;;
 
-    verify)
-        validateUploadedResults $USER $HOST
+    kmom05)
+        initBuildDir
+        testMeStart
+        kmom05
         ;;
 
-    publish)
-        publishToWeb $USER $HOST
+    kmom06)
+        initBuildDir
+        testMeStart
+        kmom06
+        ;;
+
+    kmom10)
+        initBuildDir
+        testMeStart
+        kmom10
+        ;;
+
+    all)
+        initBuildDir
+        testMeStart
+        kmom01
+        kmom02
+        kmom03
+        kmom04
+        kmom05
+        kmom06
+        kmom10
         ;;
 
     *)
