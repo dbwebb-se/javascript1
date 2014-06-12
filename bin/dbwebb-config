@@ -1,0 +1,14 @@
+#
+# Change this to your own acronym
+#
+USER="mosstud"
+
+
+#
+# Do not change below unless you are really sure on the effects
+#
+HOST="sweet.student.bth.se"
+BASEDIR="dbwebb-kurser"
+PROJECT=${PWD##*/}
+SOURCE="$PWD/"
+DESTINATION="${USER}@${HOST}:$BASEDIR/$PROJECT/"
