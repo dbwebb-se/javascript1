@@ -38,35 +38,35 @@ export NODE_PATH=/usr/local/lib/node_modules
 #
 printUsage()
 {
-    $ECHO
-    $ECHO "Utility dbwebb-validate $VERSION by Mikael Roos, to validate and publish course results when done."
-    $ECHO
-    $ECHO "Usage: dbwebb-validate [options] <item> [item]"
-    $ECHO
+    $ECHO "\nUtility dbwebb-validate $VERSION by Mikael Roos, to validate and publish course results when done."
+    $ECHO "\n"
+    $ECHO "\nUsage: dbwebb-validate [options] <item> [item]"
+    $ECHO "\n"
     $ECHO "Options:"
-    $ECHO 
-    $ECHO "  -h         Print this message and exit."
-    $ECHO "  -i         Ignore validation faults and proceed anyway."
-    $ECHO "  -n         Only validate, do not publish."
-    $ECHO "  -r         Print required external commands."
-    $ECHO "  -v         Print version and exit."
-    $ECHO 
-    $ECHO "Item:"
-    $ECHO 
-    $ECHO "  kmom01    Validate (and publish) selected kmom."
-    $ECHO "  kmom02    Validate (and publish) selected kmom."
-    $ECHO "  kmom03    Validate (and publish) selected kmom."
-    $ECHO "  kmom04    Validate (and publish) selected kmom."
-    $ECHO "  kmom05    Validate (and publish) selected kmom."
-    $ECHO "  kmom06    Validate (and publish) selected kmom."
-    $ECHO "  kmom10    Validate (and publish) selected kmom."
-    $ECHO "  all       Validate (and publish) all kmoms."
-    $ECHO
-    $ECHO "Example:"
-    $ECHO 
-    $ECHO "  $ dbwebb-validate kmom01"
-    $ECHO "  $ dbwebb-validate -n kmom01"
-    $ECHO 
+    $ECHO "\n"
+    $ECHO "\n  -h         Print this message and exit."
+    $ECHO "\n  -i         Ignore validation faults and proceed anyway."
+    $ECHO "\n  -n         Only validate, do not publish."
+    $ECHO "\n  -r         Print required external commands."
+    $ECHO "\n  -v         Print version and exit."
+    $ECHO "\n"
+    $ECHO "\nItem:"
+    $ECHO "\n"
+    $ECHO "\n  kmom01    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom02    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom03    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom04    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom05    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom06    Validate (and publish) selected kmom."
+    $ECHO "\n  kmom10    Validate (and publish) selected kmom."
+    $ECHO "\n  all       Validate (and publish) all kmoms."
+    $ECHO "\n"
+    $ECHO "\nExample:"
+    $ECHO "\n"
+    $ECHO "\n  $ dbwebb-validate kmom01"
+    $ECHO "\n  $ dbwebb-validate -n kmom01"
+    $ECHO "\n"
+    $ECHO "\n"
     exit
 }
 
@@ -87,12 +87,12 @@ assert()
     if [ ! $? -eq $EXPECTED ]
     then
         FAULTS=$(( $FAULTS + 1 ))
-        $ECHO "\033[0;37;41mFAILED.\033[0m $MESSAGE\n"
+        $ECHO "\n\033[0;37;41mFAILED.\033[0m $MESSAGE\n"
 
         [ $IGNORE_FAULTS = "no" ] || return  
 
-        $ECHO "Tests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
-        $ECHO "Correct the fault and run the validation again.\n\n"
+        $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+        $ECHO "\nCorrect the fault and run the validation again.\n\n"
         exit 1
     fi 
 }
@@ -105,13 +105,14 @@ assert()
 checkCommand()
 {
     COMMAND=$1
-    $ECHO "Checking $COMMAND"
+    $ECHO "\nChecking $COMMAND"
 
     if ! hash $COMMAND 2>/dev/null
     then
-        $ECHO >&2 "I require $COMMAND but it's not installed. Aborting."
-        $ECHO >&2 "Use the following command to see what is required to run this script"
-        $ECHO >&2 "  dbwebb-validate -r";
+        $ECHO >&2 "\nI require $COMMAND but it's not installed. Aborting."
+        $ECHO >&2 "\nUse the following command to see what is required to run this script"
+        $ECHO >&2 "\n  dbwebb-validate -r";
+        $ECHO >&2 "\n";
         exit 1
     fi
 }
@@ -126,7 +127,7 @@ checkTools()
 {
     [ $CHECKTOOLS = "no" ] || return; CHECKTOOLS="yes"
 
-    $ECHO "Check for installed tools."
+    $ECHO "\nCheck for installed tools."
 
     checkCommand $JSHINT
     checkCommand $HTMLHINT
@@ -149,7 +150,7 @@ initBuildDir()
     [ $BUILDDIR = "no" ] || return; BUILDDIR="yes"
     [ $PUBLISH = "yes" ] || return
 
-    $ECHO "Init the build directory."
+    $ECHO "\nInit the build directory."
 
     if [ ! -d $BUILD1 ] 
     then
@@ -179,7 +180,7 @@ testMeStart()
 
     TESTS=$(( $TESTS + 1 ))
 
-    $ECHO "Testing Me-directory items."
+    $ECHO "\nTesting Me-directory items."
 
     assert 0 "[ -d $TARGET ]" "Missing directory for me-pages: $TARGET"
     assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html"
@@ -200,7 +201,7 @@ testKmom01()
     TESTS=$(( $TESTS + 1 ))
     KMOM="kmom01"
 
-    $ECHO "Testing Kmom01 structure."
+    $ECHO "\nTesting Kmom01 structure."
 
     assert 0 "[ -d $TARGET/$KMOM ]" "Missing directory: $TARGET/$KMOM"
 
@@ -223,7 +224,7 @@ testKmom01Sandbox()
     KMOM="kmom01"
     DIR="sandbox"
 
-    $ECHO "Testing Kmom01 Sandbox example."
+    $ECHO "\nTesting Kmom01 Sandbox example."
 
     assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR"
 
@@ -366,9 +367,10 @@ do
             ;;
 
         (r) 
-            $ECHO "Required external tools are:"
-            $ECHO "  npm install jshint html-minifier uglify-js clean-css htmlhint"
-            $ECHO
+            $ECHO "\nRequired external tools are:"
+            $ECHO "\n  npm install jshint html-minifier uglify-js clean-css htmlhint"
+            $ECHO "\n"
+            $ECHO "\n"
             exit 0
             ;;
 
@@ -378,11 +380,12 @@ do
             ;;
 
         \?)
-            $ECHO "Invalid option: -$OPTARG" >&2
-            $ECHO 
-            $ECHO "Use the following to get help."
-            $ECHO "dbwebb-validate -h"
-            $ECHO
+            $ECHO "\nInvalid option: -$OPTARG" >&2
+            $ECHO "\n"
+            $ECHO "\nUse the following to get help."
+            $ECHO "\ndbwebb-validate -h"
+            $ECHO "\n"
+            $ECHO "\n"
             exit 1
             ;;
     esac
@@ -437,5 +440,5 @@ case $CMD in
         ;;
 esac
 
-$ECHO "OK\n\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+$ECHO "\n\033[0;30;42mOK\033[0m\n\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
 exit 0
