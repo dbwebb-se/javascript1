@@ -58,13 +58,13 @@ executeCommand()
 
     if [ $SKIP_READLINE = "no" ]
     then
-        echo "\n$INTRO"
+        echo "$INTRO"
         echo "Press a key to continue..."
         read void
     fi
     
     COMMAND=$2
-    echo "\nExecuting command:"
+    echo "Executing command:"
     echo "$COMMAND"
     echo "-----------------------------------------"
     
@@ -76,10 +76,11 @@ executeCommand()
     MESSAGE=$3
     if [ $STATUS = 0 ]
     then
-        echo "\033[0;30;42mSUCCESS\033[0m $MESSAGE\n"
+        echo "\033[0;30;42mSUCCESS\033[0m $MESSAGE"
     else 
-        echo "\033[0;37;41mFAILED\033[0m $MESSAGE\n"
+        echo "\033[0;37;41mFAILED\033[0m $MESSAGE"
     fi 
+    echo
 }
 
 
@@ -147,7 +148,7 @@ installSshKeys()
 uploadToServer()
 {
     INTRO="Your current working directory will now be synced to remote server."
-    COMMAND1=$UPLOAD
+    COMMAND=$UPLOAD
     MESSAGE="to upload data."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
