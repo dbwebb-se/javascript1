@@ -9,42 +9,42 @@ ECHO="printf"
 #
 printUsage()
 {
+    $ECHO "\nUtility dbwebb $VERSION by Mikael Roos, to upload, verify and publish course results when done."
+    $ECHO "\n"
+    $ECHO "\nUsage: dbwebb [options] <command> [arguments]"
+    $ECHO "\n"
+    $ECHO "\nOptions:"
+    $ECHO "\n"
+    $ECHO "\n  -h         Print this message and exit."
+    $ECHO "\n  -i         Ignore validation faults and proceed anyway."
+    $ECHO "\n  -v         Print the version of this program and exit."
+    $ECHO "\n  -y         Do not wait for my input, just proceed."
+    $ECHO "\n"
+    $ECHO "\nCommand:"
+    $ECHO "\n"
+    $ECHO "\n  test      Test the connection by loggin in."
+    $ECHO "\n  sshkey    Create and install ssh-keys to avoid using password.."
+    $ECHO "\n  login     Login to the server using ssh."
+    $ECHO "\n  init      Init the remote server and create a destination directory."
+    $ECHO "\n  upload    Upload all files to the server."
+    $ECHO "\n  validate  Upload your files and validate that your results passes automatic tests."
+    $ECHO "\n            Send in kmom01, kmom02, etc to validate only one kmom."
+    $ECHO "\n            Default is to validate all."
+    $ECHO "\n  publish   Upload, Validate and Publish your course results to the web."
+    $ECHO "\n            Send in kmom01, kmom02, etc to publish only one kmom."
+    $ECHO "\n            Default is to publish all."
     $ECHO
-    $ECHO "Utility dbwebb $VERSION by Mikael Roos, to upload, verify and publish course results when done."
-    $ECHO
-    $ECHO "Usage: dbwebb [options] <command> [arguments]"
-    $ECHO
-    $ECHO "Options:"
-    $ECHO 
-    $ECHO "  -h         Print this message and exit."
-    $ECHO "  -i         Ignore validation faults and proceed anyway."
-    $ECHO "  -v         Print the version of this program and exit."
-    $ECHO "  -y         Do not wait for my input, just proceed."
-    $ECHO
-    $ECHO "Command:"
-    $ECHO 
-    $ECHO "  test      Test the connection by loggin in."
-    $ECHO "  sshkey    Create and install ssh-keys to avoid using password.."
-    $ECHO "  login     Login to the server using ssh."
-    $ECHO "  init      Init the remote server and create a destination directory."
-    $ECHO "  upload    Upload all files to the server."
-    $ECHO "  validate  Upload your files and validate that your results passes automatic tests."
-    $ECHO "            Send in kmom01, kmom02, etc to validate only one kmom."
-    $ECHO "            Default is to validate all."
-    $ECHO "  publish   Upload, Validate and Publish your course results to the web."
-    $ECHO "            Send in kmom01, kmom02, etc to publish only one kmom."
-    $ECHO "            Default is to publish all."
-    $ECHO
-    $ECHO "Example:"
-    $ECHO 
-    $ECHO "  $ dbwebb test"
-    $ECHO "  $ dbwebb sshkey"
-    $ECHO "  $ dbwebb login"
-    $ECHO "  $ dbwebb init"
-    $ECHO "  $ dbwebb -y upload"
-    $ECHO "  $ dbwebb -y validate kmom01"
-    $ECHO "  $ dbwebb -y publish"
-    $ECHO 
+    $ECHO "\nExample:"
+    $ECHO "\n"
+    $ECHO "\n  $ dbwebb test"
+    $ECHO "\n  $ dbwebb sshkey"
+    $ECHO "\n  $ dbwebb login"
+    $ECHO "\n  $ dbwebb init"
+    $ECHO "\n  $ dbwebb -y upload"
+    $ECHO "\n  $ dbwebb -y validate kmom01"
+    $ECHO "\n  $ dbwebb -y publish"
+    $ECHO "\n"
+    $ECHO "\n"
     exit
 }
 
@@ -59,29 +59,31 @@ executeCommand()
 
     if [ $SKIP_READLINE = "no" ]
     then
-        $ECHO "$INTRO"
-        $ECHO "Press a key to continue..."
+        $ECHO "\n$INTRO"
+        $ECHO "\nPress a key to continue..."
         read void
     fi
     
     COMMAND=$2
-    $ECHO "Executing command:"
-    $ECHO "$COMMAND"
-    $ECHO "-----------------------------------------"
+    $ECHO "\nExecuting command:"
+    $ECHO "\n$COMMAND"
+    $ECHO "\n-----------------------------------------"
+    $ECHO "\n"
     
     sh -c "$COMMAND"
     STATUS=$?
 
-    $ECHO "-----------------------------------------"
+    $ECHO "\n-----------------------------------------"
     
     MESSAGE=$3
     if [ $STATUS = 0 ]
     then
-        $ECHO "\033[0;30;42mSUCCESS\033[0m $MESSAGE"
+        $ECHO "\n\033[0;30;42mSUCCESS\033[0m $MESSAGE"
     else 
-        $ECHO "\033[0;37;41mFAILED\033[0m $MESSAGE"
+        $ECHO "\n\033[0;37;41mFAILED\033[0m $MESSAGE"
     fi 
-    $ECHO
+    $ECHO "\n"
+    $ECHO "\n"
 }
 
 
@@ -93,7 +95,7 @@ testConnection()
 {
     INTRO="I will now try to establish a connection with the server by loggin in to it."
     COMMAND="ssh ${USER}@${HOST} cat /etc/motd"
-    MESSAGE="SUCCESS to establish the connection."
+    MESSAGE="to establish the connection."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
 
@@ -224,11 +226,11 @@ do
             ;;
 
         \?)
-            $ECHO "Invalid option: -$OPTARG" >&2
-            $ECHO 
-            $ECHO "Use the following to get help."
-            $ECHO "dbwebb -h"
-            $ECHO
+            $ECHO "\nInvalid option: -$OPTARG" >&2
+            $ECHO "\n"
+            $ECHO "\nUse the following to get help."
+            $ECHO "\ndbwebb -h"
+            $ECHO "\n"
             exit 1
             ;;
     esac
