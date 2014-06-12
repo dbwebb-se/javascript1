@@ -182,7 +182,14 @@ publishResults()
     COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $IGNORE_FAULTS $WHAT'"
     MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
-    $ECHO "Your files are now published on $BASEURL"
+
+    if [ $? ]
+    then
+        $ECHO "Some of your file may still be"
+    else 
+        $ECHO "Your files are now"
+    fi
+    $ECHO " published on $BASEURL"
     $ECHO "\n"
 }
 
