@@ -84,6 +84,8 @@ executeCommand()
     fi 
     $ECHO "\n"
     $ECHO "\n"
+
+    return $STATUS
 }
 
 
@@ -183,11 +185,11 @@ publishResults()
     MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 
-    if [ $? ]
+    if [ $? = "0" ]
     then
-        $ECHO "Some of your file may still be"
-    else 
         $ECHO "Your files are now"
+    else 
+        $ECHO "Some of your file may still be"
     fi
     $ECHO " published on $BASEURL"
     $ECHO "\n"
