@@ -1,7 +1,7 @@
 #!/bin/sh
 VERSION="1.0.0"
 
-$ECHO="/bin/$ECHO -e"
+$ECHO="/bin/echo -e"
 
 
 #
