@@ -16,6 +16,7 @@ printUsage()
     echo "Options:"
     echo 
     echo "  -h         Print this message and exit."
+    echo "  -i         Ignore validation faults and proceed anyway."
     echo "  -v         Print the version of this program and exit."
     echo "  -y         Do not wait for my input, just proceed."
     echo
@@ -39,9 +40,9 @@ printUsage()
     echo "  $ dbwebb sshkey"
     echo "  $ dbwebb login"
     echo "  $ dbwebb init"
-    echo "  $ dbwebb upload"
+    echo "  $ dbwebb -y upload"
     echo "  $ dbwebb -y validate kmom01"
-    echo "  $ dbwebb -y publish all"
+    echo "  $ dbwebb -y publish"
     echo 
     exit
 }
@@ -160,7 +161,7 @@ validateUploadedResults()
 {
     WHAT=$1
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $WHAT'"
+    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT'"
     MESSAGE="to upload and validate course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 }
@@ -174,7 +175,7 @@ publishResults()
 {
     WHAT=$1
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $WHAT'"
+    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $IGNORE_FAULTS $WHAT'"
     MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
     echo "Your files are now published on $BASEURL"
@@ -197,13 +198,18 @@ UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $D
 
 
 # Get options
-SKIP_READLINE=no
+SKIP_READLINE="no"
+IGNORE_FAULTS=""
 
-while getopts ":hvy" opt
+while getopts ":hivy" opt
 do
     case $opt in
         (h) 
             printUsage
+            ;;
+
+        (i) 
+            IGNORE_FAULTS="-i"
             ;;
 
         (v) 

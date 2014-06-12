@@ -44,7 +44,7 @@ printUsage()
     echo "Options:"
     echo 
     echo "  -h         Print this message and exit."
-    echo "  -i         Ignore any faults and proceed anyway."
+    echo "  -i         Ignore validation faults and proceed anyway."
     echo "  -n         Only validate, do not publish."
     echo "  -r         Print required external commands."
     echo "  -v         Print version and exit."
