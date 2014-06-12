@@ -13,21 +13,21 @@
 /**
  * Question 3
  **/
- document.writeln();
+ document.writeln(firstMethod());
 
  document.writeln('<br>');
 
 /**
  * Question 4
  **/
- document.writeln();
+ document.writeln(myPersons().male.firstName);
 
  document.writeln('<br>');
 
 /**
  * Question 5
  **/
- document.writeln();
+ document.writeln(personsGreet());
 
  document.writeln('<br>');
 
