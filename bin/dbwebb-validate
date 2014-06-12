@@ -440,5 +440,13 @@ case $CMD in
         ;;
 esac
 
-$ECHO "\n\033[0;30;42mOK\033[0m\n\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+if [ $FAULTS -gt 0 ]
+then
+    $ECHO "\n\033[0;37;41mFAILED.\033[0m"
+    $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+    exit 1
+fi
+
+$ECHO "\n\033[0;30;42mOK\033[0m"
+$ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
 exit 0
