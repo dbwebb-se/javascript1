@@ -85,7 +85,7 @@ assert()
     if [ ! $? -eq $EXPECTED ]
     then
         FAULTS=$(( $FAULTS + 1 ))
-        echo "FAILED. $MESSAGE\n"
+        echo "\033[0;37;41mFAILED.\033[0m $MESSAGE\n"
 
         [ $IGNORE_FAULTS = "no" ] || return  
 
@@ -229,7 +229,7 @@ testKmom01Sandbox()
     assert 0 "$JSHINT $FILE" "JSHint failed testing JavaScript files:\n$FILE"
 
     FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed testing HTML files:\n$FILE"
+    assert 0 "$HTMLHINT $FILE" "HTMLHint failed testing HTML file:\n$FILE"
 
     [ $PUBLISH = "yes" ] || return
 

@@ -76,9 +76,9 @@ executeCommand()
     MESSAGE=$3
     if [ $STATUS = 0 ]
     then
-        echo "SUCCESS $MESSAGE\n"
+        echo "\033[0;30;42mSUCCESS\033[0m $MESSAGE\n"
     else 
-        echo "FAILED $MESSAGE\n"
+        echo "\033[0;37;41mFAILED\033[0m $MESSAGE\n"
     fi 
 }
 
