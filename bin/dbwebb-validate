@@ -6,7 +6,7 @@ TESTS=0
 ASSERTS=0
 FAULTS=0
 
-$ECHO="/bin/echo -e"
+ECHO="/bin/echo -e"
 
 
 #
