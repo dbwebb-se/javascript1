@@ -79,7 +79,60 @@
 /**
  * Question 9
  **/
+ function joinArray(testArray) {
+    var aString = testArray.join(' ');
+    return aString;
+ }
 
 /**
  * Question 10
  **/
+ function lastIndex(testArray) {
+    return testArray.lastIndexOf(5);
+ }
+
+/**
+ * Question 11
+ **/
+ function popArray(testArray) {
+    var result, arrBefore, arrAfter, removed;
+    arrBefore = 'Before: ' + testArray.join();
+    result = arrBefore;
+    removed = ' Removed: ' + testArray.pop();
+    arrAfter = ' After: ' + testArray.join();
+    result += arrAfter + removed;
+    
+    return result;
+ }
+
+/**
+ * Question 12
+ **/
+ function pushArray(testArray, val) {
+    testArray.push(val);
+    
+    return testArray;
+ }
+
+/**
+ * Question 13
+ **/
+ function shiftArray(testArray) {
+    var result, arrBefore, arrAfter, removed;
+    arrBefore = 'Before: ' + testArray.join();
+    result = arrBefore;
+    removed = ' Removed: ' + testArray.shift();
+    arrAfter = ' After: ' + testArray.join();
+    result += arrAfter + removed;
+    
+    return result;
+ }
+
+/**
+ * Question 14
+ **/
+ function sortArray(testArray) {
+    return testArray.sort(function(a,b) {
+        return a-b;
+    });
+ }

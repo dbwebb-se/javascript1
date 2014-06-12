@@ -20,6 +20,18 @@ Lab questions
 
 8. Pass an array of your choice and use a "forEach-loop" to add an "x" to all elements in the array. Name the function "changeArrayElements" and print out the result.
 
+9. Pass an array of your choice to a function and join it into a string. Use a space (" ") to separate the elements. Name the function "joinArray" and print out the result. 
+
+10. Pass an array of your choice to a function that returns the last index of an element. Try an array with duplicates to see the result. Name the function "lastIndex" and print out the result.
+
+11. Pass an array of your choice to a function and use "pop()" to remove the last element. Create a string that holds the array before you remove the element and after its removed. Also include the removed element. Return the string. Name the function "popArray" and print out the result.
+
+12. Create a function that adds an element to an existing array. The function should take two arguments: an array of your choice and an element to add to it. Name the function "pushArray", return and print out the result. 
+
+13. Pass an array of your choice to a function and use "shift()" to remove the first element. Create a string that holds the array before you remove the element and after its removed. Also include the removed element. Return the string. Name the function "shiftArray" and print out the result.
+
+14. Pass an array with numbers to a function that sort the array and returns it. Name the function "sortArray" and print out the result.
+
 ------------------------------
 
 2014-06-03 (Zingo89) PA1 First try.

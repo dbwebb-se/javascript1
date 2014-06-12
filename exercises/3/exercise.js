@@ -57,13 +57,41 @@
 /**
  * Question 9
  **/
- document.writeln();
+ document.writeln(joinArray(["This", "is", "a", "string."]));
 
  document.writeln('<br>');
 
 /**
  * Question 10
  **/
- document.writeln();
+ document.writeln(lastIndex([5,3,2,34,5,2,77,"test",4,5,65]));
+
+ document.writeln('<br>');
+
+/**
+ * Question 11
+ **/
+ document.writeln(popArray([5,3,5,65]));
+
+ document.writeln('<br>');
+
+/**
+ * Question 12
+ **/
+ document.writeln(pushArray([5,3,5,65], 100));
+
+ document.writeln('<br>');
+
+/**
+ * Question 13
+ **/
+ document.writeln(shiftArray([5,3,5,65]));
+
+ document.writeln('<br>');
+
+/**
+ * Question 14
+ **/
+ document.writeln(sortArray([5,3,99,65,34,1,26]));
 
  document.writeln('<br>');
