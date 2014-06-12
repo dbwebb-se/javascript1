@@ -21,9 +21,9 @@ printUsage()
     echo "Command:"
     echo 
     echo "  test      Test the connection by loggin in."
+    echo "  sshkey    Create and install ssh-keys to avoid using password.."
     echo "  login     Login to the server using ssh."
     echo "  init      Init the remote server and create a destination directory."
-    echo "  sshkey    Create and install ssh-keys to avoid using password.."
     echo "  upload    Upload all files to the server."
     echo "  validate  Upload your files and validate that your results passes automatic tests."
     echo "  publish   Upload, Validate and Publish your course results to the web."
@@ -31,9 +31,9 @@ printUsage()
     echo "Example:"
     echo 
     echo "  $ dbwebb test"
+    echo "  $ dbwebb sshkey"
     echo "  $ dbwebb login"
     echo "  $ dbwebb init"
-    echo "  $ dbwebb sshkey"
     echo "  $ dbwebb upload"
     echo "  $ dbwebb -y validate kmom01"
     echo "  $ dbwebb -y publish all"
@@ -53,7 +53,7 @@ executeCommand()
     if [ $SKIP_READLINE = "no" ]
     then
         echo "\n$INTRO"
-        echo -n "Press a key to continue..."
+        echo "Press a key to continue..."
         read void
     fi
     
