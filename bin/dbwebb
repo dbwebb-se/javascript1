@@ -16,6 +16,7 @@ printUsage()
     echo "Options:"
     echo 
     echo "  -h         Print this message and exit."
+    echo "  -v         Print the version of this program and exit."
     echo "  -y         Do not wait for my input, just proceed."
     echo
     echo "Command:"
@@ -26,7 +27,11 @@ printUsage()
     echo "  init      Init the remote server and create a destination directory."
     echo "  upload    Upload all files to the server."
     echo "  validate  Upload your files and validate that your results passes automatic tests."
+    echo "            Send in kmom01, kmom02, etc to validate only one kmom."
+    echo "            Default is to validate all."
     echo "  publish   Upload, Validate and Publish your course results to the web."
+    echo "            Send in kmom01, kmom02, etc to publish only one kmom."
+    echo "            Default is to publish all."
     echo
     echo "Example:"
     echo 
@@ -141,7 +146,7 @@ installSshKeys()
 uploadToServer()
 {
     INTRO="Your current working directory will now be synced to remote server."
-    COMMAND="rsync -av --exclude literature --exclude .git -e ssh $SOURCE $DESTINATION" 
+    COMMAND1=$UPLOAD
     MESSAGE="to upload data."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
@@ -153,10 +158,11 @@ uploadToServer()
 #
 validateUploadedResults()
 {
+    WHAT=$1
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate all'"
-    MESSAGE="to validate course results."
-    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $WHAT'"
+    MESSAGE="to upload and validate course results."
+    executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 }
 
 
@@ -166,10 +172,12 @@ validateUploadedResults()
 #
 publishResults()
 {
+    WHAT=$1
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate all'"
+    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $WHAT'"
     MESSAGE="to validate and publish all course results."
-    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+    executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
+    echo "Your files are now published on $BASEURL"
 }
 
 
@@ -184,16 +192,23 @@ fi
 
 # Get settings from config-file
 . bin/dbwebb-config
+UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $DESTINATION" 
+
 
 
 # Get options
 SKIP_READLINE=no
 
-while getopts ":hy" opt
+while getopts ":hvy" opt
 do
     case $opt in
         (h) 
             printUsage
+            ;;
+
+        (v) 
+            echo $VERSION
+            exit 0
             ;;
 
         (y) 
@@ -238,11 +253,13 @@ case $CMD in
         ;;
 
     validate)
-        validateUploadedResults 
+        WHICH=$2
+        validateUploadedResults ${WHICH:=all} 
         ;;
 
     publish)
-        publishResults 
+        WHICH=$2
+        publishResults ${WHICH:=all} 
         ;;
 
     *)
