@@ -183,6 +183,7 @@ publishResults()
     MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
     $ECHO "Your files are now published on $BASEURL"
+    $ECHO "\n"
 }
 
 
