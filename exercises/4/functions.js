@@ -1,26 +1,26 @@
 /**
  * Question 1
  **/
- var person = {};
+ var firstPerson = {};
 /**
  * Question 2
  **/
  function firstAttributes() {
-    person.firstName = "John",
-    person.lastName = "Doe",
-    person.age = 30,
-    person.height = '180cm',
-    person.eyecolor = "blue";
-    return person;
+    firstPerson.firstName = "John",
+    firstPerson.lastName = "Doe",
+    firstPerson.age = 30,
+    firstPerson.height = '180cm',
+    firstPerson.eyecolor = "blue";
+    return firstPerson;
  }
 /**
  * Question 3
  **/
  function firstMethod() {
-    person.presentation = function () {
-        return 'Hello! My name is ' + person.firstName + ' ' + person.lastName;
+    firstPerson.presentation = function () {
+        return 'Hello! My name is ' + firstPerson.firstName + ' ' + firstPerson.lastName;
     };
-    return person.presentation();
+    return firstPerson.presentation();
  }
  
 /**
@@ -35,8 +35,9 @@
     this.presentation = function() {
         return 'Hello! My name is ' + this.firstName + ' ' + this.lastName;
     },
-    this.greet = function(name) {
-        return 'Hi ' + this.firstName + '! ' + 'It is ' + name + '.';
+    this.greet = function(other) {
+        console.log(typeof(other.firstName));
+        return 'Hi ' + other.firstName + '! ' + 'It is ' + this.firstName + '.';
     }
  }
  var male = new Person("Fox", "Mulder", 30, 183, "brown");
@@ -49,33 +50,61 @@
 /**
  * Question 5
  **/
- function personsGreet() {
-    var result = male.greet(female.firstName);
+ function personsGreet(personOne, personTwo) {
+    var result = personOne.greet(personTwo);
     return result;
  }
  
 /**
  * Question 6
  **/
+ function isInstance() {
+    return male instanceof Person;
+ }
  
 /**
  * Question 7
  **/
- 
+ function delAttribute() {
+    delete male.eyecolor;
+    delete female.eyecolor;
+    return {male: male, female:female};
+ }
 /**
  * Question 8
  **/
- 
+ function Pet(species, name, color, age) {
+    this.species = species,
+    this.name = name,
+    this.color = color,
+    this.age = age;
+ }
+
+ function addProperty() {
+    var dog = new Pet("dog", "Cujo", "yellow", 10);
+    var cat = new Pet("cat", "Oliver", "orange", 4);
+    male.pet = cat; 
+    female.pet = dog;
+    return Object.keys(male);
+ }
 
 /**
  * Question 9
  **/
- 
+ function usePrototype(currPerson) {
+    Person.prototype.presentPet = function() {
+        return 'My ' + this.pet.species + ' is called ' + this.pet.name + ' and its ' + this.pet.color + ' and ' + this.pet.age + ' years old.';
+    }
+    return currPerson.presentPet();
+ }
 
 /**
  * Question 10
  **/
- 
+ function useCall() {
+    delete male.greet;
+    return female.greet.call(male, female);   
+ }
 
 /**
  * Question 11
