@@ -185,7 +185,7 @@ publishResults()
     MESSAGE="to validate and publish all course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 
-    if [ $? = "0" ]
+    if [ $? -eq 0 ]
     then
         $ECHO "Your files are now"
     else 
