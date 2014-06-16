@@ -34,11 +34,11 @@ if (isset($_GET['init'])) {
 create table if not exists lab
 (
     int id primary key,
-    gen_key string key
+    gen_key string key,
     acronym string,
     course string,
     lab string,
-    created datetime,
+    created datetime
 )
 ";
     $stmt = $db->prepare($sql);
