@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Flytta baddie - uppgift</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+<h1>Baddie</h1>
+<p>Move the Baddie (with the arrowkeys). Have fun!</p>
+<div id='baddie'></div>
+    
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
