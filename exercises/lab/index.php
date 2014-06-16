@@ -18,6 +18,8 @@ error_reporting(-1);              // Report all type of errors
 ini_set('display_errors', 1);     // Display all errors
 ini_set('output_buffering', 0);   // Do not buffer outputs, write directly
 
+date_default_timezone_set("UTC");
+
 
 if (!is_writable(__DIR__)) {
     echo "<p>You must make this directory writable. Then click <a href='?init'>this link to generate the database tables</a>.</p>";
@@ -133,7 +135,7 @@ where
     $res = $stmt->fetch(PDO::FETCH_OBJ);
 
     $gen_key = $res->gen_key;
-    
+
     echo <<<EOD
 <p>
 Acronym: {$res->acronym}</br>
