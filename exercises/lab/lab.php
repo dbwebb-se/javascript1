@@ -41,6 +41,7 @@ $created = $res->created;
 if ($course == 'javascript1' && $lab == 'lab1') {
     
     extract(include "config/lab1.php");
+    // shuffle questions
 
 } else {
     die("Not a valid combination.");
