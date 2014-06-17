@@ -11,6 +11,8 @@ $numberTwo = 6;  // 100-999
 $numberThree = 56; // 100-999
 $floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
+$lowNr = 15; // 0 - 100
+$highNr = 625; // 500 - 999
 
 $serie1 = [347, -221, 54, 435];  // 100-999
 
@@ -234,15 +236,15 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
  */
 [
 
-"text" => "
-<p>Use the built-in function Math.max to find out the highest number in the serie: " . implode(', ', $serie1) . ".
+"text" => '
+<p>Use the built-in function Number.parseInt to find out the integer representation of the variable. Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create a variable called "sum" and print the result.
 </p>
-",
+',
 
 "answer" => function () {
-    global $serie1;
+    global $floatOne;
 
-    return max($serie1);
+    return (int)$floatOne;
 },
 
 ],
@@ -297,6 +299,63 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 },
 
 ],
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function Math.min to find out the lowest number in the serie: " . implode(', ', $serie1) . ".
+</p>
+",
+
+"answer" => function () use ($serie1) {
+
+    return min($serie1);
+},
+
+],
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function Math.random to randomize a number between (and including) two given ones: " . $lowNr . " and " . $highNr . ".
+</p>
+",
+
+"answer" => function () use ($lowNr, $highNr) {
+
+    return rand($lowNr, $highNr);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function Math.round to round the float number: " . $floatTwo . " to the closest integer.
+</p>
+",
+
+"answer" => function () use ($floatTwo) {
+
+    return round($floatTwo);
+},
+
+],
+
+
 
 /**
  * Closing up this section.
