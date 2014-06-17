@@ -8,6 +8,9 @@ $secondWord = "rocks!";
 
 $numberOne = 10; // 100-999
 $numberTwo = 6;  // 100-999
+$numberThree = 56; // 100-999
+$floatOne = 12.55; // 100-999
+$floatTwo = 5.22; // 100-999 
 
 $serie1 = [347, -221, 54, 435];  // 100-999
 
@@ -23,8 +26,12 @@ return [
 "title" => "Lab 1 - javascript1",
 
 "intro" => "
-<p>Intro text to explain stuff.
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+<p>Intro text to explain stuff. <br>
+MDN Overview: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects <br>
+MDN Numbers: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number <br>
+MDN Math: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math <br>
+MDN Strings: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String <br>
+MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date <br>
 </p>
 ",
 
@@ -71,6 +78,132 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a fourth variable, called "sum" and assign to it the sum of all three variables. Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $numberOne, $numberTwo, $numberThree;
+
+    $sum = $numberOne + $numberTwo + $numberThree;
+    return $sum;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the product of the first two variables. Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $numberOne, $numberTwo;
+
+    $sum = $numberOne * $numberTwo;
+    return $sum;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a fourth variable, called "sum" and assign to it the product of "numberOne" and "numberTwo" and subtract "numberThree". Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $numberOne, $numberTwo, $numberThree;
+
+    $sum = ($numberOne * $numberTwo) - $numberThree;
+    return $sum;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create two variables, "numberOne", "numberTwo" and give them the values: ' . $numberOne . ' and ' . $numberTwo . '. Create a fourth variable, called "sum" and assign to it the quotient of them. Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $numberOne, $numberTwo;
+
+    $sum = $numberOne / $numberTwo;
+    return $sum;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create two variables, "floatOne" and "floatTwo". Give them the values: ' . $floatOne . ' and ' . $floatTwo . '. Create a fourth variable, called "sum" and assign to it the sum of them. Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $floatOne, $floatTwo;
+
+    $sum = $floatOne / $floatTwo;
+    return $sum;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create two variables, "floatOne" and "numberOne". Give them the values: ' . $floatOne . ' and ' . $numberOne . '. Create a fourth variable, called "sum" and assign to it the product of them. Print out the result.
+</p>
+',
+
+"answer" => function () {
+    global $floatOne, $numberOne;
+
+    $sum = $floatOne * $numberOne;
+    return $sum;
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
@@ -87,7 +220,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 "intro" => "
 <p>Math library
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 </p>
 ",
 
@@ -132,7 +264,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 "intro" => "
 <p>Math library
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
 </p>
 ",
 
@@ -246,7 +377,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 "intro" => "
 <p>String library
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String</p>
+</p>
 ",
 
 "shuffle" => false,
@@ -291,7 +422,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 "intro" => "
 <p>Math library
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 </p>
 ",
 
