@@ -43,6 +43,26 @@ if ($course == 'javascript1' && $lab == 'lab1') {
     extract(include "config/lab1.php");
     // shuffle questions
 
+} else if ($course == 'javascript1' && $lab == 'lab2') {
+    
+    extract(include "config/lab2.php");
+    // shuffle questions
+
+} else if ($course == 'javascript1' && $lab == 'lab3') {
+    
+    extract(include "config/lab3.php");
+    // shuffle questions
+
+} else if ($course == 'javascript1' && $lab == 'lab4') {
+    
+    extract(include "config/lab4.php");
+    // shuffle questions
+
+} else if ($course == 'javascript1' && $lab == 'lab5') {
+    
+    extract(include "config/lab5.php");
+    // shuffle questions
+
 } else {
     die("Not a valid combination.");
 }
