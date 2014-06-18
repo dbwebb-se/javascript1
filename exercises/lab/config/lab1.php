@@ -13,12 +13,12 @@ $floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
 $highNr = 625; // 500 - 999
-$smallNr = 2; // 1-3
+$smallNr = 2; // 1-5
 $smallRandNr = 5; // 0-9
 
 $serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['dog', 'cat', 'chicken', 'mouse', 'horse', 'bird', 'fox', 'wolf', 'cow', 'pig'];
-$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davies', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
+$wordSerie1 = ['canine', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
+$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
 
 
 
@@ -491,14 +491,108 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function Math.max to find out the highest number in the serie: " . implode(', ', $serie1) . ".
+<p>Use the built-in function String.bold to add the html element <b> to the string: '" .  $wordSerie1[$smallRandNr] . "' and make the text bold. Return the result as a varibale called: 'result'.
 </p>
 ",
 
-"answer" => function () {
-    global $serie1;
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    $result = '<b>'. $wordSerie1[$smallRandNr] . '</b>';
+    return $result;
+},
 
-    return max($serie1);
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.charAt to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and return the character at index: " . ($smallNr-1) . ". Return the result as a varibale called: 'result'.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr, $smallNr) {
+    $result = $wordSerie1[$smallRandNr]{$smallNr-1};
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.toUppercase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Return the result as a varibale called: 'result'.
+</p>
+",
+
+"answer" => function () use ($sentenceSerie1, $smallRandNr) {
+    $result = strtoupper($sentenceSerie1[$smallRandNr]);
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.repeat to create a new string that contains the string: '" . $wordSerie1[$smallRandNr] . "' repeated " . $smallNr+10 . " number of times. Return the result as a varibale called: 'result'.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr, $smallNr) {
+    $result = str_repeat($wordSerie1[$smallRandNr], $smallNr+10);
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.length to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Return the result as a varibale called: 'result'.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    $result = strlen($wordSerie1[$smallRandNr]);
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.concat to transform two strings into one. Create two variables 'stringOne' and 'stringTwo'. Assign to them the strings: '" . $wordSerie1[$smallRandNr] . "' and '" . $wordSerie1[$smallRandNr-1] . "'. Return the result as a varibale called: 'result'.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    $result = $wordSerie1[$smallRandNr] . $wordSerie1[$smallRandNr-1];
+    return $result;
 },
 
 ],
