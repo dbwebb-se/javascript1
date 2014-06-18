@@ -13,8 +13,12 @@ $floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
 $highNr = 625; // 500 - 999
+$smallNr = 2; // 1-3
+$smallRandNr = 5; // 0-9
 
 $serie1 = [347, -221, 54, 435];  // 100-999
+$wordSerie1 = ['dog', 'cat', 'chicken', 'mouse', 'horse', 'bird', 'fox', 'wolf', 'cow', 'pig'];
+$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davies', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
 
 
 
@@ -67,11 +71,8 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 <p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
 ',
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($numberOne, $numberTwo) {
 
-    //$numberOne = 10;
-    //$numberTwo = 5;
     $sum = $numberOne + $numberTwo;
     return $sum;
 },
@@ -90,8 +91,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $numberOne, $numberTwo, $numberThree;
+"answer" => function () use ($numberOne, $numberTwo, $numberThree) {
 
     $sum = $numberOne + $numberTwo + $numberThree;
     return $sum;
@@ -111,8 +111,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($numberOne, $numberTwo) {
 
     $sum = $numberOne * $numberTwo;
     return $sum;
@@ -132,8 +131,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $numberOne, $numberTwo, $numberThree;
+"answer" => function () use ($numberOne, $numberTwo, $numberThree) {
 
     $sum = ($numberOne * $numberTwo) - $numberThree;
     return $sum;
@@ -153,8 +151,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($numberOne, $numberTwo) {
 
     $sum = $numberOne / $numberTwo;
     return $sum;
@@ -174,8 +171,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $floatOne, $floatTwo;
+"answer" => function () use ($floatOne, $floatTwo) {
 
     $sum = $floatOne / $floatTwo;
     return $sum;
@@ -195,8 +191,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $floatOne, $numberOne;
+"answer" => function () use ($floatOne, $numberOne) {
 
     $sum = $floatOne * $numberOne;
     return $sum;
@@ -241,8 +236,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 </p>
 ',
 
-"answer" => function () {
-    global $floatOne;
+"answer" => function () use ($floatOne) {
 
     return (int)$floatOne;
 },
@@ -286,14 +280,6 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 ",
 
 "answer" => function () use ($serie1) {
-    //global $serie1;
-
-    /*
-    $f = function($serie[0], $serie[1]) use $serie1 {
-        //specific functions stuff
-    };
-    return $f();
-    */
 
     return max($serie1);
 },
@@ -357,6 +343,44 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function Math.PI to print out float value 'Pi'.
+</p>
+",
+
+"answer" => function () {
+
+    return pi();
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function Math.pow to find the power of (base) " .  $numberOne . " and (exponent) " .  $smallNr . ".
+</p>
+",
+
+"answer" => function () use ($numberOne, $smallNr) {
+
+    return pow($numberOne, $smallNr);
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
@@ -386,14 +410,11 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Create a variable, named "firstWord", that holds the word "' . $firstWord . '". Create a second variable, named "secondWord", that holds the word "' . $secondWord . '". Create a third variable, named "bothWords", and put together firstWord and secondWord with a space between the words. Print out the result.</p>
+<p>Create a variable, named "firstWord", that holds the word "' . $firstWord . '". Create a second variable, named "secondWord", that holds the word "' . $secondWord . '". Create a third variable, named "bothWords", and put together firstWord and secondWord with a space between. Print out the result.</p>
 ',
 
-"answer" => function () {
-    global $firstWord, $secondWord;
+"answer" => function () use ($firstWord, $secondWord) {
 
-    //$firstWord = "JavaScript";
-    //$secondWord = "rocks!";
     $bothWords = $firstWord . " " . $secondWord;
     return $bothWords;
 },
@@ -407,13 +428,32 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
  */
 [
 
-"text" => '
-<p>A good thing is that we do not need to use one variable for each word. Create a variable called "sentence" and assign to it the text: "This was convenient" and print it out.</p>
-',
+"text" => "
+<p>A good thing is that we do not need to use one variable for each word. Create a variable called 'sentence' and assign to it the text: '". $sentenceSerie1[$smallRandNr] ."' and print it out.</p>
+",
 
-"answer" => function () {
-    $sentence = "This was convenient";
+"answer" => function () use ($smallRandNr, $sentenceSerie1) {
+    $sentence = $sentenceSerie1[$smallRandNr];
     return $sentence;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Create a varibale called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Create another varible called 'numberOne' and assign to it the value: " .  $numberTwo . ". Add them up to in a variable called 'sum' and print out the result.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr, $numberTwo) {
+    $sum = $wordSerie1[$smallRandNr] . $numberTwo;
+    return $sum;
 },
 
 ],
