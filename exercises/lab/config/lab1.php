@@ -21,7 +21,6 @@ $wordSerie1 = ['canine', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocod
 $sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
 
 
-
 return [
 
 
@@ -630,14 +629,31 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function Math.max to find out the highest number in the serie: " . implode(', ', $serie1) . ".
+<p>Create a Date object. Use the built-in function Date.getMinutes to get the minutes from your Date object. Return the result in a varible called 'result'.
 </p>
 ",
 
 "answer" => function () {
-    global $serie1;
 
-    return max($serie1);
+    return date('i');
+},
+
+],
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Create a Date object. Use the built-in function Date.getFullYear to get the year from your Date object. Return the result in a varible called 'result'.
+</p>
+",
+
+"answer" => function () {
+
+    return date('Y');
 },
 
 ],
@@ -673,12 +689,11 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use if else statements to print out 'yes' if $numberOne is larger than $numberTwo, else print out 'no'.
+<p>Use if else statements to print out 'yes' if " . $numberOne . " is larger than " . $numberTwo . ", else print out 'no'.
 </p>
 ",
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($numberOne, $numberTwo) {
 
     return $numberOne > $numberTwo ? "yes" : "no";
 },
@@ -693,13 +708,13 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>You can compare variables in different ways. Compare the number 10 and a string that holds 10 ("10"). Use double equals when comparing (==). Use if else statements to print out "yes" if 10 equals "10", else print out "no".
+<p>You can compare variables in different ways. Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use triple equals when comparing (===). Use if else statements to print out "yes" if they are equal, else print out "no".
 </p>
 ',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($numberOne) {
+    
+    return $numberOne === strval($numberOne) ? "yes" : "no";
 },
 
 ],
@@ -712,17 +727,26 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>As you saw in question 10, they are equal. This is because the double equal (==), do a type conversion of the variables. To get around that, you can use a triple equal (===). Then there is no type conversion done and the compare is made on both value and type. Use if else statements to print out "yes" if 10 equals "10", else print out "no". Use triple equals (===).
+<p>Use if else statements to print out "higher" if the length of an array containing these words: "' . implode(', ', $wordSerie1) . '", are greater than ' . $smallRandNr . '. If it is smaller, print out "lower" and if it is equal, print out "equal".
 </p>
 ',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    
+    $result = '';
+    if(count($wordSerie1) < $smallRandNr) {
+        $result = 'lower';
+    }
+    else if(count($wordSerie1) > $smallRandNr) {
+        $result = 'higher';
+    }
+    else {
+        $result = 'equal';
+    }
+    return $result;
 },
 
 ],
-
 
 
 
@@ -827,6 +851,78 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 },
 
 ],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use a for loop to increment ' . $numberTwo . ' with the value ' . $smallNr . ', 10 times. Return the result.
+</p>
+',
+
+"answer" => function () use ($numberTwo, $smallNr) {
+    
+    $result = 0;
+    for($i = 0; $i < 10; $i++) {
+        $result += $smallNr;
+    }   
+    return $result;
+},
+
+],
+
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use a for loop to subtract ' . $smallNr . ' from ' . $numberOne . ', 10 times. Return the result.
+</p>
+',
+
+"answer" => function () use ($numberOne, $smallNr) {
+    
+    $result = $numberOne;
+    for($i = 0; $i < 10; $i++) {
+        $result -= $smallNr;
+    }   
+    return $result;
+},
+
+],
+
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>NOT DONE. Return the result.
+</p>
+',
+
+"answer" => function () use ($numberOne, $smallNr) {
+    
+    $result = $numberOne;
+    for($i = 0; $i < 10; $i++) {
+        $result -= $smallNr;
+    }   
+    return $result;
+},
+
+],
+
 
 
 
