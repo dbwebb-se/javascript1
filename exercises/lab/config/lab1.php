@@ -750,6 +750,66 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than ' . $smallNr . ' AND if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
+</p>
+',
+
+"answer" => function () use ($numberThree, $smallNr) {
+    
+    $result = '';
+    if($numberThree > $smallNr && $smallNr < 5) {
+        $result = 'yes';
+    }
+    else if($numberThree === $smallNr) {
+        $result = 'equal';
+    }
+    else {
+        $result = 'no';
+    }
+    
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than or equal to ' . $numberTwo . ' OR  if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
+</p>
+',
+
+"answer" => function () use ($numberThree, $numberTwo, $smallNr) {
+    
+    $result = '';
+    if($numberThree >= $numberTwo || $smallNr < 5) {
+        $result = 'yes';
+    }
+    else if($numberThree === $numberTwo && $smallNr === $numberThree) {
+        $result = 'equal';
+    }
+    else {
+        $result = 'no';
+    }
+    
+    return $result;
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
