@@ -1,58 +1,74 @@
+/*
+ * Baddie1 assignment
+ *
+ * If you wish to debug you can uncomment some of the console.log()-rows to get prints to the console
+ * You can also write your own console.log()'s
+ *
+ */
 (function(){
 	'use strict';
-	var baddie, step, left, top;
-	// Hämtar HTML-elementen som vi ska använda
-	baddie = document.getElementById('baddie');
-	
-	/* ----------- */
-	/* Uppgift 2.1 */
-	// Vart ska baddie börja? Ge honom koordinater i form av "100px"
-	baddie.style.left = 
-	baddie.style.top = 
-	
-	/* ----------- */
-	/* Uppgift 2.2 */
-	// Hur många pixlar ska baddien stega? Sätt ett värde på step
+	// HTML element variables
+	var baddie;
+	// Number variables
+	var step, left, top;
 
-	
-	// Knyter knapptryckning till ett event
+	// Get HTML element to use
+	baddie = document.getElementById("baddie");
+
+	/* ----------- */
+	/* Assigment 2.1 */
+	// Where do you want baddie to start? Assign a string in the form of "100px" to baddie
+	baddie.style.left =
+	baddie.style.top =
+	//console.log("Baddie is starting at: " + baddie.style.left + ", " + baddie.style.top);
+
+	/* ----------- */
+	/* Assignment 2.2 */
+	// How far will baddie go each step? Assign the variable step a number
+
+	//console.log("Baddie will step " + step + " pixels");
+
+	// Triggers an action when you press a key
 	document.addEventListener("keydown", function(e) {
-		// Hämtar knapptryckningen
+		// Gets the key that was pressed
 		var key = e.keyCode || e.which;
-		// Hindrar pilarna från att flytta scrollen
+		// Prevents the normal key action (like scrolling)
 		e.preventDefault();
-		// Hämtar vart baddie är nu
-		left = baddie.offsetLeft;	// baddie.offsetLeft hämtar vart baddie är just nu
-		top = baddie.offsetTop;		// baddie.offsetTop hämtar vart baddie är just nu
-		
+		// Gets current position of baddie
+		left = baddie.offsetLeft;
+		top = baddie.offsetTop;
+		//console.log("Baddie is currently at: " + left + "," + top);
+
 		/* ----------- */
-		/* Uppgift 2.3 */
-		// Skapa en if-sats eller en switch-sats för variablen key
-		// Key är siffor som motsvarar en tangentbordsknapp:
-		//     37 - pil åt vänster
-		//        ändra varibel left så att baddie kommer att flyttas åt vänster
-		//     38 - pil upp
-		//        ändra varibel top så att baddie kommer att flyttas uppåt
-		//     39 - pil åt höger
-		//        ändra variabel left så att baddie kommer att flyttas åt höger
-		//     40 - pil ner
-		//        ändra varibel top så att baddie kommer att flyttas nedåt
-		
-		
-		
+		/* Assigment 2.3 */
+		// Create an if/if-else or switch-case for the variable key
+		// key contains a number value which corresponts to a certain key
+		//console.log("Key " + key + " was pressed");
+		// These are the ones you need to handle:
+		//     37 - Left arrow
+		//        Calculate a new value for left so that the baddie takes one step to the left
+		//     38 - Up arrow
+		//        Calculate a new value for top so that the baddies takes one step up
+		//     39 - Right arrow
+		//        Calculate a new value for left so that the baddie takes one step to the right
+		//     40 - Down arrow
+		//        Calculate a new value for top so that the baddies takes one step down
+
+
+
 		/* ------------------------------------------------------ */
-		/* EXTRA Uppgift */
-		// Hantera så att baddie inte hamnar utanför
-		// Nedan finns kod för att hjälpa dig på vägen (hur du hämtar fönsterstorlekarna)
-		/* var maxLeft, maxTop;
-		maxLeft = window.innerWidth, maxTop = window.innerHeight; */
-		
-		
+		/* EXTRA Assigment */
+		// Make sure that baddie can't go beyond the edges of the window
+		// Use the getSize-example to find how you get the window size
+		//	and check if baddie tries to move outside of the window
+
+
 		/* ------------------------------------------------------ */
-		
-		
-		// HÄR placerar vi slutligen ut baddie
-		// Se till att left och top innehåller siffervärden som motsvarar vart baddie ska flytta sig
+
+
+		// Here is where we finally give baddie its new coordinates so that he moves
+		// Make sure that left and top contain a number value for where baddie is to go
+		//console.log("Moving baddie to: " + left + "," + top);
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
 	});
