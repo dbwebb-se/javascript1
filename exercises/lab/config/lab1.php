@@ -17,7 +17,7 @@ $smallNr = 2; // 1-5
 $smallRandNr = 5; // 0-9
 
 $serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['canine', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
+$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
 $sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
 
 
@@ -659,6 +659,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 ],
 
 
+
 /**
  * Closing up this section.
  */
@@ -810,6 +811,30 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use if else statements to print out "true" or "1" if ' . $numberOne . ', are less than or equal to ' . $numberTwo . '. Else print out "false" or "0". Return a boolean variable called "result".
+</p>
+',
+
+"answer" => function () use ($numberOne, $numberTwo) {
+    
+    $result = false;
+    if($numberTwo <= $numberTwo) {
+        $result = true;
+    }
+    
+    return $result;
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
@@ -840,14 +865,78 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Build switch case statement.
+<p>Build a switch case statement that uses the number " . $numberOne . " to test if it is 'higher', 'lower' or 'equal' to " . $numberThree . ". Print out the result (higher, lower or equal) with a variable called 'result'.
 </p>
 ",
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($numberOne, $numberThree) {
+    
+    $result = '';
 
-    return $numberOne > $numberTwo ? "yes" : "no";
+    switch ($numberOne) {
+        case ($numberOne > $numberThree) : 
+        $result = 'higher';
+        break;
+        case ($numberOne < $numberThree) :
+        $result = 'lower';
+        break;
+        default: $result = 'equal';
+    }
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Build a switch case statement with the cases: " . implode(', ', $wordSerie1) . ". Return a string, something like: 'My favorite animal is (your word)'. Use the word: '" . $wordSerie1[$smallRandNr] . "'. Return the string in a variable called 'result' and the switch case should work on all animals! If you try with an animal that you do not have in your statement it should return 'I dont like animals.'.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    
+    $result = 'My favorite animal is ';
+
+    switch ($wordSerie1[$smallRandNr]) {
+        case ($wordSerie1[0]) : 
+        $result .= $wordSerie1[0];
+        break;
+        case ($wordSerie1[1]) : 
+        $result .= $wordSerie1[1];
+        break;
+        case ($wordSerie1[2]) : 
+        $result .= $wordSerie1[2];
+        break;
+        case ($wordSerie1[3]) : 
+        $result .= $wordSerie1[3];
+        break;
+        case ($wordSerie1[4]) : 
+        $result .= $wordSerie1[4];
+        break;
+        case ($wordSerie1[5]) : 
+        $result .= $wordSerie1[5];
+        break;
+        case ($wordSerie1[6]) : 
+        $result .= $wordSerie1[6];
+        break;
+        case ($wordSerie1[7]) : 
+        $result .= $wordSerie1[7];
+        break;
+        case ($wordSerie1[8]) : 
+        $result .= $wordSerie1[8];
+        break;
+        case ($wordSerie1[9]) : 
+        $result .= $wordSerie1[9];
+        break;
+        default: $result = 'I dont like animals.';
+    }
+    return $result;
 },
 
 ],
@@ -875,42 +964,6 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "shuffle" => false,
 
 "questions" => [
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for-loop to print out the numbers 1 to 10.</p>
-',
-
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for-loop to print out the numbers 10 to 1.</p>
-',
-
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
-},
-
-],
 
 
 
@@ -968,15 +1021,15 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>NOT DONE. Return the result.
+<p>Use a for loop to add all the values in the range -' . $numberOne . ' to ' . $numberOne . ' to a string. Return the result.
 </p>
 ',
 
-"answer" => function () use ($numberOne, $smallNr) {
+"answer" => function () use ($numberOne) {
     
-    $result = $numberOne;
-    for($i = 0; $i < 10; $i++) {
-        $result -= $smallNr;
+    $result = '';
+    for($i = $numberOne * -1; $i <= $numberOne; $i++) {
+        $result .= $i . ', ';
     }   
     return $result;
 },
@@ -1016,12 +1069,17 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a while-loop to print out the numbers 1 to 10.</p>
-',
+<p>Use a while loop to increment ' . $numberThree . ' with the value ' . $smallNr . ', 5 times. Return the result.
+</p>',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($numberThree, $smallNr) {
+    $result = $numberThree;
+    $counter = 0;
+    while($counter < 5) {
+        $result += $smallNr;
+        $counter += 1;
+    }
+    return $result;
 },
 
 ],
@@ -1034,12 +1092,18 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a while-loop to print out the numbers 10 to 1.</p>
+<p>Use a while loop to subtract ' . $smallNr . ' from ' . $numberTwo . ', 20 times. Return the result.
+</p>
 ',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($smallNr, $numberTwo) {
+    $result = $numberThree;
+    $counter = 20;
+    while($counter > 0) {
+        $result -= $smallNr;
+        $counter -= 1;
+    }
+    return $result;
 },
 
 ],
