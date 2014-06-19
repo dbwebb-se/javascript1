@@ -189,7 +189,7 @@ publishResults()
     then
         $ECHO "Your files are now"
     else 
-        $ECHO "Some of your file may still be"
+        $ECHO "Some of your files may might be"
     fi
     $ECHO " published on $BASEURL"
     $ECHO "\n"

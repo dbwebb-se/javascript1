@@ -82,19 +82,26 @@ assert()
     MESSAGE=$3
     ASSERTS=$(( $ASSERTS + 1 ))
 
-    sh -c "$TEST"
+    sh -c "$TEST" > /tmp/dbwebb-error 2>&1
     STATUS=$?
+    #ERROR=$(</tmp/dbwebb-error)
+    ERROR=`cat /tmp/dbwebb-error`
 
     if [ ! $STATUS -eq $EXPECTED ]
     then
         FAULTS=$(( $FAULTS + 1 ))
-        $ECHO "\n\033[0;37;41mFAILED.\033[0m $MESSAGE\n"
 
-        [ $IGNORE_FAULTS = "no" ] || return  
-
-        $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
-        $ECHO "\nCorrect the fault and run the validation again.\n\n"
-        exit 1
+        if [ $IGNORE_FAULTS = "yes" ]
+        then
+            $ECHO "\n\033[43mWARNING.\033[0m $MESSAGE"
+            [ -z "$ERROR" ] || $ECHO "\n$ERROR"
+        else
+            $ECHO "\n\033[0;37;41mFAILED.\033[0m $MESSAGE\n"
+            [ -z "$ERROR" ] || $ECHO "\n$ERROR"
+            $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+            $ECHO "\nCorrect the fault and run the validation again.\n\n"
+            exit 1
+        fi
     fi
 
     return $STATUS
@@ -108,7 +115,7 @@ assert()
 checkCommand()
 {
     COMMAND=$1
-    $ECHO "\nChecking $COMMAND"
+    #$ECHO "\nChecking $COMMAND"
 
     if ! hash $COMMAND 2>/dev/null
     then
@@ -118,6 +125,31 @@ checkCommand()
         $ECHO >&2 "\n";
         exit 1
     fi
+}
+
+
+
+#
+# Publish all
+#
+publish()
+{
+    $ECHO "\n\nPublishing"
+
+    initBuildDir
+
+    $ECHO "\nCopying files to www."
+    rsync -a --delete $TARGET/ $BUILD/
+
+    $ECHO "\nMinifying HTML-files."
+    find $BUILD/ -type f -name '*.html' | while read filename; do $HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename; done
+    
+    #$ECHO "\nUglify JavaScript-files."
+    #$UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
+    
+    #$ECHO "\nMinify CSS-files."
+    #$CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
+
 }
 
 
@@ -186,7 +218,14 @@ testMeStart()
     $ECHO "\nTesting Me-directory items."
 
     assert 0 "[ -d $TARGET ]" "Missing directory for me-pages: $TARGET"
-    assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html"
+    assert 0 "[ -f $TARGET/me.html ]" "Missing presentation file: $TARGET/me.html" 
+    assert 0 "[ -d $TARGET/kmom01 ]" "Missing directory: $TARGET/kmom01"
+    assert 0 "[ -d $TARGET/kmom02 ]" "Missing directory: $TARGET/kmom02"
+    assert 0 "[ -d $TARGET/kmom03 ]" "Missing directory: $TARGET/kmom03"
+    assert 0 "[ -d $TARGET/kmom04 ]" "Missing directory: $TARGET/kmom04"
+    assert 0 "[ -d $TARGET/kmom05 ]" "Missing directory: $TARGET/kmom05"
+    assert 0 "[ -d $TARGET/kmom06 ]" "Missing directory: $TARGET/kmom06"
+    assert 0 "[ -d $TARGET/kmom10 ]" "Missing directory: $TARGET/kmom10"
 
     [ $PUBLISH = "yes" ] || return
 
@@ -197,59 +236,90 @@ testMeStart()
 
 
 #
-# Test Kmom01
-#
-testKmom01()
-{
-    TESTS=$(( $TESTS + 1 ))
-    KMOM="kmom01"
-
-    $ECHO "\nTesting Kmom01 structure."
-
-    assert 0 "[ -d $TARGET/$KMOM ]" "Missing directory: $TARGET/$KMOM"
-
-    [ $PUBLISH = "yes" ] || return
-
-    if [ ! -d $BUILD/$KMOM ] 
-    then
-        mkdir $BUILD/$KMOM
-    fi
-}
-
-
-
-#
 # Test kmom01/sandbox
 #
-testKmom01Sandbox()
+testSandbox()
 {
     TESTS=$(( $TESTS + 1 ))
     KMOM="kmom01"
     DIR="sandbox"
 
-    $ECHO "\nTesting Kmom01 Sandbox example."
+    $ECHO "\nTesting $KMOM $DIR example."
 
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR"
-    #[ $? -eq 0 ] || return
+    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
 
     FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE"
-    echo $?
-    [ $? -eq 0 ] || return
+    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
 
     FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed: $FILE"
-    [ $? -eq 0 ] || return
+    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+}
 
-    [ $PUBLISH = "yes" ] || return
 
-    rsync -a $TARGET/$KMOM/$DIR/ $BUILD/$KMOM/$DIR/
 
-    $HTML_MINIFIER $HTML_MINIFIER_OPTIONS $BUILD/$KMOM/$DIR/index.html --output $BUILD/$KMOM/$DIR/index.html
-    
-    $UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
-    
-    $CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
+
+#
+# Test Flag
+#
+testFlag()
+{
+    TESTS=$(( $TESTS + 1 ))
+    KMOM="$1"
+    DIR="$2"
+
+    $ECHO "\nTesting $KMOM $DIR example."
+
+    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
+
+    FILE="$TARGET/$KMOM/$DIR/js/main.js"
+    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
+
+    FILE="$TARGET/$KMOM/$DIR/index.html"
+    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+}
+
+
+
+#
+# Test Lab
+#
+testLab()
+{
+    TESTS=$(( $TESTS + 1 ))
+    KMOM="$1"
+    DIR="$2"
+
+    $ECHO "\nTesting $KMOM $DIR example."
+
+    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
+
+    FILE="$TARGET/$KMOM/$DIR/js/main.js"
+    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
+
+    FILE="$TARGET/$KMOM/$DIR/index.html"
+    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+}
+
+
+
+#
+# Test Baddie
+#
+testBaddie()
+{
+    TESTS=$(( $TESTS + 1 ))
+    KMOM="$1"
+    DIR="$2"
+
+    $ECHO "\nTesting $KMOM $DIR example."
+
+    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
+
+    FILE="$TARGET/$KMOM/$DIR/js/main.js"
+    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
+
+    FILE="$TARGET/$KMOM/$DIR/index.html"
+    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
 }
 
 
@@ -260,11 +330,8 @@ testKmom01Sandbox()
 #
 kmom01()
 {
-    checkTools
-    initBuildDir
     testMeStart
-    testKmom01
-    testKmom01Sandbox
+    testSandbox
 }
 
 
@@ -274,9 +341,10 @@ kmom01()
 #
 kmom02()
 {
-    checkTools
-    initBuildDir
     testMeStart
+    testFlag "kmom02" "flag"
+    testLab "kmom02" "lab1"
+    testBaddie "kmom02" "flytta-baddie"
 }
 
 
@@ -286,9 +354,10 @@ kmom02()
 #
 kmom03()
 {
-    checkTools
-    initBuildDir
     testMeStart
+    testFlag "kmom03" "flag"
+    testLab "kmom03" "lab2"
+    testBaddie "kmom03" "flytta-baddie"
 }
 
 
@@ -298,9 +367,11 @@ kmom03()
 #
 kmom04()
 {
-    checkTools
-    initBuildDir
     testMeStart
+    testFlag "kmom04" "flag"
+    testLab "kmom04" "lab3"
+    testLab "kmom04" "lab4"
+    testBaddie "kmom04" "flytta-baddie"
 }
 
 
@@ -310,9 +381,10 @@ kmom04()
 #
 kmom05()
 {
-    checkTools
-    initBuildDir
     testMeStart
+    testFlag "kmom05" "flag"
+    testLab "kmom05" "lab5"
+    testBaddie "kmom05" "flytta-baddie"
 }
 
 
@@ -322,9 +394,9 @@ kmom05()
 #
 kmom06()
 {
-    checkTools
-    initBuildDir
     testMeStart
+    testFlag "kmom06" "flag"
+    testBaddie "kmom06" "flytta-baddie"
 }
 
 
@@ -334,8 +406,6 @@ kmom06()
 #
 kmom10()
 {
-    checkTools
-    initBuildDir
     testMeStart
 }
 
@@ -401,6 +471,8 @@ shift $((OPTIND - 1))
 
 
 # Execute command
+checkTools
+
 CMD=$1
 case $CMD in
     
@@ -447,13 +519,25 @@ case $CMD in
         ;;
 esac
 
-if [ $FAULTS -gt 0 ]
+if [ $PUBLISH = "yes" ]
 then
-    $ECHO "\n\033[0;37;41mFAILED.\033[0m"
-    $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
-    exit 1
+    publish
 fi
 
-$ECHO "\n\033[0;30;42mOK\033[0m"
+if [ $FAULTS -gt 0 ]
+then
+        if [ $IGNORE_FAULTS = "yes" ]
+        then
+            $ECHO "\n\n\033[43mWARNING.\033[0m"
+            STATUS=2
+        else
+            $ECHO "\n\n\033[0;37;41mFAILED.\033[0m"
+            STATUS=1
+        fi
+        $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
+        exit $STATUS
+fi
+
+$ECHO "\n\n\033[0;30;42mOK\033[0m"
 $ECHO "\nTests: $TESTS Asserts: $ASSERTS Faults: $FAULTS\n"
 exit 0
