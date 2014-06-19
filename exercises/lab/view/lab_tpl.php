@@ -16,10 +16,10 @@
 
 <?php 
 $sectionId = 0;
-$questionId = 0;
 
 foreach ($sections as $section) : 
 $sectionId++;
+$questionId = 0;
 ?>
 
 <h2><?=$sectionId . ". " . $section['title']?></h2>
