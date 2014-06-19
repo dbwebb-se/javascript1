@@ -1,0 +1,94 @@
+(function(){
+	'use strict';
+	var baddie, content, step, left, top, maxLeft, maxTop;
+	// Get HTML elements that are to be used
+	baddie = document.getElementById("baddie");
+	content = document.getElementById("content");
+	
+	// Step value - how far does baddie go per step
+	step = baddie.offsetWidth;
+	// size of window
+	maxTop = window.innerHeight;
+	maxLeft = window.innerWidth;
+	
+	// starting position of baddie
+	left = baddie.offsetLeft;
+	top = baddie.offsetTop;
+	
+	// wall collide function
+	function wallCollideBaddie() {
+		var collided = false;
+		if(left < 0) {
+			left = 0;
+			collided = true;
+		}
+		if(top < 0) {
+			top = 0;
+			collided = true;
+		}
+		if(left + baddie.offsetWidth > content.clientWidth) {
+			left = content.clientWidth - baddie.offsetWidth;
+			collided = true;
+		}
+		if(top + baddie.offsetHeight > content.clientHeight) {
+			top = content.clientHeight - baddie.offsetHeight;
+			collided = true;
+		}
+		
+		return collided;
+	}
+	
+	function moveBaddie(dirX, dirY) {
+		// get new baddie positon
+		left = baddie.offsetLeft + dirX*step;
+		top = baddie.offsetTop + dirY*step;
+		
+		// check for wall collision
+		var collided = wallCollideBaddie();
+		
+		// move baddie
+		baddie.style.left = left + "px";
+		baddie.style.top = top + "px";
+		
+		/*console.log("Baddie position: " + baddie.offsetLeft + "," + baddie.offsetTop);
+		console.log("Wall box position: " + content.offsetLeft + "," + content.offsetTop);
+		console.log("Wall box size: " + content.clientWidth + "," + content.clientHeight);*/
+		
+		// return if baddie collided
+		return collided;
+	}
+	
+	// Knyter knapptryckning till ett event
+	document.addEventListener("keydown", function(e) {
+		// Hämtar knapptryckningen
+		var key = e.keyCode || e.which;
+		
+		// Skapa en if-sats eller en switch-sats för variablen key
+		switch(key) {
+			case 37:
+				moveBaddie(-1, 0);
+				break;
+			case 38:
+				moveBaddie(0, -1);
+				break;
+			case 39:
+				moveBaddie(1, 0);
+				break;
+			case 40:
+				moveBaddie(0, 1);
+				break;
+			case 32:
+				// jump
+				if(!moveBaddie(0, -1)) {
+					window.setTimeout(function() {
+						moveBaddie(0, 1);
+					}, 250);
+				}
+				break;
+			default:
+				return true;
+		}
+		
+		e.preventDefault();
+	});
+}());
