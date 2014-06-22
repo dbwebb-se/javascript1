@@ -817,15 +817,15 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use if else statements to print out "true" or "1" if ' . $numberOne . ', are less than or equal to ' . $numberTwo . '. Else print out "false" or "0". Return a boolean variable called "result".
+<p>Use if else statements to print out "true" if ' . $numberOne . ', are less than or equal to ' . $numberTwo . '. Else print out "false". Return a boolean variable called "result".
 </p>
 ',
 
 "answer" => function () use ($numberOne, $numberTwo) {
     
-    $result = false;
+    $result = "false";
     if($numberTwo <= $numberTwo) {
-        $result = true;
+        $result = "true";
     }
     
     return $result;
