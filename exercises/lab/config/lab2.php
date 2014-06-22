@@ -3,13 +3,9 @@
 /**
  * Titel and introduction to the lab.
  */
-$firstWord = "JavaScript";
-$secondWord = "rocks!";
-
 $numberOne = 10; // 100-999
 $numberTwo = 6;  // 100-999
 $numberThree = 56; // 100-999
-$floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
 $highNr = 625; // 500 - 999
@@ -475,10 +471,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Builtin Math-functions",
+"title" => "This is a new section",
 
 "intro" => "
-<p>Math library
+<p>Some information...
 </p>
 ",
 
@@ -494,106 +490,13 @@ return [
 [
 
 "text" => "
-<p>Use the built-in function Math.max to find out the highest number in the serie: " . implode(', ', $serie1) . ".
+<p>This is a question.
 </p>
 ",
 
-"answer" => function () use ($serie1) {
+"answer" => function () use () {
 
-    return max($serie1);
-},
-
-],
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.min to find out the lowest number in the serie: " . implode(', ', $serie1) . ".
-</p>
-",
-
-"answer" => function () use ($serie1) {
-
-    return min($serie1);
-},
-
-],
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.random to randomize a number between (and including) two given ones: " . $lowNr . " and " . $highNr . ".
-</p>
-",
-
-"answer" => function () use ($lowNr, $highNr) {
-
-    return rand($lowNr, $highNr);
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.round to round the float number: " . $floatTwo . " to the closest integer.
-</p>
-",
-
-"answer" => function () use ($floatTwo) {
-
-    return round($floatTwo);
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.PI to print out float value 'Pi'.
-</p>
-",
-
-"answer" => function () {
-
-    return pi();
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.pow to find the power of (base) " .  $numberOne . " and (exponent) " .  $smallNr . ".
-</p>
-",
-
-"answer" => function () use ($numberOne, $smallNr) {
-
-    return pow($numberOne, $smallNr);
+    
 },
 
 ],
@@ -612,10 +515,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Strings and variables",
+"title" => "This is a section",
 
 "intro" => "
-<p>Grunderna i variabler, siffror, strängar, basic arithmetic + - / *.</p>
+<p>Some intro text.</p>
 ",
 
 "shuffle" => false,
@@ -629,50 +532,12 @@ return [
 [
 
 "text" => '
-<p>Create a variable, named "firstWord", that holds the word "' . $firstWord . '". Create a second variable, named "secondWord", that holds the word "' . $secondWord . '". Create a third variable, named "bothWords", and put together firstWord and secondWord with a space between. Print out the result.</p>
+<p>This is a question.</p>
 ',
 
-"answer" => function () use ($firstWord, $secondWord) {
+"answer" => function () use () {
 
-    $bothWords = $firstWord . " " . $secondWord;
-    return $bothWords;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>A good thing is that we do not need to use one variable for each word. Create a variable called 'sentence' and assign to it the text: '". $sentenceSerie1[$smallRandNr] ."' and print it out.</p>
-",
-
-"answer" => function () use ($smallRandNr, $sentenceSerie1) {
-    $sentence = $sentenceSerie1[$smallRandNr];
-    return $sentence;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Create a varibale called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Create another varible called 'numberOne' and assign to it the value: " .  $numberTwo . ". Add them up to in a variable called 'sum' and print out the result.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr, $numberTwo) {
-    $sum = $wordSerie1[$smallRandNr] . $numberTwo;
-    return $sum;
+    
 },
 
 ],
@@ -691,10 +556,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Builtin String-functions",
+"title" => "This is a new section.",
 
 "intro" => "
-<p>String library
+<p>Some intro text.
 </p>
 ",
 
@@ -710,108 +575,12 @@ return [
 [
 
 "text" => "
-<p>Use the built-in function String.bold to add the html element <b> to the string: '" .  $wordSerie1[$smallRandNr] . "' and make the text bold. Return the result as a varibale called: 'result'.
+<p>This is a question.
 </p>
 ",
 
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    $result = '<b>'. $wordSerie1[$smallRandNr] . '</b>';
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.charAt to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and return the character at index: " . ($smallNr-1) . ". Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr, $smallNr) {
-    $result = $wordSerie1[$smallRandNr]{$smallNr-1};
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.toUppercase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($sentenceSerie1, $smallRandNr) {
-    $result = strtoupper($sentenceSerie1[$smallRandNr]);
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.repeat to create a new string that contains the string: '" . $wordSerie1[$smallRandNr] . "' repeated " . $smallNr+10 . " number of times. Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr, $smallNr) {
-    $result = str_repeat($wordSerie1[$smallRandNr], $smallNr+10);
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.length to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    $result = strlen($wordSerie1[$smallRandNr]);
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.concat to transform two strings into one. Create two variables 'stringOne' and 'stringTwo'. Assign to them the strings: '" . $wordSerie1[$smallRandNr] . "' and '" . $wordSerie1[$smallRandNr-1] . "'. Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    $result = $wordSerie1[$smallRandNr] . $wordSerie1[$smallRandNr-1];
-    return $result;
+"answer" => function () use () {
+    
 },
 
 ],
@@ -830,10 +599,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Builtin Date-functions",
+"title" => "This is a new section.",
 
 "intro" => "
-<p>Math library
+<p>Some intro text.
 </p>
 ",
 
@@ -849,7 +618,7 @@ return [
 [
 
 "text" => "
-<p>Create a Date object. Use the built-in function Date.getMinutes to get the minutes from your Date object. Return the result in a varible called 'result'.
+<p>This is a question.
 </p>
 ",
 
@@ -861,19 +630,44 @@ return [
 ],
 
 
+
+/**
+ * Closing up this section.
+ */
+], // EOF questions
+], // EOF section
+
+
+
+/** ===================================================================================
+ * New section of exercises.
+ */
+[
+"title" => "This  is a new section",
+
+"intro" => "
+<p>Some intro text.</p>
+",
+
+"shuffle" => false,
+
+"questions" => [
+
+
+
 /** -----------------------------------------------------------------------------------
  * A question.
  */
 [
 
 "text" => "
-<p>Create a Date object. Use the built-in function Date.getFullYear to get the year from your Date object. Return the result in a varible called 'result'.
+<p>This is a question.
 </p>
 ",
 
-"answer" => function () {
+"answer" => function () use () {
 
-    return date('Y');
+    
 },
 
 ],
@@ -892,10 +686,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "If, else if and else",
+"title" => "This is a new section.",
 
 "intro" => "
-<p>Intro text, && and ||, boolean?</p>
+<p>Some intro text</p>
 ",
 
 "shuffle" => false,
@@ -910,145 +704,13 @@ return [
 [
 
 "text" => "
-<p>Use if else statements to print out 'yes' if " . $numberOne . " is larger than " . $numberTwo . ", else print out 'no'.
+<p>This is a question.
 </p>
 ",
 
-"answer" => function () use ($numberOne, $numberTwo) {
-
-    return $numberOne > $numberTwo ? "yes" : "no";
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>You can compare variables in different ways. Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use triple equals when comparing (===). Use if else statements to print out "yes" if they are equal, else print out "no".
-</p>
-',
-
-"answer" => function () use ($numberOne) {
+"answer" => function () use () {
     
-    return $numberOne === strval($numberOne) ? "yes" : "no";
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use if else statements to print out "higher" if the length of an array containing these words: "' . implode(', ', $wordSerie1) . '", are greater than ' . $smallRandNr . '. If it is smaller, print out "lower" and if it is equal, print out "equal".
-</p>
-',
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
     
-    $result = '';
-    if(count($wordSerie1) < $smallRandNr) {
-        $result = 'lower';
-    }
-    else if(count($wordSerie1) > $smallRandNr) {
-        $result = 'higher';
-    }
-    else {
-        $result = 'equal';
-    }
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than ' . $smallNr . ' AND if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
-</p>
-',
-
-"answer" => function () use ($numberThree, $smallNr) {
-    
-    $result = '';
-    if($numberThree > $smallNr && $smallNr < 5) {
-        $result = 'yes';
-    }
-    else if($numberThree === $smallNr) {
-        $result = 'equal';
-    }
-    else {
-        $result = 'no';
-    }
-    
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than or equal to ' . $numberTwo . ' OR  if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
-</p>
-',
-
-"answer" => function () use ($numberThree, $numberTwo, $smallNr) {
-    
-    $result = '';
-    if($numberThree >= $numberTwo || $smallNr < 5) {
-        $result = 'yes';
-    }
-    else if($numberThree === $numberTwo && $smallNr === $numberThree) {
-        $result = 'equal';
-    }
-    else {
-        $result = 'no';
-    }
-    
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use if else statements to print out "true" or "1" if ' . $numberOne . ', are less than or equal to ' . $numberTwo . '. Else print out "false" or "0". Return a boolean variable called "result".
-</p>
-',
-
-"answer" => function () use ($numberOne, $numberTwo) {
-    
-    $result = false;
-    if($numberTwo <= $numberTwo) {
-        $result = true;
-    }
-    
-    return $result;
 },
 
 ],
@@ -1067,10 +729,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Switch, case",
+"title" => "This is a new section.",
 
 "intro" => "
-<p>Intro</p>
+<p>Some intro text.</p>
 ",
 
 "shuffle" => false,
@@ -1084,79 +746,14 @@ return [
  */
 [
 
-"text" => "
-<p>Build a switch case statement that uses the number " . $numberOne . " to test if it is 'higher', 'lower' or 'equal' to " . $numberThree . ". Print out the result (higher, lower or equal) with a variable called 'result'.
+"text" => '
+<p>This is a question.
 </p>
-",
+',
 
-"answer" => function () use ($numberOne, $numberThree) {
+"answer" => function () use () {
     
-    $result = '';
-
-    switch ($numberOne) {
-        case ($numberOne > $numberThree) : 
-        $result = 'higher';
-        break;
-        case ($numberOne < $numberThree) :
-        $result = 'lower';
-        break;
-        default: $result = 'equal';
-    }
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Build a switch case statement with the cases: " . implode(', ', $wordSerie1) . ". Return a string, something like: 'My favorite animal is (your word)'. Use the word: '" . $wordSerie1[$smallRandNr] . "'. Return the string in a variable called 'result' and the switch case should work on all animals! If you try with an animal that you do not have in your statement it should return 'I dont like animals.'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
     
-    $result = 'My favorite animal is ';
-
-    switch ($wordSerie1[$smallRandNr]) {
-        case ($wordSerie1[0]) : 
-        $result .= $wordSerie1[0];
-        break;
-        case ($wordSerie1[1]) : 
-        $result .= $wordSerie1[1];
-        break;
-        case ($wordSerie1[2]) : 
-        $result .= $wordSerie1[2];
-        break;
-        case ($wordSerie1[3]) : 
-        $result .= $wordSerie1[3];
-        break;
-        case ($wordSerie1[4]) : 
-        $result .= $wordSerie1[4];
-        break;
-        case ($wordSerie1[5]) : 
-        $result .= $wordSerie1[5];
-        break;
-        case ($wordSerie1[6]) : 
-        $result .= $wordSerie1[6];
-        break;
-        case ($wordSerie1[7]) : 
-        $result .= $wordSerie1[7];
-        break;
-        case ($wordSerie1[8]) : 
-        $result .= $wordSerie1[8];
-        break;
-        case ($wordSerie1[9]) : 
-        $result .= $wordSerie1[9];
-        break;
-        default: $result = 'I dont like animals.';
-    }
-    return $result;
 },
 
 ],
@@ -1175,10 +772,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "For loops",
+"title" => "This is a new section.",
 
 "intro" => "
-<p>Variables intro text</p>
+<p>Some intro text.</p>
 ",
 
 "shuffle" => false,
@@ -1193,137 +790,11 @@ return [
 [
 
 "text" => '
-<p>Use a for loop to increment ' . $numberTwo . ' with the value ' . $smallNr . ', 10 times. Return the result.
-</p>
-',
-
-"answer" => function () use ($numberTwo, $smallNr) {
-    
-    $result = 0;
-    for($i = 0; $i < 10; $i++) {
-        $result += $smallNr;
-    }   
-    return $result;
-},
-
-],
-
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for loop to subtract ' . $smallNr . ' from ' . $numberOne . ', 10 times. Return the result.
-</p>
-',
-
-"answer" => function () use ($numberOne, $smallNr) {
-    
-    $result = $numberOne;
-    for($i = 0; $i < 10; $i++) {
-        $result -= $smallNr;
-    }   
-    return $result;
-},
-
-],
-
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for loop to add all the values in the range -' . $numberOne . ' to ' . $numberOne . ' to a string. Return the result.
-</p>
-',
-
-"answer" => function () use ($numberOne) {
-    
-    $result = '';
-    for($i = $numberOne * -1; $i <= $numberOne; $i++) {
-        $result .= $i . ', ';
-    }   
-    return $result;
-},
-
-],
-
-
-
-
-/**
- * Closing up this section.
- */
-], // EOF questions
-], // EOF section
-
-
-
-/** ===================================================================================
- * New section of exercises.
- */
-[
-"title" => "While loops",
-
-"intro" => "
-<p>Variables intro text</p>
-",
-
-"shuffle" => false,
-
-"questions" => [
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a while loop to increment ' . $numberThree . ' with the value ' . $smallNr . ', 5 times. Return the result.
+<p>This is a question.
 </p>',
 
-"answer" => function () use ($numberThree, $smallNr) {
-    $result = $numberThree;
-    $counter = 0;
-    while($counter < 5) {
-        $result += $smallNr;
-        $counter += 1;
-    }
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a while loop to subtract ' . $smallNr . ' from ' . $numberTwo . ', 20 times. Return the result.
-</p>
-',
-
-"answer" => function () use ($smallNr, $numberTwo) {
-    $result = $numberThree;
-    $counter = 20;
-    while($counter > 0) {
-        $result -= $smallNr;
-        $counter -= 1;
-    }
-    return $result;
+"answer" => function () use () {
+    
 },
 
 ],
