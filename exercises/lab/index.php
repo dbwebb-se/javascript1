@@ -82,6 +82,9 @@ EOD;
 <meta charset="utf-8">
 <title>Lab generation</title>
 <link rel="stylesheet" href="style/style.css">
+<style>
+<?=file_get_contents("style/style.css")?>
+</style>
 </head>
 <body>
 
