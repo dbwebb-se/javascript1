@@ -67,10 +67,7 @@ return [
 
 "answer" => function () use ($numberOne, $numberTwo) {
 
-    function sumNumbers($a,$b) {
-        return $a+$b;
-    }
-    return sumNumbers($numberOne, $numberTwo);
+    return $numberOne + $numberTwo;
 },
 
 ],
@@ -88,11 +85,8 @@ return [
 ',
 
 "answer" => function () use ($numberTwo, $numberThree) {
-
-    function productNumbers($a,$b) {
-        return $a*$b;
-    }
-    return productNumbers($numberOne, $numberTwo);
+    
+    return $numberOne * $numberTwo;
 },
 
 ],
@@ -111,14 +105,11 @@ return [
 
 "answer" => function () use ($smallRandNr, $numberOne) {
 
-    function sumRangeNumbers($a,$b) {
-        $result = 0;
-        for($i = ($a+1); $i < $b; $i++) {
+    $result = 0;
+    for($i = $smallRandNr+1; $i < $numberOne+10; $i++) {
             $result += $i;
-        }
-        return $result;
     }
-    return sumRangeNumbers($smallRandNr, $numberOne+10);
+    return $result;
 },
 
 ],
@@ -137,11 +128,7 @@ return [
 
 "answer" => function () use ($wordSerie2, $smallRandNr) {
 
-    function stringPhrase($word) {
-        $result = 'My favorite color is ' . $word;
-        return $result;
-    }
-    return stringPhrase($wordSerie2[$smallRandNr]);
+    return 'My favorite color is ' . $wordSerie2[$smallRandNr];
 },
 
 ],
@@ -160,16 +147,14 @@ return [
 
 "answer" => function () use ($questionSerie1, $answerSerie1, $qRandNr) {
 
-    function stringResponse($phrase) {
-        $result = '';
-        for($i = 0; $i < count($questionSerie1); $i++) {
-            if($phrase === $questionSerie1[$i]) {
-                $result = $answerSerie1[$i];
-            }
+    $result = '';
+    for($i = 0; $i < count($questionSerie1); $i++) {
+        if($questionSerie1[$qRandNr] === $questionSerie1[$i]) {
+            $result = $answerSerie1[$i];
         }
-        return $result;
     }
-    return stringResponse($questionSerie1[$qRandNr]);
+    return $result;
+    
 },
 
 ],
@@ -187,26 +172,24 @@ return [
 ',
 
 "answer" => function () use ($numberTwo, $numberThree) {
-    function printRange($a, $b) {
-        $result = '';
-        $i = 0;
+    
+    $result = '';
+    $i = 0;
 
-        if($a < $b) {
-            for($i = $a; $i < $b+1; $i++) {
-                $result .= $i . ", ";
-            }
+    if($numberThree < $numberTwo) {
+        for($i = $numberThree; $i < $numberTwo+1; $i++) {
+            $result .= $i . ", ";
         }
-        else if($a > $b) {
-            for($i = $a; $i > $b-1; $i--) {
-                $result .= $i . ", ";
-            }
-        }
-        else {
-            $result = $a;
-        }
-        return $result;
     }
-    return printRange($numberThree, $numberTwo);
+    else if($numberThree > $numberTwo) {
+        for($i = $numberThree; $i > $numberTwo-1; $i--) {
+            $result .= $i . ", ";
+        }
+    }
+    else {
+        $result = $numberThree;
+    }
+    return $result;
 },
 
 ],
@@ -224,15 +207,13 @@ return [
 ',
 
 "answer" => function () use ($wordSerie2, $smallRandNr) {
-    function stringRepeat($text, $number) {
-        $result = '';
+    
+    $result = '';
 
-        for($i = 0; $i < $number+5; $i++) {
-            $result .= $text . ", ";
-        }
-        return $result;
+    for($i = 0; $i < $smallRandNr+5; $i++) {
+        $result .= $wordSerie2[$smallRandNr] . ", ";
     }
-    return stringRepeat($wordSerie2[$smallRandNr], $smallRandNr);
+    return $result;
 },
 
 ],
@@ -250,17 +231,15 @@ return [
 ',
 
 "answer" => function () use ($highNr, $lowNr, $smallNr) {
-    function calculateInterest($money, $years, $interest) {
-        $result = $money; 
-        $currentInterest = 0;
+   
+    $result = $highNr; 
+    $currentInterest = 0;
 
-        for($i = 0; $i < $years; $i++) {
-            $currentInterest = ($result / 100) * $interest;
-            $result += $currentInterest; 
-        }
-        return $result;
-     }
-     return calculateInterest($highNr, $lowNr, $smallNr);
+    for($i = 0; $i < $lowNr; $i++) {
+        $currentInterest = ($result / 100) * $smallNr;
+        $result += $currentInterest; 
+    }
+    return $result;
 },
 
 ],
@@ -278,15 +257,13 @@ return [
 ',
 
 "answer" => function () use ($numberThree) {
-    function inRange($a) {
-        $result = "false";
+    
+    $result = "false";
 
-        if($a > 50 && $a < 100) {
-           $result = "true";
-        }
-        return $result;
+    if($numberThree > 50 && $numberThree < 100) {
+       $result = "true";
     }
-    return inRange($numberThree);
+    return $result;
 },
 
 ],
@@ -304,31 +281,29 @@ return [
 ',
 
 "answer" => function () use ($fbStart, $fbStop) {
-    function fizzBuzz($start, $stop) {
-        $result = '';
+    
+    $result = '';
 
-        if($stop <= $start) {
-            $result = 'Stop is lower than start or they are the same. Try again!';
-        }
-        else {
-            for($i = $start; $i < $stop+1; $i++) {
-                if($i % 3 === 0 && $i % 5 !== 0) {
-                    $result .= 'Fizz, ';
-                }
-                else if($i % 5 === 0 && $i % 3 !== 0) {
-                    $result .= 'Buzz, ';
-                }
-                else if($i % 3 === 0 && $i % 5 === 0) {
-                    $result .= 'Fizz Buzz, ';
-                }
-                else {
-                    $result .= $i + ', ';
-                }
+    if($fbStop <= $fbStart) {
+        $result = 'Stop is lower than start or they are the same. Try again!';
+    }
+    else {
+        for($i = $fbStart; $i < $fbStop+1; $i++) {
+            if($i % 3 === 0 && $i % 5 !== 0) {
+                $result .= 'Fizz, ';
+            }
+            else if($i % 5 === 0 && $i % 3 !== 0) {
+                $result .= 'Buzz, ';
+            }
+            else if($i % 3 === 0 && $i % 5 === 0) {
+                $result .= 'Fizz Buzz, ';
+            }
+            else {
+                $result .= $i . ', ';
             }
         }
-        return $result;
-     }
-     return fizzBuzz($fbStart, $fbStop);
+    }
+    return $result;
 },
 
 ],
