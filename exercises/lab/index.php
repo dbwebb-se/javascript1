@@ -136,7 +136,7 @@ EOD;
 
 <?php
 
-$key    = isset($_GET['key']) ? $_GET['key'] : null;
+$key = isset($_GET['key']) ? $_GET['key'] : null;
 
 if (isset($_GET['doKey'])) {
     $sql = "
@@ -148,9 +148,13 @@ where
     $stmt->execute([$key]);
     $res = $stmt->fetch(PDO::FETCH_OBJ);
 
-    $gen_key = $res->gen_key;
+    if (!$res) {
+        echo "<p><b>No such key!</b><p>";
+    } else {
 
-    echo <<<EOD
+        $gen_key = $res->gen_key;
+
+        echo <<<EOD
 <p>
 Acronym: {$res->acronym}</br>
 Course: {$res->course}</br>
@@ -165,6 +169,7 @@ Key: {$res->gen_key}</br>
 </p>
 EOD;
 
+    }
 }
 
 ?>
@@ -174,7 +179,7 @@ EOD;
 
 <p>
     <label>Lab key:<br>
-    <input type="text" name="key" placeholder="Enter lab key">
+    <input type="text" name="key" value="<?=$key?>" placeholder="Enter lab key">
     </acronym>
 </p>
 

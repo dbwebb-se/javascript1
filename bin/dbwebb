@@ -191,7 +191,8 @@ createLab()
 {
     LAB="$1"
     INTRO="Create laboration $LAB."
-    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-create \"$LAB\"'"
+    #COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-create \"$LAB\"'"
+    COMMAND="bin/dbwebb-create \"$LAB\""
     MESSAGE="to create the lab."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }

@@ -29,6 +29,9 @@ $stmt = $db->prepare($sql);
 $stmt->execute([$key]);
 $res = $stmt->fetch(PDO::FETCH_OBJ);
 
+if (!$res) {
+    die("Key did not match!");
+}
 
 $acronym = $res->acronym;
 $course = $res->course;
