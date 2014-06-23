@@ -1,18 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Lab generation</title>
-<link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-
-
-<h1>Lab utility</h1>
-
-<p><a href="?">Clear</a></p>
-
-
 <?php
 error_reporting(-1);              // Report all type of errors
 ini_set('display_errors', 1);     // Display all errors
@@ -21,6 +6,10 @@ ini_set('output_buffering', 0);   // Do not buffer outputs, write directly
 date_default_timezone_set("UTC");
 
 
+
+/**
+ * Check that database exists and open it
+ */
 if (!is_writable(__DIR__)) {
     echo "<p>You must make this directory writable. Then click <a href='?init'>this link to generate the database tables</a>.</p>";
     exit;
@@ -28,6 +17,7 @@ if (!is_writable(__DIR__)) {
 
 
 $db = new PDO("sqlite:db.sqlite");
+
 
 if (isset($_GET['init'])) {
     $sql = "
@@ -45,20 +35,19 @@ create table if not exists lab
     $stmt->execute();
 }
 
-?>
 
 
-
-<h2>Generate a lab</h2>
-
-
-<?php
-
+/**
+ * Generate a lab
+ */
+$action     = isset($_GET['action']) ? $_GET['action'] : null;
 $acronym    = isset($_GET['acronym']) ? $_GET['acronym'] : null;
 $course     = isset($_GET['course']) ? $_GET['course'] : null;
 $lab        = isset($_GET['lab']) ? $_GET['lab'] : null;
 $created    = date('Y-m-d H:i:s');
 $gen_key    = md5($acronym . $course . $lab . $created);
+
+$generate = null;
 
 if (isset($_GET['doGenerate'])) {
     $sql = "
@@ -70,7 +59,7 @@ values
     $stmt = $db->prepare($sql);
     $stmt->execute([$acronym, $course, $lab, $created, $gen_key]);
 
-    echo <<<EOD
+    $generate <<<EOD
 <p>
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
@@ -78,9 +67,34 @@ values
 </p>
 EOD;
 
+    if ($action == "only-key") {
+        die($gen_key);
+    }
 }
 
-?>
+
+
+
+
+?><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab generation</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+
+<h1>Lab utility</h1>
+
+<p><a href="?">Clear</a></p>
+
+
+
+<h2>Generate a lab</h2>
+
+<?=$generate?>
 
 
 <form>

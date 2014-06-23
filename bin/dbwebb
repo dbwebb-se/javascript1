@@ -27,7 +27,9 @@ printUsage()
     $ECHO "\n  sshkey    Create and install ssh-keys to avoid using password.."
     $ECHO "\n  login     Login to the server using ssh."
     $ECHO "\n  init      Init the remote server and create a destination directory."
+    $ECHO "\n  update    Update the courselibb (repo) with latest updates from master repo."
     $ECHO "\n  upload    Upload all files to the server."
+    $ECHO "\n  create    Create a laboration, use additional argument for naming what lab to create."
     $ECHO "\n  validate  Upload your files and validate that your results passes automatic tests."
     $ECHO "\n            Send in kmom01, kmom02, etc to validate only one kmom."
     $ECHO "\n            Default is to validate all."
@@ -42,6 +44,7 @@ printUsage()
     $ECHO "\n  $ dbwebb login"
     $ECHO "\n  $ dbwebb init"
     $ECHO "\n  $ dbwebb -y upload"
+    $ECHO "\n  $ dbwebb create lab1"
     $ECHO "\n  $ dbwebb -y validate kmom01"
     $ECHO "\n  $ dbwebb -y publish"
     $ECHO "\n"
@@ -125,19 +128,6 @@ loginToServer()
 
 
 #
-# Init directory structure at the server.
-#
-initServer()
-{
-    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="ssh ${USER}@${HOST} 'sh -c \"if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser; ls -l dbwebb-kurser\"'"
-    MESSAGE="to init the server."
-    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
-}
-
-
-
-#
 # Create and use ssh-keys to login.
 #
 installSshKeys()
@@ -156,6 +146,32 @@ installSshKeys()
 
 
 #
+# Init directory structure at the server.
+#
+initServer()
+{
+    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    COMMAND="ssh ${USER}@${HOST} 'sh -c \"if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser; ls -l dbwebb-kurser\"'"
+    MESSAGE="to init the server."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Upload results to the server
+#
+updateFromMaster()
+{
+    INTRO="UPdate courslibb (repo) with latest changes from course master repo."
+    COMMAND="git pull"
+    MESSAGE="to update course repo."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
 # Upload results to the server
 #
 uploadToServer()
@@ -163,6 +179,20 @@ uploadToServer()
     INTRO="Your current working directory will now be synced to remote server."
     COMMAND=$UPLOAD
     MESSAGE="to upload data."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Create a lab
+#
+createLab()
+{
+    LAB="$1"
+    INTRO="Create laboration $LAB."
+    COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-create \"$LAB\"'"
+    MESSAGE="to create the lab."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
 
@@ -236,7 +266,7 @@ do
             ;;
 
         (v) 
-            $ECHO $VERSION
+            $ECHO "$VERSION\n"
             exit 0
             ;;
 
@@ -273,16 +303,30 @@ case $CMD in
         loginToServer 
         ;;
 
-    init)
-        initServer 
-        ;;
-
     sshkey)
         installSshKeys 
         ;;
 
+    init)
+        initServer 
+        ;;
+
+    update)
+        updateFromMaster 
+        ;;
+
     upload)
         uploadToServer 
+        ;;
+
+    create)
+        LAB="$2"
+        if [ -z "$LAB" ]
+        then
+            echo "Missing name for lab, perhaps use lab1, lab2 or lab3?"
+            exit 1
+        fi
+        createLab "$LAB" 
         ;;
 
     validate)

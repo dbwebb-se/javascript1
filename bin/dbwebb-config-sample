@@ -27,3 +27,11 @@ TARGET="$PWD/me"
 BUILD1="$HOME/www"
 BUILD2="$BUILD1/$BASEDIR"
 BUILD="$BUILD2/$PROJECT/me"
+
+
+#
+# dbwebb-create
+#
+COURSE=javascript1
+SERVICE="http://www.student.bth.se/~mosstud/kod-exempel/javascript1/exercises/lab/"
+GET_KEY="action=only-key&acronym=$USER&course=$COURSE"

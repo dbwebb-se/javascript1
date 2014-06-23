@@ -464,7 +464,7 @@ do
             ;;
 
         (v) 
-            $ECHO $VERSION
+            $ECHO "$VERSION\n"
             exit 0
             ;;
 
@@ -577,7 +577,7 @@ then
     esac
 fi
 
-rm $TMPFILE
+rm -f $TMPFILE
 
 if [ $FAULTS -gt 0 ]
 then
