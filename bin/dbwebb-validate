@@ -7,6 +7,7 @@ ASSERTS=0
 FAULTS=0
 
 ECHO="printf"
+TMPFILE="/tmp/dbwebb-error$$"
 
 
 #
@@ -82,10 +83,10 @@ assert()
     MESSAGE=$3
     ASSERTS=$(( $ASSERTS + 1 ))
 
-    sh -c "$TEST" > /tmp/dbwebb-error 2>&1
+    sh -c "$TEST" > $TMPFILE 2>&1
     STATUS=$?
     #ERROR=$(</tmp/dbwebb-error)
-    ERROR=`cat /tmp/dbwebb-error`
+    ERROR=`cat $TMPFILE`
 
     if [ ! $STATUS -eq $EXPECTED ]
     then
@@ -134,22 +135,33 @@ checkCommand()
 #
 publish()
 {
+    DIR="$1"
     $ECHO "\n\nPublishing"
 
     initBuildDir
 
     $ECHO "\nCopying files to www."
-    rsync -a --delete $TARGET/ $BUILD/
+    if [ "$DIR" = "all" ]
+    then
+        rsync -a --delete $TARGET/ $BUILD/
+    else
+        rsync -a --delete $TARGET/$DIR/ $BUILD/$DIR/
+        rsync -a $TARGET/me.html $BUILD/me.html
+        rsync -a $TARGET/redovisning.html $BUILD/redovisning.html
+        rsync -a --delete $TARGET/js/ $BUILD/js/
+        rsync -a --delete $TARGET/style/ $BUILD/style/
+    fi
 
     $ECHO "\nMinifying HTML-files."
     find $BUILD/ -type f -name '*.html' | while read filename; do $HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename; done
     
-    #$ECHO "\nUglify JavaScript-files."
+    $ECHO "\nUglify JavaScript-files."
+    find $BUILD/ -type f -name '*.js' | while read filename; do $UGLIFYJS $filename -o $filename $UGLIFYJS_OPTIONS; done
     #$UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
     
-    #$ECHO "\nMinify CSS-files."
+    $ECHO "\nMinify CSS-files."
+    find $BUILD/ -type f -name '*.css' | while read filename; do $CLEANCSS $filename -o $filename; done
     #$CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
-
 }
 
 
@@ -230,7 +242,28 @@ testMeStart()
     [ $PUBLISH = "yes" ] || return
 
     rsync -a $TARGET/me.html $BUILD/
-    rsync -a --delete $TARGET/../example/ $BUILD/example/
+    rsync -a --delete $TARGET/../example/ $BUILD/../example/
+}
+
+
+
+#
+# Perform validation tests
+#
+validateHtmlCssJs()
+{
+    TESTS=$(( $TESTS + 1 ))
+    DIR="$1"
+
+    $ECHO "\nTesting $DIR."
+
+    assert 0 "[ -d $TARGET/$DIR ]" "Missing directory: $TARGET/$DIR" || return
+
+    $ECHO "\nValidate using HTMLHint."
+    find $TARGET/$DIR -type f -name '*.html' | while read filename; do assert 0 "$HTMLHINT $filename" "HTMLHINT failed: $filename"; done
+
+    $ECHO "\nValidate using JSHint."
+    find $TARGET/$DIR -type f -name '*.js' | while read filename; do assert 0 "$JSHINT $filename" "JSHint failed: $filename"; done
 }
 
 
@@ -244,15 +277,7 @@ testSandbox()
     KMOM="kmom01"
     DIR="sandbox"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -267,15 +292,7 @@ testFlag()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -289,15 +306,7 @@ testLab()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -311,15 +320,7 @@ testBaddie()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -412,11 +413,22 @@ kmom10()
 
 
 #
+# example
+#
+example()
+{
+    validateHtmlCssJs "../example"
+}
+
+
+
+#
 # Main
 #
 if [ $# != 3 ]
 then
-    $ECHO
+    :
+    #$ECHO
     #printUsage
 fi
 
@@ -504,6 +516,10 @@ case $CMD in
         kmom10
         ;;
 
+    example)
+        example
+        ;;
+
     all)
         kmom01
         kmom02
@@ -521,8 +537,47 @@ esac
 
 if [ $PUBLISH = "yes" ]
 then
-    publish
+    case $CMD in
+        
+        kmom01)
+            publish "kmom01"
+            ;;
+
+        kmom02)
+            publish "mom02"
+            ;;
+
+        kmom03)
+            publish "kmom03"
+            ;;
+
+        kmom04)
+            publish "kmom04"
+            ;;
+
+        kmom05)
+            publish "kmom05"
+            ;;
+
+        kmom06)
+            publish "kmom06"
+            ;;
+
+        kmom10)
+            publish "kmom10"
+            ;;
+
+        all)
+            publish "all"
+            ;;
+
+        *)
+            printUsage
+            ;;
+    esac
 fi
+
+rm $TMPFILE
 
 if [ $FAULTS -gt 0 ]
 then

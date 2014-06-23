@@ -18,6 +18,7 @@ printUsage()
     $ECHO "\n  -h         Print this message and exit."
     $ECHO "\n  -i         Ignore validation faults and proceed anyway."
     $ECHO "\n  -v         Print the version of this program and exit."
+    $ECHO "\n  -w         Very verbose, print out whats happening."
     $ECHO "\n  -y         Do not wait for my input, just proceed."
     $ECHO "\n"
     $ECHO "\nCommand:"
@@ -65,16 +66,23 @@ executeCommand()
     fi
     
     COMMAND=$2
-    $ECHO "\nExecuting command:"
-    $ECHO "\n$COMMAND"
-    $ECHO "\n-----------------------------------------"
-    $ECHO "\n"
+
+    if [ $VERY_VERBOSE = "yes" ]
+    then
+        $ECHO "\nExecuting command:"
+        $ECHO "\n$COMMAND"
+        $ECHO "\n-----------------------------------------"
+        $ECHO "\n"
+    fi
     
     sh -c "$COMMAND"
     STATUS=$?
 
-    $ECHO "\n-----------------------------------------"
-    
+    if [ $VERY_VERBOSE = "yes" ]
+    then
+        $ECHO "\n-----------------------------------------"
+    fi
+
     MESSAGE=$3
     if [ $STATUS = 0 ]
     then
@@ -166,7 +174,7 @@ uploadToServer()
 validateUploadedResults()
 {
     WHAT=$1
-    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    INTRO="I will now upload files to the remote server and validate them."
     COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT'"
     MESSAGE="to upload and validate course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
@@ -214,8 +222,9 @@ UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $D
 # Get options
 SKIP_READLINE="no"
 IGNORE_FAULTS=""
+VERY_VERBOSE="no"
 
-while getopts ":hivy" opt
+while getopts ":hivwy" opt
 do
     case $opt in
         (h) 
@@ -231,8 +240,12 @@ do
             exit 0
             ;;
 
+        (w) 
+            VERY_VERBOSE="yes"
+            ;;
+
         (y) 
-            SKIP_READLINE=yes
+            SKIP_READLINE="yes"
             ;;
 
         \?)

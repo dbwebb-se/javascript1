@@ -12,7 +12,7 @@ USER="mosstud"
 #
 # all
 #
-HOST="sweet.student.bth.se"
+HOST="ssh.student.bth.se"
 BASEDIR="dbwebb-kurser"
 PROJECT=${PWD##*/}
 SOURCE="$PWD/"
@@ -26,4 +26,4 @@ BASEURL="http://www.student.bth.se/~$USER/$BASEDIR/$PROJECT"
 TARGET="$PWD/me"
 BUILD1="$HOME/www"
 BUILD2="$BUILD1/$BASEDIR"
-BUILD="$BUILD2/$PROJECT"
+BUILD="$BUILD2/$PROJECT/me"
