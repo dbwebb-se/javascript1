@@ -59,7 +59,7 @@ values
     $stmt = $db->prepare($sql);
     $stmt->execute([$acronym, $course, $lab, $created, $gen_key]);
 
-    $generate <<<EOD
+    $generate =<<<EOD
 <p>
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
