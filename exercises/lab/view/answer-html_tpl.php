@@ -36,7 +36,7 @@ foreach ($sections as $section) {
 
 <script type="text/javascript">
 
-var window.dbwebb = {
+var dbwebb = {
 
     "answers": {
     
@@ -73,6 +73,9 @@ var window.dbwebb = {
         element.innerHTML = status;
     }
 }
+
+window.dbwebb = dbwebb;
+
 </script>
 <script src="answer.js" type="text/javascript"></script>
 
