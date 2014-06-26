@@ -14,7 +14,7 @@
 <p><i>Generated for <?=$acronym?> at <?=$created?>.</i></p>
 <hr>
 <h1><?=$title?></h1>
-<p>Solve the exercises in the file <code>answer.js</code> and reload this file to se the outcome.</p>
+<p>Solve the exercises in the file <code>answer.js</code> and reload this file to se the outcome. Check the console for errors.</p>
 
 <?php
 $sectionId = 0;
