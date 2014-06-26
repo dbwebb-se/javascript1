@@ -1,7 +1,7 @@
 /**                                               
  * @preserve <?=$key?> generated for <?=$acronym?> at <?=$created?> 
  */                                               
-(function(){
+(function(dbwebb){
     "use strict";
 
     var ANSWER = null,
@@ -45,4 +45,4 @@ dbwebb.assert("<?="$sectionId.$questionId"?>", ANSWER); // Is the answer as expe
 
     console.log("All done.");
 
-}());
+}(dbwebb));
