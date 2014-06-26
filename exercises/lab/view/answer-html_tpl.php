@@ -57,14 +57,14 @@ var dbwebb = {
     "assert": function(question, answer) {
         var element = document.getElementById("answer" + question),
             status,
-            noanswer = "Replace this text with the answer to the exercise, always wrap as string.";
+            noanswer = "Replace this text with the answer or the variable holding it.";
 
         if (answer === noanswer) {
             status = question + " NOT YET DONE."
-        } else if (answer === this.answers.question) {
-            status = question + " CORRECT. Well done!"
+        } else if (answer == this.answers[question]) {
+            status = question + " CORRECT. Well done!\n" + answer;
         } else {
-            status = question + " FAIL. Hint:\n" + this.answers.question;
+            status = question + " FAIL. Hint:\n" + this.answers[question];
         }
 
         console.log(status);

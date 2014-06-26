@@ -62,8 +62,13 @@ createLab()
     KEY="`wget -qO- \"$SERVICE/?$GET_KEY&lab=$LAB\"`"
 
     # The lab description & the answers
+    $ECHO "\ninstruction.html"
     wget  -qO "$WHERE/instruction.html" "$SERVICE/$GET_LAB&key=$KEY"
+
+    $ECHO "\nanswer.html"
     wget  -qO "$WHERE/answer.html" "$SERVICE/$GET_ANSWER_HTML&key=$KEY"
+
+    $ECHO "\nanswer.js"
     wget  -qO "$WHERE/answer.js" "$SERVICE/$GET_ANSWER_JS&key=$KEY"
 
     $ECHO "\nYou can find the lab and all files here:\n$WHERE"
