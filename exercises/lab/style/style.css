@@ -8,3 +8,11 @@ div.answer {
   white-space: pre;
   margin-bottom: 1em;
 }
+
+.fail {
+    color: red;
+}
+
+.success {
+    color: green;
+}
