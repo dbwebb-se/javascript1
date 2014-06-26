@@ -68,7 +68,6 @@ printUsage()
     $ECHO "\n  $ dbwebb-validate -n kmom01"
     $ECHO "\n"
     $ECHO "\n"
-    exit
 }
 
 
@@ -207,6 +206,11 @@ initBuildDir()
     if [ ! -d $BUILD2 ] 
     then
         mkdir $BUILD2
+    fi
+
+    if [ ! -d $BUILD3 ] 
+    then
+        mkdir $BUILD3
     fi
 
     if [ ! -d $BUILD ] 
@@ -445,6 +449,7 @@ do
     case $opt in
         (h) 
             printUsage
+            exit 0
             ;;
 
         (i) 
@@ -520,6 +525,10 @@ case $CMD in
         example
         ;;
 
+    flag1)
+        testFlag "kmom02" "flag1" 
+        ;;
+
     all)
         kmom01
         kmom02
@@ -532,6 +541,7 @@ case $CMD in
 
     *)
         printUsage
+        exit 1
         ;;
 esac
 
@@ -571,8 +581,13 @@ then
             publish "all"
             ;;
 
+        flag1)
+            publish "kmom02/flag1"
+            ;;
+
         *)
             printUsage
+            exit 1
             ;;
     esac
 fi

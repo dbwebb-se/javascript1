@@ -134,10 +134,12 @@ installSshKeys()
 {
     INTRO="First we need to create a ssh key and store it locally."
     COMMAND="ssh-keygen -t dsa"
+    #ssh-keygen -t dsa -N "my passphrase" -C "test key" -f mykey
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
     INTRO="I will now install the ssh-key at the remote server."
+    #if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser;
     COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'cat >> .ssh/authorized_keys'"
     MESSAGE="to install the ssh-keys."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
