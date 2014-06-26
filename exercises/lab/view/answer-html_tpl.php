@@ -54,17 +54,19 @@ var dbwebb = {
         }?>
 
     },
-    "assert": function(question, answer) {
+    "assert": function(question, answer, hint) {
         var element = document.getElementById("answer" + question),
             status,
-            noanswer = "Replace this text with the answer or the variable holding it.";
+            noanswer = "Replace this text with the answer or the variable holding it.",
+            hint = hint || false;
 
         if (answer === noanswer) {
             status = question + " NOT YET DONE."
         } else if (answer == this.answers[question]) {
             status = question + " CORRECT. Well done!\n" + answer;
         } else {
-            status = question + " FAIL.\nYou said:\n" + answer + "\nHint:\n" + this.answers[question];
+            status = question + " FAIL.\nYou said:\n" + answer;
+            status += hint ? "\nHint:\n" + this.answers[question] : "";
         }
 
         console.log(status);
