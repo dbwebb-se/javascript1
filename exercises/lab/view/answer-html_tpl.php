@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title><?=$title?></title>
-    <link rel="stylesheet" href="style/style.css">
 <style>
 <?=file_get_contents("style/style.css")?>
 </style>
@@ -36,7 +35,7 @@ foreach ($sections as $section) {
 
 <script type="text/javascript">
 
-var dbwebb = {
+window.dbwebb = {
 
     "answers": {
     
@@ -73,8 +72,6 @@ var dbwebb = {
         element.innerHTML = status;
     }
 }
-
-window.dbwebb = dbwebb;
 
 </script>
 <script src="answer.js" type="text/javascript"></script>
