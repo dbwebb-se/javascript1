@@ -17,6 +17,8 @@ JSHINT="jshint"
 
 HTMLHINT="htmlhint"
 
+CSSHINT="htmlhint"
+
 HTML_MINIFIER="html-minifier"
 HTML_MINIFIER_OPTIONS="--minify-js --minify-css --use-short-doctype --remove-attribute-quotes --collapse-boolean-attributes --conservative-collapse --collapse-whitespace --remove-comments"
 
@@ -347,9 +349,9 @@ kmom01()
 kmom02()
 {
     testMeStart
-    testFlag "kmom02" "flag"
+    testFlag "kmom02" "flag1"
     testLab "kmom02" "lab1"
-    testBaddie "kmom02" "flytta-baddie"
+    testBaddie "kmom02" "baddie1"
 }
 
 
@@ -360,9 +362,9 @@ kmom02()
 kmom03()
 {
     testMeStart
-    testFlag "kmom03" "flag"
+    testFlag "kmom03" "flag2"
     testLab "kmom03" "lab2"
-    testBaddie "kmom03" "flytta-baddie"
+    testBaddie "kmom03" "baddie2"
 }
 
 
@@ -373,10 +375,10 @@ kmom03()
 kmom04()
 {
     testMeStart
-    testFlag "kmom04" "flag"
+    testFlag "kmom04" "flag3"
     testLab "kmom04" "lab3"
     testLab "kmom04" "lab4"
-    testBaddie "kmom04" "flytta-baddie"
+    testBaddie "kmom04" "baddie3"
 }
 
 
@@ -387,9 +389,9 @@ kmom04()
 kmom05()
 {
     testMeStart
-    testFlag "kmom05" "flag"
+    testFlag "kmom05" "flag4"
     testLab "kmom05" "lab5"
-    testBaddie "kmom05" "flytta-baddie"
+    testBaddie "kmom05" "baddie4"
 }
 
 
@@ -400,8 +402,8 @@ kmom05()
 kmom06()
 {
     testMeStart
-    testFlag "kmom06" "flag"
-    testBaddie "kmom06" "flytta-baddie"
+    testFlag "kmom06" "flag5"
+    testBaddie "kmom06" "baddie5"
 }
 
 
@@ -525,6 +527,10 @@ case $CMD in
         example
         ;;
 
+    sandbox)
+        testSandbox
+        ;;
+
     flag1)
         testFlag "kmom02" "flag1" 
         ;;
@@ -538,7 +544,7 @@ case $CMD in
         ;;
 
     lab3)
-        testLab "kmom03" "lab3" 
+        testLab "kmom04" "lab3" 
         ;;
 
     lab4)
@@ -575,7 +581,7 @@ then
             ;;
 
         kmom02)
-            publish "mom02"
+            publish "kmom02"
             ;;
 
         kmom03)
@@ -602,6 +608,10 @@ then
             publish "all"
             ;;
 
+        sandbox)
+            publish "kmom01/sandbox"
+            ;;
+
         flag1)
             publish "kmom02/flag1"
             ;;
@@ -615,7 +625,7 @@ then
             ;;
 
         lab3)
-            publish "kmom03/lab3"
+            publish "kmom04/lab3"
             ;;
 
         lab4)

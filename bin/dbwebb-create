@@ -128,7 +128,7 @@ case $CMD in
         ;;
 
     lab3)
-        createLab "lab3" "kmom03"
+        createLab "lab3" "kmom04"
         ;;
 
     lab4)
