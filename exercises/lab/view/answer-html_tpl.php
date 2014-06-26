@@ -25,7 +25,7 @@ foreach ($sections as $section) {
     foreach ($section['questions'] as $question) {
         $questionId++;
 
-        echo "<div id='answer$sectionId.$questionId'></div>\n";
+        echo "<div id='answer$sectionId.$questionId' class='answer'></div>\n";
     }
 }?>
 
