@@ -63,9 +63,9 @@ var dbwebb = {
         if (answer === noanswer) {
             status = question + " NOT YET DONE."
         } else if (answer == this.answers[question]) {
-            status = question + " <span class='correct'>CORRECT</span>. Well done!\n" + answer;
+            status = question + " CORRECT. Well done!\n" + answer;
         } else {
-            status = question + " <span class='fail'>FAIL</span>.\nYou said:\n" + answer;
+            status = question + " FAIL.\nYou said:\n" + answer;
             status += hint ? "\nHint:\n" + this.answers[question] : "";
         }
 
