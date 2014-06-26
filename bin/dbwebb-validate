@@ -529,6 +529,10 @@ case $CMD in
         testFlag "kmom02" "flag1" 
         ;;
 
+    lab1)
+        testLab "kmom02" "lab1" 
+        ;;
+
     all)
         kmom01
         kmom02
@@ -540,6 +544,7 @@ case $CMD in
         ;;
 
     *)
+        $ECHO "\n\033[0;37;41mERROR\033[0m: No such item to validate."
         printUsage
         exit 1
         ;;
@@ -585,7 +590,12 @@ then
             publish "kmom02/flag1"
             ;;
 
+        lab1)
+            publish "kmom02/lab1"
+            ;;
+
         *)
+            $ECHO "\n\033[0;37;41mERROR\033[0m: No such item to publish."
             printUsage
             exit 1
             ;;

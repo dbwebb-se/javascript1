@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=en>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title><?=$title?></title>
@@ -25,7 +25,7 @@ foreach ($sections as $section) {
     foreach ($section['questions'] as $question) {
         $questionId++;
 
-        echo "<div id='answer$sectionId.$questionId' class='answer'></div>\n";
+        echo "<div id=\"answer$sectionId.$questionId\" class=\"answer\"></div>\n";
     }
 }?>
 
