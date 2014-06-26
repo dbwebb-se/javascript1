@@ -34,8 +34,9 @@ foreach ($sections as $section) {
 
 ANSWER = "Replace this text with the answer or the variable holding it.";
 
-dbwebb.assert("<?="$sectionId.$questionId"?>", ANSWER, false); // Is the answer as expected?
-
+// Is the answer as expected?
+// When you get stuck - change false to true to get a hint.
+dbwebb.assert("<?="$sectionId.$questionId"?>", ANSWER, false);
 
 
 <?php 
