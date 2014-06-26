@@ -38,3 +38,5 @@ SERVICE="http://www.student.bth.se/~mosstud/kod-exempel/javascript1/exercises/la
 GET_KEY="action=only-key&acronym=$USER&course=$COURSE&doGenerate=Submit"
 GET_LAB="lab.php?lab"
 GET_ANSWERS="lab.php?answers"
+GET_ANSWER_HTML="lab.php?answer-html"
+GET_ANSWER_JS="lab.php?answer-js"

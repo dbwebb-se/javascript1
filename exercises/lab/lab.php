@@ -8,12 +8,14 @@ date_default_timezone_set("UTC");
 // Incoming
 $doLab        = isset($_GET['lab']) ? true : false;
 $doAnswers    = isset($_GET['answers']) ? true : false;
+$doAnswerHtml = isset($_GET['answer-html']) ? true : false;
+$doAnswerJs   = isset($_GET['answer-js']) ? true : false;
 $key          = isset($_GET['key']) ? $_GET['key'] : null;
 
 
 
 // Check or die
-(isset($doLab) || isset($doAnswers)) or die("Missing what to do.");
+(isset($doLab) || isset($doAnswers) || isset($doAnswerHtml) || isset($doAnswerJs)) or die("Missing what to do.");
 isset($key) or die("No key supplied.");
 
 
@@ -78,6 +80,10 @@ if ($doLab && $doAnswers) {
     include "view/lab_tpl.php";
 } else if ($doAnswers) {
     include "view/answers_tpl.php";
+} else if ($doAnswerHtml) {
+    include "view/answer-html_tpl.php";
+} else if ($doAnswerJs) {
+    include "view/answer-js_tpl.php";
 } else {
     die("Nothing to do.");
 }

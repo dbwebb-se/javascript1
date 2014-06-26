@@ -64,6 +64,8 @@ values
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
 <a href="lab.php?answers&key=$gen_key">Answers</a> | 
+<a href="lab.php?answer-html&key=$gen_key">Answer-html</a> | 
+<a href="lab.php?answer-js&key=$gen_key">Answer-js</a> | 
 </p>
 EOD;
 
@@ -169,6 +171,8 @@ Key: {$res->gen_key}</br>
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
 <a href="lab.php?answers&key=$gen_key">Answers</a> | 
+<a href="lab.php?answer-html&key=$gen_key">Answer-html</a> | 
+<a href="lab.php?answer-js&key=$gen_key">Answer-js</a> | 
 </p>
 EOD;
 
