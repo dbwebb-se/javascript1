@@ -22,8 +22,18 @@
 	height: 400px;
 	float: left;
 }
+
+.badColors #hiddenDiv {
+	display: none;
+}
+
+.betterColors #hiddenDiv {
+	display: inline;
+}
+
 .red {
 	background-color: red;
+	color:red;
 }
 
 #myTable {
@@ -53,6 +63,7 @@ table td {
 #small {
 	height: 150px;
 	width: 150px;
+	color: #43DDEE;
 	background-color: #43DDEE;
 	border: 5px dashed blue;
 }
@@ -62,3 +73,10 @@ table td {
 	background-color: white;
 }
 
+#hiddenDiv {
+	color:black;
+	background-color: green;
+	float:right;
+	margin-top: 300px;
+	
+}
