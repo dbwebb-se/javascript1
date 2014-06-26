@@ -533,6 +533,22 @@ case $CMD in
         testLab "kmom02" "lab1" 
         ;;
 
+    lab2)
+        testLab "kmom03" "lab2" 
+        ;;
+
+    lab3)
+        testLab "kmom03" "lab3" 
+        ;;
+
+    lab4)
+        testLab "kmom04" "lab4" 
+        ;;
+
+    lab5)
+        testLab "kmom05" "lab5" 
+        ;;
+
     all)
         kmom01
         kmom02
@@ -592,6 +608,22 @@ then
 
         lab1)
             publish "kmom02/lab1"
+            ;;
+
+        lab2)
+            publish "kmom03/lab2"
+            ;;
+
+        lab3)
+            publish "kmom03/lab3"
+            ;;
+
+        lab4)
+            publish "kmom04/lab4"
+            ;;
+
+        lab5)
+            publish "kmom05/lab5"
             ;;
 
         *)
