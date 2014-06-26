@@ -7,6 +7,7 @@
     var ANSWER = null,
         output;
 
+    console.log("Ready to begin.");
 
 
 <?php 
@@ -41,5 +42,7 @@ dbwebb.assert("<?="$sectionId.$questionId"?>", ANSWER); // Is the answer as expe
     }
 }
 ?>
+
+    console.log("All done.");
 
 }());

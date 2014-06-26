@@ -36,32 +36,35 @@ foreach ($sections as $section) {
 
 <script type="text/javascript">
 
-var dbwebb.answers = {
+var dbwebb = {
 
-    <?php 
-    $sectionId = 0;
-    foreach ($sections as $section) {
-        $sectionId++;
-        $questionId = 0;
+    "answers": {
+    
+        <?php 
+        $sectionId = 0;
+        foreach ($sections as $section) {
+            $sectionId++;
+            $questionId = 0;
 
-        foreach ($section['questions'] as $question) {
-            $questionId++;
+            foreach ($section['questions'] as $question) {
+                $questionId++;
 
-            echo "\t\"$sectionId.$questionId\": \"" . $question['answer']() . "\",\n";
-        }
-    }?>
+                echo "\t\t\"$sectionId.$questionId\": \"" . $question['answer']() . "\",\n";
+            }
+        }?>
 
-    assert: function(question, answer) {
-        var element = document.getElementById(question),
+    },
+    "assert": function(question, answer) {
+        var element = document.getElementById("answer" + question),
             status,
             default = "Replace this text with the answer to the exercise, always wrap as string.";
 
         if (answer === default) {
             status = question + " NOT YET DONE."
-        } else if (answer === this.question) {
+        } else if (answer === this.answers.question) {
             status = question + " CORRECT. Well done!"
         } else {
-            status = question + " FAIL. Hint:\n" + this.question;
+            status = question + " FAIL. Hint:\n" + this.answers.question;
         }
 
         console.log(status);
