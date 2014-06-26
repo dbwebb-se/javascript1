@@ -36,7 +36,7 @@ foreach ($sections as $section) {
 
 <script type="text/javascript">
 
-var dbwebb = {
+var window.dbwebb = {
 
     "answers": {
     

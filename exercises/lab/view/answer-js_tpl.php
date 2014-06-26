@@ -46,4 +46,4 @@ dbwebb.assert("<?="$sectionId.$questionId"?>", ANSWER, false);
 
     console.log("All done.");
 
-}(dbwebb));
+}(window.dbwebb));
