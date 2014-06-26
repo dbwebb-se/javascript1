@@ -64,7 +64,7 @@ var dbwebb = {
         } else if (answer == this.answers[question]) {
             status = question + " CORRECT. Well done!\n" + answer;
         } else {
-            status = question + " FAIL. Hint:\n" + this.answers[question];
+            status = question + " FAIL.\nYou said:\n" + answer + "\nHint:\n" + this.answers[question];
         }
 
         console.log(status);
