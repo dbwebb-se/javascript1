@@ -9,6 +9,7 @@ $secondWord = "rocks!";
 $numberOne = 10; // 20-999
 $numberTwo = 6;  // 20-999
 $numberThree = 56; // 20-999
+$numberFour = 348; // 110 - 450
 $floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
@@ -252,13 +253,18 @@ return [
 [
 
 "text" => '
-<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in function Number.isNaN to find out if it is a number. Print out true or false (boolean).
+<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in function Number.isInteger to find out if it is a number. Print out true or false (boolean).
 </p>
 ',
 
 "answer" => function () use ($someIntText) {
+    
+    $result = "false";
 
-    return "false";
+    if(is_int($someIntText)) {
+        $result = "true";
+    }
+    return $result;
 },
 
 ],
@@ -322,24 +328,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 "answer" => function () use ($serie1) {
 
     return min($serie1);
-},
-
-],
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function Math.random to randomize a number between (and including) two given ones: " . $lowNr . " and " . $highNr . ".
-</p>
-",
-
-"answer" => function () use ($lowNr, $highNr) {
-
-    return rand($lowNr, $highNr);
 },
 
 ],
@@ -534,7 +522,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function String.charAt to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and return the character at index: " . ($smallNr-1) . ". Print out the result.
+<p>Use the built-in function 'charAt' on a string to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and print out the character at index: " . ($smallNr-1) . ".
 </p>
 ",
 
@@ -553,7 +541,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function String.toUppercase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Print out the result.
+<p>Use the built-in function String.toUpperCase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Print out the result.
 </p>
 ",
 
@@ -676,7 +664,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Create a Date object called 'myDate' and initiate it with: '" . $aDate . "'. Use the built-in function Date.getYear to get the year from your Date object. Print out the result.
+<p>Create a Date object called 'myDate' and initiate it with: '" . $aDate . "'. Use the built-in function Date.getFullYear to get the year from your Date object. Print out the result.
 </p>
 ",
 
@@ -780,17 +768,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
 [
 
 "text" => '
-<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than ' . $smallNr . ' AND if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
+<p>Use if else statements to print out "yes" if ' . $numberOne . ' is higher than ' . $smallNr . '. If the numbers are equal print out "equal". Else print out "no".
 </p>
 ',
 
-"answer" => function () use ($numberThree, $smallNr) {
+"answer" => function () use ($numberOne, $smallNr) {
     
     $result = '';
-    if($numberThree > $smallNr && $smallNr < 5) {
+    if($numberOne > $smallNr) {
         $result = 'yes';
     }
-    else if($numberThree === $smallNr) {
+    else if($numberOne === $smallNr) {
         $result = 'equal';
     }
     else {
@@ -810,18 +798,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
 [
 
 "text" => '
-<p>Use if else statements to print out "yes" if ' . $numberThree . ', are higher than or equal to ' . $numberTwo . ' OR  if ' . $smallNr . ' is lower than 5. If the numbers are equal, print out "equal", else print out "no".
+<p>Use if else statements to print out "yes" if ' . $numberFour . ' is higher than ' . $highNr . ' OR  lower than ' . $lowNr . '. Else print out "no".
 </p>
 ',
 
-"answer" => function () use ($numberThree, $numberTwo, $smallNr) {
+"answer" => function () use ($numberFour, $lowNr, $highNr) {
     
     $result = '';
-    if($numberThree >= $numberTwo || $smallNr < 5) {
+    if($numberFour < $lowNr || $numberFour > $highNr) {
         $result = 'yes';
-    }
-    else if($numberThree === $numberTwo && $smallNr === $numberThree) {
-        $result = 'equal';
     }
     else {
         $result = 'no';
@@ -920,30 +905,30 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/swi
 [
 
 "text" => "
-<p>Pass the number " . $smallNr . " to a switch case statement with the cases: " . implode(',', $caseNrs) . ". Print out the correct number.
+<p>Pass the number " . $smallNr . " to a switch case statement with the cases: " . implode(',', $caseNrs) . ". Return a variable with the initial value of " . $highNr . ". Add your number to it and print out the result.
 </p>
 ",
 
-"answer" => function () use ($smallNr, $caseNrs) {
+"answer" => function () use ($smallNr, $caseNrs, $highNr) {
     
-    $result = -1;
+    $result = $highNr;
     switch ($smallNr) {
         case (1) : 
-        $result = 1;
+        $result += 1;
         break;
         case (2) : 
-        $result = 2;
+        $result += 2;
         break;
         case (3) : 
-        $result = 3;
+        $result += 3;
         break;
         case (4) : 
-        $result = 4;
+        $result += 4;
         break;
         case (5) : 
-        $result = 5;
+        $result += 5;
         break;
-        default: $result = -1;
+        default: $result = $highNr;
     }
     return $result;
 },
@@ -958,7 +943,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/swi
 [
 
 "text" => "
-<p>Build a switch case statement with the cases: " . implode(',', $wordSerie2) . ". Return a string, something like: 'My favorite instrument is (your word)'. Use the word: '" . $wordSerie2[$smallestRandNr] . "'. Print out the result. If you try with an instrument that you do not have in your cases it should print out 'I dont like music.'.
+<p>Build a switch case statement with the cases: " . implode(',', $wordSerie2) . ". Print out a string, like: 'My favorite instrument is (your word)'. Use the word: '" . $wordSerie2[$smallestRandNr] . "'. If you try with an instrument that you do not have in your cases it should print out 'I dont like music.'.
 </p>
 ",
 
@@ -1023,7 +1008,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
 
 "answer" => function () use ($numberTwo, $smallNr) {
     
-    $result = 0;
+    $result = $numberTwo;
     for($i = 0; $i < 10; $i++) {
         $result += $smallNr;
     }   
