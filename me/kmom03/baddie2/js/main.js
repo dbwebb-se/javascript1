@@ -1,215 +1,204 @@
-/*
- * Baddie2 assigment
- *
- * If you wish to debug to the console, uncomment desired console.log()-row
- * Or write your own console.log()
- */
+/* Baddie2 - Assignment */
+// Assignmentsections start like this:
+//		// -------------------------------------------
+//		// ASSIGNMENT
+//
+// In each section there will be INSTRUCTIONS on what to fill out.
+// Each INSTRUCTION comment will start with "A.", like this:
+//		// A. This is an instruction
+// If it's a extra assignment, the instruction starts with "E.":
+// 		// E. This is an instruction for an extra assingment
+// PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
+//
+// In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
+//		// A. Assign value to variable x
+//
+// This could for example be filled out like this:
+//		// A. Assign value to variable x
+//		x = 42;
+// PLEASE note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row
+// In some cases you have to fill in some missing parts of code, and those can look like this:
+//		if(/*Add check*/)
+// These should be filled out by replacing the block-comment section.
+// For example:
+//		if(x > 10)
+//
+//
+// Good luck!
+
 (function(){
 	'use strict';
 	// HTML elements
 	var baddie, content;
 	// Numbers
-	var step, left, top, maxLeft, maxTop;
+	var step, left, top;
+
 	// Get HTML elements that are to be used
 	baddie = document.getElementById("baddie");
 	content = document.getElementById("content");
 
 	// Step value - how far does baddie go per step - his own size per step
 	step = baddie.offsetWidth;
-	// Size of window
-	maxTop = window.innerHeight;
-	maxLeft = window.innerWidth;
+	console.log("Baddie will step " + step + " pixels each move");
+
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
 	top = baddie.offsetTop;
+	console.log("Baddie starts at " + left + "," + top);
 
-	/* ------------------------------------
+	/* ------------------------------------------------------------------
 	 * EVENTS
 	 */
 	// Triggers action on keypress
-	document.addEventListener("keydown", function(e) {
+	document.addEventListener("keydown", function(event) {
+		var key;
 		// Gets what key was pressed as number
-		var key = e.keyCode || e.which;
+		key = event.keyCode || event.which;
+		console.log(key + " was pressed");
 
 		// Switch case to decide where baddie is to go
-		// Directions should be given in the form of -1, 0 or 1.
-		// -1 is opposite, 1 is the same direction, 0 is no movement for that direction
+		// -------------------------------------------
+		// ASSIGNMENT 1
+		// Fill in the missing code in my switch case so that the baddie moves
 		switch(key) {
 			case 37:
-				// Go right - use the moveBaddie()-function
-
-				// Turn baddie right - use function
-
+				// A. Go right - Use moveBaddie-function (1a)
+				
+				// A. Turn baddie right - Use the given function (1b)
+				
 				break;
 			case 38:
-				// Go up - use the moveBaddie()-function
-
+				// A. Go up - Use moveBaddie-function (1a)
+				
 				break;
 			case 39:
-				// Go left - use the moveBaddie()-function
-
-				// Turn baddie left - use function
-
+				// A. Go left - Use moveBaddie-function (1a)
+				
+				// A. Turn baddie left - Use the given function (1b)
+				
 				break;
 			case 40:
-				// Go down - use the moveBaddie()-function
-
+				// A. Go down - Use moveBaddie-function (1a)
+				
 				break;
-			case 32:
-				// Space key
-				// Jump - use function
+			// ----------------------
+			// EXTRA ASSIGNMENT
+			// E. Create a case for spacebar key and use the function to jump (a)
 
-				break;
 			default:
 				// Button was pressed but no action is to be performed
 				// return this function so that the default button action is performed instead
 				return true;
 		}
 		// Baddie action was performed - prevent button default
-		e.preventDefault();
-	});
-
-	// Adds click event to content element - triggers on mouse click inside content
-	content.addEventListener("click", function(e) {
-		var x, y;
-//		console.log("Clicked at inside element: " + e.offsetX + "," + e.offsetY)
-//		console.log("Clicked at inside window: " + e.clientX + "," + e.clientY);
-		// Check that the click was inside the field and not inside the baddie
-		if(e.currentTarget == e.target){
-			// The coordinates for the click
-			x = e.offsetX;
-			y = e.offsetY;
-			// Use the moveBaddieTo()-function to move it to the click location
-
-		} else {
-			// Click orignated from baddie - move to current pos + element click
-			x = baddie.offsetLeft + e.offsetX;
-			y = baddie.offsetTop + e.offsetY
-			// Use the moveBaddieTo()-function to move it to the click location
-
-		}
+		event.preventDefault();
 	});
 
 
-	/* ---------------------------------------------------------
+	/* ------------------------------------------------------------------
 	 * FUNCTIONS
 	 */
 
-	// Move baddie centered to fixed location
-	function moveBaddieTo(x, y) {
-		//console.log("Current baddie pos: " + baddie.offsetLeft + "," + baddie.offsetTop);
-		left = x - baddie.offsetWidth/2;
-		top = y - baddie.offsetHeight/2;
-		//console.log("Baddie wants to move to: " + left + "," + top);
+	/**
+	 * Wall collide check function
+	 * Checks if baddie collided with content wall and recalculates left and top if it did
+	 */
+	var wallCollideBaddie = function() {
+		console.log("Checking if baddie collided with the content walls");
+		// Assume that baddie did not collide at first
+		var collided = false;
 
-		// Check baddie for wall collision - use function
-
-
-		// Turn baddie in the direction he is going
-		if(left > baddie.offsetLeft) {
-			// Turn baddie left - use function
-
-		} else {
-			// Turn baddie right - use function
-
+		// --------------------------------------------
+		// ASSINMENT 2
+		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
+		// A. left wall collide check - check if left outside content (2a)
+		if(/*Add check*/) {
+			// A. Reset left so that baddie doesn't move outside content (2b)
+			
+			collided = true;
+			console.log("Baddie collided with left wall");
 		}
+		// A. top wall collide check - check if top is outside content (2a)
+		if(/*Add check*/) {
+			// A. Reset top so that baddie doesn't move outside content (2b)
 
-		// Move baddie to its new location
-		baddie.style.left = left + "px";
-		baddie.style.top = top + "px";
-
-		//console.log("Baddie moved to: " + baddie.offsetLeft + "," + baddie.offsetTop);
-	};
-
-	// Wall collide function
-	// Checks if baddie collided with content wall and recalculates left and top if it did
-	function wallCollideBaddie() {
-		// Assume that baddie did not collide at first - assign boolean value
-		var collided =
-		// Baddie position is relative to the content element
-		// Walls are at 0,0 and width,height of content
-		// Left wall collide check
-		if(left < 0) {
-			// Change left to put baddie inside content
-
-			// Change collided-variable
-
+			collided = true;
+			console.log("Baddie collided with top wall");
 		}
-		// Top wall collide check
-		if(top < 0) {
-			// Change top to put baddie inside content
-
-			// Change collided-variable
-
+		// A. right wall collide check (2c)
+		// max value will be the width of content (tip: use getSize example)
+		if(left + baddie.offsetWidth > /*Add max value*/) {
+			// A. Reset left so that baddie doesn't move outside of the content (2c)
+			left = /*Add max value*/ - baddie.offsetWidth;
+			collided = true;
+			console.log("Baddie collided with right wall");
 		}
-		// Right wall collide check
-		if(left + baddie.offsetWidth > content.clientWidth) {
-			// A bit trickier. Have to take baddie width into account since we check its top left corner
-			// Change left so that baddie ends up inside content
-
-			// Change collided-variable
-
-		}
-		// Bottom wall collide check
-		if(top + baddie.offsetHeight > content.clientHeight) {
-			// A bit trickier. Have to take baddie width into account since we check its top left corner
-			// Change top so that baddie ends up inside content
-
-			// Change collided-variable
-
+		// A. bottom wall collide check (2c)
+		// max value will be the height of content (tip: use getSize example)
+		if(top + baddie.offsetHeight > /*Add max value*/) {
+			// A. Reset top so that baddie doesn't move outside of the content (2c)
+			top = /*Add max value*/ - baddie.offsetHeight;
+			collided = true;
+			console.log("Baddie collided with bottom wall");
 		}
 
 		// Return if baddie collided
-
+		return collided;
 	}
 
-	// Move baddie in a given direction where directions are -1, 0 or 1 for x and y
-	function moveBaddie(dirX, dirY) {
+	/**
+	 * Move baddie function
+	 * Moves baddie in the given directions where directions are given as:
+	 * -1 (opposite), 0 (none), 1 (same direction)
+	 * Example to move left (go left, no top movement): moveBaddie(1, 0)
+	 */
+	var moveBaddie = function(moveLeft, moveTop) {
 		// Get new baddie positon by getting current one and adding step and direction
-		// For example, if baddie wants to go right, the direction is opposite of left (-1)
-		left = baddie.offsetLeft +
-		top = baddie.offsetTop +
+		left = baddie.offsetLeft + moveLeft*step;
+		top = baddie.offsetTop + moveTop*step;
+		console.log("Baddie wants to got to " + left + "," + top);
 
-		// Check for wall collision - use function
-		var collided =
+		// --------------------------------------------
+		// ASSINMENT 3
+		// A. Check for wall collision - use given function
+		var collided = /*Add function call here*/
 
 		// Move baddie to its new position
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
+		onsole.log("Baddie went to " + left + "," + top);
 
-		/*console.log("Baddie position: " + baddie.offsetLeft + "," + baddie.offsetTop);
-		console.log("Wall box position: " + content.offsetLeft + "," + content.offsetTop);
-		console.log("Wall box size: " + content.clientWidth + "," + content.clientHeight);*/
-
-		// return if baddie collided
-
+		// return if baddie collided - does not have to be used
+		return collided;
 	}
 
-	// Make baddie jump up and then come down again
-	function jump() {
-		// Move baddie up
-		// If he did _not_ collide when moving (hindering the jump) move him back down after a set amount of time
-		// Fill the parameters for movements
-		if(!moveBaddie( /* Fill parameters */ )) {
-			// Assign time to a number - will be used as milliseconds
-			var ms =
-			// Timer, runs code after waiting for given milliseconds
-			window.setTimeout(function() {
-				// Go down - use the moveBaddie()-function
-
-			}, ms);
-		}
-	}
-
+	/**
+	 * Turn functions for left and right 
+	 * Just changes the class name
+	 */
 	// Turn baddie image right - transform handled in style.css
-	function turnRight() {
-		// Give baddie the correct classname that will make him turn right - look for it in style.css
-		baddie.className = "";
+	var turnRight = function() {
+		baddie.className = "baddie-right";
 	}
 	// Turn baddie image left - transform handled in style.css
-	function turnLeft() {
-		// Give baddie the correct classname that will make him turn left - look for it in style.css
-		baddie.className = "";
+	var turnLeft = function() {
+		baddie.className = "baddie-left";
+	}
+
+	/**
+	 * Jump function
+	 * Move baddie up and then down again to make him appear to be jumping
+	 */
+	var jump = function() {
+		// --------------------------------------------
+		// EXTRA ASSIGNMENT
+		// Make baddie jump up and then come down again
+		// E. Move baddie up (b)
+
+		// E. If he did not collide when moving (hindering the jump)
+		// 		move him back down after a set amount of time (c)
+		// Tip: Use the setTimeout-function to set a timer
+		
 	}
 
 }());

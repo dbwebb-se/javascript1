@@ -3,7 +3,7 @@ body{
 }
 
 #content {
-	/* If #content position is absolute, the baddie position will be given in reference to it's parent, which is #content
+	/* If #content position is absolute, the #baddie position will be given in reference to it's parent, which is #content
 	 * Makes it easier to do collision calculations */
 	position: absolute;
 	width: 400px;
@@ -12,10 +12,12 @@ body{
 }
 
 #baddie{
-	/* Baddies postition must be absolute, otherwise we can't move him by changing top and left */
+	/* Baddie's postition must be absolute, otherwise we can't move him by changing top and left */
 	position: absolute;
 	height: 50px;
 	width: 50px;
+
+	/* Change this to your own baddie! */
 	background: url("../img/Kyubi.png");
 	background-size: 50px;
 }
