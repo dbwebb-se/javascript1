@@ -7,6 +7,7 @@ ASSERTS=0
 FAULTS=0
 
 ECHO="printf"
+TMPFILE="/tmp/dbwebb-error$$"
 
 
 #
@@ -15,6 +16,8 @@ ECHO="printf"
 JSHINT="jshint"
 
 HTMLHINT="htmlhint"
+
+CSSHINT="htmlhint"
 
 HTML_MINIFIER="html-minifier"
 HTML_MINIFIER_OPTIONS="--minify-js --minify-css --use-short-doctype --remove-attribute-quotes --collapse-boolean-attributes --conservative-collapse --collapse-whitespace --remove-comments"
@@ -67,7 +70,6 @@ printUsage()
     $ECHO "\n  $ dbwebb-validate -n kmom01"
     $ECHO "\n"
     $ECHO "\n"
-    exit
 }
 
 
@@ -82,10 +84,10 @@ assert()
     MESSAGE=$3
     ASSERTS=$(( $ASSERTS + 1 ))
 
-    sh -c "$TEST" > /tmp/dbwebb-error 2>&1
+    sh -c "$TEST" > $TMPFILE 2>&1
     STATUS=$?
     #ERROR=$(</tmp/dbwebb-error)
-    ERROR=`cat /tmp/dbwebb-error`
+    ERROR=`cat $TMPFILE`
 
     if [ ! $STATUS -eq $EXPECTED ]
     then
@@ -134,22 +136,33 @@ checkCommand()
 #
 publish()
 {
+    DIR="$1"
     $ECHO "\n\nPublishing"
 
     initBuildDir
 
     $ECHO "\nCopying files to www."
-    rsync -a --delete $TARGET/ $BUILD/
+    if [ "$DIR" = "all" ]
+    then
+        rsync -a --delete $TARGET/ $BUILD/
+    else
+        rsync -a --delete $TARGET/$DIR/ $BUILD/$DIR/
+        rsync -a $TARGET/me.html $BUILD/me.html
+        rsync -a $TARGET/redovisning.html $BUILD/redovisning.html
+        rsync -a --delete $TARGET/js/ $BUILD/js/
+        rsync -a --delete $TARGET/style/ $BUILD/style/
+    fi
 
     $ECHO "\nMinifying HTML-files."
     find $BUILD/ -type f -name '*.html' | while read filename; do $HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename; done
     
-    #$ECHO "\nUglify JavaScript-files."
+    $ECHO "\nUglify JavaScript-files."
+    find $BUILD/ -type f -name '*.js' | while read filename; do $UGLIFYJS $filename -o $filename $UGLIFYJS_OPTIONS; done
     #$UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
     
-    #$ECHO "\nMinify CSS-files."
+    $ECHO "\nMinify CSS-files."
+    find $BUILD/ -type f -name '*.css' | while read filename; do $CLEANCSS $filename -o $filename; done
     #$CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
-
 }
 
 
@@ -197,6 +210,11 @@ initBuildDir()
         mkdir $BUILD2
     fi
 
+    if [ ! -d $BUILD3 ] 
+    then
+        mkdir $BUILD3
+    fi
+
     if [ ! -d $BUILD ] 
     then
         mkdir $BUILD
@@ -230,7 +248,28 @@ testMeStart()
     [ $PUBLISH = "yes" ] || return
 
     rsync -a $TARGET/me.html $BUILD/
-    rsync -a --delete $TARGET/../example/ $BUILD/example/
+    rsync -a --delete $TARGET/../example/ $BUILD/../example/
+}
+
+
+
+#
+# Perform validation tests
+#
+validateHtmlCssJs()
+{
+    TESTS=$(( $TESTS + 1 ))
+    DIR="$1"
+
+    $ECHO "\nTesting $DIR."
+
+    assert 0 "[ -d $TARGET/$DIR ]" "Missing directory: $TARGET/$DIR" || return
+
+    $ECHO "\nValidate using HTMLHint."
+    find $TARGET/$DIR -type f -name '*.html' | while read filename; do assert 0 "$HTMLHINT $filename" "HTMLHINT failed: $filename"; done
+
+    $ECHO "\nValidate using JSHint."
+    find $TARGET/$DIR -type f -name '*.js' | while read filename; do assert 0 "$JSHINT $filename" "JSHint failed: $filename"; done
 }
 
 
@@ -244,15 +283,7 @@ testSandbox()
     KMOM="kmom01"
     DIR="sandbox"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -267,15 +298,7 @@ testFlag()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -289,15 +312,7 @@ testLab()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -311,15 +326,7 @@ testBaddie()
     KMOM="$1"
     DIR="$2"
 
-    $ECHO "\nTesting $KMOM $DIR example."
-
-    assert 0 "[ -d $TARGET/$KMOM/$DIR ]" "Missing directory: $TARGET/$KMOM/$DIR" || return
-
-    FILE="$TARGET/$KMOM/$DIR/js/main.js"
-    assert 0 "$JSHINT $FILE" "JSHint failed: $FILE" || return
-
-    FILE="$TARGET/$KMOM/$DIR/index.html"
-    assert 0 "$HTMLHINT $FILE" "HTMLHint failed:" || return
+    validateHtmlCssJs "$KMOM/$DIR"
 }
 
 
@@ -342,9 +349,9 @@ kmom01()
 kmom02()
 {
     testMeStart
-    testFlag "kmom02" "flag"
+    testFlag "kmom02" "flag1"
     testLab "kmom02" "lab1"
-    testBaddie "kmom02" "flytta-baddie"
+    testBaddie "kmom02" "baddie1"
 }
 
 
@@ -355,9 +362,9 @@ kmom02()
 kmom03()
 {
     testMeStart
-    testFlag "kmom03" "flag"
+    testFlag "kmom03" "flag2"
     testLab "kmom03" "lab2"
-    testBaddie "kmom03" "flytta-baddie"
+    testBaddie "kmom03" "baddie2"
 }
 
 
@@ -368,10 +375,10 @@ kmom03()
 kmom04()
 {
     testMeStart
-    testFlag "kmom04" "flag"
+    testFlag "kmom04" "flag3"
     testLab "kmom04" "lab3"
     testLab "kmom04" "lab4"
-    testBaddie "kmom04" "flytta-baddie"
+    testBaddie "kmom04" "baddie3"
 }
 
 
@@ -382,9 +389,9 @@ kmom04()
 kmom05()
 {
     testMeStart
-    testFlag "kmom05" "flag"
+    testFlag "kmom05" "flag4"
     testLab "kmom05" "lab5"
-    testBaddie "kmom05" "flytta-baddie"
+    testBaddie "kmom05" "baddie4"
 }
 
 
@@ -395,8 +402,8 @@ kmom05()
 kmom06()
 {
     testMeStart
-    testFlag "kmom06" "flag"
-    testBaddie "kmom06" "flytta-baddie"
+    testFlag "kmom06" "flag5"
+    testBaddie "kmom06" "baddie5"
 }
 
 
@@ -412,11 +419,22 @@ kmom10()
 
 
 #
+# example
+#
+example()
+{
+    validateHtmlCssJs "../example"
+}
+
+
+
+#
 # Main
 #
 if [ $# != 3 ]
 then
-    $ECHO
+    :
+    #$ECHO
     #printUsage
 fi
 
@@ -433,6 +451,7 @@ do
     case $opt in
         (h) 
             printUsage
+            exit 0
             ;;
 
         (i) 
@@ -452,7 +471,7 @@ do
             ;;
 
         (v) 
-            $ECHO $VERSION
+            $ECHO "$VERSION\n"
             exit 0
             ;;
 
@@ -504,6 +523,38 @@ case $CMD in
         kmom10
         ;;
 
+    example)
+        example
+        ;;
+
+    sandbox)
+        testSandbox
+        ;;
+
+    flag1)
+        testFlag "kmom02" "flag1" 
+        ;;
+
+    lab1)
+        testLab "kmom02" "lab1" 
+        ;;
+
+    lab2)
+        testLab "kmom03" "lab2" 
+        ;;
+
+    lab3)
+        testLab "kmom04" "lab3" 
+        ;;
+
+    lab4)
+        testLab "kmom04" "lab4" 
+        ;;
+
+    lab5)
+        testLab "kmom05" "lab5" 
+        ;;
+
     all)
         kmom01
         kmom02
@@ -515,14 +566,85 @@ case $CMD in
         ;;
 
     *)
+        $ECHO "\n\033[0;37;41mERROR\033[0m: No such item to validate."
         printUsage
+        exit 1
         ;;
 esac
 
 if [ $PUBLISH = "yes" ]
 then
-    publish
+    case $CMD in
+        
+        kmom01)
+            publish "kmom01"
+            ;;
+
+        kmom02)
+            publish "kmom02"
+            ;;
+
+        kmom03)
+            publish "kmom03"
+            ;;
+
+        kmom04)
+            publish "kmom04"
+            ;;
+
+        kmom05)
+            publish "kmom05"
+            ;;
+
+        kmom06)
+            publish "kmom06"
+            ;;
+
+        kmom10)
+            publish "kmom10"
+            ;;
+
+        all)
+            publish "all"
+            ;;
+
+        sandbox)
+            publish "kmom01/sandbox"
+            ;;
+
+        flag1)
+            publish "kmom02/flag1"
+            ;;
+
+        lab1)
+            publish "kmom02/lab1"
+            ;;
+
+        lab2)
+            publish "kmom03/lab2"
+            ;;
+
+        lab3)
+            publish "kmom04/lab3"
+            ;;
+
+        lab4)
+            publish "kmom04/lab4"
+            ;;
+
+        lab5)
+            publish "kmom05/lab5"
+            ;;
+
+        *)
+            $ECHO "\n\033[0;37;41mERROR\033[0m: No such item to publish."
+            printUsage
+            exit 1
+            ;;
+    esac
 fi
+
+rm -f $TMPFILE
 
 if [ $FAULTS -gt 0 ]
 then

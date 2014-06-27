@@ -18,6 +18,7 @@ printUsage()
     $ECHO "\n  -h         Print this message and exit."
     $ECHO "\n  -i         Ignore validation faults and proceed anyway."
     $ECHO "\n  -v         Print the version of this program and exit."
+    $ECHO "\n  -w         Very verbose, print out whats happening."
     $ECHO "\n  -y         Do not wait for my input, just proceed."
     $ECHO "\n"
     $ECHO "\nCommand:"
@@ -26,7 +27,9 @@ printUsage()
     $ECHO "\n  sshkey    Create and install ssh-keys to avoid using password.."
     $ECHO "\n  login     Login to the server using ssh."
     $ECHO "\n  init      Init the remote server and create a destination directory."
+    $ECHO "\n  update    Update the courselibb (repo) with latest updates from master repo."
     $ECHO "\n  upload    Upload all files to the server."
+    $ECHO "\n  create    Create a laboration, use additional argument for naming what lab to create."
     $ECHO "\n  validate  Upload your files and validate that your results passes automatic tests."
     $ECHO "\n            Send in kmom01, kmom02, etc to validate only one kmom."
     $ECHO "\n            Default is to validate all."
@@ -41,6 +44,7 @@ printUsage()
     $ECHO "\n  $ dbwebb login"
     $ECHO "\n  $ dbwebb init"
     $ECHO "\n  $ dbwebb -y upload"
+    $ECHO "\n  $ dbwebb create lab1"
     $ECHO "\n  $ dbwebb -y validate kmom01"
     $ECHO "\n  $ dbwebb -y publish"
     $ECHO "\n"
@@ -65,16 +69,23 @@ executeCommand()
     fi
     
     COMMAND=$2
-    $ECHO "\nExecuting command:"
-    $ECHO "\n$COMMAND"
-    $ECHO "\n-----------------------------------------"
-    $ECHO "\n"
+
+    if [ $VERY_VERBOSE = "yes" ]
+    then
+        $ECHO "\nExecuting command:"
+        $ECHO "\n$COMMAND"
+        $ECHO "\n-----------------------------------------"
+        $ECHO "\n"
+    fi
     
     sh -c "$COMMAND"
     STATUS=$?
 
-    $ECHO "\n-----------------------------------------"
-    
+    if [ $VERY_VERBOSE = "yes" ]
+    then
+        $ECHO "\n-----------------------------------------"
+    fi
+
     MESSAGE=$3
     if [ $STATUS = 0 ]
     then
@@ -117,6 +128,26 @@ loginToServer()
 
 
 #
+# Create and use ssh-keys to login.
+#
+installSshKeys()
+{
+    INTRO="First we need to create a ssh key and store it locally."
+    COMMAND="ssh-keygen -t dsa"
+    #ssh-keygen -t dsa -N "my passphrase" -C "test key" -f mykey
+    MESSAGE="to create the ssh key."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+
+    INTRO="I will now install the ssh-key at the remote server."
+    #if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser;
+    COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'cat >> .ssh/authorized_keys'"
+    MESSAGE="to install the ssh-keys."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
 # Init directory structure at the server.
 #
 initServer()
@@ -130,18 +161,13 @@ initServer()
 
 
 #
-# Create and use ssh-keys to login.
+# Upload results to the server
 #
-installSshKeys()
+updateFromMaster()
 {
-    INTRO="First we need to create a ssh key and store it locally."
-    COMMAND="ssh-keygen -t dsa"
-    MESSAGE="to create the ssh key."
-    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
-
-    INTRO="I will now install the ssh-key at the remote server."
-    COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'cat >> .ssh/authorized_keys'"
-    MESSAGE="to install the ssh-keys."
+    INTRO="UPdate courslibb (repo) with latest changes from course master repo."
+    COMMAND="git pull"
+    MESSAGE="to update course repo."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
 
@@ -161,12 +187,27 @@ uploadToServer()
 
 
 #
+# Create a lab
+#
+createLab()
+{
+    LAB="$1"
+    INTRO="Create laboration $LAB."
+    #COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-create \"$LAB\"'"
+    COMMAND="bin/dbwebb-create \"$LAB\""
+    MESSAGE="to create the lab."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
 # Validate the uploaded files
 #
 validateUploadedResults()
 {
     WHAT=$1
-    INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
+    INTRO="I will now upload files to the remote server and validate them."
     COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT'"
     MESSAGE="to upload and validate course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
@@ -214,8 +255,9 @@ UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $D
 # Get options
 SKIP_READLINE="no"
 IGNORE_FAULTS=""
+VERY_VERBOSE="no"
 
-while getopts ":hivy" opt
+while getopts ":hivwy" opt
 do
     case $opt in
         (h) 
@@ -227,12 +269,16 @@ do
             ;;
 
         (v) 
-            $ECHO $VERSION
+            $ECHO "$VERSION\n"
             exit 0
             ;;
 
+        (w) 
+            VERY_VERBOSE="yes"
+            ;;
+
         (y) 
-            SKIP_READLINE=yes
+            SKIP_READLINE="yes"
             ;;
 
         \?)
@@ -260,16 +306,30 @@ case $CMD in
         loginToServer 
         ;;
 
-    init)
-        initServer 
-        ;;
-
     sshkey)
         installSshKeys 
         ;;
 
+    init)
+        initServer 
+        ;;
+
+    update)
+        updateFromMaster 
+        ;;
+
     upload)
         uploadToServer 
+        ;;
+
+    create)
+        LAB="$2"
+        if [ -z "$LAB" ]
+        then
+            echo "Missing name for lab, perhaps use lab1, lab2 or lab3?"
+            exit 1
+        fi
+        createLab "$LAB" 
         ;;
 
     validate)

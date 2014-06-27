@@ -1,18 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Lab generation</title>
-<link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-
-
-<h1>Lab utility</h1>
-
-<p><a href="?">Clear</a></p>
-
-
 <?php
 error_reporting(-1);              // Report all type of errors
 ini_set('display_errors', 1);     // Display all errors
@@ -21,6 +6,10 @@ ini_set('output_buffering', 0);   // Do not buffer outputs, write directly
 date_default_timezone_set("UTC");
 
 
+
+/**
+ * Check that database exists and open it
+ */
 if (!is_writable(__DIR__)) {
     echo "<p>You must make this directory writable. Then click <a href='?init'>this link to generate the database tables</a>.</p>";
     exit;
@@ -28,6 +17,7 @@ if (!is_writable(__DIR__)) {
 
 
 $db = new PDO("sqlite:db.sqlite");
+
 
 if (isset($_GET['init'])) {
     $sql = "
@@ -45,20 +35,19 @@ create table if not exists lab
     $stmt->execute();
 }
 
-?>
 
 
-
-<h2>Generate a lab</h2>
-
-
-<?php
-
+/**
+ * Generate a lab
+ */
+$action     = isset($_GET['action']) ? $_GET['action'] : null;
 $acronym    = isset($_GET['acronym']) ? $_GET['acronym'] : null;
 $course     = isset($_GET['course']) ? $_GET['course'] : null;
 $lab        = isset($_GET['lab']) ? $_GET['lab'] : null;
 $created    = date('Y-m-d H:i:s');
 $gen_key    = md5($acronym . $course . $lab . $created);
+
+$generate = null;
 
 if (isset($_GET['doGenerate'])) {
     $sql = "
@@ -70,17 +59,47 @@ values
     $stmt = $db->prepare($sql);
     $stmt->execute([$acronym, $course, $lab, $created, $gen_key]);
 
-    echo <<<EOD
+    $generate =<<<EOD
 <p>
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
 <a href="lab.php?answers&key=$gen_key">Answers</a> | 
+<a href="lab.php?answer-html&key=$gen_key">Answer-html</a> | 
+<a href="lab.php?answer-js&key=$gen_key">Answer-js</a> | 
 </p>
 EOD;
 
+    if ($action == "only-key") {
+        die($gen_key);
+    }
 }
 
-?>
+
+
+
+
+?><!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab generation</title>
+<link rel="stylesheet" href="style/style.css">
+<style>
+<?=file_get_contents("style/style.css")?>
+</style>
+</head>
+<body>
+
+
+<h1>Lab utility</h1>
+
+<p><a href="?">Clear</a></p>
+
+
+
+<h2>Generate a lab</h2>
+
+<?=$generate?>
 
 
 <form>
@@ -122,7 +141,7 @@ EOD;
 
 <?php
 
-$key    = isset($_GET['key']) ? $_GET['key'] : null;
+$key = isset($_GET['key']) ? $_GET['key'] : null;
 
 if (isset($_GET['doKey'])) {
     $sql = "
@@ -134,9 +153,13 @@ where
     $stmt->execute([$key]);
     $res = $stmt->fetch(PDO::FETCH_OBJ);
 
-    $gen_key = $res->gen_key;
+    if (!$res) {
+        echo "<p><b>No such key!</b><p>";
+    } else {
 
-    echo <<<EOD
+        $gen_key = $res->gen_key;
+
+        echo <<<EOD
 <p>
 Acronym: {$res->acronym}</br>
 Course: {$res->course}</br>
@@ -148,9 +171,12 @@ Key: {$res->gen_key}</br>
 <a href="lab.php?lab&key=$gen_key">Lab</a> | 
 <a href="lab.php?lab&answers&key=$gen_key">Lab with answers</a> | 
 <a href="lab.php?answers&key=$gen_key">Answers</a> | 
+<a href="lab.php?answer-html&key=$gen_key">Answer-html</a> | 
+<a href="lab.php?answer-js&key=$gen_key">Answer-js</a> | 
 </p>
 EOD;
 
+    }
 }
 
 ?>
@@ -160,7 +186,7 @@ EOD;
 
 <p>
     <label>Lab key:<br>
-    <input type="text" name="key" placeholder="Enter lab key">
+    <input type="text" name="key" value="<?=$key?>" placeholder="Enter lab key">
     </acronym>
 </p>
 

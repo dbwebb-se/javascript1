@@ -6,20 +6,28 @@
 $firstWord = "JavaScript";
 $secondWord = "rocks!";
 
-$numberOne = 10; // 100-999
-$numberTwo = 6;  // 100-999
-$numberThree = 56; // 100-999
+$numberOne = 10; // 20-999
+$numberTwo = 6;  // 20-999
+$numberThree = 56; // 20-999
 $floatOne = 12.55; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
 $highNr = 625; // 500 - 999
 $smallNr = 2; // 1-5
-$smallRandNr = 5; // 0-9
+$smallRandNr = 3; // 0-9
+$caseNrs = [1, 2, 3, 4, 5];
+$smallestRandNr = 1; // 0-2
+$aYear = 2014;
+$aMonth = 'Aug';
+$aDay = 5;
+$aDate = "$aMonth $aDay, $aYear";
+
 
 $serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['canine', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
+$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
+$wordSerie2 = ['guitar', 'violin', 'drums'];
 $sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
-
+$someIntText = $numberOne . ".$numberTwo " . $wordSerie1[$smallRandNr]; 
 
 return [
 
@@ -31,12 +39,7 @@ return [
 "title" => "Lab 1 - javascript1",
 
 "intro" => "
-<p>Intro text to explain stuff. <br>
-MDN Overview: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects <br>
-MDN Numbers: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number <br>
-MDN Math: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math <br>
-MDN Strings: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String <br>
-MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date <br>
+<p>If you need to peek at examples or just want to know more, take a look at the references at MDN's (Mozilla Developers Network) page: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference. Here you will find everything this lab will go through and much more.
 </p>
 ",
 
@@ -52,7 +55,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "Integers, floats and variables",
 
 "intro" => "
-<p>Grunderna i variabler, siffror, strängar, basic arithmetic + - / *.</p>
+<p>The foundation of variables, numbers, strings and basic arithmetic.</p>
 ",
 
 "shuffle" => false,
@@ -86,7 +89,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a fourth variable, called "sum" and assign to it the sum of all three variables. Print out the result.
+<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a variable "sum" and assign to it the sum of all three variables. Print out the result.
 </p>
 ',
 
@@ -146,33 +149,13 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Create two variables, "numberOne", "numberTwo" and give them the values: ' . $numberOne . ' and ' . $numberTwo . '. Create a fourth variable, called "sum" and assign to it the quotient of them. Print out the result.
-</p>
-',
-
-"answer" => function () use ($numberOne, $numberTwo) {
-
-    $sum = $numberOne / $numberTwo;
-    return $sum;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Create two variables, "floatOne" and "floatTwo". Give them the values: ' . $floatOne . ' and ' . $floatTwo . '. Create a fourth variable, called "sum" and assign to it the sum of them. Print out the result.
+<p>Create two variables, "floatOne" and "floatTwo". Give them the values: ' . $floatOne . ' and ' . $floatTwo . '. Create a third variable, called "sum" and assign to it the sum of them. Print out the result.
 </p>
 ',
 
 "answer" => function () use ($floatOne, $floatTwo) {
 
-    $sum = $floatOne / $floatTwo;
+    $sum = $floatOne + $floatTwo;
     return $sum;
 },
 
@@ -186,7 +169,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Create two variables, "floatOne" and "numberOne". Give them the values: ' . $floatOne . ' and ' . $numberOne . '. Create a fourth variable, called "sum" and assign to it the product of them. Print out the result.
+<p>Create two variables, "floatOne" and "numberOne". Give them the values: ' . $floatOne . ' and ' . $numberOne . '. Create a third variable, called "sum" and assign to it the product of them. Print out the result.
 </p>
 ',
 
@@ -215,7 +198,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "Builtin Number-functions",
 
 "intro" => "
-<p>Math library
+<p>If you need a hint, take a look at: <br> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 </p>
 ",
 
@@ -231,16 +214,55 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use the built-in function Number.parseInt to find out the integer representation of the variable. Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create a variable called "sum" and print the result.
+<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in function Number.parseInt to find out the integer representation of the variable. Print the result.
 </p>
 ',
 
-"answer" => function () use ($floatOne) {
+"answer" => function () use ($someIntText) {
 
-    return (int)$floatOne;
+    return (int)$someIntText;
 },
 
 ],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in function Number.parseFloat to find out the float representation of the variable. Print the result.
+</p>
+',
+
+"answer" => function () use ($someIntText) {
+
+    return (float)$someIntText;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in function Number.isNaN to find out if it is a number. Print out true or false (boolean).
+</p>
+',
+
+"answer" => function () use ($someIntText) {
+
+    return "false";
+},
+
+],
+
 
 
 /**
@@ -258,7 +280,8 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "Builtin Math-functions",
 
 "intro" => "
-<p>Math library
+<p>If you need a hint, take a look at: <br> 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
 </p>
 ",
 
@@ -347,14 +370,34 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
  */
 [
 
+"text" => '
+<p>Create two variables, "numberOne", "numberTwo" and give them the values: ' . $numberOne . ' and ' . $numberTwo . '. Create a third variable, called "sum" and assign to it the quotient of them. Use the built-in function Math.floor to get only the integer value. Print out the result.
+</p>
+',
+
+"answer" => function () use ($numberOne, $numberTwo) {
+
+    $sum = $numberOne / $numberTwo;
+    return floor($sum);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
 "text" => "
-<p>Use the built-in function Math.PI to print out float value 'Pi'.
+<p>Use the built-in function Math.PI to print out float value of 'Pi'. Round the result to 4 decimals.
 </p>
 ",
 
 "answer" => function () {
 
-    return pi();
+    return round(pi(), 4);
 },
 
 ],
@@ -428,7 +471,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>A good thing is that we do not need to use one variable for each word. Create a variable called 'sentence' and assign to it the text: '". $sentenceSerie1[$smallRandNr] ."' and print it out.</p>
+<p>Create a variable called 'sentence' and assign to it the text: '". $sentenceSerie1[$smallRandNr] ."' and print it out.</p>
 ",
 
 "answer" => function () use ($smallRandNr, $sentenceSerie1) {
@@ -446,7 +489,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Create a varibale called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Create another varible called 'numberOne' and assign to it the value: " .  $numberTwo . ". Add them up to in a variable called 'sum' and print out the result.
+<p>Create a variable called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Create another variable called 'numberOne' and assign to it the value: " .  $numberTwo . ". Add them up into a variable called 'sum' and print out the result.
 </p>
 ",
 
@@ -474,7 +517,8 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "Builtin String-functions",
 
 "intro" => "
-<p>String library
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String 
 </p>
 ",
 
@@ -490,26 +534,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function String.bold to add the html element <b> to the string: '" .  $wordSerie1[$smallRandNr] . "' and make the text bold. Return the result as a varibale called: 'result'.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    $result = '<b>'. $wordSerie1[$smallRandNr] . '</b>';
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.charAt to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and return the character at index: " . ($smallNr-1) . ". Return the result as a varibale called: 'result'.
+<p>Use the built-in function String.charAt to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and return the character at index: " . ($smallNr-1) . ". Print out the result.
 </p>
 ",
 
@@ -528,7 +553,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function String.toUppercase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Return the result as a varibale called: 'result'.
+<p>Use the built-in function String.toUppercase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Print out the result.
 </p>
 ",
 
@@ -547,7 +572,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function String.repeat to create a new string that contains the string: '" . $wordSerie1[$smallRandNr] . "' repeated " . $smallNr+10 . " number of times. Return the result as a varibale called: 'result'.
+<p>Use the built-in function String.repeat to create a new string that contains the string: '" . $wordSerie1[$smallRandNr] . "' repeated " . ($smallNr+10) . " number of times. Print out the result.
 </p>
 ",
 
@@ -566,7 +591,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function String.length to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Return the result as a varibale called: 'result'.
+<p>Use the built-in function String.length to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Print out the result.
 </p>
 ",
 
@@ -585,12 +610,33 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Use the built-in function String.concat to transform two strings into one. Create two variables 'stringOne' and 'stringTwo'. Assign to them the strings: '" . $wordSerie1[$smallRandNr] . "' and '" . $wordSerie1[$smallRandNr-1] . "'. Return the result as a varibale called: 'result'.
+<p>Use the built-in function String.substr to extract the last three characters of the word: '" . $wordSerie1[$smallRandNr] . "'. Print out the result.
 </p>
 ",
 
 "answer" => function () use ($wordSerie1, $smallRandNr) {
-    $result = $wordSerie1[$smallRandNr] . $wordSerie1[$smallRandNr-1];
+    $result = substr($wordSerie1[$smallRandNr], (strlen($wordSerie1[$smallRandNr])-3));
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use the built-in function String.trim to remove the first and last letter from the word: '" . $wordSerie1[$smallRandNr] . "'. Print out the result.
+</p>
+",
+
+"answer" => function () use ($wordSerie1, $smallRandNr) {
+    $last = strlen($wordSerie1[$smallRandNr])-1;
+    $res = $wordSerie1[$smallRandNr][0] . $wordSerie1[$smallRandNr][$last];
+    $result = trim($wordSerie1[$smallRandNr], $res);
     return $result;
 },
 
@@ -610,10 +656,11 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
  * New section of exercises.
  */
 [
-"title" => "Builtin Date-functions",
+"title" => "Built-in Date-functions",
 
 "intro" => "
-<p>Math library
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 </p>
 ",
 
@@ -629,13 +676,13 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Create a Date object. Use the built-in function Date.getMinutes to get the minutes from your Date object. Return the result in a varible called 'result'.
+<p>Create a Date object called 'myDate' and initiate it with: '" . $aDate . "'. Use the built-in function Date.getYear to get the year from your Date object. Print out the result.
 </p>
 ",
 
-"answer" => function () {
+"answer" => function () use ($aYear) {
 
-    return date('i');
+    return $aYear;
 },
 
 ],
@@ -647,16 +694,20 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Create a Date object. Use the built-in function Date.getFullYear to get the year from your Date object. Return the result in a varible called 'result'.
+<p>Create a new Date object that is equal to 'myDate' plus 30 days. Use Date.getDate to print out the day of the month.
 </p>
 ",
 
-"answer" => function () {
-
-    return date('Y');
+"answer" => function () use ($aDate) {
+    $myDate = new DateTime($aDate);
+    $interval = new DateInterval("P30D");
+    $myDate->add($interval);
+    
+    return $myDate->format('d');
 },
 
 ],
+
 
 
 /**
@@ -674,7 +725,9 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "If, else if and else",
 
 "intro" => "
-<p>Intro text, && and ||, boolean?</p>
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
+</p>
 ",
 
 "shuffle" => false,
@@ -708,42 +761,13 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>You can compare variables in different ways. Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use triple equals when comparing (===). Use if else statements to print out "yes" if they are equal, else print out "no".
+<p>Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use triple equals when comparing (===). Use if else statements to print out "yes" if they are equal, else print out "no".
 </p>
 ',
 
 "answer" => function () use ($numberOne) {
     
     return $numberOne === strval($numberOne) ? "yes" : "no";
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use if else statements to print out "higher" if the length of an array containing these words: "' . implode(', ', $wordSerie1) . '", are greater than ' . $smallRandNr . '. If it is smaller, print out "lower" and if it is equal, print out "equal".
-</p>
-',
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    
-    $result = '';
-    if(count($wordSerie1) < $smallRandNr) {
-        $result = 'lower';
-    }
-    else if(count($wordSerie1) > $smallRandNr) {
-        $result = 'higher';
-    }
-    else {
-        $result = 'equal';
-    }
-    return $result;
 },
 
 ],
@@ -810,6 +834,60 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use if else statements to print out "true" if ' . $numberOne . ', are less than or equal to ' . $numberTwo . '. Else print out "false". Print out the result with a boolean.
+</p>
+',
+
+"answer" => function () use ($numberOne, $numberTwo) {
+    
+    $result = "false";
+    if($numberOne <= $numberTwo) {
+        $result = "true";
+    }
+    
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Use if else statements to see if " . $numberOne . " is 'higher', 'lower' or 'equal' to " . $numberThree . ". Print out the result (higher, lower or equal).
+</p>
+",
+
+"answer" => function () use ($numberOne, $numberThree) {
+    
+    $result = '';
+
+    if($numberOne > $numberThree) {
+        $result = 'higher';
+    }
+    else if($numberOne < $numberThree) {
+        $result = 'lower';
+    }
+    else {
+        $result = 'equal';
+    }
+    return $result;
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
@@ -825,7 +903,9 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "Switch, case",
 
 "intro" => "
-<p>Intro</p>
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+</p>
 ",
 
 "shuffle" => false,
@@ -840,14 +920,65 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => "
-<p>Build switch case statement.
+<p>Pass the number " . $smallNr . " to a switch case statement with the cases: " . implode(',', $caseNrs) . ". Print out the correct number.
 </p>
 ",
 
-"answer" => function () {
-    global $numberOne, $numberTwo;
+"answer" => function () use ($smallNr, $caseNrs) {
+    
+    $result = -1;
+    switch ($smallNr) {
+        case (1) : 
+        $result = 1;
+        break;
+        case (2) : 
+        $result = 2;
+        break;
+        case (3) : 
+        $result = 3;
+        break;
+        case (4) : 
+        $result = 4;
+        break;
+        case (5) : 
+        $result = 5;
+        break;
+        default: $result = -1;
+    }
+    return $result;
+},
 
-    return $numberOne > $numberTwo ? "yes" : "no";
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => "
+<p>Build a switch case statement with the cases: " . implode(',', $wordSerie2) . ". Return a string, something like: 'My favorite instrument is (your word)'. Use the word: '" . $wordSerie2[$smallestRandNr] . "'. Print out the result. If you try with an instrument that you do not have in your cases it should print out 'I dont like music.'.
+</p>
+",
+
+"answer" => function () use ($wordSerie2, $smallestRandNr) {
+    
+    $result = 'My favorite instrument is ';
+
+    switch ($wordSerie2[$smallestRandNr]) {
+        case ('guitar') : 
+        $result .= 'guitar';
+        break;
+        case ('violin') : 
+        $result .= 'violin';
+        break;
+        case ('drums') : 
+        $result .= 'drums';
+        break;
+        default: $result = 'I dont like music.';
+    }
+    return $result;
 },
 
 ],
@@ -869,7 +1000,9 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "For loops",
 
 "intro" => "
-<p>Variables intro text</p>
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
+</p>
 ",
 
 "shuffle" => false,
@@ -884,43 +1017,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a for-loop to print out the numbers 1 to 10.</p>
-',
-
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for-loop to print out the numbers 10 to 1.</p>
-',
-
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Use a for loop to increment ' . $numberTwo . ' with the value ' . $smallNr . ', 10 times. Return the result.
+<p>Use a for loop to increment ' . $numberTwo . ' with the value ' . $smallNr . ', 10 times. Print the result.
 </p>
 ',
 
@@ -944,7 +1041,7 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a for loop to subtract ' . $smallNr . ' from ' . $numberOne . ', 10 times. Return the result.
+<p>Use a for loop to subtract ' . $smallNr . ' from ' . $numberOne . ', 10 times. Print the result.
 </p>
 ',
 
@@ -968,15 +1065,15 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>NOT DONE. Return the result.
+<p>Use a for loop to add all the values in the range -' . $numberOne . ' to ' . $numberOne . ' to a string. Print the result separated by comma (,).
 </p>
 ',
 
-"answer" => function () use ($numberOne, $smallNr) {
+"answer" => function () use ($numberOne) {
     
-    $result = $numberOne;
-    for($i = 0; $i < 10; $i++) {
-        $result -= $smallNr;
+    $result = '';
+    for($i = $numberOne * -1; $i <= $numberOne; $i++) {
+        $result .= $i . ',';
     }   
     return $result;
 },
@@ -1001,7 +1098,9 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 "title" => "While loops",
 
 "intro" => "
-<p>Variables intro text</p>
+<p>If you need a hint, take a look at: <br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while
+</p>
 ",
 
 "shuffle" => false,
@@ -1016,12 +1115,18 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a while-loop to print out the numbers 1 to 10.</p>
-',
+<p>Use a while loop to increment ' . $lowNr . ' with the value ' . $smallNr . ' until ' . $lowNr . ' has reached or passed 1000. Print out the amount of steps needed.
+</p>',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($lowNr, $smallNr) {
+    $result = 0;
+    $countThis = $lowNr;
+    while($countThis <= 1000) {
+        
+        $result += 1;
+        $countThis += $smallNr;
+    }
+    return $result;
 },
 
 ],
@@ -1034,12 +1139,19 @@ MDN Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 [
 
 "text" => '
-<p>Use a while-loop to print out the numbers 10 to 1.</p>
+<p>Use a while loop to subtract ' . ($smallNr+1). ' from ' . $highNr . ' until ' . $highNr . ' has reached or passed 0. Print  out the amount of steps needed.
+</p>
 ',
 
-"answer" => function () {
-    $sentence = "This was convenient";
-    return $sentence;
+"answer" => function () use ($smallNr, $highNr) {
+    $result = 0;
+    $countThis = $highNr;
+    while($countThis >= 0) {
+        
+        $result += 1;
+        $countThis -= ($smallNr+1);
+    }
+    return $result;
 },
 
 ],

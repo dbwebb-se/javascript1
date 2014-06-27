@@ -2,3 +2,17 @@ body {
     margin: 8px auto;
     max-width: 700px;
 }
+
+div.answer {
+  font-family: "Courier New", monospace;
+  white-space: pre;
+  margin-bottom: 1em;
+}
+
+.fail {
+    color: red;
+}
+
+.success {
+    color: green;
+}

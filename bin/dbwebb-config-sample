@@ -1,0 +1,42 @@
+#
+# Change this to your own acronym
+#
+USER="mosstud"
+
+
+#
+# Do not change below unless you are really sure on the effects
+#
+
+
+#
+# all
+#
+HOST="ssh.student.bth.se"
+BASEDIR="dbwebb-kurser"
+PROJECT=${PWD##*/}
+SOURCE="$PWD/"
+DESTINATION="${USER}@${HOST}:$BASEDIR/$PROJECT/"
+
+
+#
+# dbwebb-validate
+#
+BASEURL="http://www.student.bth.se/~$USER/$BASEDIR/$PROJECT"
+TARGET="$PWD/me"
+BUILD1="$HOME/www"
+BUILD2="$BUILD1/$BASEDIR"
+BUILD3="$BUILD2/$PROJECT"
+BUILD="$BUILD3/me"
+
+
+#
+# dbwebb-create
+#
+COURSE=javascript1
+SERVICE="http://www.student.bth.se/~mosstud/kod-exempel/javascript1/exercises/lab"
+GET_KEY="action=only-key&acronym=$USER&course=$COURSE&doGenerate=Submit"
+GET_LAB="lab.php?lab"
+GET_ANSWERS="lab.php?answers"
+GET_ANSWER_HTML="lab.php?answer-html"
+GET_ANSWER_JS="lab.php?answer-js"
