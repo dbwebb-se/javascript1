@@ -225,6 +225,15 @@ initBuildDir()
     then
         mkdir $BUILD
     fi
+
+    if [ ! -d "$BUILD/kmom01" ]; then mkdir "$BUILD/kmom01"; fi
+    if [ ! -d "$BUILD/kmom02" ]; then mkdir "$BUILD/kmom02"; fi
+    if [ ! -d "$BUILD/kmom03" ]; then mkdir "$BUILD/kmom03"; fi
+    if [ ! -d "$BUILD/kmom04" ]; then mkdir "$BUILD/kmom04"; fi
+    if [ ! -d "$BUILD/kmom05" ]; then mkdir "$BUILD/kmom05"; fi
+    if [ ! -d "$BUILD/kmom06" ]; then mkdir "$BUILD/kmom06"; fi
+    if [ ! -d "$BUILD/kmom10" ]; then mkdir "$BUILD/kmom10"; fi
+
 }
 
 
