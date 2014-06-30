@@ -548,6 +548,26 @@ case $CMD in
         testFlag "kmom03" "flag2" 
         ;;
 
+    baddie1)
+        testBaddie "kmom02" "baddie1" 
+        ;;
+
+    baddie2)
+        testBaddie "kmom03" "baddie2" 
+        ;;
+
+    baddie3)
+        testBaddie "kmom04" "baddie3" 
+        ;;
+
+    baddie4)
+        testBaddie "kmom05" "baddie4" 
+        ;;
+
+    baddie5)
+        testBaddie "kmom06" "baddie5" 
+        ;;
+
     lab1)
         testLab "kmom02" "lab1" 
         ;;
@@ -641,6 +661,26 @@ then
 
         flag2)
             publish "kmom03/flag2"
+            ;;
+
+        baddie1)
+            publish "kmom02/baddie1"
+            ;;
+
+        baddie2)
+            publish "kmom02/baddie2"
+            ;;
+
+        baddie3)
+            publish "kmom02/baddie3"
+            ;;
+
+        baddie4)
+            publish "kmom02/baddie4"
+            ;;
+
+        baddie5)
+            publish "kmom06/baddie5"
             ;;
 
         lab1)
