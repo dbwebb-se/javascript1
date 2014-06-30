@@ -1,15 +1,16 @@
 /* Baddie2 - Assignment */
-// Assignmentsections start like this:
+// You should start by uncommenting blocks of code or functions that are needed for the assignment
+// Follow the instructions given for each of these blocks
+// After that you can start doing the assigments
+// Assignment-sections start like this:
 //		// -------------------------------------------
-//		// ASSIGNMENT
+//		// ASSIGNMENT x
 //
-// In each section there will be INSTRUCTIONS on what to fill out.
+// In each section there will be INSTRUCTIONS on what to fill out
 // Each INSTRUCTION comment will start with "A.", like this:
 //		// A. This is an instruction
 // If it's a extra assignment, the instruction starts with "E.":
 //		// E. This is an instruction for an extra assingment
-// PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
-//
 // In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
 //		// A. Assign value to variable x
 //
@@ -17,12 +18,13 @@
 //		// A. Assign value to variable x
 //		x = 42;
 // PLEASE note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row
-// In some cases you have to fill in some missing parts of code, and those can look like this:
-//		if(/*Add check*/)
-// These should be filled out by replacing the block-comment section.
-// For example:
+// In some cases you have to fill in some missing parts of code or change parts of it
+// It can look like this:
+//		if(false)
+// These should be filled out by replacing the boolean false with your code, for example:
 //		if(x > 10)
-//
+// PLEASE follow any instructions given with the assignment
+// They will tell you what code needs to be replaced
 //
 // Good luck!
 
@@ -103,31 +105,38 @@
 	 * Wall collide check function
 	 * Checks if baddie collided with content wall and recalculates left and top if it did
 	 */
+// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
+/*
 	var wallCollideBaddie = function() {
+		var max, collided;
 		console.log("Checking if baddie collided with the content walls");
+		
 		// Assume that baddie did not collide at first
-		var collided = false;
+		collided = false;
 
 		// --------------------------------------------
 		// ASSINMENT 2
 		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
 		// A. left wall collide check - check if left outside content (2a)
-		if(false /*Remove false and add your own check*/) {
+		//		Remove false and add your own check
+		if(false) {
 			// A. Reset left so that baddie doesn't move outside content (2b)
 			
 			collided = true;
 			console.log("Baddie collided with left wall");
 		}
 		// A. top wall collide check - check if top is outside content (2a)
-		if(false /*Remove false and add your own check*/) {
+		//		Remove false and add your own check
+		if(false) {
 			// A. Reset top so that baddie doesn't move outside content (2b)
 
 			collided = true;
 			console.log("Baddie collided with top wall");
 		}
 		// A. right wall collide check (2c)
-		// max value will be the width of content (tip: use getSize example)
-		var max = 0; /*Change max value from 0 to that of content width*/
+		//		max will be the width of content (tip: use getSize example)
+		//		Change max value from 0 to that of content width
+		max = 0;
 		if(left + baddie.offsetWidth > max) {
 			// A. Reset left so that baddie doesn't move outside of the content (2c)
 			left = max - baddie.offsetWidth;
@@ -135,8 +144,9 @@
 			console.log("Baddie collided with right wall");
 		}
 		// A. bottom wall collide check (2c)
-		// max value will be the height of content (tip: use getSize example)
-		max = 0; /*Change max value from 0 to that of content width*/
+		//		max value will be the height of content (tip: use getSize example)
+		//		Change max value from 0 to that of content height
+		max = 0;
 		if(top + baddie.offsetHeight > max) {
 			// A. Reset top so that baddie doesn't move outside of the content (2c)
 			top = max - baddie.offsetHeight;
@@ -147,6 +157,7 @@
 		// Return if baddie collided
 		return collided;
 	};
+*/
 
 	/**
 	 * Move baddie function
@@ -154,6 +165,8 @@
 	 * -1 (opposite), 0 (none), 1 (same direction)
 	 * Example to move left (go left, no top movement): moveBaddie(1, 0)
 	 */
+// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
+/*
 	var moveBaddie = function(moveLeft, moveTop) {
 		// Get new baddie positon by getting current one and adding step and direction
 		left = baddie.offsetLeft + moveLeft*step;
@@ -163,7 +176,8 @@
 		// --------------------------------------------
 		// ASSINMENT 3
 		// A. Check for wall collision - use given function
-		var collided = /*Add function call here*/
+		// 		Change null to the function call
+		var collided = null;
 
 		// Move baddie to its new position
 		baddie.style.left = left + "px";
@@ -173,11 +187,14 @@
 		// return if baddie collided - does not have to be used
 		return collided;
 	};
+*/
 
 	/**
 	 * Turn functions for left and right 
 	 * Just changes the class name
 	 */
+// Uncomment the functions be able to use it (remove /* and */ before and efter function declaration)
+/*
 	// Turn baddie image right - transform handled in style.css
 	var turnRight = function() {
 		baddie.className = "baddie-right";
@@ -186,11 +203,14 @@
 	var turnLeft = function() {
 		baddie.className = "baddie-left";
 	};
+*/
 
 	/**
 	 * Jump function
 	 * Move baddie up and then down again to make him appear to be jumping
 	 */
+// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
+/*
 	var jump = function() {
 		// --------------------------------------------
 		// EXTRA ASSIGNMENT
@@ -202,5 +222,6 @@
 		// Tip: Use the setTimeout-function to set a timer
 		
 	};
+*/
 
 }());

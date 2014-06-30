@@ -1,15 +1,16 @@
 /* Baddie3 - Assignment */
-// Assignmentsections start like this:
+// You should start by uncommenting blocks of code or functions that are needed for the assignment
+// Follow the instructions given for each of these blocks
+// After that you can start doing the assigments
+// Assignment-sections start like this:
 //		// -------------------------------------------
-//		// ASSIGNMENT
+//		// ASSIGNMENT x
 //
-// In each section there will be INSTRUCTIONS on what to fill out.
+// In each section there will be INSTRUCTIONS on what to fill out
 // Each INSTRUCTION comment will start with "A.", like this:
 //		// A. This is an instruction
 // If it's a extra assignment, the instruction starts with "E.":
 //		// E. This is an instruction for an extra assingment
-// PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
-//
 // In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
 //		// A. Assign value to variable x
 //
@@ -17,12 +18,13 @@
 //		// A. Assign value to variable x
 //		x = 42;
 // PLEASE note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row
-// In some cases you have to fill in some missing parts of code, and those can look like this:
-//		if(/*Add check*/)
-// These should be filled out by replacing the block-comment section.
-// For example:
+// In some cases you have to fill in some missing parts of code or change parts of it
+// It can look like this:
+//		if(false)
+// These should be filled out by replacing the boolean false with your code, for example:
 //		if(x > 10)
-//
+// PLEASE follow any instructions given with the assignment
+// They will tell you what code needs to be replaced
 //
 // Good luck!
 
@@ -110,18 +112,21 @@
 	*/
 	var drawGamePlan = function(gameArea) {
 		var i, tile;
-		console.log("Drawing gameplan.");
+		console.log("Drawing gameplan:");
+		console.log(gameArea);
 
 		// ------------------------------
 		// ASSIGNMENT 3
 		// Write a for-loop that iterates over the gameArea-array
 		// A. Fill out the missing for-loop conditions (3a)
-		for(false;false;false /*Remove false and fill in needed conditions here*/) {
+		//		Remove false and fill in needed conditions
+		for(false;false;false) {
 			// Creates the tile
 			tile = document.createElement("div");
 
 			// A. Write out the current tile from gameArea (3b)
-			var tileFromArray = null;/*Change tileFromArray so that it fetches the value of the tile*/
+			//		Change null so that it fetches the value of the tile
+			var tileFromArray = null;
 			tile.className = "tile t" + tileFromArray;
 
 			// Adds ID to tile
@@ -142,6 +147,8 @@
 	/**
 	* CHANGED Initiate move on character
 	*/
+// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
+/*
 	var moveBaddie = function(moveLeft, moveTop){
 		var tile, tilePos, newLeft, newTop;
 		// This time we want the grid position values, not the pixel position values
@@ -210,6 +217,7 @@
 				return true;
 		}
 	};
+*/
 
 	/**
 	* NEW Preform the actual move of baddie to his new position in the grid
@@ -230,6 +238,8 @@
 	 * Turn functions for left and right 
 	 * Just changes the class name
 	 */
+// Uncomment the functions be able to use it (remove /* and */ before and efter function declaration)
+/*
 	// Turn baddie image right - transform handled in style.css
 	var turnRight = function() {
 		baddie.className = "baddie-right";
@@ -238,7 +248,7 @@
 	var turnLeft = function() {
 		baddie.className = "baddie-left";
 	};
-
+*/
 
 	/* ---------------------------------------------------------
 	 * CODE
