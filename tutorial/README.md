@@ -34,6 +34,8 @@ Types and builtin objects
 DOM
 ------------------------------
 
+* [innerHTML](innerhtml.md)
+
 * [createElement](create-element.md)
 * [append](append.md)
 
