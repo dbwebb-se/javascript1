@@ -7,7 +7,7 @@
 // Each INSTRUCTION comment will start with "A.", like this:
 //		// A. This is an instruction
 // If it's a extra assignment, the instruction starts with "E.":
-// 		// E. This is an instruction for an extra assingment
+//		// E. This is an instruction for an extra assingment
 // PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
 //
 // In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
