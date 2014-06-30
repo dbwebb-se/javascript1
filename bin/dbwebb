@@ -16,7 +16,7 @@ printUsage()
     $ECHO "\nOptions:"
     $ECHO "\n"
     $ECHO "\n  -h         Print this message and exit."
-    $ECHO "\n  -i         Ignore validation faults and proceed anyway."
+    #$ECHO "\n  -i         Ignore validation faults and proceed anyway."
     $ECHO "\n  -v         Print the version of this program and exit."
     $ECHO "\n  -w         Very verbose, print out whats happening."
     $ECHO "\n  -y         Do not wait for my input, just proceed."
@@ -254,7 +254,7 @@ UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $D
 
 # Get options
 SKIP_READLINE="no"
-IGNORE_FAULTS=""
+IGNORE_FAULTS="-i"
 VERY_VERBOSE="no"
 
 while getopts ":hivwy" opt

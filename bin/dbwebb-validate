@@ -147,7 +147,10 @@ publish()
         rsync -a --delete $TARGET/ $BUILD/
     elif [ "$DIR" = "example" ]
     then
-        rsync -a --delete $TARGET/../example/ $BUILD/
+        rsync -a --delete $TARGET/../example/ $BUILD/../example
+    elif [ "$DIR" = "tutorial" ]
+    then
+        rsync -a --delete $TARGET/../tutorial/ $BUILD/../tutorial
     else
         rsync -a --delete $TARGET/$DIR/ $BUILD/$DIR/
         rsync -a $TARGET/me.html $BUILD/me.html
@@ -530,6 +533,9 @@ case $CMD in
         example
         ;;
 
+    tutorial)
+        ;;
+
     sandbox)
         testSandbox
         ;;
@@ -609,11 +615,16 @@ then
 
         all)
             publish "example"
+            publish "tutorial"
             publish "all"
             ;;
 
         example)
             publish "example"
+            ;;
+
+        tutorial)
+            publish "tutorial"
             ;;
 
         sandbox)
