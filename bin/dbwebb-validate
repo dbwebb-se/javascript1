@@ -145,6 +145,9 @@ publish()
     if [ "$DIR" = "all" ]
     then
         rsync -a --delete $TARGET/ $BUILD/
+    elif [ "$DIR" = "example" ]
+    then
+        rsync -a --delete $TARGET/../example/ $BUILD/
     else
         rsync -a --delete $TARGET/$DIR/ $BUILD/$DIR/
         rsync -a $TARGET/me.html $BUILD/me.html
@@ -605,7 +608,12 @@ then
             ;;
 
         all)
+            publish "example"
             publish "all"
+            ;;
+
+        example)
+            publish "example"
             ;;
 
         sandbox)
