@@ -34,7 +34,7 @@ document.body.appendChild(div);
 Reference and read more
 ------------------------------
 
-[MDN appendChild](hhttps://developer.mozilla.org/en-US/docs/Web/API/Node.appendChild)
+[MDN appendChild](https://developer.mozilla.org/en-US/docs/Web/API/Node.appendChild)
 
 
 
