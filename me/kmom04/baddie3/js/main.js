@@ -7,7 +7,7 @@
 // Each INSTRUCTION comment will start with "A.", like this:
 //		// A. This is an instruction
 // If it's a extra assignment, the instruction starts with "E.":
-// 		// E. This is an instruction for an extra assingment
+//		// E. This is an instruction for an extra assingment
 // PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
 //
 // In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
@@ -116,12 +116,13 @@
 		// ASSIGNMENT 3
 		// Write a for-loop that iterates over the gameArea-array
 		// A. Fill out the missing for-loop conditions (3a)
-		for(/*Fill in conditions here*/) {
+		for(false;false;false /*Remove false and fill in needed conditions here*/) {
 			// Creates the tile
 			tile = document.createElement("div");
 
 			// A. Write out the current tile from gameArea (3b)
-			tile.className = "tile t" + /*array code to get tile here*/;
+			var tileFromArray = null;/*Change tileFromArray so that it fetches the value of the tile*/
+			tile.className = "tile t" + tileFromArray;
 
 			// Adds ID to tile
 			tile.id = "n" + i;
@@ -136,7 +137,7 @@
 	var init = function() {
 		drawGamePlan(gameArea);
 		moveBaddieTo(1, 1);
-	}
+	};
 
 	/**
 	* CHANGED Initiate move on character
@@ -149,8 +150,7 @@
 
 		// Do check that new positon is in scope, if not - reset
 		// Keep in mind that even though the gridsize is 10, you count from 0-9
-		if(gridSize-1 < newLeft || newLeft < 0
-			|| gridSize-1 < newTop || newTop < 0) {
+		if(gridSize-1 < newLeft || newLeft < 0 || gridSize-1 < newTop || newTop < 0) {
 			return true; // collided with walls, don't continue
 		}
 		console.log("Move to: " + newLeft + "," + newTop);
@@ -209,7 +209,7 @@
 				console.log("Oh no, baddie collided with the wall");
 				return true;
 		}
-	}
+	};
 
 	/**
 	* NEW Preform the actual move of baddie to his new position in the grid
@@ -224,7 +224,7 @@
 		// Move baddie to his new location
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
-	}
+	};
 
 	/**
 	 * Turn functions for left and right 
@@ -233,11 +233,11 @@
 	// Turn baddie image right - transform handled in style.css
 	var turnRight = function() {
 		baddie.className = "baddie-right";
-	}
+	};
 	// Turn baddie image left - transform handled in style.css
 	var turnLeft = function() {
 		baddie.className = "baddie-left";
-	}
+	};
 
 
 	/* ---------------------------------------------------------

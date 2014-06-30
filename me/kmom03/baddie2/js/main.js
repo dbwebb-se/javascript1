@@ -7,7 +7,7 @@
 // Each INSTRUCTION comment will start with "A.", like this:
 //		// A. This is an instruction
 // If it's a extra assignment, the instruction starts with "E.":
-// 		// E. This is an instruction for an extra assingment
+//		// E. This is an instruction for an extra assingment
 // PLEASE make sure to note the difference between INSTRUCTION-comments and regular comments
 //
 // In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
@@ -112,14 +112,14 @@
 		// ASSINMENT 2
 		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
 		// A. left wall collide check - check if left outside content (2a)
-		if(/*Add check*/) {
+		if(false /*Remove false and add your own check*/) {
 			// A. Reset left so that baddie doesn't move outside content (2b)
 			
 			collided = true;
 			console.log("Baddie collided with left wall");
 		}
 		// A. top wall collide check - check if top is outside content (2a)
-		if(/*Add check*/) {
+		if(false /*Remove false and add your own check*/) {
 			// A. Reset top so that baddie doesn't move outside content (2b)
 
 			collided = true;
@@ -127,24 +127,26 @@
 		}
 		// A. right wall collide check (2c)
 		// max value will be the width of content (tip: use getSize example)
-		if(left + baddie.offsetWidth > /*Add max value*/) {
+		var max = 0; /*Change max value from 0 to that of content width*/
+		if(left + baddie.offsetWidth > max) {
 			// A. Reset left so that baddie doesn't move outside of the content (2c)
-			left = /*Add max value*/ - baddie.offsetWidth;
+			left = max - baddie.offsetWidth;
 			collided = true;
 			console.log("Baddie collided with right wall");
 		}
 		// A. bottom wall collide check (2c)
 		// max value will be the height of content (tip: use getSize example)
-		if(top + baddie.offsetHeight > /*Add max value*/) {
+		max = 0; /*Change max value from 0 to that of content width*/
+		if(top + baddie.offsetHeight > max) {
 			// A. Reset top so that baddie doesn't move outside of the content (2c)
-			top = /*Add max value*/ - baddie.offsetHeight;
+			top = max - baddie.offsetHeight;
 			collided = true;
 			console.log("Baddie collided with bottom wall");
 		}
 
 		// Return if baddie collided
 		return collided;
-	}
+	};
 
 	/**
 	 * Move baddie function
@@ -166,11 +168,11 @@
 		// Move baddie to its new position
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
-		onsole.log("Baddie went to " + left + "," + top);
+		console.log("Baddie went to " + left + "," + top);
 
 		// return if baddie collided - does not have to be used
 		return collided;
-	}
+	};
 
 	/**
 	 * Turn functions for left and right 
@@ -179,11 +181,11 @@
 	// Turn baddie image right - transform handled in style.css
 	var turnRight = function() {
 		baddie.className = "baddie-right";
-	}
+	};
 	// Turn baddie image left - transform handled in style.css
 	var turnLeft = function() {
 		baddie.className = "baddie-left";
-	}
+	};
 
 	/**
 	 * Jump function
@@ -196,9 +198,9 @@
 		// E. Move baddie up (b)
 
 		// E. If he did not collide when moving (hindering the jump)
-		// 		move him back down after a set amount of time (c)
+		//		move him back down after a set amount of time (c)
 		// Tip: Use the setTimeout-function to set a timer
 		
-	}
+	};
 
 }());
