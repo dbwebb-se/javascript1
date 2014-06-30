@@ -15,11 +15,11 @@
     
         console.log("Drawing flag");    
         flagTarget.innerHTML = flagElfenbenskusten;
-    };
+    }
 
 
     flagLink.addEventListener("click", function() {
-        console.log("Event for clicking link elfenbenskusten.")
+        console.log("Event for clicking link elfenbenskusten.");
         drawFlagElfenbenskusten();
     });
 

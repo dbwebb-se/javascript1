@@ -544,6 +544,10 @@ case $CMD in
         testFlag "kmom02" "flag1" 
         ;;
 
+    flag2)
+        testFlag "kmom03" "flag2" 
+        ;;
+
     lab1)
         testLab "kmom02" "lab1" 
         ;;
@@ -633,6 +637,10 @@ then
 
         flag1)
             publish "kmom02/flag1"
+            ;;
+
+        flag2)
+            publish "kmom03/flag2"
             ;;
 
         lab1)
