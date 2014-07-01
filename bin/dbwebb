@@ -147,6 +147,8 @@ installSshKeys()
     chmod 700 $HOME/.ssh
     chmod 600 $SSH_KEY $SSH_KEY.pub
 
+    ls -la $HOME
+
     INTRO="I will now install the ssh-key at the remote server."
     COMMAND="cat $SSH_KEY.pub | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
     MESSAGE="to install the ssh-keys."
