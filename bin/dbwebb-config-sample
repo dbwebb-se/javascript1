@@ -17,6 +17,7 @@ BASEDIR="dbwebb-kurser"
 PROJECT=${PWD##*/}
 SOURCE="$PWD/"
 DESTINATION="${USER}@${HOST}:$BASEDIR/$PROJECT/"
+SSH_KEY="$HOME/.ssh/dbwebb"
 
 
 #
