@@ -19,6 +19,11 @@ SOURCE="$PWD/"
 DESTINATION="${USER}@${HOST}:$BASEDIR/$PROJECT/"
 SSH_KEY="$HOME/.ssh/dbwebb"
 
+case "`uname`" in
+   CYGWIN*) IS_CYGWIN="yes" ;;
+   *)       IS_CYGWIN="no" ;;
+esac
+
 
 #
 # dbwebb-validate
