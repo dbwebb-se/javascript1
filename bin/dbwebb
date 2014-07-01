@@ -171,6 +171,8 @@ createConfig()
 {
     FIRST=$1
 
+    GUESS_COURSE=${PWD##*/}
+
     if [ -z $FIRST ]
     then
         $ECHO "Welcome to dbwebb utility! It seems like its your first time here?\n"
@@ -180,7 +182,7 @@ createConfig()
     $ECHO "\nI will now create the configuration file \".dbwebb.config\"."
     $ECHO "\nWhat is your student acronym? "
     read ACRONYM
-    cat bin/dbwebb-config-sample | sed s/DEFAULT_USER/$ACRONYM/g > .dbwebb.config
+    cat bin/dbwebb-config-sample | sed s/DEFAULT_USER/$ACRONYM/g | sed s/DEFAULT_COURSE/$GUESS_COURSE/g > .dbwebb.config
 
     $ECHO "\nThe config file \".dbwebb.config\" is now created.\n"
     
@@ -188,6 +190,22 @@ createConfig()
     then
         $ECHO "You can now re-run your initial command.\n"
     fi
+}
+
+
+
+#
+# Create default files.
+#
+createDefaultFiles()
+{
+    DEFAULT="me/default/"
+    WHERE="me/"
+
+    INTRO="Initiating course repo by creating course specific files."
+    COMMAND="rsync -a --ignore-existing $DEFAULT $WHERE"
+    MESSAGE="to create course specific files in me-directory."
+    executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
 
 
@@ -365,7 +383,9 @@ case $CMD in
         ;;
 
     init)
-        initServer 
+        initServer
+        createDefaultFiles
+        uploadToServer
         ;;
 
     update)

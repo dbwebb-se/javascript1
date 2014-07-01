@@ -2,6 +2,8 @@
 # Change this to your own acronym
 #
 USER="DEFAULT_USER"
+COURSE="DEFAULT_COURSE"
+
 
 
 #
@@ -54,7 +56,6 @@ BUILD="$BUILD3/me"
 #
 # dbwebb-create
 #
-COURSE=javascript1
 SERVICE="http://www.student.bth.se/~mosstud/kod-exempel/javascript1/exercises/lab"
 GET_KEY="action=only-key&acronym=$USER&course=$COURSE&doGenerate=Submit"
 GET_LAB="lab.php?lab"
