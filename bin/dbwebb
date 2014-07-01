@@ -174,10 +174,10 @@ createConfig()
     if [ -z $FIRST ]
     then
         $ECHO "Welcome to dbwebb utility! It seems like its your first time here?\n"
+        $ECHO "I'm missing the configuration file."
     fi
 
-    $ECHO "I'm missing the configuration file \".dbwebb.config\"."
-    $ECHO "\nI will now create it for you."
+    $ECHO "\nI will now create the configuration file \".dbwebb.config\"."
     $ECHO "\nWhat is your student acronym? "
     read ACRONYM
     cat bin/dbwebb-config-sample | sed s/DEFAULT_USER/$ACRONYM/g > .dbwebb.config
