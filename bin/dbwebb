@@ -23,6 +23,7 @@ printUsage()
     $ECHO "\n"
     $ECHO "\nCommand:"
     $ECHO "\n"
+    $ECHO "\n  config    Create, or re-create the config file .dbwebb.config."
     $ECHO "\n  test      Test the connection by loggin in."
     $ECHO "\n  sshkey    Create and install ssh-keys to avoid using password.."
     $ECHO "\n  login     Login to the server using ssh."
@@ -39,6 +40,7 @@ printUsage()
     $ECHO
     $ECHO "\nExample:"
     $ECHO "\n"
+    $ECHO "\n  $ dbwebb config"
     $ECHO "\n  $ dbwebb test"
     $ECHO "\n  $ dbwebb sshkey"
     $ECHO "\n  $ dbwebb login"
@@ -46,7 +48,7 @@ printUsage()
     $ECHO "\n  $ dbwebb -y upload"
     $ECHO "\n  $ dbwebb create lab1"
     $ECHO "\n  $ dbwebb -y validate kmom01"
-    $ECHO "\n  $ dbwebb -y publish"
+    $ECHO "\n  $ dbwebb -y publish lab1"
     $ECHO "\n"
     $ECHO "\n"
     exit
@@ -132,8 +134,14 @@ loginToServer()
 #
 installSshKeys()
 {
+    if [ ! -d $HOME/.ssh ]
+    then
+        mkdir $HOME/.ssh
+        chmod 700 $HOME/.ssh
+    fi 
+    
     INTRO="First we need to create a ssh key and store it locally."
-    COMMAND="ssh-keygen -t dsa -f dbwebb.dsa -N ''"
+    COMMAND="ssh-keygen -t dsa -f $HOME/.ssh/dbwebb.dsa -N ''"
     #ssh-keygen -t dsa -N "my passphrase" -C "test key" -f mykey
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
@@ -143,6 +151,34 @@ installSshKeys()
     COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
     MESSAGE="to install the ssh-keys."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
+}
+
+
+
+#
+# Create the config file .dwbebb.config.
+#
+createConfig()
+{
+    FIRST=$1
+
+    if [ -z $FIRST ]
+    then
+        $ECHO "Welcome to dbwebb utility! It seems like its your first time here?\n"
+    fi
+
+    $ECHO "I'm missing the configuration file \".dbwebb.config\"."
+    $ECHO "\nI will now create it for you."
+    $ECHO "\nWhat is your student acronym? "
+    read ACRONYM
+    cat bin/dbwebb-config-sample | sed s/DEFAULT_USER/$ACRONYM/g > .dbwebb.config
+
+    $ECHO "\nThe config file \".dbwebb.config\" is now created.\n"
+    
+    if [ -z $FIRST ]
+    then
+        $ECHO "You can now re-run your initial command.\n"
+    fi
 }
 
 
@@ -247,7 +283,12 @@ then
 fi
 
 # Get settings from config-file
-. bin/dbwebb-config
+if [ ! -f ".dbwebb.config" ]
+then
+    createConfig
+    exit
+fi
+. "./.dbwebb.config"
 UPLOAD="rsync -av --delete --exclude literature --exclude .git -e ssh $SOURCE $DESTINATION" 
 
 
@@ -298,6 +339,10 @@ shift $((OPTIND - 1))
 CMD=$1
 case $CMD in
     
+    config)
+        createConfig "second"
+        ;;
+
     test)
         testConnection 
         ;;
