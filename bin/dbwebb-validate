@@ -137,7 +137,7 @@ checkCommand()
 publish()
 {
     DIR="$1"
-    $SILENT="$2"
+    SILENT="$2"
     $ECHO "\n\nPublishing $DIR"
 
     initBuildDir
@@ -160,14 +160,20 @@ publish()
         rsync -a --delete $TARGET/style/ $BUILD/style/
     fi
 
-    $ECHO "\nMinifying HTML-files."
+    if [ -z "$SILENT" ]; then
+        $ECHO "\nMinifying HTML-files."
+    fi
     find $BUILD/ -type f -name '*.html' | while read filename; do $HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename; done
     
-    $ECHO "\nUglify JavaScript-files."
+    if [ -z "$SILENT" ]; then
+        $ECHO "\nUglify JavaScript-files."
+    fi
     find $BUILD/ -type f -name '*.js' | while read filename; do $UGLIFYJS $filename -o $filename $UGLIFYJS_OPTIONS; done
     #$UGLIFYJS $BUILD/$KMOM/$DIR/js/main.js -o $BUILD/$KMOM/$DIR/js/main.js $UGLIFYJS_OPTIONS
     
-    $ECHO "\nMinify CSS-files."
+    if [ -z "$SILENT" ]; then
+        $ECHO "\nMinify CSS-files."
+    fi
     find $BUILD/ -type f -name '*.css' | while read filename; do $CLEANCSS $filename -o $filename; done
     #$CLEANCSS $BUILD/$KMOM/$DIR/style/style.css -o $BUILD/$KMOM/$DIR/style/style.css
 }
