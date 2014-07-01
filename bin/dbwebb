@@ -137,7 +137,6 @@ installSshKeys()
     if [ ! -d $HOME/.ssh ]
     then
         mkdir $HOME/.ssh
-        chmod 700 $HOME/.ssh
     fi 
     
     INTRO="First we need to create a ssh key and store it locally."
@@ -145,6 +144,7 @@ installSshKeys()
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
+    chmod 700 $HOME/.ssh
     chmod 600 $SSH_KEY $SSH_KEY.pub
 
     INTRO="I will now install the ssh-key at the remote server."
