@@ -146,7 +146,7 @@ installSshKeys()
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
     INTRO="I will now install the ssh-key at the remote server."
-    COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
+    COMMAND="cat $HOME/.ssh/dbwebb.dsa | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
     MESSAGE="to install the ssh-keys."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
