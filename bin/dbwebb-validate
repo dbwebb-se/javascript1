@@ -142,7 +142,10 @@ publish()
 
     initBuildDir
 
-    $ECHO "\nCopying files to www."
+    if [ -z "$SILENT" ]; then
+        $ECHO "\nCopying files to www."
+    fi
+    
     if [ "$DIR" = "all" ]
     then
         rsync -a --delete $TARGET/ $BUILD/
