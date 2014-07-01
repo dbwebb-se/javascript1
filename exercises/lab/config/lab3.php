@@ -144,7 +144,7 @@ return [
     
     $result = array_merge($serie1, $arrWords1[$arrRand]);
         
-    return implode(", ", $result);
+    return implode(",", $result);
 },
 
 ],
@@ -165,7 +165,7 @@ return [
     
     $result = array_reverse($arrWords1[$arrRand]);
         
-    return implode(", ", $result);
+    return implode(",", $result);
 },
 
 ],
@@ -211,7 +211,7 @@ return [
         $result[$i] = strtoupper($val);
         $i++;
     }   
-    return implode(", ", $result);
+    return implode(",", $result);
 },
 
 ],
@@ -224,7 +224,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode($arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to add the text "is good for you" to all elements in the array. Name the function "changeArrayElements" and return the array.
+<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to add the text "is good for you" to all elements in the array. Name the function "changeArrayElements" and return the array.
 </p>
 ',
 
@@ -236,7 +236,7 @@ return [
         $result[$i] .= $val . ' is good for you';
         $i++;
     }   
-    return implode(", ", $result);
+    return implode(",", $result);
 },
 
 ],
@@ -249,7 +249,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode($arrWords1[$arrRand]) . '] to a function and join it into a string. Use a space (" ") to separate the elements. Name the function "joinArray" and return the array.
+<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and join it into a string. Use a space (" ") to separate the elements. Name the function "joinArray" and return the array.
 </p>
 ',
 
@@ -324,7 +324,7 @@ return [
 "answer" => function () use ($smallRandNr, $serie1) {
     $result = $serie1;
     array_push($result, $smallRandNr);
-    return implode(", ", $result);   
+    return implode(",", $result);   
 },
 
 ],
@@ -367,7 +367,7 @@ return [
 "answer" => function () use ($serie2) {
     $result = $serie2;
     sort($result);
-    return implode(", ", $result);   
+    return implode(",", $result);   
 },
 
 ],
