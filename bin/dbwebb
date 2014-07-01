@@ -141,12 +141,12 @@ installSshKeys()
     fi 
     
     INTRO="First we need to create a ssh key and store it locally."
-    COMMAND="ssh-keygen -t dsa -f $HOME/.ssh/dbwebb.dsa -N ''"
+    COMMAND="ssh-keygen -t dsa -f $HOME/.ssh/dbwebb-dsa -N ''"
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
     INTRO="I will now install the ssh-key at the remote server."
-    COMMAND="cat $HOME/.ssh/dbwebb.dsa | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
+    COMMAND="cat $HOME/.ssh/dbwebb-dsa | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
     MESSAGE="to install the ssh-keys."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
