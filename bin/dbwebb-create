@@ -85,7 +85,7 @@ then
 fi
 
 # Get settings from config-file
-. bin/dbwebb-config
+. "./.dbwebb.config"
 
 
 # Get options
