@@ -137,7 +137,8 @@ checkCommand()
 publish()
 {
     DIR="$1"
-    $ECHO "\n\nPublishing"
+    $SILENT="$2"
+    $ECHO "\n\nPublishing $DIR"
 
     initBuildDir
 
@@ -659,8 +660,8 @@ then
             ;;
 
         all)
-            publish "example"
-            publish "tutorial"
+            publish "example" "silent"
+            publish "tutorial" "silent"
             publish "all"
             ;;
 
