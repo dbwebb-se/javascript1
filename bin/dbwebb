@@ -242,7 +242,7 @@ validateUploadedResults()
     WHAT=$1
     INTRO="I will now upload files to the remote server and validate them."
     COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT'"
-    MESSAGE="to upload and validate course results."
+    MESSAGE="to validate course results."
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 }
 
