@@ -17,12 +17,27 @@ BASEDIR="dbwebb-kurser"
 PROJECT=${PWD##*/}
 SOURCE="$PWD/"
 DESTINATION="${USER}@${HOST}:$BASEDIR/$PROJECT/"
-SSH_KEY="$HOME/.ssh/dbwebb"
 
+# Detect if ssh-key is available
+SSH_KEY=""
+SSH_KEY_OPTIONS=""
+if [ -f $HOME/.ssh/dbwebb ]
+then
+    SSH_KEY="$HOME/.ssh/dbwebb"
+    SSH_KEY_OPTION="-i $SSH_KEY"
+fi
+
+
+
+#
+# Cygwin specifics
+#
 case "`uname`" in
    CYGWIN*) IS_CYGWIN="yes" ;;
    *)       IS_CYGWIN="no" ;;
 esac
+CYGWIN_DEFAULT_GROUP="User"
+
 
 
 #

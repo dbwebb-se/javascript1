@@ -37,7 +37,7 @@ printUsage()
     $ECHO "\n  publish   Upload, Validate and Publish your course results to the web."
     $ECHO "\n            Send in kmom01, kmom02, etc to publish only one kmom."
     $ECHO "\n            Default is to publish all."
-    $ECHO
+    $ECHO "\n"
     $ECHO "\nExample:"
     $ECHO "\n"
     $ECHO "\n  $ dbwebb config"
@@ -134,6 +134,8 @@ loginToServer()
 #
 installSshKeys()
 {
+    SSH_KEY="$HOME/.ssh/dbwebb"
+
     if [ ! -d $HOME/.ssh ]
     then
         mkdir $HOME/.ssh
@@ -144,10 +146,14 @@ installSshKeys()
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
+    # Bug (?) om Cygwin & win 8
+    if [ $IS_CYGWIN = "yes" ]
+    then
+        chgrp -R $CYGWIN_DEFAULT_GROUP $HOME/.ssh
+    fi
+
     chmod 700 $HOME/.ssh
     chmod 600 $SSH_KEY $SSH_KEY.pub
-
-    ls -la $HOME
 
     INTRO="I will now install the ssh-key at the remote server."
     COMMAND="cat $SSH_KEY.pub | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
@@ -290,8 +296,8 @@ then
     exit
 fi
 . "./.dbwebb.config"
-UPLOAD="rsync -av --delete --exclude literature --exclude .git -e \"ssh -i $SSH_KEY\" $SOURCE $DESTINATION" 
-SSH="ssh ${USER}@${HOST} -i $SSH_KEY"
+UPLOAD="rsync -av --delete --exclude literature --exclude .git -e \"ssh $SSH_KEY_OPTION\" $SOURCE $DESTINATION" 
+SSH="ssh ${USER}@${HOST} $SSH_KEY_OPTION"
 
 
 
