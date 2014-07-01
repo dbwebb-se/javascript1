@@ -142,12 +142,10 @@ installSshKeys()
     
     INTRO="First we need to create a ssh key and store it locally."
     COMMAND="ssh-keygen -t dsa -f $HOME/.ssh/dbwebb.dsa -N ''"
-    #ssh-keygen -t dsa -N "my passphrase" -C "test key" -f mykey
     MESSAGE="to create the ssh key."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 
     INTRO="I will now install the ssh-key at the remote server."
-    #if [ ! -d dbwebb-kurser ]; then mkdir dbwebb-kurser; fi; chmod 700 dbwebb-kurser;
     COMMAND="cat $HOME/.ssh/id_dsa.pub | ssh $USER@$HOST 'sh -c \"if [ ! -d .ssh ]; then mkdir .ssh; fi; chmod 700 .ssh; touch .ssh/authorized_keys; cat >> .ssh/authorized_keys\"'"
     MESSAGE="to install the ssh-keys."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
@@ -201,7 +199,7 @@ initServer()
 #
 updateFromMaster()
 {
-    INTRO="UPdate courslibb (repo) with latest changes from course master repo."
+    INTRO="Update course repo with latest changes from course master repo."
     COMMAND="git pull"
     MESSAGE="to update course repo."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
@@ -229,7 +227,6 @@ createLab()
 {
     LAB="$1"
     INTRO="Create laboration $LAB."
-    #COMMAND="ssh ${USER}@${HOST} 'cd $BASEDIR/$PROJECT; bin/dbwebb-create \"$LAB\"'"
     COMMAND="bin/dbwebb-create \"$LAB\""
     MESSAGE="to create the lab."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
