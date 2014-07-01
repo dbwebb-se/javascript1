@@ -69,6 +69,31 @@ if ($course == 'javascript1' && $lab == 'lab1') {
     extract(include "config/lab5.php");
     // shuffle questions
 
+} else if ($course == 'python' && $lab == 'lab1') {
+    
+    extract(include "config/python/lab1.php");
+    // shuffle questions
+
+} else if ($course == 'python' && $lab == 'lab2') {
+    
+    extract(include "config/python/lab2.php");
+    // shuffle questions
+
+} else if ($course == 'python' && $lab == 'lab3') {
+    
+    extract(include "config/python/lab3.php");
+    // shuffle questions
+
+} else if ($course == 'python' && $lab == 'lab4') {
+    
+    extract(include "config/python/lab4.php");
+    // shuffle questions
+
+} else if ($course == 'python' && $lab == 'lab5') {
+    
+    extract(include "config/python/lab5.php");
+    // shuffle questions
+
 } else {
     die("Not a valid combination.");
 }
