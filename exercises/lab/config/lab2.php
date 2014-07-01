@@ -14,6 +14,7 @@ $smallRandNr = 5; // 0-9
 $qRandNr = 2; // 0-4 for the questions
 $fbStart = 1; // 1-5
 $fbStop = 25; // 20-30
+$monthNr = 7; // 1-12
 
 $serie1 = [347, -221, 54, 435];  // 100-999
 $wordSerie2 = ['red', 'blue', 'green', 'black', 'purple', 'yellow', 'pink', 'grey', 'brown', 'white'];
@@ -86,7 +87,7 @@ return [
 
 "answer" => function () use ($numberTwo, $numberThree) {
     
-    return $numberOne * $numberTwo;
+    return $numberTwo * $numberThree;
 },
 
 ],
@@ -167,7 +168,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns a string with all numbers comma-separated, in a range of: ' . $numberThree . ' and ' . $numberTwo . '. Make sure that the order of the arguments should not matter. For example if the arguments are: 5 and 10, the function should print: 5,6,7,8,9,10. If the arguments are: 10 and 5, the function should print: 10,9,8,7,6,5. If the arguments are the same, print out only that number. Name the function "printRange" and print out the result.
+<p>Create a function that returns a string with all numbers comma-separated, in a range of: ' . $numberThree . ' and ' . $numberTwo . '. Make sure that the order of the arguments should not matter. For example if the arguments are: 5 and 10, the function should print: 5,6,7,8,9,10. If the arguments are: 10 and 5, the function should print: 10,9,8,7,6,5,. If the arguments are the same, print out only that number. Name the function "printRange" and print out the result.
 </p>
 ',
 
@@ -178,12 +179,12 @@ return [
 
     if($numberThree < $numberTwo) {
         for($i = $numberThree; $i < $numberTwo+1; $i++) {
-            $result .= $i . ", ";
+            $result .= $i . ",";
         }
     }
     else if($numberThree > $numberTwo) {
         for($i = $numberThree; $i > $numberTwo-1; $i--) {
-            $result .= $i . ", ";
+            $result .= $i . ",";
         }
     }
     else {
@@ -211,7 +212,7 @@ return [
     $result = '';
 
     for($i = 0; $i < $smallRandNr+5; $i++) {
-        $result .= $wordSerie2[$smallRandNr] . ", ";
+        $result .= $wordSerie2[$smallRandNr];
     }
     return $result;
 },
@@ -226,7 +227,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns the money you have, after years of interest, given three arguments: ' . $highNr . ', ' . $lowNr . ' and ' . $smallNr . '. First argument represents the start money, the second argument represents the number of years your money produces interest. The third argument is the interest rate in percent (%). Name the function "calculateInterest" and print out the result.
+<p>Create a function that returns the money you have, after years of interest, given three arguments: ' . $highNr . ', ' . $lowNr . ' and ' . $smallNr . '. First argument represents the start money, the second argument represents the number of years your money produces interest. The third argument is the interest rate in percent (%). Name the function "calculateInterest" and print out the result with a maximum of 4 decimals. 
 </p>
 ',
 
@@ -239,7 +240,7 @@ return [
         $currentInterest = ($result / 100) * $smallNr;
         $result += $currentInterest; 
     }
-    return $result;
+    return round($result, 4);
 },
 
 ],
@@ -290,16 +291,16 @@ return [
     else {
         for($i = $fbStart; $i < $fbStop+1; $i++) {
             if($i % 3 === 0 && $i % 5 !== 0) {
-                $result .= 'Fizz, ';
+                $result .= 'Fizz,';
             }
             else if($i % 5 === 0 && $i % 3 !== 0) {
-                $result .= 'Buzz, ';
+                $result .= 'Buzz,';
             }
             else if($i % 3 === 0 && $i % 5 === 0) {
-                $result .= 'Fizz Buzz, ';
+                $result .= 'Fizz Buzz,';
             }
             else {
-                $result .= $i . ', ';
+                $result .= $i . ',';
             }
         }
     }
@@ -341,11 +342,11 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes one argument, "monthNr". The function should return the name of the month representing the passed value, for example: monthNr = 2 should return "February". Create an exception for values out of range such if monthNr < 1 and > 12. Catch the exception and print it out. Name the function monthException and return a string.
+<p>Create a function that takes one argument, "monthNr". Use the number: ' . $monthNr . '. The function should return the name of the month representing the passed value, for example: monthNr = 2 should return "February". Create an exception for values out of range such if monthNr < 1 and > 12. Catch the exception and print it out. Name the function monthException and return a string.
 </p>
 ',
 
-"answer" => function () {
+"answer" => function () use ($monthNr) {
 
     function monthException($monthNr) {
         $newMonthNr = $monthNr -1;
@@ -359,7 +360,7 @@ return [
         }
     }
     try {
-        return monthException(13);
+        return monthException($monthNr);
     }
     catch (Exception $e){
         return 'Caught Exception: ' . $e->getMessage();
@@ -376,7 +377,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes one argument, ' . $numberOne . '. The function should return a string "even" or "odd" depending on the number. Create an exception for both possibilities and use "catch" to print out the result. Name the function "oddOrEven".
+<p>Create a function that takes one argument, ' . $numberOne . '. The function should return a string "EVEN" or "ODD" depending on the number. Create an exception for both possibilities and use "catch" to print out the result. Name the function "oddOrEven".
 </p>
 ',
 
