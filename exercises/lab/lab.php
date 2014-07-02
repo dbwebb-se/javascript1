@@ -10,12 +10,15 @@ $doLab        = isset($_GET['lab']) ? true : false;
 $doAnswers    = isset($_GET['answers']) ? true : false;
 $doAnswerHtml = isset($_GET['answer-html']) ? true : false;
 $doAnswerJs   = isset($_GET['answer-js']) ? true : false;
+$doAnswerPy   = isset($_GET['answer-py']) ? true : false;
+$doAnswerPyAssert = isset($_GET['answer-py-assert']) ? true : false;
+$doAnswerJson = isset($_GET['answer-json']) ? true : false;
 $key          = isset($_GET['key']) ? $_GET['key'] : null;
 
 
 
 // Check or die
-(isset($doLab) || isset($doAnswers) || isset($doAnswerHtml) || isset($doAnswerJs)) or die("Missing what to do.");
+(isset($doLab) || isset($doAnswers) || isset($doAnswerHtml) || isset($doAnswerJs) || isset($doAnswerPy) || isset($doAnswerJson) || isset($doAnswerPyAssert)) or die("Missing what to do.");
 isset($key) or die("No key supplied.");
 
 
@@ -109,6 +112,12 @@ if ($doLab && $doAnswers) {
     include "view/answer-html_tpl.php";
 } else if ($doAnswerJs) {
     include "view/answer-js_tpl.php";
+} else if ($doAnswerPy) {
+    include "view/answer-py_tpl.php";
+} else if ($doAnswerJson) {
+    include "view/answer-json_tpl.php";
+} else if ($doAnswerPyAssert) {
+    include "view/answer-py-assert_tpl.php";
 } else {
     die("Nothing to do.");
 }
