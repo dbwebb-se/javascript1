@@ -264,7 +264,7 @@ return [
     if($numberThree > 50 && $numberThree < 100) {
        $result = true;
     }
-    return var_export($result);
+    return $result;
 },
 
 ],

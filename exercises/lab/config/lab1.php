@@ -259,10 +259,10 @@ return [
 
 "answer" => function () use ($someIntText) {
     
-    $result = "false";
+    $result = false;
 
     if(is_int($someIntText)) {
-        $result = "true";
+        $result = true;
     }
     return $result;
 },
@@ -836,7 +836,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
         $result = true;
     }
     
-    return var_export($result);
+    return $result;
 },
 
 ],
