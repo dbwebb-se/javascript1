@@ -24,7 +24,7 @@ foreach ($sections as $section) {
 """
 Exercise <?="$sectionId.$questionId"?> 
  
-<?=wordwrap(trim(strip_tags($question['text']), "\n"), 75, "\n * ", true)?> 
+<?=wordwrap(trim(strip_tags($question['text']), "\n"), 75, "\n", true)?> 
 
 Write your code below and put the answer into the variable ANSWER.
 """
