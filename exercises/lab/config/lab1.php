@@ -831,12 +831,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
 
 "answer" => function () use ($numberOne, $numberTwo) {
     
-    $result = "false";
+    $result = false;
     if($numberOne <= $numberTwo) {
-        $result = "true";
+        $result = true;
     }
     
-    return $result;
+    return var_export($result);
 },
 
 ],
