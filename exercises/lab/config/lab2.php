@@ -259,12 +259,12 @@ return [
 
 "answer" => function () use ($numberThree) {
     
-    $result = "false";
+    $result = false;
 
     if($numberThree > 50 && $numberThree < 100) {
-       $result = "true";
+       $result = true;
     }
-    return $result;
+    return var_export($result);
 },
 
 ],
