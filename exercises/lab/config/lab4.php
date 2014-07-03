@@ -59,7 +59,7 @@ return [
 [
 
 "text" => '
-<p>Give your object the property "firstName" and name him "' . $p1["firstName"] . '". Also give him a method called "print1". This method should present your object with the first name, for example: "My name is ' . $p1["firstName"] . '."  
+<p>Give your object the property "firstName" and name him "' . $p1["firstName"] . '". Also give him a method called "print1". This method should present your object with the first name: "My name is ' . $p1["firstName"] . '."  
 </p>
 ',
 
@@ -78,7 +78,7 @@ return [
 [
 
 "text" => '
-<p>Give your object the properties "lastName" and "nationality". The attributes should be "' . $p1["lastName"] . '" and "' . $p1["nationality"] . '". Create the method print2 and add these to the prestentation.
+<p>Give your object the properties "lastName" and "nationality". The attributes should be "' . $p1["lastName"] . '" and "' . $p1["nationality"] . '". Create the method print2 and add these to the prestentation: '. $print2 . '.
 </p>
 ',
 
@@ -97,16 +97,13 @@ return [
 [
 
 "text" => '
-<p>Give your object the property "born" and add a Date object: "' . $p1["born"]->format('Y-m-d') . '". Create a method called "age" and calculate your objects age. Add this to print3 and print it out.
+<p>Give your object the property "born" and add a Date object: "' . $p1["born"]->format('Y-m-d') . '". Add this to print3 and print it out: ' . $print2 . '. I am born '. $p1['born']->format('Y') . '.
 </p>
 ',
 
 "answer" => function () use ($p1, $print2) {
-    
-    $dob = strtotime($p1["born"]->format('Y-m-d'));
-    $age = floor((time() - $dob) / 31556926);
 
-    return $print2 . ". I am " . $age . " years old.";
+    return $print2 . ". I am born " . $p1['born']->format('Y') . ".";
 },
 
 ],
@@ -124,11 +121,8 @@ return [
 ',
 
 "answer" => function () use($p2, $print10) {
-    
-    $dob = strtotime($p2["born"]->format('Y-m-d'));
-    $age = floor((time() - $dob) / 31556926);
 
-    return $print10 . ". I am " . $age . " years old.";
+    return $print10 . ". I am born " . $p2['born']->format('Y') . ".";
 },
 
 ],
@@ -166,7 +160,7 @@ return [
 [
 
 "text" => "
-<p>Create a object called 'shape' with the properties: 'x', 'y', 'height', 'width' and 'print'. Create a new object from 'shape' called 'shape1' and initiate the properties with: x: " . $x[0] . ", y: " . $y[0] . ", height: " . $h[0] . " and width: " . $w[0] . ". Use the 'print' method to print out the assigned values.
+<p>Create a object called 'shape' with the properties: 'x', 'y', 'height', 'width' and 'print'. Create a new object from 'shape' called 'shape1' and initiate the properties with: x: " . $x[0] . ", y: " . $y[0] . ", height: " . $h[0] . " and width: " . $w[0] . ". Use the 'print' method to print out the assigned values: 'X: ?, Y: ?, height: ?, width: ?'
 </p>
 ",
 
@@ -245,7 +239,7 @@ return [
 [
 
 "text" => "
-<p>Create a method in 'shape' that prints out the current position of the object, for example: 'X: 234, Y: -34'. Put your three objects in an array and use a for each loop to print out all objects position.  
+<p>Create a method in 'shape' that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line. 
 </p>
 ",
 

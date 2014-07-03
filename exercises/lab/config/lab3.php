@@ -233,7 +233,7 @@ return [
     $result = [];
     $i = 0;
     foreach ($arrWords1[$arrRand] as $val) {
-        $result[$i] .= $val . ' is good for you';
+        $result[$i] = $val . ' is good for you';
         $i++;
     }   
     return implode(",", $result);
@@ -294,16 +294,16 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "pop()" to remove the last element. Return a string that holds the array before you remove the element and after its removed. Also include the removed element. Return the string and name the function "popArray".
+<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "pop()" to remove the last element. Return a string that holds the remaining elements in the array with a comma-separation. Name the function "popArray".
 </p>
 ',
 
 "answer" => function () use ($arrWords1, $arrRand) {
-    $arrBefore = 'Before: [' . join(", ", $arrWords1[$arrRand]) . ']';
-    $result = $arrBefore;
-    $removed = ' Removed: ' . array_pop($arrWords1[$arrRand]);
-    $arrAfter = ' After: [' . join(", ", $arrWords1[$arrRand]) . ']';
-    $result .= $arrAfter . $removed;
+    
+    $arr = $arrWords1[$arrRand];
+    $removed = array_pop($arr);
+    
+    $result = join(",",$arr);
     return $result;   
 },
 
@@ -337,16 +337,16 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "shift()" to remove the first element. Return a string that holds the array before you remove the element and after its removed. Also include the removed element. Return the string and name the function "shiftArray".
+<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "shift()" to remove the first element. Return a string that holds the remaining elements in the array with a comma-separation. Name the function "shiftArray".
 </p>
 ',
 
 "answer" => function () use ($arrWords1, $arrRand) {
-    $arrBefore = 'Before: [' . join(", ", $arrWords1[$arrRand]) . ']';
-    $result = $arrBefore;
-    $removed = ' Removed: ' . array_shift($arrWords1[$arrRand]);
-    $arrAfter = ' After: [' . join(", ", $arrWords1[$arrRand]) . ']';
-    $result .= $arrAfter . $removed;
+    
+    $arr = $arrWords1[$arrRand];
+    $removed = array_shift($arr);
+    $result = join(",", $arr);
+    
     return $result;   
 },
 
