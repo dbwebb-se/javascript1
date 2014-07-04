@@ -47,8 +47,8 @@ window.dbwebb = {
 
             foreach ($section['questions'] as $question) {
                 $questionId++;
-
-                echo "\t\t\"$sectionId.$questionId\": \"" . $question['answer']() . "\",\n";
+                $answer = formatAnswerJSON($question['answer']());
+                echo "\t\t\"$sectionId.$questionId\": $answer,\n";
             }
         }?>
 

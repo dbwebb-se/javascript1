@@ -143,6 +143,7 @@ EOD;
         <option value="lab3">Lab 3</option>
         <option value="lab4">Lab 4</option>
         <option value="lab5">Lab 5</option>
+        <option value="labtest">Lab Test</option>
     </select></label>
 </p>
 

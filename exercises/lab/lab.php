@@ -97,9 +97,48 @@ if ($course == 'javascript1' && $lab == 'lab1') {
     extract(include "config/python/lab5.php");
     // shuffle questions
 
+} else if ($lab == 'labtest') {
+    
+    extract(include "config/labtest.php");
+    // shuffle questions
+
 } else {
     die("Not a valid combination.");
 }
+
+
+
+/**
+ * Format the answer for print in HTML
+ */
+function formatAnswerPrintable($answer) 
+{
+    if (is_bool($answer)) {
+        $answer = $answer ? "true" : "false";
+    }
+
+    return $answer;
+}
+
+
+/**
+ * Format the answer for a JSON object
+ */
+function formatAnswerJSON($answer) 
+{
+    if (is_int($answer) || is_float($answer)) {
+        //$answer
+    } else if (is_string($answer)) {
+        $answer = "\"$answer\"";
+    } else if (is_bool($answer)) {
+        $answer = $answer ? "true" : "false";
+    }
+    // add checks for array and object and null
+
+    return $answer;
+}
+
+
 
 
 if ($doLab && $doAnswers) {

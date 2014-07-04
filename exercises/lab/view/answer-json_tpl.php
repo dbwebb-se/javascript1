@@ -11,8 +11,8 @@
 
             foreach ($section['questions'] as $question) {
                 $questionId++;
-
-                $json .= "\t\t\"$sectionId.$questionId\":\t\"" . $question['answer']() . "\",\n";
+                $answer = formatAnswerJSON($question['answer']());
+                $json .= "\t\t\"$sectionId.$questionId\":\t\t$answer,\n";
             }
         }
         echo substr($json, 0, -2) . "\n";?>
