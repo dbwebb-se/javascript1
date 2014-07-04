@@ -34,7 +34,7 @@ class Dbwebb():
             status = question + " NOT YET DONE."
         
         elif answer == self.answers["answers"][question]:
-            status = question + " CORRECT. Well done!\n" + answer
+            status = question + " CORRECT. Well done!\n" + str(answer)
         
         else:
             status = question + " FAIL.\nYou said:\n" + answer
