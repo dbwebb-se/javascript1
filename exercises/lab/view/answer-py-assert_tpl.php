@@ -38,6 +38,6 @@ class Dbwebb():
         
         else:
             status = question + " FAIL.\nYou said:\n" + answer
-            status += "\nHint:\n" + self.answers["answers"][question] if hint else ""
+            status += "\nHint:\n" + self.answers["answers"][question] if str(hint) else ""
 
         return status
