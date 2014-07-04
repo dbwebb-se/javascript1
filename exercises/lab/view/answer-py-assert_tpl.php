@@ -29,7 +29,6 @@ class Dbwebb():
 
         status = None
         noanswer = "Replace this text with the answer or the variable holding it."
-        answer = str(answer)
 
         if answer == noanswer:
             status = question + " NOT YET DONE."
