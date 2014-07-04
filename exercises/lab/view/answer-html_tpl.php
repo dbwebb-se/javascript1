@@ -61,7 +61,7 @@ window.dbwebb = {
 
         if (answer === noanswer) {
             status = question + " NOT YET DONE."
-        } else if (answer == this.answers[question]) {
+        } else if (answer === this.answers[question]) {
             status = question + " CORRECT. Well done!\n" + answer;
         } else {
             status = question + " FAIL.\nYou said:\n" + answer;
