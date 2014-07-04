@@ -4,34 +4,16 @@
  * Titel and introduction to the lab.
  */
 
-$firstWord = "JavaScript";
-$secondWord = "rocks!";
+$wordSerie1 = ["storage", "memory", "device", "syntax", "computer", "error", "print", "screen", "program", "input"];
+$wordRand1 = 7; // 0-9 for the word array
+$wordRand2 = 3; // 0-9 for the word array
 
-$numberOne = 10; // 20-999
-$numberTwo = 6;  // 20-999
-/*
-$numberThree = 56; // 20-999
-$numberFour = 348; // 110 - 450
-$floatOne = 12.55; // 100-999
-$floatTwo = 5.22; // 100-999 
-$lowNr = 15; // 0 - 100
-$highNr = 625; // 500 - 999
-$smallNr = 2; // 1-5
-$smallRandNr = 3; // 0-9
-$caseNrs = [1, 2, 3, 4, 5];
-$smallestRandNr = 1; // 0-2
-$aYear = 2014;
-$aMonth = 'Aug';
-$aDay = 5;
-$aDate = "$aMonth $aDay, $aYear";
+$intOne = 78; // 20-999
+$intTwo = 123;  // 20-999
+$intThree = 45; // 20-99
+$floatOne = 5.77; // FLOATS! 10.0-999.99
+$floatTwo = 654.34; // FLOATS! 10.0-999.99 
 
-
-$serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
-$wordSerie2 = ['guitar', 'violin', 'drums'];
-$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
-$someIntText = $numberOne . ".$numberTwo " . $wordSerie1[$smallRandNr]; 
-*/
 
 
 
@@ -45,7 +27,7 @@ return [
 "title" => "Lab 1 - python",
 
 "intro" => "
-<p>If you need to peek at examples or just want to know more, take a look at the references at MDN's (Mozilla Developers Network) page: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference. Here you will find everything this lab will go through and much more.
+<p>blablabla python blablablabla
 </p>
 ",
 
@@ -58,10 +40,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Integers, floats and variables",
+"title" => "Integers, floats and basic arithmetics",
 
 "intro" => "
-<p>The foundation of variables, numbers, strings and basic arithmetic.</p>
+<p>The foundation of variables, numbers and basic arithmetic.</p>
 ",
 
 "shuffle" => false,
@@ -76,13 +58,14 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Print out the result.
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () use ($intOne, $intTwo) {
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+    $result = $intOne + $intTwo;
+    return $result;
 },
 
 ],
@@ -94,13 +77,127 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intThree . '. Subtract "numberTwo" from "numberOne" and print out the result.
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () use ($intOne, $intThree) {
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+    return $intOne-$intThree;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Print out the product of the two numbers.
+</p>
+',
+
+"answer" => function () use ($intOne, $intTwo) {
+
+    return $intOne*$intTwo;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "numberOne" and give it the value ' . $intTwo . '. Divide "numberOne" with ' . $intOne . '. Print out the result.
+</p>
+',
+
+"answer" => function () use ($intOne, $intTwo) {
+
+    return $intTwo/$intOne;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Print out the result.
+</p>
+',
+
+"answer" => function () use ($floatOne, $floatTwo) {
+
+    return $floatOne+$floatTwo;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Subtract "floatTwo" from "floatOne" and print out the result.
+</p>
+',
+
+"answer" => function () use ($floatOne, $floatTwo) {
+
+    return $floatOne-$floatTwo;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Print out the product of the two numbers.
+</p>
+',
+
+"answer" => function () use ($floatOne, $floatTwo) {
+
+    return $floatOne*$floatTwo;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $intOne . ', ' . $intTwo . ' and '. $intThree . '. Sum up "numberOne" and "numberTwo". Subtract "numberThree" and print out the result.
+</p>
+',
+
+"answer" => function () use ($intOne, $intTwo, $intThree) {
+
+    return ($intOne+$intTwo)-$intThree;
 },
 
 ],
@@ -119,10 +216,11 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Integers, floats and variables",
+"title" => "Variables, expressions and statements",
 
 "intro" => "
-<p>The foundation of variables, numbers, strings and basic arithmetic.</p>
+<p>some intro text about this...
+</p>
 ",
 
 "shuffle" => false,
@@ -137,13 +235,13 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>Create a 
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () {
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+    
 },
 
 ],
@@ -155,13 +253,13 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () {
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+    
 },
 
 ],
