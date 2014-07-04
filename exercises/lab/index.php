@@ -18,7 +18,9 @@ if (!is_writable(__DIR__)) {
 
 $db = new PDO("sqlite:db.sqlite");
 
-
+/**
+ * Create table
+ */
 if (isset($_GET['init'])) {
     $sql = "
 create table if not exists lab
@@ -50,14 +52,32 @@ $gen_key    = md5($acronym . $course . $lab . $created);
 $generate = null;
 
 if (isset($_GET['doGenerate'])) {
+
+    // Check if key already exists, then use it
     $sql = "
-insert into lab
-(acronym, course, lab, created, gen_key)
-values 
-(?, ?, ?, ?, ?)
-";
+    select * from lab
+    where 
+        acronym = ? AND 
+        course = ? AND
+        lab = ?
+    ";
     $stmt = $db->prepare($sql);
-    $stmt->execute([$acronym, $course, $lab, $created, $gen_key]);
+    $stmt->execute([$acronym, $course, $lab]);
+    $res = $stmt->fetch(PDO::FETCH_OBJ);
+
+    // Create new key
+    if (empty($res)) {
+        $sql = "
+    insert into lab
+    (acronym, course, lab, created, gen_key)
+    values 
+    (?, ?, ?, ?, ?)
+    ";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$acronym, $course, $lab, $created, $gen_key]);
+    } else {
+        $gen_key = $res->gen_key;
+    }
 
     $generate =<<<EOD
 <p>
