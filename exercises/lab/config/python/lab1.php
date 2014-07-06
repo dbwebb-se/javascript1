@@ -9,7 +9,7 @@ $wordRand1 = 7; // 0-9 for the word array
 $wordRand2 = 3; // 0-9 for the word array
 
 $numSerie1 = [123,22.43,342,2,54.22,2.564,43,45.33,435,2.33];
-
+$numSerie2 = [6,8,95,2,12,152,4,78,621,45]; 
 $intOne = 78; // 20-499
 $intTwo = 123;  // 20-499
 $intThree = 45; // 1-100
@@ -421,6 +421,132 @@ return [
  * New section of exercises.
  */
 [
+"title" => "Built-in functions",
+
+"intro" => "
+<p>Built-in functions n stuff
+</p>
+",
+
+"shuffle" => false,
+
+"questions" => [
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use max() to print out the largest number of: ' . implode(",", $numSerie2) . '. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	return max($numSerie2);
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use min() to print out the smallest number of: ' . implode(",", $numSerie2) . '. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	return min($numSerie2);
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use len() to print out the number of letters in the word: "' . $wordSerie1[$wordRand1] . '". 
+</p>
+',
+
+"answer" => function () use ($wordSerie1, $wordRand1) {
+
+	return strlen($wordSerie1[$wordRand1]);
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Convert the number: ' . $intOne . ' to a string and add it to the word: "' . $wordSerie1[$wordRand2] . '". 
+</p>
+',
+
+"answer" => function () use ($wordSerie1, $wordRand2, $intOne) {
+
+	return $wordSerie1[$wordRand2] .= $intOne;
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Convert the number: ' . $floatTwo . ' to an integer and then to a string. Add it to the beginning of the word: "' . $wordSerie1[$wordRand1] . '". 
+</p>
+',
+
+"answer" => function () use ($wordSerie1, $wordRand1, $floatTwo) {
+
+	$temp = intval($floatTwo);
+	return $temp .= $wordSerie1[$wordRand1];
+	
+},
+
+],
+
+
+
+/**
+ * Closing up this section.
+ */
+], // EOF questions
+], // EOF section
+
+
+
+/** ===================================================================================
+ * New section of exercises.
+ */
+[
 "title" => "Functions",
 
 "intro" => "
@@ -440,13 +566,80 @@ return [
 [
 
 "text" => '
-<p>
+<p>Create a function called "prodNr" that returns the product of ' . $intTwo . ' and ' . $wordRand1 . '. Answer with the result. 
 </p>
 ',
 
-"answer" => function () {
+"answer" => function () use ($intTwo, $wordRand1) {
 
-	
+	return $intTwo*$wordRand1;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a function called "sayHello" that takes one argument and adds it to a string. If the argument is "water", the function should print: "water is a funny word". Use the argument: "' . $wordSerie1[$wordRand1] . '" and answer with the outcome.
+</p>
+',
+
+"answer" => function () use ($wordSerie1, $wordRand1) {
+
+	return $wordSerie1[$wordRand1] . " is a funny word";
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a function that returns "true" if the number ' . $intThree . ' is higher than 50 and less than 100. If the number is out of range, the function should return "false". The return type should be boolean. Name the function "inRange" and print out the result.
+</p>
+',
+
+"answer" => function () use ($intThree) {
+
+	$result = false;
+
+    if($intThree > 50 && $intThree < 100) {
+       $result = true;
+    }
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a function that returns "true" if the number ' . $intThree . ' is higher than 50 and less than 100. If the number is out of range, the function should return "false". The function should take one argument and the return type should be boolean. Name the function "inRange" and anwser with the result.
+</p>
+',
+
+"answer" => function () use ($intThree) {
+
+	$result = false;
+
+    if($intThree > 50 && $intThree < 100) {
+       $result = true;
+    }
+    return $result;
 },
 
 ],
