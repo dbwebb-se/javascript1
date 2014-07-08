@@ -5,6 +5,7 @@
  */
 
 $wordSerie1 = ["storage", "memory", "device", "syntax", "computer", "error", "print", "screen", "program", "input"];
+$wordSerie2 = ["icecream", "sunshine", "beach", "music", "vacation", "barbeque", "resort", "water", "restaurant", "beverage"];
 $wordRand1 = 7; // 0-9 for the word array
 $wordRand2 = 3; // 0-9 for the word array
 
@@ -43,7 +44,7 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Integers, floats and basic arithmetics",
+"title" => "Integers, strings, floats and basic arithmetics",
 
 "intro" => "
 <p>The foundation of numbers and basic arithmetic.</p>
@@ -226,6 +227,25 @@ return [
 
 
 
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Add the words: "' . $wordSerie1[$wordRand2] . '" to the word : "' . $wordSerie2[$wordRand2] . '" and answer with the result.
+</p>
+',
+
+"answer" => function () use ($wordSerie1, $wordRand2, $wordSerie2) {
+
+    return $wordSerie2[$wordRand2] . $wordSerie1[$wordRand2];
+},
+
+],
+
+
+
 /**
  * Closing up this section.
  */
@@ -355,7 +375,7 @@ return [
 [
 
 "text" => '
-<p>Create an elif statement that checks in what range a value belongs to. The ranges should be: below 10, 10 to 25, 26 to 50, 51 to 75 and 76 to 100. If the number is 24, you should print out: "10 to 25" and if the number is 5, print out "below 10". Use the number ' . $intThree . ' and print out the corresponding result. It should work with any number between 0 and 100.
+<p>Create an elif statement that checks what range a value belongs to. The ranges should be: below 10, 10 to 25, 26 to 50, 51 to 75 and 76 to 100. If the number is 24, you should print out: "10 to 25" and if the number is 5, print out "below 10". Use the number ' . $intThree . ' and print out the corresponding result. It should work with any number between 0 and 100.
 </p>
 ',
 
@@ -585,7 +605,7 @@ return [
 [
 
 "text" => '
-<p>Create a function called "sayHello" that takes one argument and adds it to a string. If the argument is "water", the function should print: "water is a funny word". Use the argument: "' . $wordSerie1[$wordRand1] . '" and answer with the outcome.
+<p>Create a function called "funnyWord" that takes one argument and adds it to a string. If the argument is "water", the function should print: "water is a funny word". Use the argument: "' . $wordSerie1[$wordRand1] . '" and answer with the outcome.
 </p>
 ',
 
@@ -677,12 +697,147 @@ return [
 [
 
 "text" => '
-<p>
+<p>Create a while-loop that adds ' . $wordRand2 . ' to the number: ' . $intThree . ', 20 times. Answer with the result. 
 </p>
 ',
 
-"answer" => function () {
+"answer" => function () use ($wordRand2, $intThree) {
 
+	$result = $intThree;
+	$i = 0;
+	while($i < 20) {
+		$result += $wordRand2;
+		$i+=1;
+	}
+	return $result;
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a while-loop that subtracts ' . ($wordRand2*2) . ' from ' . ($intThree*2) . ', ' . $intThree . ' times. Answer with the result. 
+</p>
+',
+
+"answer" => function () use ($wordRand2, $intThree) {
+
+	$result = ($intThree*2);
+	$i = 0;
+	while($i < $intThree) {
+		$result -= ($wordRand2*2);
+		$i+=1;
+	}
+	return $result;
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a for-loop that counts the number of elements in the serie: ' . implode(",", $numSerie2) . '. Answer with the result. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	return count($numSerie2);
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a for-loop that sums up the numbers ' . implode(",", $numSerie2) . '. Answer with the result. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	$result = 0;
+	
+	for($i = 0; $i < count($numSerie2); $i++) {
+		$result += $numSerie2[$i];
+	}
+	return $result;
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a for-loop that finds the largest number in the serie ' . implode(",", $numSerie2) . '. Answer with the result. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	$result = 0;
+	
+	for($i = 0; $i < count($numSerie2); $i++) {
+		if($numSerie2[$i] > $result) {
+			$result = $numSerie2[$i];
+		}
+	}
+	return $result;
+	
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a for-loop that goes through the numbers: ' . implode(",", $numSerie2) . '. If the current number is even, you should add it to a variable and if the current number is odd, you should subtract it from the variable. Answer with the result. 
+</p>
+',
+
+"answer" => function () use ($numSerie2) {
+
+	$result = 0;
+
+	for($i = 0; $i < count($numSerie2); $i++) {
+		if($numSerie2[$i] % 2 === 0) {
+			$result += $numSerie2[$i];
+		}
+		else {
+			$result -= $numSerie2[$i];
+		}
+	}
+	return $result;
 	
 },
 
@@ -708,4 +863,4 @@ return [
 /**
  * Closing up this lab.
  */
-]; // EOF the enritre lab
+]; // EOF the entire lab
