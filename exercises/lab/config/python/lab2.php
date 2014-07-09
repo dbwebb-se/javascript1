@@ -35,29 +35,7 @@ $r4 = 4; // 0-4 for the words
 
 $numberOne = 10; // 20-999
 $numberTwo = 6;  // 20-999
-/*
-$numberThree = 56; // 20-999
-$numberFour = 348; // 110 - 450
-$floatOne = 12.55; // 100-999
-$floatTwo = 5.22; // 100-999 
-$lowNr = 15; // 0 - 100
-$highNr = 625; // 500 - 999
-$smallNr = 2; // 1-5
-$smallRandNr = 3; // 0-9
-$caseNrs = [1, 2, 3, 4, 5];
-$smallestRandNr = 1; // 0-2
-$aYear = 2014;
-$aMonth = 'Aug';
-$aDay = 5;
-$aDate = "$aMonth $aDay, $aYear";
 
-
-$serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
-$wordSerie2 = ['guitar', 'violin', 'drums'];
-$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
-$someIntText = $numberOne . ".$numberTwo " . $wordSerie1[$smallRandNr]; 
-*/
 
 
 
@@ -365,7 +343,7 @@ return [
     $result = "";
 
     for($i = $a+1; $i < $b; $i++) {
-    	$result .= $i;
+    	$result .= $findSlice[$r2][$i];
     }
 
     return $result;
@@ -405,13 +383,13 @@ return [
 [
 
 "text" => '
-<p>
+<p>Count the number of times a line starts with "81". Answer with the result as an integer.
 </p>
 ',
 
 "answer" => function () {
 
-   
+   return 112;
 },
 
 ],
@@ -424,12 +402,12 @@ return [
 [
 
 "text" => '
-<p>
+<p>Find out the last 4 digits on line 821 in the file. Answer with the result as an integer.
 </p>
 ',
 
 "answer" => function () {
-
+	return 2154;
 },
 
 ],
@@ -442,12 +420,30 @@ return [
 [
 
 "text" => '
-<p>
+<p>Find out witch ip adress (first serie of numbers on each line) that has the highest amount of entries in the file. Test with the adresses: "81.226.253.26" and "95.19.133.73". Answer with the highest amount of entries as an integer. 
 </p>
 ',
 
 "answer" => function () {
+	return 93;
+},
 
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Count the number of periods (.) there are in the file. Use the built-in function count() on the file after you have converted it to a string. Answer with the result as an integer. 
+</p>
+',
+
+"answer" => function () {
+	return 5199;
 },
 
 ],
