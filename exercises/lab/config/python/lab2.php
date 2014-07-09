@@ -15,6 +15,19 @@ $words = [
 ['candy', 'cake', 'cupcakes', 'lollipop', 'pringles'],
 ['car', 'bus', 'plane', 'helicopter', 'train']
 ];
+$format1 = [
+["grandma", 42, "cows"],
+["father", 9, "cats"],
+["brother", 2, "dogs"],
+["sister", 2, "houses"],
+["book", 398, "pages"]
+];
+$findSlice = [
+"154.84.56.0 : (wallpaper), soda", 
+"567.1.53.4 : (greece), table", 
+"196.98.2.54 : (tree), window", 
+"984.45.6.65 : (wasp), boat", 
+"789.234.2.54 : (sunshine), bakery"];
 $r1 = 1; // 0-4 for the words
 $r2 = 2; // 0-4 for the words
 $r3 = 3; // 0-4 for the words
@@ -206,30 +219,6 @@ return [
 
 
 
-/**
- * Closing up this section.
- */
-], // EOF questions
-], // EOF section
-
-
-
-/** ===================================================================================
- * New section of exercises.
- */
-[
-"title" => "Strings in functions",
-
-"intro" => "
-<p>Some excercises when working with strings in functions</p>
-",
-
-"shuffle" => false,
-
-"questions" => [
-
-
-
 /** -----------------------------------------------------------------------------------
  * A question.
  */
@@ -333,6 +322,52 @@ return [
 	for($i = 1; $i < $len-1; $i++) {
 		$result .= $words[$r3][$r4][$i];
 	}
+    return $result;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use the format operator to print out: "My "string" has "integer" "string"". Use the values: "' . $format1[$r1][0] . '", ' . $format1[$r1][1] . ' and "' . $format1[$r1][2] . '". Answer with the result.
+</p>
+',
+
+"answer" => function () use ($format, $r1) {
+
+    return "My " . $format1[$r1][0] . " has " . $format1[$r1][1] . " " . $format1[$r1][2];
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use "find" and "slice" on the string: "' . $findSlice[$r2] . '" to get the word inside the parenthesis. Answer with the word as a string.
+</p>
+',
+
+"answer" => function () use ($findSlice, $r2) {
+
+    $a = strpos($findSlice[$r2], "(");
+    $b = strpos($findSlice[$r2], ")");
+    $result = "";
+
+    for($i = $a+1; $i < $b; $i++) {
+    	$result .= $i;
+    }
+
     return $result;
 },
 
