@@ -4,10 +4,6 @@
  * Titel and introduction to the lab.
  */
 
-$firstWord = "Python";
-$secondWord = "";
-
-$wordSerie1 = ['red', 'blue', 'green', 'black', 'purple', 'yellow', 'pink', 'grey', 'brown', 'white'];
 $words = [
 ['melon', 'banana', 'apple', 'orange', 'lemon'],
 ['potato', 'carrot', 'onion', 'leek', 'cabbage'],
@@ -32,12 +28,6 @@ $r1 = 1; // 0-4 for the words
 $r2 = 2; // 0-4 for the words
 $r3 = 3; // 0-4 for the words
 $r4 = 4; // 0-4 for the words
-
-$numberOne = 10; // 20-999
-$numberTwo = 6;  // 20-999
-
-
-
 
 return [
 
@@ -420,7 +410,7 @@ return [
 [
 
 "text" => '
-<p>Find out witch ip adress (first serie of numbers on each line) that has the highest amount of entries in the file. Test with the adresses: "81.226.253.26" and "95.19.133.73". Answer with the highest amount of entries as an integer. 
+<p>Find out which ip adress (first serie of numbers on each line) that has the highest amount of entries in the file. Test with the adresses: "81.226.253.26" and "95.19.133.73". Answer with the highest amount of entries as an integer. 
 </p>
 ',
 
@@ -444,6 +434,42 @@ return [
 
 "answer" => function () {
 	return 5199;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Find the characters on line 637 from index 65 to index 75. Make sure that the character at index 75 also gets included. Answer with the piece of string you found.
+</p>
+',
+
+"answer" => function () {
+	return "source.php?";
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Find the last digit on each line and sum all that are even. Answer with the result as an integer.
+</p>
+',
+
+"answer" => function () {
+	return 2226;
 },
 
 ],
