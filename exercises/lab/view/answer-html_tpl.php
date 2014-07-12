@@ -47,8 +47,8 @@ window.dbwebb = {
 
             foreach ($section['questions'] as $question) {
                 $questionId++;
-
-                echo "\t\t\"$sectionId.$questionId\": \"" . $question['answer']() . "\",\n";
+                $answer = formatAnswerJSON($question['answer']());
+                echo "\t\t\"$sectionId.$questionId\": $answer,\n";
             }
         }?>
 
@@ -61,7 +61,7 @@ window.dbwebb = {
 
         if (answer === noanswer) {
             status = question + " NOT YET DONE."
-        } else if (answer == this.answers[question]) {
+        } else if (answer === this.answers[question]) {
             status = question + " CORRECT. Well done!\n" + answer;
         } else {
             status = question + " FAIL.\nYou said:\n" + answer;

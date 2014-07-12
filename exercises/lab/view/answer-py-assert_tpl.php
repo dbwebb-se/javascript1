@@ -29,16 +29,15 @@ class Dbwebb():
 
         status = None
         noanswer = "Replace this text with the answer or the variable holding it."
-        answer = str(answer)
 
         if answer == noanswer:
             status = question + " NOT YET DONE."
         
         elif answer == self.answers["answers"][question]:
-            status = question + " CORRECT. Well done!\n" + answer
+            status = question + " CORRECT. Well done!\n" + str(answer)
         
         else:
             status = question + " FAIL.\nYou said:\n" + answer
-            status += "\nHint:\n" + self.answers["answers"][question] if hint else ""
+            status += "\nHint:\n" + str(self.answers["answers"][question]) if hint else ""
 
         return status

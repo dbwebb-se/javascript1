@@ -7,7 +7,7 @@ foreach ($sections as $section) {
 
     foreach ($section['questions'] as $question) {
 
-        $text .= $question['answer']() . "\n";
+        $text .= formatAnswerPrintable($question['answer']()) . "\n";
 
 
     }

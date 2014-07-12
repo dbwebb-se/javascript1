@@ -39,7 +39,7 @@ $questionId++;
 <?php if ($doAnswers) : ?>
 
 <h4>Answer</h4>
-<pre><?=$question['answer']()?></pre>
+<pre><?=formatAnswerPrintable($question['answer']())?></pre>
 
 <?php endif; ?>
 
