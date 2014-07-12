@@ -288,7 +288,7 @@ return [
 [
 
 "text" => '
-<p>Use the built-in functions split() and join() to fix this string: "' . $listSent[$r2] . '" into a proper one, (without "?"). Answer with the fixed string.
+<p>Use the built-in functions split() and join() to fix this string: "' . $listSent[$r2] . '" into a real sentence, (without "?"). Answer with the fixed string.
 </p>
 ',
 
@@ -297,6 +297,156 @@ return [
     $a = explode("?", $listSent[$r2]);
     $b = join($a, " ");
     return $b;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Open the file "httpd-access.txt" and answer with the first four characters of the eighth element on line 893. Answer as a string.
+</p>
+',
+
+"answer" => function () {
+
+    return "HTTP";
+},
+
+],
+
+
+
+/**
+ * Closing up this section.
+ */
+], // EOF questions
+], // EOF section
+
+
+
+/** ===================================================================================
+ * New section of exercises.
+ */
+[
+"title" => "Lists as arguments",
+
+"intro" => "
+<p>????
+</p>
+",
+
+"shuffle" => false,
+
+"questions" => [
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a function that returns the list passed as argument sorted in numerical and ascending order. Use the list: [' . implode(",", $listNumbers[$r2]) . ']. Answer with the sorted list.
+</p>
+',
+
+"answer" => function () use ($listNumbers, $r2) {
+
+    $a = $listNumbers[$r2];
+    asort($a);
+    return implode(",",$a);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a function that takes the list: [' . implode(",",$listNumbers[$r1]) . '] as argument. The function should multiply all even numbers by 2 and add ' . $r4 . ' to all odd numbers. Answer with the modified list sorted in numerical order, descending.
+</p>
+',
+
+"answer" => function () use ($listNumbers, $r4, $r1) {
+
+	$result = $listNumbers[$r1];
+	for($i = 0; $i < count($result); $i++) {
+		if($result[$i]%2===0) {
+			$result[$i] *= 2;
+		}
+		else {
+			$result[$i] += $r4;	
+		}
+	}
+    arsort($result);
+    return implode(",", $result);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>
+</p>
+',
+
+"answer" => function () {
+
+    
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>
+</p>
+',
+
+"answer" => function () {
+
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>
+</p>
+',
+
+"answer" => function () {
+
+    
 },
 
 ],
