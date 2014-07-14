@@ -213,6 +213,25 @@ return [
 [
 
 "text" => '
+<p>Create a tuple with (' . implode(", ", $tuples[$r2]) . '). Answer with the length of the tuple as an integer.
+</p>
+',
+
+"answer" => function () use ($tuples, $r2) {
+	
+    return count($tuples[$r2]);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
 <p>Create a tuple with (' . implode(", ", $tuples[$r1]) . '). Replace the second element with: "' . $dictNames[$r2][$sr1] . '". Answer with the first three elements in a comma-separated string.
 </p>
 ',
