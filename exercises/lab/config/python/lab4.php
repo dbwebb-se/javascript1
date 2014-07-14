@@ -3,36 +3,22 @@
 /**
  * Titel and introduction to the lab.
  */
-
-$firstWord = "JavaScript";
-$secondWord = "rocks!";
-
-$numberOne = 10; // 20-999
-$numberTwo = 6;  // 20-999
-/*
-$numberThree = 56; // 20-999
-$numberFour = 348; // 110 - 450
-$floatOne = 12.55; // 100-999
-$floatTwo = 5.22; // 100-999 
-$lowNr = 15; // 0 - 100
-$highNr = 625; // 500 - 999
-$smallNr = 2; // 1-5
-$smallRandNr = 3; // 0-9
-$caseNrs = [1, 2, 3, 4, 5];
-$smallestRandNr = 1; // 0-2
-$aYear = 2014;
-$aMonth = 'Aug';
-$aDay = 5;
-$aDate = "$aMonth $aDay, $aYear";
-
-
-$serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
-$wordSerie2 = ['guitar', 'violin', 'drums'];
-$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
-$someIntText = $numberOne . ".$numberTwo " . $wordSerie1[$smallRandNr]; 
-*/
-
+$dictNames = [
+["Baggins", "Aragorn", "Smaug"],
+["Solo", "Skywalker", "Vader"],
+["Chandler", "Monica", "Ross"],
+["Clinton", "Obama", "Bush"],
+["Jagger", "Diamond", "Cash"]
+];
+$dictNrs = [
+[55523412, 55564222, 55567894],
+[55511243, 55568711, 55590858],
+[55523645, 55564452, 55545872],
+[55590899, 55567345, 55564533],
+[55537654, 55598078, 55587768]
+];
+$r1 = 2; // 0-4
+$sr1 = 1; // 0-2
 
 
 return [
@@ -45,7 +31,7 @@ return [
 "title" => "Lab 4 - python",
 
 "intro" => "
-<p>If you need to peek at examples or just want to know more, take a look at the references at MDN's (Mozilla Developers Network) page: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference. Here you will find everything this lab will go through and much more.
+<p>???????
 </p>
 ",
 
@@ -58,10 +44,10 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Integers, floats and variables",
+"title" => "Dictionaries",
 
 "intro" => "
-<p>The foundation of variables, numbers, strings and basic arithmetic.</p>
+<p>???????????</p>
 ",
 
 "shuffle" => false,
@@ -76,13 +62,156 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>Create a small phonebook using a dictionary. Use the names as keys and numbers as values. Use "' . implode(", ", $dictNames[$r1]) . '" and corresponding numbers: ' . implode(", ", $dictNrs[$r1]) . '. Answer with the keys comma-separated, sorted in an alphabetical and ascending order and in a string.
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () use ($dictNames, $r1) {
+	
+	$res = $dictNames[$r1];
+	asort($res);
+    return implode(",", $res);
+},
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use your phonebook and answer with the values (phonenumbers) comma-separated, in ascending order and as a string. 
+</p>
+',
+
+"answer" => function () use ($dictNrs, $r1) {
+	
+	$res = $dictNrs[$r1];
+	asort($res);
+    return (string)implode(",", $res);
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use the "get() method" on your phonebook and answer with ' . $dictNames[$r1][$sr1] . '\'s phonenumber. Answer with an integer. 
+</p>
+',
+
+"answer" => function () use ($dictNrs, $r1, $sr1) {
+	
+    return (int)$dictNrs[$r1][$sr1];
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use the "get() method" on your phonebook and answer with ' . $dictNames[$r1][$sr1] . '\'s phonenumber. Answer with an integer. 
+</p>
+',
+
+"answer" => function () use ($dictNrs, $r1, $sr1) {
+	
+    return (int)$dictNrs[$r1][$sr1];
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Open "alice.txt" and create a dictionary that holds all words as separate keys and the frequency as values. Find out how many times the word: "youth" is used in the text and answer with the right integer. 
+</p>
+',
+
+"answer" => function () {
+	// Use: line = line.translate(str.maketrans("", "", string.punctuation))
+	// Dont use: line = line.translate(string.punctuation)
+    return 6;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use your dictionary over "alice.txt" and find all keys that have a value of 4 and has exactly 5 characters. Answer with the keys in a comma-separated string. 
+</p>
+',
+
+"answer" => function () {
+	
+	return "other";
+},
+
+],
+
+
+
+/**
+ * Closing up this section.
+ */
+], // EOF questions
+], // EOF section
+
+
+
+/** ===================================================================================
+ * New section of exercises.
+ */
+[
+"title" => "Tuples",
+
+"intro" => "
+<p>???????????</p>
+",
+
+"shuffle" => false,
+
+"questions" => [
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>
+</p>
+',
+
+"answer" => function () {
+
+    
 },
 
 ],
