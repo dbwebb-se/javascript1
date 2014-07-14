@@ -18,7 +18,15 @@ $dictNrs = [
 [55537654, 55598078, 55587768]
 ];
 $r1 = 2; // 0-4
+$r2 = 4;// 0-4
 $sr1 = 1; // 0-2
+$tuples = [
+["frog", 54, 4.77, "fridge", 2],
+["bear", 65, 6.47, "chair", 5],
+["moose", 12, 1.98, "table", 7],
+["elephant", 33, 7.28, "stove", 4],
+["snake", 89, 9.63, "bookshelf", 1]
+];
 
 
 return [
@@ -205,13 +213,34 @@ return [
 [
 
 "text" => '
-<p>
+<p>Create a tuple with (' . implode(", ", $tuples[$r2]) . '). Answer with the length of the tuple as an integer.
 </p>
 ',
 
-"answer" => function () {
+"answer" => function () use ($tuples, $r2) {
+	
+    return count($tuples[$r2]);
+},
 
-    
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create a tuple with (' . implode(", ", $tuples[$r1]) . '). Replace the second element with: "' . $dictNames[$r2][$sr1] . '". Answer with the first three elements in a comma-separated string.
+</p>
+',
+
+"answer" => function () use ($tuples, $r1, $dictNames, $r2, $sr1) {
+	$temp = $tuples[$r1];
+	$repl = $dictNames[$r2][$sr1];
+	$temp[1] = $repl;
+    return (string)implode(",", array_slice($temp, 0, 3));
 },
 
 ],
