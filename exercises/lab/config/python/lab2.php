@@ -358,7 +358,7 @@ return [
 "title" => "Files",
 
 "intro" => "
-<p>files files files and some files</p>
+<p>This section uses the text file: 'httpd-access.txt'</p>
 ",
 
 "shuffle" => false,
