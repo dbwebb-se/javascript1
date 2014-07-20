@@ -3,37 +3,25 @@
 /**
  * Titel and introduction to the lab.
  */
-
-$firstWord = "JavaScript";
-$secondWord = "rocks!";
-
-$numberOne = 10; // 20-999
-$numberTwo = 6;  // 20-999
-/*
-$numberThree = 56; // 20-999
-$numberFour = 348; // 110 - 450
-$floatOne = 12.55; // 100-999
-$floatTwo = 5.22; // 100-999 
-$lowNr = 15; // 0 - 100
-$highNr = 625; // 500 - 999
-$smallNr = 2; // 1-5
-$smallRandNr = 3; // 0-9
-$caseNrs = [1, 2, 3, 4, 5];
-$smallestRandNr = 1; // 0-2
-$aYear = 2014;
-$aMonth = 'Aug';
-$aDay = 5;
-$aDate = "$aMonth $aDay, $aYear";
-
-
-$serie1 = [347, -221, 54, 435];  // 100-999
-$wordSerie1 = ['bulldog', 'rabbit', 'chicken', 'mouse', 'horse', 'camel', 'crocodile', 'werewolf', 'reindeer', 'elephant'];
-$wordSerie2 = ['guitar', 'violin', 'drums'];
-$sentenceSerie1 = ['I am in a glass case of emotion', 'If peeing your pants is cool, consider me Miles Davis', 'Do you want to hear the most annoying sound in the world?', 'Thank you very little', 'Tigers love pepper, they hate cinnamon.', 'I wake up in the morning and I piss excellence', 'I think most Scottish cuisine is based on a dare', 'I do not know, I mostly just hurt people.', 'I aim to misbehave.', ' I wish monkeys could Skype'];
-$someIntText = $numberOne . ".$numberTwo " . $wordSerie1[$smallRandNr]; 
-*/
-
-
+$obj = 
+[
+['name'=>'Roo', 'animal'=>'kangaroo', 'appearIn'=>'Winnie the pooh', 'color'=>"brown"],
+['name'=>'Eeyore', 'animal'=>'donkey', 'appearIn'=>'Winnie the pooh', 'color'=>'gray'],
+['name'=>'Sid', 'animal'=>'sloth', 'appearIn'=>'Ice Age', 'color'=>'yellow'],
+['name'=>'Manny', 'animal'=>'mammoth', 'appearIn'=>'Ice Age', 'color'=>'brown'],
+['name'=>'Kermit', 'animal'=>'frog', 'appearIn'=>'The Muppets', 'color'=>'green'],
+['name'=>'Piglet', 'animal'=>'pig', 'appearIn'=>'Winnie-the-pooh', 'color'=>'pink'],
+['name'=>'Stripe', 'animal'=>'gremlin', 'appearIn'=>'Gremlins', 'color'=>'green'],
+['name'=>'Nemo', 'animal'=>'clownfish', 'appearIn'=>'Finding Nemo', 'color'=>'orange'],
+['name'=>'Bruce', 'animal'=>'shark', 'appearIn'=>'Finding Nemo', 'color'=>'gray'],
+['name'=>'Falcor', 'animal'=>'luckdragon', 'appearIn'=>'The Neverending story', 'color'=>'pink']
+];
+$r1 = 6; // 0-9
+$r2 = $r1-1;
+$r2 < 0 ? $r2=9 : $r2+=0; 
+$print1 = "My name is " . $obj[$r1]["name"];
+$print2 = $print1 . " and I am a " . $obj[$r1]["color"] . " " . $obj[$r1]["animal"];
+$print3 = $print2 . ". I appear in the movie " . $obj[$r1]["appearIn"] . ".";
 
 return [
 
@@ -45,7 +33,7 @@ return [
 "title" => "Lab 5 - python",
 
 "intro" => "
-<p>If you need to peek at examples or just want to know more, take a look at the references at MDN's (Mozilla Developers Network) page: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference. Here you will find everything this lab will go through and much more.
+<p>In this section you should answer with a 'print-method' to all questions. The first print-method should be called 'print1', the next 'print2' etc...
 </p>
 ",
 
@@ -58,10 +46,11 @@ return [
  * New section of exercises.
  */
 [
-"title" => "Integers, floats and variables",
+"title" => "Objects sect 1",
 
 "intro" => "
-<p>The foundation of variables, numbers, strings and basic arithmetic.</p>
+<p>?????????????
+</p>
 ",
 
 "shuffle" => false,
@@ -76,13 +65,114 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Print out the result.</p>
+<p>Create an object-class called "Character". Create an instance of the object and call it: "myObj". Give it two attributes: "name" and "print1". The name should be "' . $obj[$r1]["name"] . '". Answer with the print-method and present your object\'s name: "My name is  ' . $obj[$r1]["name"] . '".
+</p>
 ',
 
-"answer" => function () use ($numberOne, $numberTwo) {
+"answer" => function () use ($print1) {
 
-    $sum = $numberOne + $numberTwo;
-    return $sum;
+    return $print1;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Give your object some more attributes: "color" and "animal". Use the values: "' . $obj[$r1]["color"] . '" and "' . $obj[$r1]["animal"] . '". Answer with a new print-method in the format: "' . $print2 . '".
+</p>
+',
+
+"answer" => function () use ($print2) {
+
+    return $print2;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Give your object a last attribute: "appearIn". Use the value: "' . $obj[$r1]["appearIn"] . '". Answer with a new print-method in the format: "' . $print3 . '".
+</p>
+',
+
+"answer" => function () use ($print3) {
+
+    return $print3;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Make a deep-copy of your object and call it "myObj2". Change its attributes to 
+</p>
+',
+
+"answer" => function () use ($print3) {
+
+    return $print3;
+},
+
+],
+
+
+
+/**
+ * Closing up this section.
+ */
+], // EOF questions
+], // EOF section
+
+
+
+/** ===================================================================================
+ * New section of exercises.
+ */
+[
+"title" => "Objects sect 2",
+
+"intro" => "
+<p>?????????????
+</p>
+",
+
+"shuffle" => false,
+
+"questions" => [
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>
+</p>
+',
+
+"answer" => function () {
+
+    
 },
 
 ],

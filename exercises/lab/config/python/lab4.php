@@ -170,7 +170,7 @@ return [
 [
 
 "text" => '
-<p>Use your dictionary over "alice.txt" and find all keys that have a value of 4 and has exactly 5 characters. Answer with the keys in a comma-separated string. 
+<p>Use your dictionary over "alice.txt" and find the key that have a value of 4 and has exactly 5 characters. Answer with the key as a string. 
 </p>
 ',
 
@@ -241,6 +241,63 @@ return [
 	$repl = $dictNames[$r2][$sr1];
 	$temp[1] = $repl;
     return (string)implode(",", array_slice($temp, 0, 3));
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Open "alice.txt" and find the 5 most frequently used words in the text. Answer with a comma-separated string in the format: "word:number,word:number" etc, in ascending order.
+</p>
+',
+
+"answer" => function () {
+	
+    return "the:66,said:37,and:35,you:34,to:33";
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Use the two tuples: (' . implode(",",$tuples[0]) . ') and (' . implode(",",$tuples[4]) . '). Name the tuples "tupleOne" and "tupletwo" and then swap the values and answer with a float value representing the sum of the second and third element in "tupleOne";
+</p>
+',
+
+"answer" => function () use ($tuples) {
+	
+    return 98.63;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Open "httpd-access.txt" and find the ip-adress with the most entries. Answer with sum of all digits in the ip-adress as an integer.
+</p>
+',
+
+"answer" => function () {
+	
+    return 30;
 },
 
 ],
