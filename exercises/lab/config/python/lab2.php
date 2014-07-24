@@ -307,7 +307,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($format, $r1) {
+"answer" => function () use ($format1, $r1) {
 
     return "My " . $format1[$r1][0] . " has " . $format1[$r1][1] . " " . $format1[$r1][2];
 },

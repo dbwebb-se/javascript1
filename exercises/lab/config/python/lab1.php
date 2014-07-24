@@ -17,6 +17,8 @@ $intThree = 45; // 1-100
 $bigInt = 654; // 500-999
 $floatOne = 5.77; // FLOATS! 10.0-999.99
 $floatTwo = 654.34; // FLOATS! 10.0-999.99 
+$divNr1 = 25; // 5,10,15,20,25,30 etc
+$divNr2 = 5;
 
 
 
@@ -62,7 +64,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Print out the result.
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Answer with the result.
 </p>
 ',
 
@@ -81,7 +83,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intThree . '. Subtract "numberTwo" from "numberOne" and print out the result.
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intThree . '. Subtract "numberTwo" from "numberOne" and answer with the result.
 </p>
 ',
 
@@ -100,7 +102,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Print out the product of the two numbers.
+<p>Create a variable called "numberOne" and give it the value ' . $intOne . '. Create another variable called "numberTwo" and give it the value ' . $intTwo . '. Answer with the product of the two numbers.
 </p>
 ',
 
@@ -119,13 +121,13 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $intTwo . '. Divide "numberOne" with ' . $intOne . '. Print out the result.
+<p>Create a variable called "numberOne" and give it the value ' . $divNr1 . '. Divide "numberOne" with ' . $divNr2 . '. Answer with the result.
 </p>
 ',
 
-"answer" => function () use ($intOne, $intTwo) {
+"answer" => function () use ($divNr1, $divNr2) {
 
-    return $intTwo/$intOne;
+    return $divNr1/$divNr2;
 },
 
 ],
@@ -138,7 +140,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Print out the result.
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Answer with the result.
 </p>
 ',
 
@@ -157,7 +159,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Subtract "floatTwo" from "floatOne" and print out the result.
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Subtract "floatTwo" from "floatOne" and answer with the result.
 </p>
 ',
 
@@ -176,7 +178,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Print out the product of the two numbers.
+<p>Create a variable called "floatOne" and give it the value ' . $floatOne . '. Create another variable called "floatTwo" and give it the value ' . $floatTwo . '. Answer with the product of the two numbers.
 </p>
 ',
 
@@ -195,7 +197,7 @@ return [
 [
 
 "text" => '
-<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $intOne . ', ' . $intTwo . ' and '. $intThree . '. Sum up "numberOne" and "numberTwo". Subtract "numberThree" and print out the result.
+<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $intOne . ', ' . $intTwo . ' and '. $intThree . '. Sum up "numberOne" and "numberTwo". Subtract "numberThree" and answer with the result.
 </p>
 ',
 
@@ -214,7 +216,7 @@ return [
 [
 
 "text" => '
-<p>Print out the result of ' . $intOne . ' modulo (%) ' . $wordRand1 . '.
+<p>Answer with the result of ' . $intOne . ' modulo (%) ' . $wordRand1 . '.
 </p>
 ',
 
@@ -233,7 +235,7 @@ return [
 [
 
 "text" => '
-<p>Add the words: "' . $wordSerie1[$wordRand2] . '" to the word : "' . $wordSerie2[$wordRand2] . '" and answer with the result.
+<p>Add the word: "' . $wordSerie1[$wordRand2] . '" to the word: "' . $wordSerie2[$wordRand2] . '" and answer with the result.
 </p>
 ',
 
@@ -295,7 +297,7 @@ return [
 [
 
 "text" => '
-<p>Print out the boolean value of: ' . $intOne . ' > ' . $intTwo . '.
+<p>Answer with the boolean value of: ' . $intOne . ' > ' . $intTwo . '.
 </p>
 ',
 
@@ -313,7 +315,7 @@ return [
 [
 
 "text" => '
-<p>Print out the boolean value of: ' . $intOne . ' == ' . $intTwo . '.
+<p>Answer with the boolean value of: ' . $intOne . ' == ' . $intTwo . '.
 </p>
 ',
 
@@ -331,7 +333,7 @@ return [
 [
 
 "text" => '
-<p>Create an if statement to see if ' . ($intOne*2) . ' is bigger than ' . ($intTwo*2) . '. If it is true, print out "yes", else print out "no".
+<p>Create an if statement to see if ' . ($intOne*2) . ' is bigger than ' . ($intTwo*2) . '. If it is true, answer "yes", else answer "no".
 </p>
 ',
 
@@ -353,7 +355,7 @@ return [
 [
 
 "text" => '
-<p>Create an if statement to see if ' . $intOne . ' is bigger than ' . $intTwo . ' and smaller than ' . $bigInt . '. If it is true, print out "yes", else print out "no".
+<p>Create an if statement to see if ' . $intOne . ' is bigger than ' . $intTwo . ' and smaller than ' . $bigInt . '. If it is true, answer "yes", else answer "no".
 </p>
 ',
 
@@ -375,7 +377,7 @@ return [
 [
 
 "text" => '
-<p>Create an elif statement that checks what range a value belongs to. The ranges should be: below 10, 10 to 25, 26 to 50, 51 to 75 and 76 to 100. If the number is 24, you should print out: "10 to 25" and if the number is 5, print out "below 10". Use the number ' . $intThree . ' and print out the corresponding result. It should work with any number between 0 and 100.
+<p>Create an elif statement that checks what range a value belongs to. The ranges should be: below 10, 10 to 25, 26 to 50, 51 to 75 and 76 to 100. If the number is 24, you should print out: "10 to 25" and if the number is 5, print out "below 10". Use the number ' . $intThree . ' and answer with the corresponding result. It should work with any number between 0 and 100.
 </p>
 ',
 
@@ -410,7 +412,7 @@ return [
 [
 
 "text" => '
-<p>Create a try/except statement that should print whether a value is a float or an integer. If the value is an integer, then print "integer". If the value is a float, print "float". Otherwise print "neither". Use the value: ' . $numSerie1[$wordRand2] . ' when you submit your answer.
+<p>Create a try/except statement that should try whether a value is a float or an integer. If the value is an integer, then answer "integer". If the value is a float, answer "float". Otherwise answer "neither". Use the value: ' . $numSerie1[$wordRand2] . ' when you submit your answer.
 </p>
 ',
 
@@ -586,7 +588,7 @@ return [
 [
 
 "text" => '
-<p>Create a function called "prodNr" that returns the product of ' . $intTwo . ' and ' . $wordRand1 . '. Answer with the result. 
+<p>Create a function called "prodNr" that returns the product of ' . $intTwo . ' and ' . $wordRand1 . '. Answer with a call of the function. 
 </p>
 ',
 
@@ -624,31 +626,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns "true" if the number ' . $intThree . ' is higher than 50 and less than 100. If the number is out of range, the function should return "false". The return type should be boolean. Name the function "inRange" and print out the result.
-</p>
-',
-
-"answer" => function () use ($intThree) {
-
-	$result = false;
-
-    if($intThree > 50 && $intThree < 100) {
-       $result = true;
-    }
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => '
-<p>Create a function that returns "true" if the number ' . $intThree . ' is higher than 50 and less than 100. If the number is out of range, the function should return "false". The function should take one argument and the return type should be boolean. Name the function "inRange" and anwser with the result.
+<p>Create a function that returns "true" if the number ' . $intThree . ' is higher than 50 and less than 100. If the number is out of range, the function should return "false". The return type should be boolean. Name the function "inRange" and answer with a call of the function.
 </p>
 ',
 
