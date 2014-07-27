@@ -43,7 +43,7 @@ return [
 "title" => "Lab 3 - javascript1",
 
 "intro" => "
-<p>Intro text to explain stuff.
+<p>In this lab, use a function to create the expected answers. Answer with a call of the function. 
 </p>
 ",
 
@@ -199,7 +199,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to change all items in the array to uppercase. Name the function "uppercaseArray" and return the array.
+<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to change all items in the array to uppercase. Name the function "upperCaseArray" and return the array.
 </p>
 ',
 

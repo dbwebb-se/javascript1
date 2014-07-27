@@ -65,7 +65,7 @@ return [
 
 "answer" => function () use ($print1) {  
     
-    return $print1 . ".";
+    return $print1;
 },
 
 ],
@@ -84,7 +84,7 @@ return [
 
 "answer" => function () use ($print2) {
     
-    return $print2 . ".";
+    return $print2;
 },
 
 ],
@@ -103,7 +103,7 @@ return [
 
 "answer" => function () use ($p1, $print2) {
 
-    return $print2 . ". I am born " . $p1['born']->format('Y') . ".";
+    return $print2 . ". I am born " . $p1['born']->format('Y');
 },
 
 ],
@@ -122,7 +122,7 @@ return [
 
 "answer" => function () use($p2, $print10) {
 
-    return $print10 . ". I am born " . $p2['born']->format('Y') . ".";
+    return $print10 . ". I am born " . $p2['born']->format('Y');
 },
 
 ],
@@ -239,7 +239,7 @@ return [
 [
 
 "text" => "
-<p>Create a method in 'shape' that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line. 
+<p>Create a method in 'shape', called 'printPos', that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line. 
 </p>
 ",
 
