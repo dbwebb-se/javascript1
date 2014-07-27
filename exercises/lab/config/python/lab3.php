@@ -77,7 +77,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r1) {
+"answer" => function () use ($listWords, $r1) {
 
 	
 },
@@ -96,7 +96,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r2, $r4, $words) {
+"answer" => function () use ($listWords, $r2, $r4, $words) {
 
 	
 },
@@ -115,7 +115,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r3, $words) {
+"answer" => function () use ($listWords, $r3, $words) {
 
 	
 },
@@ -134,7 +134,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords) {
+"answer" => function () use ($listWords) {
 //0 and 1
 	
 },
@@ -153,7 +153,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r3) {
+"answer" => function () use ($listWords, $r3) {
 //0 and 1
 	
 },
@@ -172,7 +172,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r2) {
+"answer" => function () use ($listWords, $r2) {
 //0 and 1
 	
 },
@@ -191,7 +191,7 @@ return [
 </p>
 ',
 
-"answer" => function () use ($listwords, $r3) {
+"answer" => function () use ($listWords, $r3) {
 //0 and 1
 	
 },

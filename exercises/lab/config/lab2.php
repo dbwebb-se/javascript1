@@ -123,7 +123,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns a phrase. Your word is "' . $wordSerie2[$smallRandNr] . '". Pass the argument to the function and the returned phrase should be: "My favorite color is ' . $wordSerie2[$smallRandNr] . '". Name the function "stringPhrase" and print out the result.
+<p>Create a function that returns a phrase. Your word is "' . $wordSerie2[$smallRandNr] . '". Pass the word as an argument to the function and the returned phrase should be: "My favorite color is ' . $wordSerie2[$smallRandNr] . '". Name the function "stringPhrase" and print out the result.
 </p>
 ',
 
@@ -174,23 +174,26 @@ return [
 
 "answer" => function () use ($numberTwo, $numberThree) {
     
-    $result = '';
+    $result = [];
+    $res = "";
     $i = 0;
 
     if($numberThree < $numberTwo) {
         for($i = $numberThree; $i < $numberTwo+1; $i++) {
-            $result .= $i . ",";
+            array_push($result, i);
         }
     }
     else if($numberThree > $numberTwo) {
         for($i = $numberThree; $i > $numberTwo-1; $i--) {
-            $result .= $i . ",";
+            array_push($result, i);
         }
     }
     else {
-        $result = $numberThree;
+        array_push($result, $numberThree);
     }
-    return $result;
+    $res = join(",", $result);
+
+    return $res;
 },
 
 ],
@@ -283,7 +286,8 @@ return [
 
 "answer" => function () use ($fbStart, $fbStop) {
     
-    $result = '';
+    $result = [];
+    $res = "";
 
     if($fbStop <= $fbStart) {
         $result = 'Stop is lower than start or they are the same. Try again!';
@@ -291,20 +295,21 @@ return [
     else {
         for($i = $fbStart; $i < $fbStop+1; $i++) {
             if($i % 3 === 0 && $i % 5 !== 0) {
-                $result .= 'Fizz,';
+                array_push($result, "Fizz");
             }
             else if($i % 5 === 0 && $i % 3 !== 0) {
-                $result .= 'Buzz,';
+                array_push($result, "Buzz");
             }
             else if($i % 3 === 0 && $i % 5 === 0) {
-                $result .= 'Fizz Buzz,';
+                array_push($result, "Fizz Buzz");
             }
             else {
-                $result .= $i . ',';
+                array_push($result, $i);
             }
         }
     }
-    return $result;
+    $res = implode(",", $result);
+    return $res;
 },
 
 ],
@@ -385,10 +390,10 @@ return [
 
     function oddOrEven($nr) {
         if($nr % 2 === 0){
-            throw new Exception("The number " . $nr . " is EVEN");
+            throw new Exception("EVEN");
         }
         else {
-            throw new Exception("The number " . $nr . " is ODD");
+            throw new Exception("ODD");
         }
     }
     try {
