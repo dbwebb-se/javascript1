@@ -26,18 +26,18 @@ $print2 = $print1 . " and I am a " . $obj[$r1]["color"] . " " . $obj[$r1]["anima
 $print3 = $print2 . ". I appear in the movie " . $obj[$r1]["appearIn"] . ".";
 $print3New = "My name is " . $obj[$r2]["name"] . " and I am a " . $obj[$r2]["color"] . " " . $obj[$r2]["animal"] . ". I appear in the movie " . $obj[$r2]["appearIn"] . ".";
 $acc = [
-["Savings", "56892", 1000],
+["Savings", "56892", 11000],
 ["Private", "85691", 12000],
-["Food", "15899", 4500],
-["Travel", "85223", 4520],
-["Family", "66952", 5000],
-["Clothes", "42136", 650],
+["Food", "15899", 45000],
+["Travel", "85223", 16800],
+["Family", "66952", 50000],
+["Clothes", "42136", 65000],
 ["Salary", "20156", 16000],
-["Secret", "49653", 109],
-["Budget", "98755", 45064],
-["Shopping", "74563", 3000],
+["Secret", "49653", 10900],
+["Budget", "98755", 10520],
+["Shopping", "74563", 13895],
 ];
-$bigR = 1045; // -1000 - 10000 ?
+$bigR = 5000; // 1000 - 10000
 
 return [
 
@@ -258,7 +258,7 @@ return [
 [
 
 "text" => '
-<p>Create a method in the Account class, called "transfer". It should take one argument, the amount to transfer, and change its own balance with the corresponding argument. Answer with the print-method after you used your new method on "acc3" with the argument: ' . $bigR . '. 
+<p>Create a method in the Account class, called "transfer". It should take two arguments, a float number that represents the amount to transfer, and another account-object that the money should be transferred to. The balance can not be lower than zero. Change its own balance and the other objects balance with the corresponding argument. Answer with the print-method on acc3 after you moved the value: ' . $bigR . ' from acc1 to acc3. 
 </p>
 ',
 
@@ -267,6 +267,32 @@ return [
 	$temp = $bigR += $acc[$r3][2];
 
     return "Account: " . $acc[$r3][0] . ", Number: " . $acc[$r3][1] . ", Balance: " . $temp;
+},
+
+],
+
+
+
+/** -----------------------------------------------------------------------------------
+ * A question.
+ */
+[
+
+"text" => '
+<p>Create one more method in the Account-class, called "current" that only prints out the current balance: "Balance: ?". Put your three accounts in a list and loop over it and print out the balance for each object. Each print should be on its own line. 
+</p>
+',
+
+"answer" => function () use ($acc, $r1, $r2, $r3) {
+
+	$temp1 = $acc[$r1][2] -= $bigR;
+ 	$temp2 = $acc[$r3][2] += $bigR;
+	$result = 
+	"Balance: " . $temp1 . "<br>" .
+    "Balance: " . $acc[$r2][2] . "<br>" . 
+    "Balance: " . $temp2;
+
+    return $result;
 },
 
 ],
