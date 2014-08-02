@@ -71,7 +71,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the sum of the first two variables. Answer with the result.</p>
+<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "result" and assign to it the sum of the first two variables. Answer with the result.</p>
 ',
 
 "answer" => function () use ($numberOne, $numberTwo) {
@@ -90,7 +90,7 @@ return [
 [
 
 "text" => '
-<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a variable "sum" and assign to it the sum of all three variables. Answer with the result.
+<p>Use your two variables, "numberOne" and "numberTwo". Assign to them the values ' . $numberOne . ' and ' . $numberTwo . '.Create one more, called "numberThree" and give it the value: '. $numberThree . '. Use your variable "result" and assign to it the sum of all three variables. Answer with the result.
 </p>
 ',
 
@@ -110,7 +110,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable called "numberOne" and give it the value ' . $numberOne . '. Create another variable called "numberTwo" and give it the value ' . $numberTwo . '. Create a third variable called "sum" and assign to it the product of the first two variables. Answer with the result.
+<p>Use your variables "numberOne" and "numberTwo" and answer with the product of the numbers in your "result"-variable.
 </p>
 ',
 
@@ -130,7 +130,7 @@ return [
 [
 
 "text" => '
-<p>Create three variables, "numberOne", "numberTwo" and "numberThree" and give them the values: ' . $numberOne . ', ' . $numberTwo . ' and '. $numberThree . '. Create a fourth variable, called "sum" and assign to it the product of "numberOne" and "numberTwo" and subtract "numberThree". Answer with the result.
+<p>Use your variables "numberOne", "numberTwo" and "numberThree". Subtract "numberThree" from the product of the other two variables. Answer with your "result"-variable.
 </p>
 ',
 
@@ -150,7 +150,7 @@ return [
 [
 
 "text" => '
-<p>Create two variables, "floatOne" and "floatTwo". Give them the values: ' . $floatOne . ' and ' . $floatTwo . '. Create a third variable, called "sum" and assign to it the sum of them. Answer with the result.
+<p>Create two variables, "floatOne" and "floatTwo". Give them the values: ' . $floatOne . ' and ' . $floatTwo . '. Use your "result"-variable and assign to it the sum of the float numbers. Answer with the result.
 </p>
 ',
 
@@ -170,7 +170,7 @@ return [
 [
 
 "text" => '
-<p>Create two variables, "floatOne" and "numberOne". Give them the values: ' . $floatOne . ' and ' . $numberOne . '. Create a third variable, called "sum" and assign to it the product of them. Answer with the result.
+<p>Use your variables "floatOne" and "numberOne". Answer with the product of them in your "result"-variable.
 </p>
 ',
 
@@ -215,7 +215,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in method "parseInt" to find out the integer representation of the variable. Answer with the result.
+<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in method "parseInt" to find out the integer representation of the text. Answer with your "result"-variable.
 </p>
 ',
 
@@ -234,7 +234,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in method "parseFloat" to find out the float representation of the variable. Answer with the result.
+<p>Use your variable "someIntText". Use the built-in method "parseFloat" to find out the float representation of the text. Answer with your "result"-variable.
 </p>
 ',
 
@@ -253,7 +253,7 @@ return [
 [
 
 "text" => '
-<p>Create a variable "someIntText" and give it a value of "' . $someIntText . '". Use the built-in method "isInteger" to find out if it is a number. Answer with true or false (boolean).
+<p>Use your variable "someIntText". Use the built-in method "isInteger" to find out if it is a number. Assign the result to your "result"-variable and put it in your answer. The variable-type in your answer should be a boolean.
 </p>
 ',
 
@@ -303,7 +303,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in method 'max' to find out the highest number in the serie: " . implode(', ', $serie1) . ". Answer with the result.
+<p>Use the built-in method 'max' to find out the highest number in the serie: " . implode(', ', $serie1) . ". Answer with your 'result'-variable.
 </p>
 ",
 
@@ -321,7 +321,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in method 'min' to find out the lowest number in the serie: " . implode(', ', $serie1) . ". Answer with the result.
+<p>Use the built-in method 'min' to find out the lowest number in the serie: " . implode(', ', $serie1) . ". Answer with your 'result'-variable.
 </p>
 ",
 
@@ -340,7 +340,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in method 'round' to round the float number: " . $floatTwo . " to the closest integer. Answer with the result.
+<p>Use the built-in method 'round' to round the float number: " . $floatTwo . " to the closest integer. Answer with your 'result'-variable.
 </p>
 ",
 
@@ -359,7 +359,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => '
-<p>Create two variables, "numberOne", "numberTwo" and give them the values: ' . $numberOne . ' and ' . $numberTwo . '. Create a third variable, called "sum" and assign to it the quotient of them. Use the built-in method "floor" to get only the integer value. Answer with the result.
+<p>Use your two variables "numberOne" and "numberTwo". Find out the quotient of them and use the built-in method "floor" to get only the integer value. Use your "result"-variable in your answer.
 </p>
 ',
 
@@ -379,7 +379,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in method 'PI' to print out float value of 'Pi'. Round the result to 4 decimals. If you get stuck, then you can google how to round to a certain amount of decimals. Answer with the result.
+<p>Use the built-in method 'PI' to get the float value of 'Pi'. Round the result to 4 decimals. If you get stuck, then you can google how to round to a certain amount of decimals. Answer with your 'result'-variable.
 </p>
 ",
 
@@ -440,7 +440,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => '
-<p>Create a variable, named "firstWord", that holds the word "' . $firstWord . '". Create a second variable, named "secondWord", that holds the word "' . $secondWord . '". Create a third variable, named "bothWords", and put together firstWord and secondWord with a space between. Answer with the result.</p>
+<p>Create a variable, named "firstWord", that holds the word "' . $firstWord . '". Create a second variable, named "secondWord", that holds the word "' . $secondWord . '". Create a third variable, named "bothWords", and put together firstWord and secondWord with a space between. Answer with the variable "bothWords".
+</p>
 ',
 
 "answer" => function () use ($firstWord, $secondWord) {
@@ -459,25 +460,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Create a variable called 'sentence' and assign to it the text: '". $sentenceSerie1[$smallRandNr] ."' and answer with the result.</p>
-",
-
-"answer" => function () use ($smallRandNr, $sentenceSerie1) {
-    $sentence = $sentenceSerie1[$smallRandNr];
-    return $sentence;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Create a variable called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Create another variable called 'numberOne' and assign to it the value: " .  $numberTwo . ". Add them up into a variable called 'sum' and answer with the result.
+<p>Create a variable called 'wordOne' and assign to it: '" .  $wordSerie1[$smallRandNr] . "'. Add your variable called 'numberTwo' to the word and answer with the result in your 'result'-variable.
 </p>
 ",
 
@@ -502,7 +485,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
  * New section of exercises.
  */
 [
-"title" => "Builtin String-functions",
+"title" => "Built-in String-methods, functions and properties",
 
 "intro" => "
 <p>If you need a hint, take a look at: <br>
@@ -522,7 +505,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function 'charAt' on a string to return the character at a given index. Create a variable with the word: '" .  $wordSerie1[$smallRandNr] . "' and answer with the character at index: " . ($smallNr-1) . ".
+<p>Use 'charAt' on a string to return the character at a given index. Use your 'wordOne' (" .  $wordSerie1[$smallRandNr] . ") and answer with the character at index: " . ($smallNr-1) . ".
 </p>
 ",
 
@@ -541,7 +524,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function String.toUpperCase to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Answer with the result.
+<p>Use 'toUpperCase' to transform the string: '" . $sentenceSerie1[$smallRandNr] . "' to uppercase. Answer with the result.
 </p>
 ",
 
@@ -560,26 +543,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function String.repeat to create a new string that contains the string: '" . $wordSerie1[$smallRandNr] . "' repeated " . ($smallNr+10) . " number of times. Answer with the result.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr, $smallNr) {
-    $result = str_repeat($wordSerie1[$smallRandNr], $smallNr+10);
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.length to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Answer with the result.
+<p>Use 'length' to find out the length of the string: '" . $wordSerie1[$smallRandNr] . "'. Answer with the result.
 </p>
 ",
 
@@ -598,33 +562,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Use the built-in function String.substr to extract the last three characters of the word: '" . $wordSerie1[$smallRandNr] . "'. Answer with the result.
+<p>Use 'substr' to extract the last three characters of the word: '" . $wordSerie1[$smallRandNr] . "'. Answer with the result.
 </p>
 ",
 
 "answer" => function () use ($wordSerie1, $smallRandNr) {
     $result = substr($wordSerie1[$smallRandNr], (strlen($wordSerie1[$smallRandNr])-3));
-    return $result;
-},
-
-],
-
-
-
-/** -----------------------------------------------------------------------------------
- * A question.
- */
-[
-
-"text" => "
-<p>Use the built-in function String.trim to remove the first and last letter from the word: '" . $wordSerie1[$smallRandNr] . "'. Answer with the result.
-</p>
-",
-
-"answer" => function () use ($wordSerie1, $smallRandNr) {
-    $last = strlen($wordSerie1[$smallRandNr])-1;
-    $res = $wordSerie1[$smallRandNr][0] . $wordSerie1[$smallRandNr][$last];
-    $result = trim($wordSerie1[$smallRandNr], $res);
     return $result;
 },
 
@@ -644,7 +587,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
  * New section of exercises.
  */
 [
-"title" => "Built-in Date-functions",
+"title" => "Built-in Date-methods and functions",
 
 "intro" => "
 <p>If you need a hint, take a look at: <br>
@@ -690,7 +633,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
     $myDate = new DateTime($aDate);
     $interval = new DateInterval("P30D");
     $myDate->add($interval);
-    
+
     return $myDate->format('d');
 },
 
@@ -749,7 +692,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
 [
 
 "text" => '
-<p>Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use three equals when comparing (===). Use if else statements to answer "yes" if they are equal, else answer "no".
+<p>Compare the number ' . $numberOne . ' and a string that holds the same value ("' . $numberOne . '"). Use three equals (strict equal) when comparing. Use if else statements to answer "yes" if they are equal, else answer "no".
 </p>
 ',
 
@@ -849,7 +792,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if.
 [
 
 "text" => "
-<p>Use if else statements to see if " . $numberOne . " is 'higher', 'lower' or 'equal' to " . $numberThree . ". Answer with the result (higher, lower or equal).
+<p>Use if else statements to see if " . $numberOne . " is 'higher', 'lower' or 'equal' to " . $numberThree . ". Answer with the result as a string (higher, lower or equal).
 </p>
 ",
 
