@@ -3,8 +3,8 @@
 /**
  * Titel and introduction to the lab.
  */
-$numberOne = 10; // 100-999
-$numberTwo = 6;  // 100-999
+$numberOne = 10; // 1-999
+$numberTwo = 6;  // 1-999
 $numberThree = 56; // 100-999
 $floatTwo = 5.22; // 100-999 
 $lowNr = 15; // 0 - 100
@@ -280,7 +280,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes two arguments, ' . $fbStart . ' (start) and ' . $fbStop . ' (stop). The arguments represents the starting point and stop point of the game "Fizz Buzz" (http://en.wikipedia.org/wiki/Fizz_buzz). The function should run from start to stop and print out "Fizz", "Buzz" or both at appropriate numbers. If "stop" is equal or lower than "start", the function should return such information. Name the function "fizzBuzz" and answer with the result.
+<p>Create a function that takes two arguments, ' . $fbStart . ' (start) and ' . $fbStop . ' (stop). The arguments represents the starting point and stop point of the game "Fizz Buzz" (http://en.wikipedia.org/wiki/Fizz_buzz). The function should run from start to stop and add "Fizz", "Buzz" or both to your "result"-variable at appropriate numbers. Each entry to your result should be comma-separated. If "stop" is equal or lower than "start", the function should return such information. Name the function "fizzBuzz" and answer with the result.
 </p>
 ',
 
@@ -347,7 +347,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes one argument, "monthNr". Use the number: ' . $monthNr . '. The function should return the name of the month representing the passed value, for example: monthNr = 2 should return "February". Create an exception for values out of range such if monthNr < 1 and > 12. Catch the exception and print it out. Name the function monthException and return a string.
+<p>Create a function that takes one argument, "monthNr". Use the number: ' . $monthNr . '. The function should return the name of the month representing the passed value, for example: monthNr = 2 should return "February". Create an exception for values out of range such if monthNr < 1 and > 12. Name the function monthException and return the name of the month. Answer with the returned string.
 </p>
 ',
 
@@ -382,18 +382,21 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes one argument, ' . $numberOne . '. The function should return a string "EVEN" or "ODD" depending on the number. Create an exception for both possibilities and use "catch" to print out the result. Name the function "oddOrEven".
+<p>Create a function that takes one argument, ' . $numberOne . '. The function should return the string "EVEN" if the number is even. Create an exception if the number is odd. The message should be "NOT EVEN". Name the function "oddOrEven" and answer with the result as a string.
 </p>
 ',
 
 "answer" => function () use ($numberOne) {
 
     function oddOrEven($nr) {
+
+        $result = "";
         if($nr % 2 === 0){
-            throw new Exception("EVEN");
+            $result = "EVEN";
+            return $result;
         }
         else {
-            throw new Exception("ODD");
+            throw new Exception("NOT EVEN");
         }
     }
     try {
