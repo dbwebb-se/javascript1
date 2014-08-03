@@ -59,7 +59,7 @@ return [
 [
 
 "text" => '
-<p>Give your object the property "firstName" and name him "' . $p1["firstName"] . '". Also give him a method called "print1". This method should present your object with the first name: "My name is ' . $p1["firstName"] . '."  
+<p>Give your object the property "firstName" and name him "' . $p1["firstName"] . '". Also give him a method called "print1". This method should return a presentation of your object with the first name: "My name is ' . $p1["firstName"] . '". Answer with the presentation method "print1".  
 </p>
 ',
 
@@ -217,7 +217,7 @@ return [
 [
 
 "text" => "
-<p>Create a method in 'shape' that allows the object to move a given number of steps. The method should take two arguments, " . $xStep . " and " . $yStep . ". The numbers represents the number of steps to move in x-axis and y-axis. Name the method 'move' and use 'print' on the second object to print out the new position. 
+<p>Create a method in 'shape' that allows the object to move a given number of steps. The method should take two arguments, " . $xStep . " and " . $yStep . ". The numbers represents the number of steps to move in x-axis and y-axis. Name the method 'move' and use 'print' on the second object (shape2) to print out the new position. 
 </p>
 ",
 
@@ -239,7 +239,7 @@ return [
 [
 
 "text" => "
-<p>Create a method in 'shape', called 'printPos', that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line. 
+<p>Create a method in 'shape', called 'printPos', that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line by using a 'br' tag. 
 </p>
 ",
 
