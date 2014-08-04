@@ -168,7 +168,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns a string with all numbers comma-separated, in a range of: ' . $numberThree . ' and ' . $numberTwo . '. Make sure that the order of the arguments should not matter. For example if the arguments are: 5 and 10, the function should print: 5,6,7,8,9,10. If the arguments are: 10 and 5, the function should print: 10,9,8,7,6,5,. If the arguments are the same, print out only that number. Name the function "printRange" and answer with the result.
+<p>Create a function that returns a string with all numbers comma-separated, in a range of: ' . $numberThree . ' and ' . $numberTwo . '. Make sure that the order of the arguments should not matter. For example if the arguments are: 5 and 10, the function should print: 5,6,7,8,9,10. If the arguments are: 10 and 5, the function should return: 10,9,8,7,6,5. If the arguments are the same, return out only that number. Name the function "printRange" and answer with the result.
 </p>
 ',
 
@@ -280,7 +280,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes two arguments, ' . $fbStart . ' (start) and ' . $fbStop . ' (stop). The arguments represents the starting point and stop point of the game "Fizz Buzz" (http://en.wikipedia.org/wiki/Fizz_buzz). The function should run from start to stop and add "Fizz", "Buzz" or both to your "result"-variable at appropriate numbers. Each entry to your result should be comma-separated. If "stop" is equal or lower than "start", the function should return such information. Name the function "fizzBuzz" and answer with the result.
+<p>Create a function that takes two arguments, ' . $fbStart . ' (start) and ' . $fbStop . ' (stop). The arguments represents the starting point and stop point of the game "Fizz Buzz" (http://en.wikipedia.org/wiki/Fizz_buzz). The function should run from start to stop and add "Fizz", "Buzz" or both to your "result"-variable at appropriate numbers. Each entry to your result should be comma-separated. If "stop" is equal or lower than "start", the function should return such information. Name the function "fizzBuzz" and answer with the result. If you have an array, then use join() with comma-separation in your answer.
 </p>
 ',
 

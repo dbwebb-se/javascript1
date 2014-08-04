@@ -625,7 +625,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 [
 
 "text" => "
-<p>Create a new Date object that is equal to 'myDate' plus 30 days. Use Date.getDate and answer with the day of the month.
+<p>Create a new Date object that is equal to 'myDate' plus 30 days. Use Date.getDate and answer with the day of the month. If the date is below 10, then add a '0' (zero) before the number.
 </p>
 ",
 

@@ -43,7 +43,7 @@ return [
 "title" => "Lab 3 - javascript1",
 
 "intro" => "
-<p>In this lab, use a function to create the expected answers. Answer with a call of the function. 
+<p>In this lab, use a function to create the expected answers. Whenever you should answer with an array, then use join() with comma-separation in your answer.
 </p>
 ",
 
@@ -74,7 +74,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that returns an array with the length of 5 and holds the numbers 1, 2, 3, 4, 5. Name the function "myFirstArray" and answer with the returned result.
+<p>Create a function that returns an array with the length of 5 and holds the numbers 1, 2, 3, 4, 5. Name the function "myFirstArray" and answer with the returned array.
 </p>
 ',
 
