@@ -17,7 +17,7 @@ by Marijn Haverbeke
 
 [Book (revision 1) as HTML (online)](http://eloquentjavascript.net/contents.html).
 
-[Book (revision 1) as HTML (included in repo)]eloquent/book.html).
+[Book (revision 1) as HTML (included in repo)](eloquent/book.html).
 
 This work is licensed under the Creative Commons Attribution 3.0 Unported License, http://creativecommons.org/licenses/by/3.0/.
 
