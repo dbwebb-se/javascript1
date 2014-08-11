@@ -94,7 +94,10 @@ createLabPython()
         echo "\nYou already have a lab directory with lab-files.\n$WHERE\nUse it or remove it if you want to create a new lab."
         exit 1
     else
-        mkdir "$WHERE"
+        if [ ! -d "$WHERE" ]
+        then
+            mkdir "$WHERE"
+        fi
     fi
 
     # Create the key
