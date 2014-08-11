@@ -412,7 +412,7 @@ initBuildDir()
     fi
 
     ME="$BUILD/me"
-    for dir in $BUILD1 $BUILD2 $BUILD3 $BUILD $ME/kmom01 $ME/kmom02 $ME/kmom03 $ME/kmom04 $ME/kmom05 $ME/kmom06 $ME/kmom10; do
+    for dir in $BUILD1 $BUILD2 $BUILD3 $BUILD $ME $ME/kmom01 $ME/kmom02 $ME/kmom03 $ME/kmom04 $ME/kmom05 $ME/kmom06 $ME/kmom10; do
         if [ ! -d $dir ]; then mkdir $dir; fi
     done
 }
@@ -440,7 +440,7 @@ publish()
         *)          DIRS="$DIR" ;;
     esac
 
-    rsync -a --delete -f '- /*/' $TARGET/me/ $BUILD/me/
+    rsync -a --delete --exclude 'me/default' -f '- /*/' $TARGET/me/ $BUILD/me/
 
     for filename in $(find $BUILD/me/ -maxdepth 1 -type f -name '*.html'); do
         assert 0 "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"
