@@ -239,7 +239,7 @@ return [
 [
 
 "text" => "
-<p>Create a method in 'shape', called 'printPos', that prints out the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line by using a 'br' tag. 
+<p>Create a method in 'shape', called 'printPos', that returns the current position of the object: 'X: ?, Y: ?'. Put your three objects in an array and use a for each loop to print out all objects position. Each 'print' should be on its own line by using a 'br' tag. 
 </p>
 ",
 
