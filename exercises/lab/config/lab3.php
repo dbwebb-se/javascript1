@@ -43,7 +43,7 @@ return [
 "title" => "Lab 3 - javascript1",
 
 "intro" => "
-<p>In this lab, use a function to create the expected answers. Answer with a call of the function. 
+<p>In this lab, use a function to create the expected answers. Whenever you should answer with an array, then use join() with comma-separation in your answer.
 </p>
 ",
 
@@ -74,7 +74,7 @@ return [
 [
 
 "text" => '
-<p>Create an array with the length of 5 and holds the numbers 1, 2, 3, 4, 5. Name the function "myFirstArray" and return the array.
+<p>Create a function that returns an array with the length of 5 and holds the numbers 1, 2, 3, 4, 5. Name the function "myFirstArray" and answer with the returned array.
 </p>
 ',
 
@@ -95,7 +95,7 @@ return [
 [
 
 "text" => '
-<p>Create an array that holds the words: ' . implode(", ", $arrWords1[$arrRand]) . '. Name the function "arrayStrings" and return the array.
+<p>Create a function that returns an array with the words: ' . implode(", ", $arrWords1[$arrRand]) . '. Name the function "arrayStrings" and answer with the returned array.
 </p>
 ',
 
@@ -116,7 +116,8 @@ return [
 [
 
 "text" => '
-<p>Create an array that holds the words: ' . implode(", ", $arrWords1[$arrRand]) . '. Name the function "returnOne" and only return the element on place: ' . $arrRand . '. Print out the result.</p>
+<p>Create an array that holds the words: ' . implode(", ", $arrWords1[$arrRand]) . '. Name the function "returnOne" and only return the element on place: ' . $arrRand . '. Print out the result.
+</p>
 ',
 
 "answer" => function () use ($arrWords1, $arrRand) {
@@ -178,7 +179,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that takes two arguments, an array and a value in the array. Use the array [' . implode(", ", $wordSerie2) . '] and the value "' . $wordSerie2[$smallRandNr] . '". The function should return the index in the array that the value is found at. For example, if the arguments are: [1, 2, 3] and 2, the function should return the index of 2, which in this case is 1. If the value does not exist in the array, it should return -1. Name the function "findIndex" and return the result.
+<p>Create a function that takes two arguments, an array and a value in the array. Use the array ' . implode(", ", $wordSerie2) . ' and the value "' . $wordSerie2[$smallRandNr] . '". The function should return the index in the array that the value is found at. For example, if the arguments are: [1, 2, 3] and 2, the function should return the index of 2, which in this case is 1. If the value does not exist in the array, it should return -1. Name the function "findIndex" and return the result.
 </p>
 ',
 
@@ -199,7 +200,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to change all items in the array to uppercase. Name the function "upperCaseArray" and return the array.
+<p>Pass the array: ' . implode(", ", $arrWords1[$arrRand]) . ' to a function and use a "forEach-loop" to change all items in the array to uppercase. Name the function "upperCaseArray" and return the array.
 </p>
 ',
 
@@ -224,7 +225,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use a "forEach-loop" to add the text "is good for you" to all elements in the array. Name the function "changeArrayElements" and return the array.
+<p>Pass the array: ' . implode(", ", $arrWords1[$arrRand]) . ' to a function and use a "forEach-loop" to add the text "is good for you" to all elements in the array. Name the function "changeArrayElements" and return the array.
 </p>
 ',
 
@@ -249,7 +250,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array: [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and join it into a string. Use a space (" ") to separate the elements. Name the function "joinArray" and return the array.
+<p>Pass the array: ' . implode(", ", $arrWords1[$arrRand]) . ' to a function and join it into a string. Use a space (" ") to separate the elements. Name the function "joinArray" and return the array.
 </p>
 ',
 
@@ -270,7 +271,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $serie2) . '] to a function that returns the last index of the element 17. Name the function "lastIndex" and return the result.
+<p>Pass the array ' . implode(", ", $serie2) . ' to a function that returns the last index of the element 17. Name the function "lastIndex" and return the result.
 </p>
 ',
 
@@ -294,7 +295,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "pop()" to remove the last element. Return a string that holds the remaining elements in the array with a comma-separation. Name the function "popArray".
+<p>Pass the array ' . implode(", ", $arrWords1[$arrRand]) . ' to a function and use "pop()" to remove the last element. Return a string that holds the popped element. Name the function "popArray".
 </p>
 ',
 
@@ -303,8 +304,8 @@ return [
     $arr = $arrWords1[$arrRand];
     $removed = array_pop($arr);
     
-    $result = join(",",$arr);
-    return $result;   
+    //$result = join(",",$arr);
+    return $removed;   
 },
 
 ],
@@ -317,7 +318,7 @@ return [
 [
 
 "text" => '
-<p>Create a function that adds the element ' . $smallRandNr . ' to the array [' . implode(", ", $serie1) . ']. The function should take two arguments: the array and an element to add to it. Name the function "pushArray", return the array.
+<p>Create a function that adds the element ' . $smallRandNr . ' to the array ' . implode(", ", $serie1) . '. The function should take two arguments: the array and an element to add to it. Name the function "pushArray", return the array.
 </p>
 ',
 
@@ -337,7 +338,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $arrWords1[$arrRand]) . '] to a function and use "shift()" to remove the first element. Return a string that holds the remaining elements in the array with a comma-separation. Name the function "shiftArray".
+<p>Pass the array ' . implode(", ", $arrWords1[$arrRand]) . ' to a function and use "shift()" to remove the first element. Return a string that holds the shifted element. Name the function "shiftArray".
 </p>
 ',
 
@@ -345,9 +346,9 @@ return [
     
     $arr = $arrWords1[$arrRand];
     $removed = array_shift($arr);
-    $result = join(",", $arr);
+    //$result = join(",", $arr);
     
-    return $result;   
+    return $removed;   
 },
 
 ],
@@ -360,7 +361,7 @@ return [
 [
 
 "text" => '
-<p>Pass the array [' . implode(", ", $serie2) . '] to a function that sort the array. Name the function "sortArray" and return the sorted array.
+<p>Pass the array ' . implode(", ", $serie2) . ' to a function that sort the array in ascending order. Name the function "sortArray" and return the sorted array.
 </p>
 ',
 
