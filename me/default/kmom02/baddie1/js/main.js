@@ -74,12 +74,12 @@
 		
 		/* HELP-section
 		 * Key contains a number value for which keyboard key was pressed
-		 * 37 - right arrow
-		 * 		change the variable left so that baddie moves right
+		 * 37 - left arrow
+		 * 		change the variable left so that baddie moves left
 		 * 38 - up arrow
 		 * 		change the variable top so that baddie moves up
-		 * 39 - left arrow
-		 * 		change the variable left so that baddie moves left
+		 * 39 - right arrow
+		 * 		change the variable right so that baddie moves right
 		 * 40 - down arrow
 		 * 		change the variable top so that baddie moves down
 		 */
