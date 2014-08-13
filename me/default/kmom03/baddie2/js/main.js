@@ -64,9 +64,9 @@
 		// Fill in the missing code in my switch case so that the baddie moves
 		switch(key) {
 			case 37:
-				// A. Go right - Use moveBaddie-function (1a)
+				// A. Go left - Use moveBaddie-function (1a)
 				
-				// A. Turn baddie right - Use the given function (1b)
+				// A. Turn baddie left - Use the given function (1b)
 				
 				break;
 			case 38:
@@ -74,9 +74,9 @@
 				
 				break;
 			case 39:
-				// A. Go left - Use moveBaddie-function (1a)
+				// A. Go right - Use moveBaddie-function (1a)
 				
-				// A. Turn baddie left - Use the given function (1b)
+				// A. Turn baddie right - Use the given function (1b)
 				
 				break;
 			case 40:
@@ -115,7 +115,7 @@
 		collided = false;
 
 		// --------------------------------------------
-		// ASSINMENT 2
+		// ASSIGNMENT 2
 		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
 		// A. left wall collide check - check if left outside content (2a)
 		//		Remove false and add your own check
@@ -174,7 +174,7 @@
 		console.log("Baddie wants to got to " + left + "," + top);
 
 		// --------------------------------------------
-		// ASSINMENT 3
+		// ASSIGNMENT 3
 		// A. Check for wall collision - use given function
 		// 		Change null to the function call
 		var collided = null;
