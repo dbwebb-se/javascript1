@@ -5,7 +5,7 @@
     areaHeight = window.innerHeight,
     areaWidth = window.innerWidth,
     points = document.getElementById('points'),
-    duck = new Image(),
+    duck = document.createElement('img'),
     score = 0,
     timer = 1000;
 
@@ -37,9 +37,7 @@
      * The function that triggers the game, uses an time interval in milliseconds
      **/
     function startGame() {
-        var start = setInterval(function() {
-            newDuck();
-        }, timer);        
+        setInterval(newDuck, timer);        
     }
 
     /**

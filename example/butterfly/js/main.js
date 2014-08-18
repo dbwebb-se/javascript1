@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	var xMax, yMax, obj, objHeight, objWidth, animate, speed;
+	var xMax, yMax, obj, objHeight, objWidth, animate, speed, t;
 	xMax = document.getElementById('content').clientWidth;
 	yMax = document.getElementById('content').clientHeight;
 	obj = document.getElementById('movable');
@@ -9,6 +9,7 @@
 	obj.style.left = '0px';
 	obj.style.top = '0px';
 	speed = 5;
+	t = 40;
 	
 	console.log('Div height: ' + yMax + ', Div width: ' + xMax);
 	console.log('Object height: ' + objHeight + ', Object width: ' + objWidth);
@@ -19,7 +20,7 @@
 			speed = speed - (speed * 2); 
 			console.log('Current speed: ' + speed);
 		}
-		animate = setTimeout(move, 40);
+		animate = setTimeout(move, t);
 	}
 	 move();
 }());
