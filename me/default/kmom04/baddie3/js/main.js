@@ -127,7 +127,7 @@ Good luck!
 	};
 
 	/**
-	 * [init description]
+	 * Initiates area and baddie
 	 */
 	var init = function() {
 		drawGamePlan(gameArea);

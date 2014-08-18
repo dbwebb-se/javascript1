@@ -1,32 +1,18 @@
 /* Baddie2 - Assignment */
-// You should start by uncommenting blocks of code or functions that are needed for the assignment
-// Follow the instructions given for each of these blocks
-// After that you can start doing the assigments
-// Assignment-sections start like this:
-//		// -------------------------------------------
-//		// ASSIGNMENT x
-//
-// In each section there will be INSTRUCTIONS on what to fill out
-// Each INSTRUCTION comment will start with "A.", like this:
-//		// A. This is an instruction
-// If it's a extra assignment, the instruction starts with "E.":
-//		// E. This is an instruction for an extra assingment
-// In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
-//		// A. Assign value to variable x
-//
-// This could for example be filled out like this:
-//		// A. Assign value to variable x
-//		x = 42;
-// PLEASE note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row
-// In some cases you have to fill in some missing parts of code or change parts of it
-// It can look like this:
-//		if(false)
-// These should be filled out by replacing the boolean false with your code, for example:
-//		if(x > 10)
-// PLEASE follow any instructions given with the assignment
-// They will tell you what code needs to be replaced
-//
-// Good luck!
+/*
+Assignment-sections start like this:
+	// -------------------------------------------
+	// ASSIGNMENT
+
+Note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row.
+In some cases you have to fill in some missing parts of code or change parts of it.
+It can look like this:
+	if(false)
+These should be filled out by replacing the boolean false with your code, for example:
+	if(x > 10)
+
+Good luck!
+*/
 
 (function(){
 	'use strict';
