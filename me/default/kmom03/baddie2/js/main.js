@@ -1,4 +1,4 @@
-/* Baddie3 - Assignment */
+/* Baddie2 - Assignment */
 /*
 Assignment-sections start like this:
 	// -------------------------------------------

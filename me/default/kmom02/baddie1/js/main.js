@@ -22,23 +22,23 @@ Good luck!
 	var step, left, top;
 
 	// Get HTML baddie
-	baddie = document.getElementById("baddie");
+	baddie = document.getElementById('baddie');
 
 	// ------------------------------
 	// ASSIGNMENT
-	// How many pixles should baddie move each step? Assign a number to step (1a)
+	// How many pixles should baddie move each step? Assign a number to step
+	
 
-	console.log("Baddie will go " + step + " pixels each step");
 	// ------------------------------
 	// ASSIGNMENT
-	// Where should baddie start on the screen? Assign a number to left and to top (1b)
+	// Where should baddie start on the screen? Assign a number to left and top
+	
 	
 
-	console.log("Baddie will start at " + left + "," + top);
-	
 	// Places baddie initially
 	baddie.style.left = left + "px";
 	baddie.style.top = top + "px";
+	console.log("Baddie started at " + left + "," + top);
 	
 
 	/* ------------------------------------
@@ -59,29 +59,27 @@ Good luck!
 		
 		// ------------------------------
 		// ASSIGNMENT
-		// Use an if/else or switch-case on key
-		// For each case - Calculate the new position for baddie and place it in top or left depending on where he's going
-
-		
-		/* HELP-section
-		 * Key contains a number value for which keyboard key was pressed
+		// Use an if/else or switch (on key) to calculate where baddie is going
+		/* Key contains a number value for which keyboard key was pressed
 		 * 37 - left arrow
 		 * 		change the variable left so that baddie moves left
 		 * 38 - up arrow
 		 * 		change the variable top so that baddie moves up
 		 * 39 - right arrow
-		 * 		change the variable right so that baddie moves right
+		 * 		change the variable left so that baddie moves right
 		 * 40 - down arrow
 		 * 		change the variable top so that baddie moves down
 		 */
+
 		
 		// ------------------------------
 		// EXTRA ASSIGNMENT
-		// Handle so that baddie can't move outside of the windows edges
+		// Handle so that baddie can't move outside of the window's edges
 		// TIP: Use the getSize-example to find how you can get the window width and height
 
+		
 
-		// Assigns a new position for baddie
+		// Assign a new position for baddie
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
 		console.log("Baddie moved to %i,%i", left, top);
