@@ -1,32 +1,18 @@
 /* Baddie3 - Assignment */
-// You should start by uncommenting blocks of code or functions that are needed for the assignment
-// Follow the instructions given for each of these blocks
-// After that you can start doing the assigments
-// Assignment-sections start like this:
-//		// -------------------------------------------
-//		// ASSIGNMENT x
-//
-// In each section there will be INSTRUCTIONS on what to fill out
-// Each INSTRUCTION comment will start with "A.", like this:
-//		// A. This is an instruction
-// If it's a extra assignment, the instruction starts with "E.":
-//		// E. This is an instruction for an extra assingment
-// In most cases, you have to fill in rows which are left blank after the INSTRUCTION comment
-//		// A. Assign value to variable x
-//
-// This could for example be filled out like this:
-//		// A. Assign value to variable x
-//		x = 42;
-// PLEASE note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row
-// In some cases you have to fill in some missing parts of code or change parts of it
-// It can look like this:
-//		if(false)
-// These should be filled out by replacing the boolean false with your code, for example:
-//		if(x > 10)
-// PLEASE follow any instructions given with the assignment
-// They will tell you what code needs to be replaced
-//
-// Good luck!
+/*
+Assignment-sections start like this:
+	// -------------------------------------------
+	// ASSIGNMENT
+
+Note that the INSTRUCTION can be to fill a whole BLOCK of code, not just one row.
+In some cases you have to fill in some missing parts of code or change parts of it.
+It can look like this:
+	if(false)
+These should be filled out by replacing the boolean false with your code, for example:
+	if(x > 10)
+
+Good luck!
+*/
 
 (function(){
 	'use strict';
@@ -48,8 +34,6 @@
 
 	// Sets content size to match tilesize and gridsize
 	content.style.width = content.style.height = gridSize*tileSize + "px";
-	// Sets baddie
-	baddie.style.height = baddie.style.width = tileSize + "px";
 
 	// Gets starting position of baddie
 	left = baddie.offsetLeft;
@@ -59,26 +43,22 @@
 	posLeft = 0;
 	posTop = 0;
 
+	/**
+	 * This is the game area with a 10x10 grid
+	 * 10 - nothing (grass)
+	 * 11 - wall (impassible)
+	 * 12 - box (movable)
+	 * 13 - door (passible)
+	 */
 	// ------------------------------
-	// ASSIGNMENT 1
-	// Only half of the array is currently filled
-	// The array size is gridSize*gridSize (gridSize 10 gives an array of 100)
-	// A. Fill out the array gameArea so that the whole content is filled with tiles (1a)
-	// A. Place out walls, a door and at least 1 box (1b)
+	// ASSIGNMENT
+	// Fill out the array gameArea so that the whole content is filled with tiles
+	// Place out walls, a door and at least 1 box
+	// NOTE: The array size is gridSize*gridSize (gridSize 10 gives an array of 100)
 	gameArea = [
 	11,11,11,11,11,11,11,11,11,11,
-	11,10,10,10,10,10,10,10,10,11,
-	11,10,10,10,10,10,10,10,10,11,
-	11,10,10,10,10,10,10,10,10,11,
-	11,10,10,10,10,10,10,10,10,11,
 	/*Fill out the rest of the array*/
 	];
-	/* HELP-section for tiles
-	 * 10 - nothing
-	 * 11 - wall
-	 * 12 - box
-	 * 13 - door
-	 */
 
 
 	/* ------------------------------------
@@ -89,16 +69,22 @@
 		var key;
 		// Gets what key was pressed as number
 		key = event.keyCode || event.which;
-		console.log(key + " was pressed");
 
-		// ------------------------------
-		// ASSIGNMENT 2
 		// Switch case to decide where baddie is to go
-		// A. Copy-paste the switch case you wrote from baddie2 that handles the key variable
+		// ------------------------------
+		// ASSIGNMENT
+		// Copy-paste the switch case you wrote from baddie2 that handles the key variable
+		// In each case, add an if-statement around the function calls that checks if a move was possible
+		// HINT: Use collideBaddie() to check if a move was possible (it returns a boolean)
 		switch(key) {
-			/*Place your cases in the switch*/
-		}
 
+
+			default:
+				// Button was pressed but no action is to be performed
+				console.log("Nothing happened with the gameboard");
+				// return this function so that the default button action is performed instead
+				return true;
+		}
 		// Baddie action was performed - prevent button default
 		event.preventDefault();
 	});
@@ -108,77 +94,82 @@
 	 */
 
 	/**
-	* NEW Draws the initial gameplan
-	*/
+	 * [drawGamePlan description]
+	 * @param  {[type]} gameArea [description]
+	 */
 	var drawGamePlan = function(gameArea) {
 		var i, tile;
 		console.log("Drawing gameplan:");
 		console.log(gameArea);
 
 		// ------------------------------
-		// ASSIGNMENT 3
+		// ASSIGNMENT
 		// Write a for-loop that iterates over the gameArea-array
-		// A. Fill out the missing for-loop conditions (3a)
-		//		Remove false and fill in needed conditions
+		// Fill out the missing for-loop conditions
+		// HINT: Remove false and fill in needed conditions
 		for(false;false;false) {
-			// Creates the tile
+			// Create the tile
 			tile = document.createElement("div");
 
-			// A. Write out the current tile from gameArea (3b)
-			//		Change null so that it fetches the value of the tile
-			var tileFromArray = null;
-			tile.className = "tile t" + tileFromArray;
+			// ------------------------------
+			// ASSIGNMENT
+			// Write out the current tile from gameArea
+			// HINT: Change null so that it fetches the value of the tile
+			var tileFromArray = false;
 
-			// Adds ID to tile
+			// Add class name to tile
+			tile.className = "tile t" + tileFromArray;
+			// Add ID to tile
 			tile.id = "n" + i;
-			// Appends tile to the content
+			// Append tile to the content
 			content.appendChild(tile);
 		}
 	};
 
 	/**
-	 * NEW Initiates the area and moves baddie to his location
+	 * [init description]
 	 */
 	var init = function() {
 		drawGamePlan(gameArea);
-		moveBaddieTo(1, 1);
+		moveBaddie(1, 1);
 	};
 
 	/**
-	* CHANGED Initiate move on character
-	*/
-// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
-/*
-	var moveBaddie = function(moveLeft, moveTop){
-		var tile, tilePos, newLeft, newTop;
+	 * This function checks that the move was possible and returns either the new position or false
+	 * @param  {int} moveLeft	- direction to move horizontally, range: -1 -> 1
+	 * @param  {int} moveTop	- direction to move vertically, range: -1 -> 1
+	 * @return {bool} 			- if baddie was movable true is returned, otherwise false is returned
+	 */
+	var collideBaddie = function(moveLeft, moveTop){
+		var tile, tilePos, newLeft, newTop, movable;
 		// This time we want the grid position values, not the pixel position values
 		newLeft = posLeft + moveLeft;
 		newTop = posTop + moveTop;
 
-		// Do check that new positon is in scope, if not - reset
-		// Keep in mind that even though the gridsize is 10, you count from 0-9
-		if(gridSize-1 < newLeft || newLeft < 0 || gridSize-1 < newTop || newTop < 0) {
-			return true; // collided with walls, don't continue
-		}
-		console.log("Move to: " + newLeft + "," + newTop);
+		movable = false;
 
 		// Get the tile baddie wants to move to
 		// left is the row number and top is the column number
 		tilePos = newLeft + newTop*gridSize;
 
 		// ------------------------------
-		// ASSIGNMENT 5
-		// A. Get the tile value from array gameArea and place it in the variable tile (5a)
+		// ASSIGNMENT
+		// Get the tile value from array gameArea and place it in the variable tile
 		
 
-		console.log("Tile at " + tilePos + " contains " + tile);
+		console.log("Move to: " + newLeft + "," + newTop);
+		console.log("Tile " + tilePos + " contains " + gameArea[tilePos]);
 
 		// Switch case on the tile value - do different things depending on what tile baddie is moving to
 		switch(tile) {
 			case 10: // empty
 			case 13: // door
-				// Move baddie to new position
-				moveBaddieTo(newLeft, newTop);
+				// Move baddie to tile
+				movable = true;
+				break;
+			case 11:
+				// Wall, don't move baddie
+				console.log("Baddie collided with wall: %s", tile);
 				break;
 			case 12:
 				// Tile was a box, move it and then baddie
@@ -187,74 +178,91 @@
 				// Calculate where the sibling tile to be checked is in the array
 				nextPos = tilePos + moveLeft + (gridSize*moveTop);
 
-				// A. Get the next tile from gameArea and place it in the variable nextTile (5b)
-
+				// ------------------------------
+				// ASSIGNMENT
+				// Get the next tile from gameArea and place it in the variable nextTile (5b)
+				
 
 				console.log("The next tile is: " + nextTile);
+
 				// Only move if the sibling tile to be moved to is empty
 				if(nextTile == 10) {
-					// ------------------------------
-					// ASSIGNMENT 6
-					// Switch the tiles
-					// A. Place tile into the next positon in the array gameArea (6a)
-					
-					// A. Now make sure the current tile is empty in the array gameArea (6b)
-					
-
-					// give the tiles new classnames to redraw them
-					document.getElementById("n" + nextPos).className = "tile t" + tile; // box tile here
-					document.getElementById("n" + tilePos).className = "tile t" + 10; // current tile will be empty
-					console.log("Moved a box from " + tilePos + " to " + nextPos);
-
-					moveBaddieTo(newLeft, newTop);
+					moveTile(tilePos, nextPos);
+					// Allow  baddie to move to the current tile
+					movable = true;
+					console.log("Moved a box");
+				} else {
+					// if not empty - don't do anything else
+					console.log("Can't push box - next tile is not empty");					
 				}
-				// if not empty - don't do anything else
-				console.log("Can't push box - next tile is not empty");
 				break;
 			default:
 				// Tile was impassible - collided, do not move baddie
 				console.log("Oh no, baddie collided with the wall");
-				return true;
+				movable = false;
 		}
+		return movable;
 	};
-*/
+	console.log(collideBaddie);
 
 	/**
-	* NEW Preform the actual move of baddie to his new position in the grid
-	*/
-	var moveBaddieTo = function(x, y) {
+	 * Changes position variables for baddie and style to draw the change out on the screen
+	 * @param  {[type]} x	- direction to move horizontally
+	 * @param  {[type]} y	- direction to move vertically
+	 */
+	var moveBaddie = function(x, y) {
 		// Update baddies position variables
-		posLeft = x;
-		posTop = y;
-		// Calculate pixel locations
+		posLeft += x;
+		posTop += y;
+
+		// Assign left and right to the pixel positions inside the area that the baddie is moving to
+		// x and y are the grid coordinates, so you take tile tileSize and use that to get the pixels
 		left = posLeft*tileSize;
 		top = posTop*tileSize;
-		// Move baddie to his new location
+
+		// To actually visually move baddie we need to change left and top in style as pixels
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
 	};
 
 	/**
-	 * Turn functions for left and right 
-	 * Just changes the class name
+	 * Switches two tiles and updates their classes to redraw them
+	 * @param  {int} current	- array position of the tile to move
+	 * @param  {int} next		- array position to move tile to
 	 */
-// Uncomment the functions be able to use it (remove /* and */ before and efter function declaration)
-/*
-	// Turn baddie image right - transform handled in style.css
-	var turnRight = function() {
+	var moveTile = function(current, next) {
+		var tile = gameArea[current];
+		// ------------------------------
+		// ASSIGNMENT
+		// Switch the tiles
+		// Place tile into the next positon in the array gameArea
+		// Then make sure the current tile is empty in the array gameArea
+		
+
+		
+		// Give the tiles new classnames to redraw them
+		document.getElementById("n" + next).className = "tile t" + tile; // box tile here
+		document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
+	};
+
+	/**
+	 * Turn baddie image right - transform handled in style.css
+	 */
+	function turnRight() {
 		baddie.className = "baddie-right";
-	};
-	// Turn baddie image left - transform handled in style.css
-	var turnLeft = function() {
+	}
+	console.log(turnRight);
+	/**
+	 * Turn baddie image left - transform handled in style.css
+	 */
+	function turnLeft() {
 		baddie.className = "baddie-left";
-	};
-*/
+	}
+	console.log(turnLeft);
 
 	/* ---------------------------------------------------------
 	 * CODE
 	 */
-
-	// Initiates the game area and places baddie
 	init();
-
+	
 })();
