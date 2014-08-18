@@ -21,16 +21,6 @@ body{
 	background-repeat: no-repeat;
 }
 
-#enemy {
-	position: absolute;
-	z-index: 11;
-	width: 32px;
-	height: 32px;
-	background-image: url(../img/ghost.png);
-	background-size: 32px 32px;
-	background-repeat: no-repeat;
-}
-
 .baddie-right {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
@@ -58,6 +48,5 @@ body{
 	background: url(../img/tiles/crate.png) 0px -128px;
 }
 .t13 {
-	background: url(../img/tiles/dngn_closed_door.png
-) -64px -128px;
+	background: url(../img/tiles/dngn_closed_door.png) -64px -128px;
 }
