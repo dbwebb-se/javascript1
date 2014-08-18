@@ -4,13 +4,8 @@
     var content = document.getElementById('content'),
     browserSizeSpan = document.getElementById('browserSize'),
     divSizeSpan = document.getElementById('divSize'),
-    divPositionSpan = document.getElementById('divPosition'),
     browserHeight = window.innerHeight, 
     browserWidth = window.innerWidth,
-    divHeight = content.offsetHeight,
-    divWidth = content.offsetWidth,
-    divPosX = content.offsetLeft,
-    divPosY = content.offsetTop,
     divSize = {};
 
     /**
@@ -24,7 +19,7 @@
         posX = element.offsetLeft,
         posY = element.offsetTop;
 
-        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY}
+        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY;}
     }
     /**
      * A function for creating a div, 100 x 100px
@@ -32,7 +27,7 @@
      **/
     function createDiv() {
         var newDiv = document.createElement('div');
-        newDiv.style.height = 100+'px',
+        newDiv.style.height = 100+'px';
         newDiv.style.width = 100+'px';
         
         return newDiv;         

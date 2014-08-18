@@ -49,7 +49,7 @@
 	      case 32:  // space = jump
 	        anim(0, -step);
 	        // What jumps up, must come down, a bit later.
-	        setTimeout(function(){anim(0, step);console.log('Timer!');}, 300);
+	        var myTimer = setTimeout(function(){anim(0, step);console.log('Timer!');}, 300);
 	        break;
 	      case 82:  // r = random
 	        anim(step*Math.floor(Math.random()*(3)-1), step*Math.floor(Math.random()*(3)-1));
