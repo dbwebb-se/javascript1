@@ -210,7 +210,7 @@ Good luck!
 			 * Calls the method to move a tile in myGamearea instead of a function to move it
 			 * Parameter is nextPos instead of x and y
 	 */
-	var collideBaddie = function(moveLeft, moveTop){
+	var isBaddieMovable = function(moveLeft, moveTop){
 		var tile, newPos, movable;
 		movable = false;
 
@@ -261,7 +261,7 @@ Good luck!
 
 	/* ------------------------------------
 	/* MAKING PUSHING A BOX POSSIBLE
-		Notice that we have prepared by using a method in the collideBaddie-function above for this
+		Notice that we have prepared by using a method in the isBaddieMovable-function above for this
 	*/
 
 	// 1: Adding a method to move a tile from one pos to another
@@ -392,8 +392,8 @@ Good luck!
 	 */
 	/* Changed from baddie3:
 		* Removed turn-functions (built into myBaddie now)
-		* Added a return of object from collideBaddie() into pos (the position baddie can move to)
-		* Changed parameter of moveBaddie() to be the object returned by collideBaddie()
+		* Added a return of object from isBaddieMovable() into pos (the position baddie can move to)
+		* Changed parameter of moveBaddie() to be the object returned by isBaddieMovable()
 		* Added baddieAttack() to space-button
 	*/
 	document.addEventListener("keydown", function(event) {
@@ -408,7 +408,7 @@ Good luck!
 			// ------------------------------
 			// ASSIGNMENT
 			// Copy case 37-40 from baddie3
-			// Change each case so that collideBaddie() instead returns into variable pos
+			// Change each case so that isBaddieMovable() instead returns into variable pos
 				// Check that pos was not false and call moveBaddie() if it wasn't
 				// Remember to pass the variable pos instead of x and y
 			// Add a case for the space-button

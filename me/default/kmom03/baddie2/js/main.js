@@ -1,4 +1,4 @@
-/* Baddie2 - Assignment */
+/* Baddie3 - Assignment */
 /*
 Assignment-sections start like this:
 	// -------------------------------------------
@@ -34,7 +34,7 @@ Good luck!
 	top = baddie.offsetTop;
 	console.log("Baddie starts at " + left + "," + top);
 
-	/* ------------------------------------------------------------------
+	/* ------------------------------------
 	 * EVENTS
 	 */
 	// Triggers action on keypress
@@ -46,35 +46,48 @@ Good luck!
 
 		// Switch case to decide where baddie is to go
 		// -------------------------------------------
-		// ASSIGNMENT 1
+		// ASSIGNMENT
 		// Fill in the missing code in my switch case so that the baddie moves
+		// Give each call to isBaddieMovable() the right parameters
+		// Call moveBaddie in each case
+		// Call turn-functions where needed
 		switch(key) {
 			case 37:
-				// A. Go left - Use moveBaddie-function (1a)
-				
-				// A. Turn baddie left - Use the given function (1b)
-				
+				if(isBaddieMovable(0, 0)) {
+					// Go left - Use moveBaddie-function
+					
+					// Turn baddie left - Use the given function
+					
+				}
 				break;
 			case 38:
-				// A. Go up - Use moveBaddie-function (1a)
-				
+				if(isBaddieMovable(0, 0)) {
+					// Go up - Use moveBaddie-function
+					
+				}
 				break;
 			case 39:
-				// A. Go right - Use moveBaddie-function (1a)
-				
-				// A. Turn baddie right - Use the given function (1b)
-				
+				if(isBaddieMovable(0, 0)) {
+					// Go right - Use moveBaddie-function
+					
+					// Turn baddie right - Use the given function
+					
+				}
 				break;
 			case 40:
-				// A. Go down - Use moveBaddie-function (1a)
-				
+				if(isBaddieMovable(0, 0)) {
+					// Go down - Use moveBaddie-function
+					
+				}
 				break;
 			// ----------------------
 			// EXTRA ASSIGNMENT
-			// E. Create a case for spacebar key and use the function to jump (a)
+			// Create a case for spacebar key and use the function to jump
+
 
 			default:
 				// Button was pressed but no action is to be performed
+				console.log("Nothing happened with the gameboard");
 				// return this function so that the default button action is performed instead
 				return true;
 		}
@@ -83,131 +96,109 @@ Good luck!
 	});
 
 
-	/* ------------------------------------------------------------------
+	/* ---------------------------------------------------------
 	 * FUNCTIONS
 	 */
 
 	/**
-	 * Wall collide check function
-	 * Checks if baddie collided with content wall and recalculates left and top if it did
+	 * This function checks that the move was possible and returns either the new position or false
+	 * @param  {int} moveLeft	- direction to move horizontally, range: -1 -> 1
+	 * @param  {int} moveTop	- direction to move vertically, range: -1 -> 1
+	 * @return {bool} 			- if baddie was movable true is returned, otherwise false is returned
 	 */
-// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
-/*
-	var wallCollideBaddie = function() {
-		var max, collided;
+	var isBaddieMovable = function(moveLeft, moveTop) {
+		var movable, newLeft, newTop, max;
 		console.log("Checking if baddie collided with the content walls");
-		
 		// Assume that baddie did not collide at first
-		collided = false;
+		movable = true;
+		// Get baddie's new position if moved
+		newLeft = left + moveLeft*step;
+		newTop = top + moveTop*step;
+		console.log("Checking collision at", newLeft, newTop);
 
 		// --------------------------------------------
-		// ASSIGNMENT 2
+		// ASSIGNMENT
 		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
-		// A. left wall collide check - check if left outside content (2a)
-		//		Remove false and add your own check
+		// Left wall collide check - check if newLeft outside content 
 		if(false) {
-			// A. Reset left so that baddie doesn't move outside content (2b)
-			
-			collided = true;
+			movable = false;
 			console.log("Baddie collided with left wall");
 		}
-		// A. top wall collide check - check if top is outside content (2a)
-		//		Remove false and add your own check
+		// Top wall collide check - check if newTop is outside content
 		if(false) {
-			// A. Reset top so that baddie doesn't move outside content (2b)
-
-			collided = true;
+			movable = false;
 			console.log("Baddie collided with top wall");
 		}
-		// A. right wall collide check (2c)
-		//		max will be the width of content (tip: use getSize example)
-		//		Change max value from 0 to that of content width
+		// Right wall collide check
+		// Change max value from 0 to that of content width
 		max = 0;
-		if(left + baddie.offsetWidth > max) {
-			// A. Reset left so that baddie doesn't move outside of the content (2c)
-			left = max - baddie.offsetWidth;
-			collided = true;
+		if(newLeft + baddie.offsetWidth > max) {
+			movable = false;
 			console.log("Baddie collided with right wall");
 		}
-		// A. bottom wall collide check (2c)
-		//		max value will be the height of content (tip: use getSize example)
-		//		Change max value from 0 to that of content height
+		// Bottom wall collide check
+		// Change max value from 0 to that of content height
 		max = 0;
-		if(top + baddie.offsetHeight > max) {
-			// A. Reset top so that baddie doesn't move outside of the content (2c)
-			top = max - baddie.offsetHeight;
-			collided = true;
+		if(newTop + baddie.offsetHeight > max) {
+			movable = false;
 			console.log("Baddie collided with bottom wall");
 		}
 
 		// Return if baddie collided
-		return collided;
+		return movable;
 	};
-*/
 
 	/**
-	 * Move baddie function
-	 * Moves baddie in the given directions where directions are given as:
-	 * -1 (opposite), 0 (none), 1 (same direction)
-	 * Example to move left (go left, no top movement): moveBaddie(1, 0)
+	 * Changes position variables for baddie and style to draw the change out on the screen
+	 * @param  {[type]} moveLeft	- direction to move horizontally
+	 * @param  {[type]} moveTop		- direction to move vertically
 	 */
-// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
-/*
 	var moveBaddie = function(moveLeft, moveTop) {
 		// Get new baddie positon by getting current one and adding step and direction
-		left = baddie.offsetLeft + moveLeft*step;
-		top = baddie.offsetTop + moveTop*step;
-		console.log("Baddie wants to got to " + left + "," + top);
+		// For example, if baddie wants to go right, the direction is opposite of left (-1)
+		left += moveLeft*step;
+		top += moveTop*step;
 
-		// --------------------------------------------
-		// ASSIGNMENT 3
-		// A. Check for wall collision - use given function
-		// 		Change null to the function call
-		var collided = null;
-
-		// Move baddie to its new position
+		// To actually visually move baddie we need to change left and top in style as pixels
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
-		console.log("Baddie went to " + left + "," + top);
-
-		// return if baddie collided - does not have to be used
-		return collided;
 	};
-*/
+	console.log(moveBaddie);
 
 	/**
-	 * Turn functions for left and right 
-	 * Just changes the class name
+	 * Performs 2 moves - up and down, so that it appears as if baddie jumps
 	 */
-// Uncomment the functions be able to use it (remove /* and */ before and efter function declaration)
-/*
-	// Turn baddie image right - transform handled in style.css
-	var turnRight = function() {
-		baddie.className = "baddie-right";
-	};
-	// Turn baddie image left - transform handled in style.css
-	var turnLeft = function() {
-		baddie.className = "baddie-left";
-	};
-*/
-
-	/**
-	 * Jump function
-	 * Move baddie up and then down again to make him appear to be jumping
-	 */
-// Uncomment the function be able to use it (remove /* and */ before and efter function declaration)
-/*
+// UNCOMMENT THIS SECTION FOR EXTRA ASSIGNMENT
+/*	
 	var jump = function() {
-		// --------------------------------------------
-		// EXTRA ASSIGNMENT
-		// Make baddie jump up and then come down again
-		// E. Move baddie up (b)
+		// If baddie won't collide moving up - perform the jump with a timer to come down again
+		if(isBaddieMovable(0, -1)) {
+			// ----------------------
+			// EXTRA ASSIGNMENT
+			// Move baddie up
+			
+			// Create a timeout
 
-		// E. If he did not collide when moving (hindering the jump)
-		//		move him back down after a set amount of time (c)
-		// Tip: Use the setTimeout-function to set a timer
-		
+			// In the timeout move baddie down again (called after the timeout finishes)
+
+		}
 	};
+	console.log(jump);
 */
+
+	/**
+	 * Turn baddie image right - transform handled in style.css
+	 */
+	function turnRight() {
+		baddie.className = "baddie-right";
+	}
+	console.log(turnRight);
+	/**
+	 * Turn baddie image left - transform handled in style.css
+	 */
+	function turnLeft() {
+		baddie.className = "baddie-left";
+	}
+	console.log(turnLeft);
 
 }());

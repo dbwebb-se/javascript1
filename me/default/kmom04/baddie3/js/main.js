@@ -69,13 +69,12 @@ Good luck!
 		var key;
 		// Gets what key was pressed as number
 		key = event.keyCode || event.which;
+		console.log(key + " was pressed");
 
 		// Switch case to decide where baddie is to go
 		// ------------------------------
 		// ASSIGNMENT
 		// Copy-paste the switch case you wrote from baddie2 that handles the key variable
-		// In each case, add an if-statement around the function calls that checks if a move was possible
-		// HINT: Use collideBaddie() to check if a move was possible (it returns a boolean)
 		switch(key) {
 
 
@@ -94,7 +93,7 @@ Good luck!
 	 */
 
 	/**
-	 * [drawGamePlan description]
+	 * Initiates the game area by adding each tile as a div with class and id to content area
 	 * @param  {[type]} gameArea [description]
 	 */
 	var drawGamePlan = function(gameArea) {
@@ -140,7 +139,7 @@ Good luck!
 	 * @param  {int} moveTop	- direction to move vertically, range: -1 -> 1
 	 * @return {bool} 			- if baddie was movable true is returned, otherwise false is returned
 	 */
-	var collideBaddie = function(moveLeft, moveTop){
+	var isBaddieMovable = function(moveLeft, moveTop){
 		var tile, tilePos, newLeft, newTop, movable;
 		// This time we want the grid position values, not the pixel position values
 		newLeft = posLeft + moveLeft;
@@ -203,7 +202,7 @@ Good luck!
 		}
 		return movable;
 	};
-	console.log(collideBaddie);
+	console.log(isBaddieMovable);
 
 	/**
 	 * Changes position variables for baddie and style to draw the change out on the screen
