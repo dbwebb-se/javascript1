@@ -1,5 +1,7 @@
 /* Baddie3 - Assignment */
 /*
+You should start by uncommenting blocks of code or functions that are needed for the assignment.
+Follow the instructions given for each of these blocks.
 Assignment-sections start like this:
 	// -------------------------------------------
 	// ASSIGNMENT
@@ -139,7 +141,8 @@ Good luck!
 	 * @param  {int} moveTop	- direction to move vertically, range: -1 -> 1
 	 * @return {bool} 			- if baddie was movable true is returned, otherwise false is returned
 	 */
-	var isBaddieMovable = function(moveLeft, moveTop){
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var isBaddieMovable = function(moveLeft, moveTop){
 		var tile, tilePos, newLeft, newTop, movable;
 		// This time we want the grid position values, not the pixel position values
 		newLeft = posLeft + moveLeft;
@@ -201,8 +204,8 @@ Good luck!
 				movable = false;
 		}
 		return movable;
-	};
-	console.log(isBaddieMovable);
+	};*/
+
 
 	/**
 	 * Changes position variables for baddie and style to draw the change out on the screen
@@ -229,7 +232,8 @@ Good luck!
 	 * @param  {int} current	- array position of the tile to move
 	 * @param  {int} next		- array position to move tile to
 	 */
-	var moveTile = function(current, next) {
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var moveTile = function(current, next) {
 		var tile = gameArea[current];
 		// ------------------------------
 		// ASSIGNMENT
@@ -242,7 +246,7 @@ Good luck!
 		// Give the tiles new classnames to redraw them
 		document.getElementById("n" + next).className = "tile t" + tile; // box tile here
 		document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
-	};
+	};*/
 
 	/**
 	 * Turn baddie image right - transform handled in style.css
