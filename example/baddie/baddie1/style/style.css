@@ -1,0 +1,14 @@
+body{
+
+}
+#baddie{
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	
+	/* ASSIGNMENT
+	 * Change baddie image to your own baddie or character */
+	background: url("../img/Kyubi.png");
+
+	background-size: 50px;
+}
