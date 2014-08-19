@@ -444,7 +444,7 @@ publish()
     esac
 
     rsync -a --delete --exclude 'me/default' -f '- /*/' $TARGET/me/ $BUILD/me/
-    chmod -R o+w $BUILD/me/
+    chmod -R u+w $BUILD/me/
 
     for filename in $(find $BUILD/me/ -maxdepth 1 -type f -name '*.html'); do
         assert 0 "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"
@@ -467,7 +467,7 @@ publish()
 
         $ECHO "\n $dir:"
         rsync -a --delete $TARGET/$dir/ $BUILD/$dir/ 
-        chmod -R o+w $BUILD/$dir/
+        chmod -R u+w $BUILD/$dir/
 
         if [ -z "$SILENT" ]; then $ECHO " minify *.html"; fi
         #find "$BUILD/$dir/" -type f -name '*.html' | while read filename; do assert "0" "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"; done
