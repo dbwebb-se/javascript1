@@ -1,5 +1,8 @@
 /* Baddie2 - Assignment */
 /*
+You should start by uncommenting blocks of code or functions that are needed for the assignment.
+Follow the instructions given for each of these blocks.
+After that you can start doing the assigments.
 Assignment-sections start like this:
 	// -------------------------------------------
 	// ASSIGNMENT
@@ -153,7 +156,8 @@ Good luck!
 	 * @param  {[type]} moveLeft	- direction to move horizontally
 	 * @param  {[type]} moveTop		- direction to move vertically
 	 */
-	var moveBaddie = function(moveLeft, moveTop) {
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var moveBaddie = function(moveLeft, moveTop) {
 		// Get new baddie positon by getting current one and adding step and direction
 		// For example, if baddie wants to go right, the direction is opposite of left (-1)
 		left += moveLeft*step;
@@ -162,8 +166,8 @@ Good luck!
 		// To actually visually move baddie we need to change left and top in style as pixels
 		baddie.style.left = left + "px";
 		baddie.style.top = top + "px";
-	};
-	console.log(moveBaddie);
+	};*/
+
 
 	/**
 	 * Performs 2 moves - up and down, so that it appears as if baddie jumps

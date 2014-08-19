@@ -183,7 +183,8 @@ Good luck!
 		 * Parameter is object, not x and y
 		 * Calls methods of myBaddie instead of doing the actual move right in this function
 	 */
-	var moveBaddie = function(pos) {
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var moveBaddie = function(pos) {
 		console.log("Moving baddie to position:", pos);
 		// ------------------------------
 		// ASSIGNMENT
@@ -193,7 +194,7 @@ Good luck!
 		// NOTE: Turn is built into myBaddie.move()
 		
 
-	};
+	};*/
 
 
 	/**
@@ -210,7 +211,8 @@ Good luck!
 			 * Calls the method to move a tile in myGamearea instead of a function to move it
 			 * Parameter is nextPos instead of x and y
 	 */
-	var isBaddieMovable = function(moveLeft, moveTop){
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var isBaddieMovable = function(moveLeft, moveTop){
 		var tile, newPos, movable;
 		movable = false;
 
@@ -257,7 +259,7 @@ Good luck!
 
 		// return false if baddie can't move and the new position if he can
 		return movable ? newPos : false;
-	};
+	};*/
 
 	/* ------------------------------------
 	/* MAKING PUSHING A BOX POSSIBLE
@@ -365,7 +367,8 @@ Good luck!
 	/**
 	 * Initiates an attack with myBaddie
 	 */
-	var baddieAttack = function() {
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*	var baddieAttack = function() {
 		console.group();
 
 		console.log("Initiating baddie attack...");
@@ -385,7 +388,7 @@ Good luck!
 		console.groupEnd();
 
 		console.groupEnd();
-	};
+	};*/
 
 	/* ------------------------------------
 	 * EVENTS
@@ -419,8 +422,10 @@ Good luck!
 				// Button was pressed but no action is to be performed
 				// return this function so that the default button action is performed instead
 				console.log("Nothing happened with the gameboard");
+				console.groupEnd();
 				return true;
 		}
+		console.log("Movement to", pos, "was attempted");
 		console.groupEnd();
 		// Baddie action was performed - prevent button default
 		event.preventDefault();
