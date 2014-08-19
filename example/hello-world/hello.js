@@ -1,7 +1,7 @@
 (function(){
     "use strict";
   
-    var value = 42;
+    //var value = 42;
     var output = document.getElementById("output");
     var anchor = document.getElementById("anchor");
     var confirm = document.getElementById("confirm");
@@ -36,4 +36,4 @@
     <p><button onclick='confirm("Press F12 to open the developer tools for your browser, select the console. Then reload the page and see the message in the console.");'>Show a confirm popup.</button></p>
     */
 
-}());
+})();

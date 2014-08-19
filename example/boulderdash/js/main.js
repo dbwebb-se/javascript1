@@ -4,8 +4,8 @@
 		baddie = document.getElementById('baddie1'),
 		tileSize = 32,
 		gridSize = 24,
-		left = area.offsetLeft,
-        top  = area.offsetTop,
+		//left = area.offsetLeft,
+    //top  = area.offsetTop,
 		posLeft = 0,
 		posTop = 0,
 
@@ -76,7 +76,7 @@
    * Draw the initial gameplan
    */
   function drawGamePlan(gameArea, gameBlocks) {
-    var i,e,b;
+    var i,e;
     for(i = 0; i < gameArea.length; i++) {
       e = document.createElement('div');
       e.innerHTML = '';
@@ -84,7 +84,7 @@
       e.id = 'n' + i;
       area.appendChild(e);
     } 
-  };
+  }
   console.log('Drawing gameplan.');  
   drawGamePlan(gameArea, gameBlocks);
 
@@ -98,15 +98,15 @@
   		baddie.style.left = (area.offsetLeft + posLeft*tileSize) + 'px';//(area.offsetLeft + posLeft*tileSize + tileSize/2) + 'px';
       	baddie.style.top  = (area.offsetTop + posTop*tileSize) + 'px';
   		console.log(area.offsetLeft + ' top ' + area.offsetTop);
-  	};
+  	}
 
-  	if((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) == 0) {
+  	if((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) === 0) {
       posLeft += moveLeft; 
       posTop  += moveTop;
       moveIt();
     }
     else{console.log('aahhh  ');}
-  } // end of moveIt
+  }; // end of moveIt
   move(1,1);
   document.onkeydown = function(event){
     var key;
@@ -122,5 +122,5 @@
 	    default: move(0, 0); break;
 	} // end of switch
 	console.log('Keypress: ' + event + ' key: ' + key + ' new pos: ' + baddie.offsetLeft + ', ' + baddie.offsetTop);
-  } // end of onkeydown
+  }; // end of onkeydown
 })();

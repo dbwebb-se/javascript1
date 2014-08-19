@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 var body = document.body,
-	  area = document.getElementById('content'),
+	  //area = document.getElementById('content'),
 		content = document.createElement('div'),
 	/**
      * Areas
@@ -47,7 +47,7 @@ var body = document.body,
       content.appendChild(e);
     } 
 
-  };
+  }
   content.id ="content";
   body.appendChild(content);
 

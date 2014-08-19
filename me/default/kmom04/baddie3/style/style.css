@@ -3,8 +3,8 @@ body{
 }
 
 #content {
-//	height: 320px;
-//	width: 320px;
+	height: 320px;
+	width: 320px;
 	position: absolute;
 }
 
@@ -33,13 +33,13 @@ body{
 }
 
 .t10 {
-	background: url(../img/tiles/floor_sand_stone0.png);
+	background: url(../img/tiles/grass0.png);
 }
 .t11 {
 	background: url(../img/tiles/dngn_metal_wall.png) -32px -96px;
 }
 .t12 {
-	background: url(../img/tiles/misc_box.png) 0px -128px;
+	background: url(../img/tiles/crate.png) 0px -128px;
 }
 .t13 {
 	background: url(../img/tiles/dngn_closed_door.png

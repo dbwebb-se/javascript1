@@ -19,15 +19,13 @@
 				gameArea[i][j] = id;
 				box.onclick = function(e){
 					regClick(e.target);
-				}
+				};
 				content.appendChild(box);
 				id++;
 			}
 		}
 	}
-	function testArray(){
-		
-	}
+	
 	function regClick(e){
 		var currBox, i, j, player;
 		player = currPlayer();
@@ -55,13 +53,13 @@
 		console.log('Player = ' + player);
 	}
 	function getCurrentRow(e){
-		var currRow = Math.floor(e.id / gameArea[0].length)
+		var currRow = Math.floor(e.id / gameArea[0].length);
 		return currRow;
 	}
 	function currPlayer(){
-		var currPlayer = "";
+		var currentPlayer = "";
 		if(isPlayerOne){
-			currPlayer = 'X';
+			currentPlayer = 'X';
 			isPlayerOne = false;
 		}
 		else{
