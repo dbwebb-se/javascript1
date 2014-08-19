@@ -125,15 +125,16 @@ mapCmdToDir()
                 flag5)      RES="me/kmom06/flag5" ;;
 
                 baddie1)    RES="me/kmom02/baddie1" ;;
-                baddie1)    RES="me/kmom03/baddie2" ;;
-                baddie1)    RES="me/kmom04/baddie3" ;;
-                baddie1)    RES="me/kmom05/baddie4" ;;
-                baddie1)    RES="me/kmom06/baddie5" ;;
+                baddie2)    RES="me/kmom03/baddie2" ;;
+                baddie3)    RES="me/kmom04/baddie3" ;;
+                baddie4)    RES="me/kmom05/baddie4" ;;
+                baddie5)    RES="me/kmom06/baddie5" ;;
             esac
             ;;
         python)
             case "$CMD" in
                 hello)      RES="me/kmom01/hello" ;;
+                plane)      RES="me/kmom01/plane" ;;
 
                 lab1)       RES="me/kmom02/lab1" ;;
                 lab2)       RES="me/kmom03/lab2" ;;
@@ -194,8 +195,8 @@ testMe()
             ;;
 
         python)      
-            FILES="me.cgi redovisning.cgi" 
-            KMOM01="kmom01 kmom01/hello"
+            FILES="me.cgi me.py redovisning.cgi redovisning.py" 
+            KMOM01="kmom01 kmom01/hello kmom01/plane"
             KMOM02="kmom02 kmom02/marvin1 kmom02/lab1"
             KMOM03="kmom03 kmom03/marvin2 kmom03/lab2"
             KMOM04="kmom04 kmom04/marvin3 kmom04/lab3 kmom04/game1"
