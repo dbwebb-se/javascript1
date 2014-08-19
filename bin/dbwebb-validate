@@ -27,7 +27,7 @@ UGLIFYJS_OPTIONS="-m -c --screw-ie8 --comments"
 
 CLEANCSS="cleancss --s1"
 
-PYLINT="pylint"
+PYLINT="pylint -r n --rcfile ./.pylintrc"
 
 
 
@@ -133,7 +133,7 @@ mapCmdToDir()
             ;;
         python)
             case "$CMD" in
-                intro)      RES="me/kmom01/intro" ;;
+                hello)      RES="me/kmom01/hello" ;;
 
                 lab1)       RES="me/kmom02/lab1" ;;
                 lab2)       RES="me/kmom03/lab2" ;;
@@ -195,7 +195,7 @@ testMe()
 
         python)      
             FILES="me.cgi redovisning.cgi" 
-            KMOM01="kmom01 kmom01/intro"
+            KMOM01="kmom01 kmom01/hello"
             KMOM02="kmom02 kmom02/marvin1 kmom02/lab1"
             KMOM03="kmom03 kmom03/marvin2 kmom03/lab2"
             KMOM04="kmom04 kmom04/marvin3 kmom04/lab3 kmom04/game1"
@@ -370,6 +370,9 @@ validatePython()
 
     $ECHO "\n *.py using Pylint."
     #find $TARGET/$DIR -type f -name '*.py' | while read filename; do assert 0 "$PYLINT $filename" "Pylint failed: $filename"; done
+    for filename in $(find "$TARGET/$DIR/" -type f -name '*.py'); do
+        assert 0 "$PYLINT $filename" "pylint failed: $filename"
+    done
 
     $ECHO "\n *.cgi using Pylint."
     #find $TARGET/$DIR -type f -name '*.cgi' | while read filename; do assert 0 "$PYLINT $filename" "Pylint failed: $filename"; done
@@ -441,6 +444,7 @@ publish()
     esac
 
     rsync -a --delete --exclude 'me/default' -f '- /*/' $TARGET/me/ $BUILD/me/
+    chmod -R o+w $BUILD/me/
 
     for filename in $(find $BUILD/me/ -maxdepth 1 -type f -name '*.html'); do
         assert 0 "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"
@@ -463,6 +467,7 @@ publish()
 
         $ECHO "\n $dir:"
         rsync -a --delete $TARGET/$dir/ $BUILD/$dir/ 
+        chmod -R o+w $BUILD/$dir/
 
         if [ -z "$SILENT" ]; then $ECHO " minify *.html"; fi
         #find "$BUILD/$dir/" -type f -name '*.html' | while read filename; do assert "0" "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"; done

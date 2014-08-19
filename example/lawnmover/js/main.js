@@ -299,12 +299,12 @@ window.lawnMower = (function(){
     // procent klippt
     // gräns
     // gränsavkännare
-    
+
 
     /**
      * All done, return object exposing functions and variables to the outside world.
      */ 
-    console.log('Lawn mover is ready!');
+    console.log('Lawn mower is ready!');
 
     return {
         "element":      lawnMower,
