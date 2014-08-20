@@ -116,7 +116,7 @@ Good luck!
 			// ASSIGNMENT
 			// Write out the current tile from gameArea
 			// HINT: Change null so that it fetches the value of the tile
-			var tileFromArray = false;
+			var tileFromArray = null;
 
 			// Add class name to tile
 			tile.className = "tile t" + tileFromArray;
@@ -251,17 +251,21 @@ Good luck!
 	/**
 	 * Turn baddie image right - transform handled in style.css
 	 */
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*
 	function turnRight() {
 		baddie.className = "baddie-right";
 	}
-	console.log(turnRight);
+*/
 	/**
 	 * Turn baddie image left - transform handled in style.css
 	 */
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*
 	function turnLeft() {
 		baddie.className = "baddie-left";
 	}
-	console.log(turnLeft);
+*/
 
 	/* ---------------------------------------------------------
 	 * CODE

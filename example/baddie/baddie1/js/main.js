@@ -60,15 +60,17 @@ Good luck!
 		// ------------------------------
 		// ASSIGNMENT
 		// Use an if/else or switch (on key) to calculate where baddie is going
+		// HINT: step contains the number of pixels that we want baddie to move each time an arrow-key is pressed
+			// and left and top contain the position on the screen that baddie will be assigned later
 		/* Key contains a number value for which keyboard key was pressed
 		 * 37 - left arrow
-		 * 		change the variable left so that baddie moves left
+		 * 		change the variable left so that baddie will move left
 		 * 38 - up arrow
-		 * 		change the variable top so that baddie moves up
+		 * 		change the variable top so that baddie will move up
 		 * 39 - right arrow
-		 * 		change the variable left so that baddie moves right
+		 * 		change the variable left so that baddie will move right
 		 * 40 - down arrow
-		 * 		change the variable top so that baddie moves down
+		 * 		change the variable top so that baddie will move down
 		 */
 
 		

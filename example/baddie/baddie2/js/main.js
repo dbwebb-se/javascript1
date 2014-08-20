@@ -193,16 +193,19 @@ Good luck!
 	/**
 	 * Turn baddie image right - transform handled in style.css
 	 */
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*
 	function turnRight() {
 		baddie.className = "baddie-right";
 	}
-	console.log(turnRight);
+*/
 	/**
 	 * Turn baddie image left - transform handled in style.css
 	 */
+// UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
+/*
 	function turnLeft() {
 		baddie.className = "baddie-left";
 	}
-	console.log(turnLeft);
-
+*/
 }());
