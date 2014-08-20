@@ -116,7 +116,7 @@ Good luck!
 			// ASSIGNMENT
 			// Write out the current tile from gameArea
 			// HINT: Change null so that it fetches the value of the tile
-			var tileFromArray = false;
+			var tileFromArray = null;
 
 			// Add class name to tile
 			tile.className = "tile t" + tileFromArray;
