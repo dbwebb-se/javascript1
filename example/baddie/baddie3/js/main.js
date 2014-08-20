@@ -62,38 +62,6 @@ Good luck!
 	/*Fill out the rest of the array*/
 	];
 
-
-	/* ------------------------------------
-	 * EVENTS
-	 */
-	// Triggers action on keypress
-	document.addEventListener("keydown", function(event) {
-		var key;
-		// Gets what key was pressed as number
-		key = event.keyCode || event.which;
-		console.log(key + " was pressed");
-
-		// Switch case to decide where baddie is to go
-		// ------------------------------
-		// ASSIGNMENT
-		// Copy-paste the switch case you wrote from baddie2 that handles the key variable
-		switch(key) {
-
-
-			default:
-				// Button was pressed but no action is to be performed
-				console.log("Nothing happened with the gameboard");
-				// return this function so that the default button action is performed instead
-				return true;
-		}
-		// Baddie action was performed - prevent button default
-		event.preventDefault();
-	});
-
-	/* ---------------------------------------------------------
-	 * FUNCTIONS
-	 */
-
 	/**
 	 * Initiates the game area by adding each tile as a div with class and id to content area
 	 * @param  {[type]} gameArea [description]
@@ -126,6 +94,38 @@ Good luck!
 			content.appendChild(tile);
 		}
 	};
+
+
+	/* ------------------------------------
+	 * EVENTS
+	 */
+	// Triggers action on keypress
+	document.addEventListener("keydown", function(event) {
+		var key;
+		// Gets what key was pressed as number
+		key = event.keyCode || event.which;
+		console.log(key + " was pressed");
+
+		// Switch case to decide where baddie is to go
+		// ------------------------------
+		// ASSIGNMENT
+		// Copy-paste the switch case you wrote from baddie2 that handles the key variable
+		switch(key) {
+
+
+			default:
+				// Button was pressed but no action is to be performed
+				console.log("Nothing happened with the gameboard");
+				// return this function so that the default button action is performed instead
+				return true;
+		}
+		// Baddie action was performed - prevent button default
+		event.preventDefault();
+	});
+
+	/* ---------------------------------------------------------
+	 * FUNCTIONS
+	 */
 
 	/**
 	 * Initiates area and baddie
