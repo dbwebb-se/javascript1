@@ -18,12 +18,12 @@ body{
 	background-repeat:no-repeat;
 }
 
-.baddie-right {
+.baddie-right {}
+
+.baddie-left {
 	transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
 }
-
-.baddie-left {}
 
 .tile, .t {
 	width: 32px;

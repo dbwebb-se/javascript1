@@ -23,9 +23,9 @@ body{
 }
 
 .baddie-right {
-	transform: rotateY(180deg);
+	
 }
 
 .baddie-left {
-
+	transform: rotateY(180deg);
 }
