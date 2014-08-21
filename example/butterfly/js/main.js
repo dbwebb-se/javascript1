@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	var xMax, yMax, obj, objHeight, objWidth, animate, speed, t;
+	var xMax, yMax, obj, objHeight, objWidth, speed, t;
 	xMax = document.getElementById('content').clientWidth;
 	yMax = document.getElementById('content').clientHeight;
 	obj = document.getElementById('movable');
@@ -20,7 +20,7 @@
 			speed = speed - (speed * 2); 
 			console.log('Current speed: ' + speed);
 		}
-		animate = setTimeout(move, t);
+		window.setTimeout(move, t);
 	}
 	 move();
 }());

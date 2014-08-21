@@ -1,9 +1,9 @@
-(function(){
+ (function(){
     'use strict';
 
     var myTextArea = document.getElementById('textarea');
-
-    var b1 = document.getElementById("button1");
+    var submitButton = document.getElementById('submitButton');
+    //var b1 = document.getElementById("button1");
 
     submitButton.addEventListener("click", function() {
         var msg = document.getElementById("message").value;

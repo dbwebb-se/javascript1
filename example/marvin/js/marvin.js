@@ -1,3 +1,7 @@
+(function(){
+	var askBtn = document.getElementById("questionButton");
+	var quoteBtn = document.getElementById("quoteButton");
+
 var Marvin = function(){
 	this.marvinType = [{
 		replies: ['It is sunny as hell!', 'I\'m doing good, thanks!']
@@ -54,7 +58,7 @@ var Marvin = function(){
 			'Bill Gates vs Steve Jobs<br>This videofile is streaming from Youtube, using iframe!<br>', 
 			'CollegeHumor - If google was a guy<br>This videofile is streaming from Youtube, using iframe!<br>']
 	}];	
-}
+};
 
 function askMarvin(){
 	var test = new Marvin();
@@ -102,3 +106,8 @@ function getQuote(){
 	console.log('Delivered quote: ' + test.marvinType[1].quotes[quoteNr]);
 
 }
+
+askBtn.addEventListener("click", askMarvin);
+quoteBtn.addEventListener("click", getQuote);
+
+}());
