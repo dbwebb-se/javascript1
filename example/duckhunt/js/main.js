@@ -9,18 +9,20 @@
     score = 0,
     timer = 1000;
 
+    function addAndPrintScore() {
+        score = score +1;
+        points.innerHTML = score;
+    }
+
     /**
      * Set the attributes for the duck
      **/
-    duck.src='img/duck.png',
-    duck.style.position ='absolute',
-    duck.style.left = '0px',
-    duck.style.top = '0px',
-    duck.style.zIndex = 10000,
-    duck.addEventListener('click', function() {
-        score++;
-        points.innerHTML = score;
-    });
+    duck.src='img/duck.png';
+    duck.style.position ='absolute';
+    duck.style.left = '0px';
+    duck.style.top = '0px';
+    duck.style.zIndex = 10000;
+    duck.addEventListener('click', addAndPrintScore);
 
     /**
      * A function for displaying the duck in random positions
@@ -37,7 +39,7 @@
      * The function that triggers the game, uses an time interval in milliseconds
      **/
     function startGame() {
-        setInterval(newDuck, timer);        
+        window.setInterval(newDuck, timer);        
     }
 
     /**

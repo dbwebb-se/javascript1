@@ -37,7 +37,7 @@
 		var currBlock = document.getElementById(currId);
 		currBlock.innerHTML = "";
 		currBlock.style.backgroundImage = "url('img/"+hiddenBlocks[currId]+".jpg')";
-		currBlock.onclick = function(){ alert('You have to choose another card'); }
+		currBlock.onclick = function(){ window.alert('You have to choose another card'); };
 		counter++;
 		console.log('Click: ' + counter);
 		checkMatch(currId);
@@ -60,16 +60,16 @@
 				console.log('sorry...no match');
 				console.log('flipping back in 3 secs');
 				toggleClickable();
-				setTimeout(function(){
+				window.setTimeout(function(){
 					for(var i = 0; i < 2; i++){
 						for(var j = 0; j < nrOfBlocks; j++){
 							if(hiddenBlocks[j] === lockedCards[i]){
 								var box = document.getElementById(lockedBlocks[i]);
-								console.log('XXXXXXXXXXX: ' + box.id);
 								box.style.backgroundImage = 'none';
 								box.innerHTML = '?';
-								box.onclick = function(){displayHidden(this.id);}
-								console.log('test timer');
+								box.onclick = function(){
+										displayHidden(this.id);
+									};
 							}	
 						}	
 					}
@@ -94,7 +94,7 @@
 		temp[i].setAttribute('id', i);
 		temp[i].onclick = function(){
 			displayHidden(this.id);
-		}
+		};
 		randomizeBlocks(i);
 	}
 }());

@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 	
-	var map;
+	var map, content, google, infowindow;
 	function initialize() {
 		var mapOptions = {
 	  	zoom: 8
@@ -9,10 +9,10 @@
 		map = new google.maps.Map(document.getElementById("content"),
 	   	 mapOptions);
 		} 
-	     if(navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(function(position) {
+	     if(window.navigator.geolocation) {
+	        window.navigator.geolocation.getCurrentPosition(function(position) {
 	        	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	        	var infowindow = new google.maps.InfoWindow({
+	        	infowindow = new google.maps.InfoWindow({
 	          	map: map,
 	          	position: pos,
 	          	content: 'Here!'
@@ -29,9 +29,9 @@
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
+    content = 'Error: The Geolocation service failed.';
   } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
+    content = 'Error: Your browser doesn\'t support geolocation.';
   }
 
   var options = {
@@ -40,7 +40,7 @@ function handleNoGeolocation(errorFlag) {
     content: content
   };
 
-  var infowindow = new google.maps.InfoWindow(options);
+  infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
 }
 

@@ -19,7 +19,7 @@
         posX = element.offsetLeft,
         posY = element.offsetTop;
 
-        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY;}
+        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY};
     }
     /**
      * A function for creating a div, 100 x 100px
@@ -93,4 +93,4 @@
     
 
     console.log('Sandbox is ready!');
-})();
+}());

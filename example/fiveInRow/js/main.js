@@ -3,11 +3,13 @@
 	var gameHeight = 25, gameWidth = 20;
 	var gameArea = new Array(gameHeight),
 		isPlayerOne = true;
+	var boxes;	
 
 	for(var i = 0; i < gameArea.length; i++){
 		gameArea[i] = new Array(gameWidth);
 	}
 	document.getElementById('content').style.width = (gameArea[0].length*32)+'px';
+
 	function initGame(){
 		var content = document.getElementById('content');
 		var box, i, j, id = 0;
@@ -17,13 +19,16 @@
 				box.id = id;
 				box.className = 'boxes';
 				gameArea[i][j] = id;
-				box.onclick = function(e){
-					regClick(e.target);
-				};
 				content.appendChild(box);
 				id++;
+
 			}
 		}
+		boxes = document.getElementsByClassName("boxes");
+		var arr = Array.prototype.slice.call(boxes);
+		arr.forEach(function(entry) {
+			entry.addEventListener("click", function() { regClick(entry); }, false);
+		});
 	}
 	
 	function regClick(e){
@@ -63,11 +68,12 @@
 			isPlayerOne = false;
 		}
 		else{
-			currPlayer = 'O';
+			currentPlayer = 'O';
 			isPlayerOne = true;
 		}
-		return currPlayer;
+		return currentPlayer;
 	}
+	
 	initGame();
 	console.log('game ready, Player one (X) begins');
 })();

@@ -19,7 +19,7 @@
     // <p><a href="#" onclick='alert("This is a message in a popup saying Hello World");'>Show an alert popup.</a></p>
     //alert("This is a message in a popup saying Hello World");
     anchor.addEventListener("click", function() {
-        alert("This is a message in a popup saying Hello World");
+        window.alert("This is a message in a popup saying Hello World");
     });
 
 
