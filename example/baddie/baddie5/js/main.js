@@ -451,7 +451,9 @@ Good luck!
 				// -------------------------------------------
 				// ASSIGNMENT
 				// Check if the number was the right one and show what happened
-				if(false) {
+				var condition = null;
+				if(condition) {
+					console.log("You won!");
 					// Add some output to textarea - either first or last in textarea
 
 					// Disable input so no more guesses can be made
@@ -461,6 +463,7 @@ Good luck!
 
 
 				} else {
+					console.log("Try again...");
 					// Print out if the guess was higher or lower than the number - either first or last in textarea
 					
 				}

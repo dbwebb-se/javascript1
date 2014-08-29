@@ -122,13 +122,17 @@ Good luck!
 		// --------------------------------------------
 		// ASSIGNMENT
 		// Fill out the missing parts accordingly so that the baddie doesn't move outside of the content
-		// Left wall collide check - check if newLeft outside content 
-		if(false) {
+		// Left wall collide check - check if newLeft outside content
+		// Hint: you can type condition = 10 > 12; for example
+			// The conditoion variable will hold a boolean of the evaluation
+		var condition = false;
+		if(condition) {
 			movable = false;
 			console.log("Baddie collided with left wall");
 		}
+		condition = false;
 		// Top wall collide check - check if newTop is outside content
-		if(false) {
+		if(condition) {
 			movable = false;
 			console.log("Baddie collided with top wall");
 		}
