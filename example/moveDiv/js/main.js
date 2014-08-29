@@ -1,3 +1,5 @@
+/*jshint unused: true */
+
 function allowDrop(ev) {
 	ev.preventDefault();
 }
