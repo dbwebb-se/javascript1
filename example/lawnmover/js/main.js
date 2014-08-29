@@ -60,8 +60,6 @@ window.lawnMower = (function(){
      * Move - or place out - the grasslawner.
      */
     var placeLawnMower = function (x, y) {
-        var posX = 0,
-            posY = 0;
 
         // Provide default values to missing arguments
         x = (x === undefined) ? windowWidth / 2 : x;
@@ -157,9 +155,7 @@ window.lawnMower = (function(){
      * Move forward. 
      */
     var moveForward = function (td) {
-        var x = lawnMowerPosX,
-            y = lawnMowerPosY,
-            radians = lawnMowerDirection * Math.PI / 180;
+        var radians = lawnMowerDirection * Math.PI / 180;
 
         if (!lawnMowerEngine) {
             console.log("Can not move, the engine is not started.");
@@ -180,9 +176,7 @@ window.lawnMower = (function(){
      * Move backward. 
      */
     var moveBackward = function (td) {
-        var x = lawnMowerPosX,
-            y = lawnMowerPosY,
-            radians = lawnMowerDirection * Math.PI / 180;
+        var radians = lawnMowerDirection * Math.PI / 180;
 
         if (!lawnMowerEngine) {
             console.log("Can not move, the engine is not started.");
@@ -330,9 +324,10 @@ window.lawnMower = (function(){
 //window.lawnMower.init();
 //window.lawnMower.place();
 
-window.lawnMower.init();
-window.lawnMower.place();
-window.lawnMower.start();
+var m = window.lawnMower;
+
+m.init();
+m.place();
+m.start();
 //lawnMower.run();
 
-var m = window.lawnMower;
