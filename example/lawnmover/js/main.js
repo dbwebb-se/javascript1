@@ -162,7 +162,7 @@ window.lawnMower = (function(){
             radians = lawnMowerDirection * Math.PI / 180;
 
         if (!lawnMowerEngine) {
-            console.log("Can not move, the engine is not started.")
+            console.log("Can not move, the engine is not started.");
             return;
         }
 
@@ -185,7 +185,7 @@ window.lawnMower = (function(){
             radians = lawnMowerDirection * Math.PI / 180;
 
         if (!lawnMowerEngine) {
-            console.log("Can not move, the engine is not started.")
+            console.log("Can not move, the engine is not started.");
             return;
         }
         
@@ -228,7 +228,7 @@ window.lawnMower = (function(){
      */
     var lawnMowerRun = function (run) {
         if (!lawnMowerEngine) {
-            console.log("Can not run, the engine is not started.")
+            console.log("Can not run, the engine is not started.");
             return;
         }
         
@@ -319,7 +319,7 @@ window.lawnMower = (function(){
         "run":          lawnMowerRun,
         "gear":         setGear,
         "status":       lawnMowerStatus
-    }
+    };
 })();
 
 
@@ -330,9 +330,9 @@ window.lawnMower = (function(){
 //window.lawnMower.init();
 //window.lawnMower.place();
 
-lawnMower.init();
-lawnMower.place();
-lawnMower.start();
+window.lawnMower.init();
+window.lawnMower.place();
+window.lawnMower.start();
 //lawnMower.run();
 
-m = lawnMower;
+var m = window.lawnMower;
