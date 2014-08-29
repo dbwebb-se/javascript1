@@ -201,7 +201,7 @@ testMe()
             KMOM03="kmom03 kmom03/marvin2 kmom03/lab2"
             KMOM04="kmom04 kmom04/marvin3 kmom04/lab3 kmom04/game1"
             KMOM05="kmom05 kmom05/marvin4 kmom05/lab4 kmom05/game2"
-            KMOM06="kmom06 kmom06/marvin5 kmom05/lab5 kmom06/game3"
+            KMOM06="kmom06 kmom06/marvin5 kmom06/lab5 kmom06/game3"
             KMOM10="kmom10"
             ;;
 
@@ -370,13 +370,14 @@ validatePython()
     assert 0 "[ -d $TARGET/$DIR ]" "Missing directory: $TARGET/$DIR" || return
 
     $ECHO "\n *.py using Pylint."
-    #find $TARGET/$DIR -type f -name '*.py' | while read filename; do assert 0 "$PYLINT $filename" "Pylint failed: $filename"; done
     for filename in $(find "$TARGET/$DIR/" -type f -name '*.py'); do
         assert 0 "$PYLINT $filename" "pylint failed: $filename"
     done
 
     $ECHO "\n *.cgi using Pylint."
-    #find $TARGET/$DIR -type f -name '*.cgi' | while read filename; do assert 0 "$PYLINT $filename" "Pylint failed: $filename"; done
+    for filename in $(find "$TARGET/$DIR/" -type f -name '*.cgi'); do
+        assert 0 "$PYLINT $filename" "pylint failed: $filename"
+    done
 }
 
 
@@ -446,11 +447,10 @@ publish()
 
     rsync -a --delete --exclude 'me/default' -f '- /*/' $TARGET/me/ $BUILD/me/
     
-    #chmod -R u+w $BUILD/me/
-    #chmod -R a+r $BUILD/me/
-
     find $BUILD/me/ -type d -print0 | xargs -0 chmod 755 
     find $BUILD/me/ -type f -print0 | xargs -0 chmod 644
+    find $BUILD/me/ -type f -name '*.cgi' -print0 | xargs -0 chmod 755
+    find $BUILD/me/ -type f -name '*.py'  -print0 | xargs -0 chmod 600
 
     for filename in $(find $BUILD/me/ -maxdepth 1 -type f -name '*.html'); do
         assert 0 "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"
@@ -474,11 +474,10 @@ publish()
         $ECHO "\n $dir:"
         rsync -a --delete $TARGET/$dir/ $BUILD/$dir/ 
         
-        #chmod -R u+w $BUILD/$dir/
-        #chmod -R a+r $BUILD/$dir/
-
         find $BUILD/$dir/ -type d -print0 | xargs -0 chmod 755 
         find $BUILD/$dir/ -type f -print0 | xargs -0 chmod 644
+        find $BUILD/$dir/ -type f -name '*.cgi' -print0 | xargs -0 chmod 755
+        find $BUILD/$dir/ -type f -name '*.py'  -print0 | xargs -0 chmod 600
 
         if [ -z "$SILENT" ]; then $ECHO " minify *.html"; fi
         #find "$BUILD/$dir/" -type f -name '*.html' | while read filename; do assert "0" "$HTML_MINIFIER $HTML_MINIFIER_OPTIONS $filename --output $filename" "HTMLMinifier failed: $filename"; done
