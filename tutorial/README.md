@@ -8,14 +8,19 @@ This tutorial presents easy to read code examples on common usage of JavaScript 
 Language constructs
 ------------------------------
 
+
+### Conditional statements
+
 * [if, elseif, else](if.md)
 * [switch](switch.md)
+
+
+
+### Loops and iteration
 
 * [for](for.md)
 * [while](while.md)
 * [do..while](do-while.md)
-
-* [function](function.md)
 
 
 
@@ -25,6 +30,7 @@ Types and builtin objects
 * [variables](variables.md)
 * [type](type.md)
 * [array](array.md)
+* [function](function.md)
 * [object](object.md)
 
 * [math](math.md)
@@ -66,5 +72,5 @@ Reference
 Revision history
 ------------------------------
 
-2014-06-30 (mos) PA2 First try.
+2014-08-29 (mos) Reviewed it.
 
