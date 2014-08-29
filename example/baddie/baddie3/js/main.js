@@ -75,8 +75,8 @@ Good luck!
 		// ASSIGNMENT
 		// Write a for-loop that iterates over the gameArea-array
 		// Fill out the missing for-loop conditions
-		// HINT: Remove false and fill in needed conditions
-		for(false;false;false) {
+		// HINT: Make sure that the loop goes through the gameArea array, the full lenght of it
+		for(i; i > 0; i) {
 			// Create the tile
 			tile = document.createElement("div");
 
