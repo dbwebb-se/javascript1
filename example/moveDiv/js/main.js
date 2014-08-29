@@ -1,4 +1,5 @@
 /*jshint unused: true */
+/*exported allowDrop, drag, drop */
 
 function allowDrop(ev) {
 	ev.preventDefault();
