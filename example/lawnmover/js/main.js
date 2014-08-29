@@ -78,7 +78,7 @@ window.lawnMower = (function(){
         
         lawnMowerMove(lawnMowerPosX, lawnMowerPosY);
 
-        console.log("Done.")
+        console.log("Done.");
     };
 
 
@@ -89,10 +89,10 @@ window.lawnMower = (function(){
     var setSpeed = function (speed) {
         if (speed >= 1 && speed <= 100) {
             lawnMowerSpeed = speed;
-            console.log("Set speed to " + lawnMowerSpeed)
+            console.log("Set speed to " + lawnMowerSpeed);
         }
 
-        console.log("Current speed is " + lawnMowerSpeed)
+        console.log("Current speed is " + lawnMowerSpeed);
         return lawnMowerSpeed;
     };
 
@@ -106,10 +106,10 @@ window.lawnMower = (function(){
         if (direction >= -360 && direction <= 360) {
             lawnMowerDirection = direction;
             lawnMower.style.transform = "rotate(" + lawnMowerDirection + "deg)";
-            console.log("Set direction to " + lawnMowerDirection)
+            console.log("Set direction to " + lawnMowerDirection);
         }
 
-        console.log("Current direction is " + lawnMowerDirection)
+        console.log("Current direction is " + lawnMowerDirection);
         return lawnMowerDirection;
     };
 
@@ -137,7 +137,7 @@ window.lawnMower = (function(){
     var startEngine = function () {
         lawnMowerEngine = true;
         setGear(0);
-        console.log("Started engine, brumm, brumm")
+        console.log("Started engine, brumm, brumm");
     };
 
 
@@ -148,7 +148,7 @@ window.lawnMower = (function(){
     var stopEngine = function () {
         lawnMowerEngine = false;
         setGear(0);
-        console.log("Stopped engine")
+        console.log("Stopped engine");
     };
 
 
@@ -256,7 +256,7 @@ window.lawnMower = (function(){
 
         if (lawnMowerEngine === false || lawnMowerRunState === false) {
             window.cancelAnimationFrame(gameLoopId);
-            console.log("Engine/Runstate was stopped, gameloop is cancelled")
+            console.log("Engine/Runstate was stopped, gameloop is cancelled");
             return;
         }
 
