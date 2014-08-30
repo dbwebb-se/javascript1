@@ -248,7 +248,7 @@ updateFromMaster()
 #
 uploadToServer()
 {
-    INTRO="Your current working directory will now be synced to remote server. Existing files that are newer will not be overwritten."
+    INTRO="Your current working directory will now be synced to remote server."
     COMMAND=$UPLOAD
     MESSAGE="to upload data."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
@@ -261,7 +261,7 @@ uploadToServer()
 #
 downloadFromServer()
 {
-    INTRO="You will now download the content of youre me-directory FROM the server. "
+    INTRO="You will now download the content of youre me-directory FROM the server. Existing local files that are newer will not be overwritten."
     COMMAND="rsync -avu --exclude default -e \"ssh $SSH_KEY_OPTION\" \"$DESTINATION/me/\" \"$SOURCE/me/\""
     MESSAGE="to download the me-directory from the server."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
