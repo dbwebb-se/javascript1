@@ -35,7 +35,7 @@ The major contributors are:
 * Jane Strandberg
 * Kenneth Lewenhagen
 
-For more contributors, see the commit history.
+For more contributors, see the commit history and the issues.
 
 Feel free to help builing up the repository with more content suited for training and education.
 
