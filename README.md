@@ -44,7 +44,7 @@ Feel free to helpå builing up the repository with more content suited for train
 History
 -------------------
 
-PRE v1.0.0 (2014-08-29)
+v1.0.0 (2014-08-30)
 
 * First official release, used in a University course at BTH, Sweden.
 * Started work in april 2014, planned release end of august 2014.
