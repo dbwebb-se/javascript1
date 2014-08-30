@@ -263,7 +263,7 @@ downloadFromServer()
 {
     INTRO="You will now download the content of youre me-directory FROM the server. Existing local files that are newer will not be overwritten."
     #COMMAND="rsync -avu --exclude default -e \"ssh $SSH_KEY_OPTION\" \"$DESTINATION/me/\" \"$SOURCE/me/\""
-    COMMAND="rsync -avu --exclude default -e \"ssh $SSH_KEY_OPTION\" \"$DESTINATION\" \"$SOURCE\""
+    COMMAND="rsync -avu --delete --exclude default -e \"ssh $SSH_KEY_OPTION\" \"$DESTINATION\" \"$SOURCE\""
     MESSAGE="to download the me-directory from the server."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
