@@ -46,6 +46,8 @@ History
 
 v1.0.x (latest)
 
+* Inspect javascript1 kmom01 - 04 added.
+* Updated `bin/dbwebb` to version v1.0.12. 
 * Updated `bin/dbwebb` to version v1.0.11. 
 * Updated `bin/dbwebb` to version v1.0.10. v1.0.9 introduced a new error, fixed.
 * Updated `bin/dbwebb` to version v1.0.9. Cygwin fix for readable files and directories.
