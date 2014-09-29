@@ -27,8 +27,9 @@ History
 -------------------
 
 
-v1.0.x (latest)
+v1.0.13 (2014-09-30)
 
+* Fixed issue #7 to publish a students kmom on the web - as part of inspect.
 * Inspect javascript1 kmom01 - 04 added.
 * Inspect plane.py failed when windows style line endings.
 

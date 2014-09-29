@@ -67,6 +67,9 @@ checkEnvironment()
 
     dirname="$THEDIR"
     assert 0 "test -r $dirname -a -d $dirname" "Directory $dirname not readable.\nPerhaps login to the studserver and execute the command:\nsudo setpre-dbwebb-kurser.bash studID"
+
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $dirname"
 }
 
 
@@ -92,6 +95,10 @@ pythonme()
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT"
     $ECHO "\nLink to redovisning-page: $url/me/redovisning.cgi"
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/me.cgi"
+
     $ECHO "\nPress enter to continue..."
     read void
 }
@@ -99,7 +106,34 @@ pythonme()
 
 
 #
-# Test python kmom01
+# Publish kmom to webserver
+#
+publishKmom()
+{
+    target="$1"
+
+    $ECHO "\nPublish $THEKMOM [yN] "
+
+    read answer
+    default="n"
+    answer=${answer:-$default}
+
+    if [ "$answer" = "y" -o "$answer" = "Y" ]
+    then
+        rsync -a --delete "$THEDIR/$target/" "$PUBLISH_STUD/"
+        
+        url="$SERVERURL/~$USER/$BASEDIR/$STUD_DIR"
+        $ECHO "\nLink: $url"
+
+        $ECHO "\nOpen files in an editor:"
+        $ECHO "\n$EDITOR $PUBLISH_STUD/"
+    fi
+}
+
+
+
+#
+# Test check the kmom dir exists
 #
 checkKmomDir()
 {
@@ -110,15 +144,22 @@ checkKmomDir()
 
 
 #
-# Test python kmom01
+# Test validate a kmom
 #
 validateKmom()
 {
     THEKMOM="$1"
 
-    $ECHO "\nPress enter to validate $THEKMOM..."
-    read void
-    bin/dbwebb-validate -i -n -m -e -t $THEKMOM $THEUSER
+    $ECHO "\nValidate $THEKMOM [Yn] "
+
+    read answer
+    default="y"
+    answer=${answer:-$default}
+
+    if [ "$answer" = "y" -o "$answer" = "Y" ]
+    then
+        bin/dbwebb-validate -i -n -m -e -t $THEKMOM $THEUSER
+    fi
 }
 
 
@@ -146,6 +187,10 @@ pythonplane()
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT"
     $ECHO "\nLink to plane-page: $url/me/kmom01/plane/plane1.cgi"
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/plane1.cgi"
+
     $ECHO "\nPress enter to continue to execute the program plane.py..."
     read void
 
@@ -172,6 +217,10 @@ pythonmarvin1()
 
     filename="$THEDIR/$target/marvin.py"
     assert 0 "test -r $filename -a -f $filename" "The file marvin.py is missing."
+
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/marvin.py"
 
     $ECHO "\nPress enter to continue to execute the program marvin.py..."
     read void
@@ -203,6 +252,10 @@ pythonmarvin2()
     filename="$THEDIR/$target/main.py"
     assert 0 "test -r $filename -a -f $filename" "The file main.py is missing."
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/marvin.py"
+
     $ECHO "\nPress enter to continue to execute the program main.py..."
     read void
 
@@ -229,6 +282,10 @@ pythonlab()
 
     filename="$THEDIR/$target/answer.py"
     assert 0 "test -r $filename -a -f $filename" "The file answer.py is missing."
+
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/answer.py"
 
     $ECHO "\nPress enter to continue to execute the program answer.py..."
     read void
@@ -396,6 +453,10 @@ javascript1flag()
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT/$target"
     $ECHO "\nLink to lab-page: $url"
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/js/main.js"
+
     $ECHO "\nPress enter to continue..."
     read void
 }
@@ -422,6 +483,10 @@ javascript1baddie()
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT/$target"
     $ECHO "\nLink to lab-page: $url"
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/js/main.js"
+
     $ECHO "\nPress enter to continue..."
     read void
 }
@@ -447,6 +512,10 @@ javascript1lab()
 
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT/$target"
     $ECHO "\nLink to lab-page: $url/answer.html"
+
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/answer.js"
 
     $ECHO "\nPress enter to continue..."
     read void
@@ -487,6 +556,7 @@ javascript1kmom02()
     THETARGET="me/$THEKMOM"
 
     checkKmomDir "$THETARGET"
+    publishKmom "$THETARGET"
     validateKmom "$THEKMOM"
     javascript1me
     javascript1lab "$THETARGET/lab1"
