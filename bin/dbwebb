@@ -415,9 +415,9 @@ inspectResults()
 
     if [ "$USER" = "$WHO" ]
     then
-        upload="$UPLOAD_NOT_ME"
-    else
         upload="$UPLOAD"
+    else
+        upload="$UPLOAD_MINIMAL"
     fi
 
     executeCommand "$INTRO" "$upload; $COMMAND" "$MESSAGE"
@@ -448,7 +448,7 @@ updateConfigIfNeeded "update"
 
 
 UPLOAD="rsync -av --delete --exclude literature --exclude .git -e \"ssh $SSH_KEY_OPTION\" $SOURCE $DESTINATION"
-UPLOAD_NOT_ME="rsync -av --delete --exclude me --exclude literature --exclude .git -e \"ssh $SSH_KEY_OPTION\" $SOURCE $DESTINATION"
+UPLOAD_MINIMAL="rsync -av --delete --exclude me --exclude tutorial --exclude example --exclude literature --exclude .git -e \"ssh $SSH_KEY_OPTION\" $SOURCE $DESTINATION"
 
 SSH="ssh ${USER}@${HOST} $SSH_KEY_OPTION"
 

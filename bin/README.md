@@ -27,6 +27,11 @@ History
 -------------------
 
 
+v1.0.x (latest)
+
+* Changed place to ignore upload of me/ when checking another user.
+
+
 v1.0.14 (2014-09-30)
 
 * Added publish to all kmoms.
