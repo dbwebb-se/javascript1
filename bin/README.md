@@ -27,6 +27,13 @@ History
 -------------------
 
 
+v1.0.14 (2014-09-30)
+
+* Added publish to all kmoms.
+* Support for testing game in python
+* Added inspect for python kmom05.
+
+
 v1.0.13 (2014-09-30)
 
 * Fixed issue #7 to publish a students kmom on the web - as part of inspect.
