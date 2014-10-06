@@ -150,6 +150,9 @@ publishKmom()
 
         $ECHO "\nOpen files in an editor:"
         $ECHO "\n$EDITOR $PUBLISH_STUD/"
+
+        $ECHO "\nMove to the directory:"
+        $ECHO "\ncd $PUBLISH_STUD/"
     fi
 }
 
@@ -536,8 +539,10 @@ javascript1me()
 #
 javascript1sandbox()
 {
+    label=${2:-"sandbox"}
+
     $ECHO "\n\n-----------------------------------------"
-    $ECHO "\n----------- sandbox ---------------------"
+    $ECHO "\n----------- $label -------------------"
     $ECHO "\n-----------------------------------------"
 
     target="$1"
@@ -551,6 +556,10 @@ javascript1sandbox()
     url="$SERVERURL/~$THEUSER/$BASEDIR/$PROJECT/$target"
     $ECHO "\nLink to lab-page: $url"
 
+    $ECHO "\nOpen files in an editor:"
+    $ECHO "\n$EDITOR $THEDIR/$target/"
+    $ECHO "\n$EDITOR $THEDIR/$target/js/main.js"
+
     $ECHO "\nPress enter to continue..."
     read void
 }
@@ -562,8 +571,10 @@ javascript1sandbox()
 #
 javascript1flag()
 {
+    label=${2:-"flag"}
+
     $ECHO "\n\n-----------------------------------------"
-    $ECHO "\n----------- flag ---------------------"
+    $ECHO "\n----------- $label ------------"
     $ECHO "\n-----------------------------------------"
 
     target="$1"
@@ -733,6 +744,28 @@ javascript1kmom04()
     javascript1lab "$THETARGET/lab4"
     javascript1flag "$THETARGET/flag3"
     javascript1baddie "$THETARGET/baddie3"
+}
+
+
+
+#
+# Test javascript1 kmom04
+#
+javascript1kmom05()
+{
+    $ECHO "\n\n-----------------------------------------"
+    $ECHO "\n----------- javascript1 kmom05 ------------"
+    $ECHO "\n-----------------------------------------"
+
+    THEKMOM="kmom05"
+    THETARGET="me/$THEKMOM"
+
+    checkKmomDir "$THETARGET"
+    publishKmom "$THETARGET"
+    validateKmom "$THEKMOM"
+    javascript1me
+    javascript1sandbox "$THETARGET/lab5" "lab5"
+    javascript1flag "$THETARGET/flag4" "flag4"
 }
 
 

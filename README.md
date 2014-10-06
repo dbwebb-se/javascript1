@@ -46,6 +46,7 @@ History
 
 v1.0.x (latest)
 
+* Added kmom05, removed baddi4.
 * Updated `bin/dbwebb` to version v1.0.14. 
 * Updated `bin/dbwebb` to version v1.0.13. 
 * Inspect javascript1 kmom01 - 04 added.
