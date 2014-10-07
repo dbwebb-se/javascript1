@@ -6,7 +6,7 @@ Get the computed style for a webpage. This gives you always some values, even if
 
 ```
 /**
- * Add eventhandler for click, to any object using id
+ * Get values for left and top from element and add 10px to each.
  */
 
 var element = document.getElementById('someId'),
