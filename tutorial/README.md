@@ -49,6 +49,7 @@ DOM
 * [positioning](positioning.md)
 * [inputField](inputField.md)
 * [getSize](getSize.md)
+* [getComputedStyle](getComputedStyle.md)
 
 
 
@@ -72,5 +73,6 @@ Reference
 Revision history
 ------------------------------
 
-2014-08-29 (mos) Reviewed it.
+2014-10-08 (B, mos) Added `getComputedStyle`.
+2014-08-29 (A, mos) Reviewed it.
 
