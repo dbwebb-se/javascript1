@@ -1,25 +1,30 @@
-switch
+Switch
 ==============================
 
 
 
 ```
 /**
- * Find the price of item 2
+ * Check a printable colorvalue and return its hexvalue.
  */
-var x = 2;
+var color = "red",
+    hexColor = "";
 
-switch(x) {
-	case 0:
-		console.log('Item 0: 3$')
-	case 1:
-		console.log('Item 1: 6$')
-	case 2:
-		console.log('Item 2: 9$')
-	case 3:
-		console.log('Item 3: 5$')
+switch(color) {
+	case "red":
+		hexColor = "#F00";
+        break;
+	case "green":
+        hexColor = "#0F0";
+        break;
+	case "blue":
+        hexColor = "#00F";
+        break;
+	default:
+        hexColor = "Unknown";
 }
 
+console.log("The color: " + color + " matches the hexadeciamal colorvalue: " + hexColor);
 ```
 
 
@@ -34,5 +39,6 @@ Reference and read more
 Revision history
 ------------------------------
 
-2014-06-03 (zingo89) PA1 First try.
+2014-10-08 (B, mos) Updated with a more verbose example.
+2014-06-03 (A, zingo89) First try.
 
