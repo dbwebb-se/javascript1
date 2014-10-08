@@ -39,6 +39,7 @@ Reference and read more
 Revision history
 ------------------------------
 
+```
 2014-10-08 (B, mos) Updated with a more verbose example.
 2014-06-03 (A, zingo89) First try.
-
+```
