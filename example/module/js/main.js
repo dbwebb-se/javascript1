@@ -1,3 +1,4 @@
+
 /**
  * Code sample
  */
@@ -44,7 +45,7 @@ console.log("accessToInner(1): " + accessToInner(1)); // returns 5
  * Code sample
  */
 window.Mos = (function() {
-  var private, Mos = {};
+  var Mos = {};
  
     /**
     * Dump own properties of an object

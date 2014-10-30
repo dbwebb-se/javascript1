@@ -46,6 +46,7 @@ History
 
 v1.0.x (latest)
 
+* Added kmom06, with exampleprograms for module and hangman.
 * Added kmom05, removed baddi4.
 * Updated `bin/dbwebb` to version v1.0.14. 
 * Updated `bin/dbwebb` to version v1.0.13. 

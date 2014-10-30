@@ -120,6 +120,7 @@ mapCmdToDir()
         javascript1)
             case "$CMD" in
                 sandbox)    RES="me/kmom01/sandbox" ;;
+                hangman)    RES="me/kmom06/hangman" ;;
 
                 lab1)       RES="me/kmom02/lab1" ;;
                 lab2)       RES="me/kmom03/lab2" ;;
@@ -200,7 +201,7 @@ testMe()
             KMOM03="kmom03 kmom03/flag2 kmom03/lab2 kmom03/baddie2"
             KMOM04="kmom04 kmom04/flag3 kmom04/lab3 kmom04/lab4 kmom04/baddie3"
             KMOM05="kmom05 kmom05/flag4 kmom05/lab5"
-            KMOM06="kmom06 kmom06/flag5"
+            KMOM06="kmom06 kmom06/hangman"
             KMOM10="kmom10"            
             ;;
 

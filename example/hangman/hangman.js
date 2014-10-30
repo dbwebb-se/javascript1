@@ -2,7 +2,7 @@
  * Showing off how to display/hide parts of a SVG-image.
  */
 window.Hangman = (function() {
-    'use strict";'
+    "use strict";
 
     var hangman = {
 
@@ -84,9 +84,9 @@ window.Hangman = (function() {
             }
 
         }
-    }
+    };
 
-    console.log("You can now use the hangman object as a part of the window-object. Try\n\nwindow.Hangman.hide('gallow')\nwindow.Hangman.show('gallow')\n\nHere are all the parts you can work on.")
+    console.log("You can now use the hangman object as a part of the window-object. Try\n\nwindow.Hangman.hide('gallow')\nwindow.Hangman.show('gallow')\n\nHere are all the parts you can work on.");
     console.log(hangman.validParts);
 
     // Return the object to make it visible.

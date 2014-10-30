@@ -37,3 +37,15 @@ body {
 	height: 10px;
 	background-color: green;
 }
+
+.level1 {
+	background-image: url(../img/few.png);
+}
+
+.level2 {
+	background-image: url(../img/more.png);
+}
+
+.border {
+	background-color: #000;
+}
