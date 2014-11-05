@@ -46,6 +46,7 @@ History
 
 v1.0.x (latest)
 
+* Corrected html-minifier for inline svg.
 * Added kmom06, with exampleprograms for module and hangman.
 * Added kmom05, removed baddi4.
 * Updated `bin/dbwebb` to version v1.0.14. 

@@ -24,7 +24,9 @@ HTMLHINT="htmlhint"
 CSSHINT="htmlhint"
 
 HTML_MINIFIER="html-minifier"
-HTML_MINIFIER_OPTIONS="--minify-js --minify-css --use-short-doctype --remove-attribute-quotes --collapse-boolean-attributes --conservative-collapse --collapse-whitespace --remove-comments"
+#HTML_MINIFIER_OPTIONS="--minify-js --minify-css --use-short-doctype --remove-attribute-quotes --collapse-boolean-attributes --conservative-collapse --collapse-whitespace --remove-comments"
+# use DBW_COURSE_DIR
+HTML_MINIFIER_OPTIONS="--config-file ./.html-minifier.conf"
 
 UGLIFYJS="uglifyjs"
 UGLIFYJS_OPTIONS="--mangle --compress --screw-ie8 --comments"
