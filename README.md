@@ -46,6 +46,7 @@ History
 
 v1.0.x (latest)
 
+* Updated `bin/dbwebb` to support validate and inspect of kmom10 and intelligence.
 * Updated `bin/dbwebb` to support kmom06.
 * Corrected html-minifier for inline svg.
 * Added kmom06, with exampleprograms for module and hangman.
