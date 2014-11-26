@@ -31,7 +31,7 @@ HTML_MINIFIER_OPTIONS="--config-file ./.html-minifier.conf"
 UGLIFYJS="uglifyjs"
 UGLIFYJS_OPTIONS="--mangle --compress --screw-ie8 --comments"
 
-CLEANCSS="cleancss --s1"
+CLEANCSS="cleancss --s1 --skip-import"
 
 PYLINT="pylint -r n --rcfile ./.pylintrc"
 
