@@ -44,7 +44,12 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
-v1.0.x (latest)
+v1.1.x (latest)
+
+* Fixed error message from bin/dbwebb validate and tee.
+
+
+v1.1.0 (2015-01-14)
 
 * Updated `bin/dbwebb` to support validate and inspect of kmom10 and intelligence.
 * Updated `bin/dbwebb` to support kmom06.
