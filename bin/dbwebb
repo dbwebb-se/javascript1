@@ -312,11 +312,13 @@ updateFromMaster()
 setChmod()
 {
     $ECHO "\nEnsuring that all files and directories are readable for all."
+    $ECHO "\n"
 
-    for filename in $(find "$SOURCE" -type d); do
-        chmod 755 "$filename"
-    done
+    #for filename in $(find "$SOURCE" -type d); do
+    #    chmod 755 "$filename"
+    #done
 
+    find "$SOURCE" -type d -exec chmod 755 {} \;
     chmod -R u+rw "$SOURCE" 
     chmod -R go+r "$SOURCE"
 }
@@ -329,7 +331,7 @@ setChmod()
 uploadToServer()
 {
     INTRO="Your current working directory will now be synced to remote server."
-    COMMAND=$UPLOAD
+    COMMAND="$UPLOAD"
     MESSAGE="to upload data."
     executeCommand "$INTRO" "$COMMAND" "$MESSAGE"
 }
@@ -372,8 +374,8 @@ validateUploadedResults()
     #LOG="$HOME/$BASEDIR/.dbwebb-validate.log"
     LOG="$( pwd )/.dbwebb-validate.log"
     INTRO="I will now upload files to the remote server and validate them."
-    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT' | tee $LOG;"
-    MESSAGE="to validate course results. Saved a log of the output, review it as:\nless -R $LOG"
+    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate -n $IGNORE_FAULTS $WHAT' | tee '$LOG';"
+    MESSAGE="to validate course results. Saved a log of the output, review it as:\nless -R '$LOG'"
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 }
 
@@ -388,8 +390,8 @@ publishResults()
     #LOG="$HOME/$BASEDIR/.dbwebb-validate.log"
     LOG="$( pwd )/.dbwebb-validate.log"
     INTRO="I will now try to init the remote server and create a directory where all uploaded files will reside."
-    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $IGNORE_FAULTS $WHAT' | tee $LOG;"
-    MESSAGE="to validate and publish all course results. Saved a log of the output, review it as:\nless -R $LOG"
+    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-validate $IGNORE_FAULTS $WHAT' | tee '$LOG';"
+    MESSAGE="to validate and publish all course results. Saved a log of the output, review it as:\nless -R '$LOG'"
     executeCommand "$INTRO" "$UPLOAD; $COMMAND" "$MESSAGE"
 
     if [ $? -eq 0 ]
@@ -414,8 +416,8 @@ inspectResults()
     #LOG="$HOME/$BASEDIR/.dbwebb-validate.log"
     LOG="$( pwd )/.dbwebb-validate.log"
     INTRO="I will now inspect the choosen kmom for the choosen user, if you have privilegies to do that."
-    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-inspect $WHAT $WHO' | tee $LOG; "
-    MESSAGE="to inspect the course results. Saved a log of the output, review it as:\nless -R $LOG"
+    COMMAND="$SSH 'cd $BASEDIR/$PROJECT; bin/dbwebb-inspect $WHAT $WHO' | tee '$LOG'; "
+    MESSAGE="to inspect the course results. Saved a log of the output, review it as:\nless -R '$LOG'"
 
     if [ "$USER" = "$WHO" ]
     then

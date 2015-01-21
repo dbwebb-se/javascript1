@@ -46,6 +46,7 @@ History
 
 v1.1.x (latest)
 
+* Fixed to allow space in filenames bin/dbwebb.
 * Fixed error message from bin/dbwebb validate and tee.
 
 
