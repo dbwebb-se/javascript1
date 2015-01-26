@@ -44,8 +44,9 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
-v1.1.x (latest)
+v1.1.1 (2015-01-26)
 
+* Fix for space in username and sshkey.
 * Fixed to allow space in filenames bin/dbwebb.
 * Fixed error message from bin/dbwebb validate and tee.
 
