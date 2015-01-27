@@ -1,13 +1,19 @@
 /** 
+ * @fileOverview A lawnmover which moves a lawn.
+ *
+ * @module 
+ *
  * @preserve Made by mos@dbwebb.se
  *
- * Using code from example programs:
- * - example/getSize
- * - example/fillWithDivs
- * - example on classList?
  */
 window.lawnMower = (function(){
     'use strict';
+
+    /** 
+     * A module for a lawn mover.
+     *
+     * @module lawnMover
+     */
 
     var windowWidth     = window.innerWidth,
         windowHeight    = window.innerHeight,
@@ -41,7 +47,10 @@ window.lawnMower = (function(){
 
 
     /**
-     * Create a lawn id.
+     * Create a lawn id for a particular position on the lawn.
+     * 
+     * @param {int} x - position x of lawn id.
+     * @param {int} y - position y of lawn id.
      */
     var createLawnId = function (x, y) {
         if (x > lawnMaxX) {
@@ -630,7 +639,7 @@ window.lawnMower = (function(){
     console.log("Lawn mower is ready!");
     console.log(help());
 
-    return {
+    this.exports = {
         "element":      lawnMower,
         "speed":        setSpeed,
         //"direction":    setDirection,
@@ -647,6 +656,9 @@ window.lawnMower = (function(){
         "border":       drawBorderRectangle,
         "help":         help
     };
+
+    return this.exports;
+
 })();
 
 
