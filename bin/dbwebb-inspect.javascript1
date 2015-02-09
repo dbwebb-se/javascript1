@@ -119,7 +119,7 @@ javascript1kmom01()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom02 kmom03 kmom04 kmom05 kmom06 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1sandbox "$THETARGET/sandbox" "sandbox" "http://dbwebb.se/uppgift/skapa-din-egen-sandbox-for-javascript-testprogram"
@@ -138,7 +138,7 @@ javascript1kmom02()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom03 kmom04 kmom05 kmom06 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1lab "$THETARGET/lab1" "lab1" "http://dbwebb.se/uppgift/javascript-med-variabler-loopar-och-inbyggda-funktioner"
@@ -159,7 +159,7 @@ javascript1kmom03()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom02 kmom04 kmom05 kmom06 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1lab "$THETARGET/lab2" "lab2" "http://dbwebb.se/uppgift/javascript-med-funktioner"
@@ -180,7 +180,7 @@ javascript1kmom04()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom02 kmom03 kmom05 kmom06 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1lab "$THETARGET/lab3" "lab3" "http://dbwebb.se/uppgift/javascript-och-arrayer"
@@ -202,7 +202,7 @@ javascript1kmom05()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom02 kmom03 kmom04 kmom06 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1sandbox "$THETARGET/lab5" "lab5" "http://dbwebb.se/uppgift/javascript-dom-och-events"
@@ -222,7 +222,7 @@ javascript1kmom06()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom02 kmom03 kmom04 kmom05 kmom10" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1sandbox "$THETARGET/hangman" "hangman" "http://dbwebb.se/uppgift/hanga-gubben-som-modul-i-javascript"
@@ -241,7 +241,7 @@ javascript1kmom10()
     headerForTest "-- $COURSE $THEKMOM" "-- http://dbwebb.se/javascript1/$THEKMOM"
 
     checkKmomDir "$THETARGET"
-    publishKmom "$THETARGET"
+    publishKmom "me" "" "default kmom01 kmom02 kmom03 kmom04 kmom05 kmom06" 
     validateKmom "$THEKMOM"
     javascript1me "$THEKMOM"
     javascript1sandbox "$THETARGET/intelligence" "intelligence" "http://dbwebb.se/javascript1/kmom10"
