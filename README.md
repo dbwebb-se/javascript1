@@ -44,6 +44,13 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
+v2.0.0 (2015-08-06)
+
+* Changed structure of repo to match dbwebb-cli version 2.
+* Moving me/default to .default.
+* Removing dbwebb-cli version 1 (everything) from bin/.
+
+
 v1.1.2 (2015-08-06)
 
 * Last version supporting dbwebb-cli version 1.
