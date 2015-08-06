@@ -44,6 +44,12 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
+
+v2.0.0x (latest)
+
+* Adding config for htmlhint.
+
+
 v2.0.0 (2015-08-06)
 
 * Changed structure of repo to match dbwebb-cli version 2.
