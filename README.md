@@ -44,8 +44,9 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
-v1.1.x (latest)
+v1.1.2 (2015-08-06)
 
+* Last version supporting dbwebb-cli version 1.
 * Updated inspect phase.
 
 
@@ -82,5 +83,5 @@ v1.0.0 (2014-08-30)
 
 ```                                                            
  .                                                             
-..:  Copyright (c) 2014 Mikael Roos, me@mikaelroos.se   
+..:  Copyright (c) 2014-15 Mikael Roos, me@mikaelroos.se   
 ```                                                            
