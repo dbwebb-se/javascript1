@@ -47,6 +47,7 @@ History
 
 v2.0.0x (latest)
 
+* Adding .csslintrc and .jscsrc.
 * Removing validation errors on example/module.
 * Adding config for htmlhint.
 
