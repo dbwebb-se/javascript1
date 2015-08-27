@@ -22,7 +22,7 @@ console.log("f1(10): " + f1(10)); // Returns 42
  * Code sample
  */
 // Example on closure where inner function has access to non-local variables
-window.accessToInner = (function() {
+var accessToInner = (function() {
     var a = 1;
  
     function inner (b) {
@@ -44,7 +44,7 @@ console.log("accessToInner(1): " + accessToInner(1)); // returns 5
 /**
  * Code sample
  */
-window.Mos = (function() {
+var Mos = (function() {
   var Mos = {};
  
     /**
@@ -82,7 +82,7 @@ console.log("Mos.dump(window.localStorage): " + Mos.dump(window.localStorage));
 /**
  * Code sample
  */
-window.Mumin1 = (function () {
+var Mumin1 = (function () {
  
     return {
         myNameIs: function () {
@@ -99,7 +99,7 @@ console.log("Mumin1.myNameIs(): " + Mumin1.myNameIs()); // returns 'Mumintrollet
 /**
  * Code sample
  */
-window.Mumin2 = (function () {
+var Mumin2 = (function () {
  
     function getName() {
         return "Mumintrollet";
@@ -111,4 +111,4 @@ window.Mumin2 = (function () {
  
 })();
  
-console.log("Mumin2.myNameIs(): " + Mumin1.myNameIs()); // returns 'Mumintrollet'
+console.log("Mumin2.myNameIs(): " + Mumin2.myNameIs()); // returns 'Mumintrollet'
