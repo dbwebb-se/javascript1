@@ -47,6 +47,7 @@ History
 -------------------
 
 
+
 v2.0.0x (latest)
 
 * Adding .travis.yml.
