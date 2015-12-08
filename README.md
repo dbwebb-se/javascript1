@@ -49,7 +49,7 @@ History
 
 
 
-v2.0.0x (latest)
+v2.0.0x (2015-12-08)
 
 * Adding .travis.yml.
 * Adding .csslintrc and .jscsrc.
