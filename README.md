@@ -2,6 +2,7 @@ Programming with JavaScript, HTML and CSS - javascript1
 ===================
 
 [![Join the chat at https://gitter.im/mosbth/javascript1](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/javascript1?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/mosbth/javascript1.svg)](https://travis-ci.org/mosbth/javascript1)
 
 Coursematerial for javascript1-course, aimed at a swedish target audience as the first course in programming with JavaScript (in a (web) browser environment) on University level in computer science. 
 

@@ -63,7 +63,7 @@ script:
     - jshint --version
     #- phpcs --version
     #- phpmd --version
-    - jsonlint --version
+    #- jsonlint --version
     - js-yaml --version
     #- shellcheck --version
     
