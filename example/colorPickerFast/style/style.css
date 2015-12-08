@@ -1,0 +1,33 @@
+input {
+	width: 300px;
+	height: 30px;
+	font-size: 24px;
+	background: #fff;
+}
+
+.colorIcon {
+	padding-left: 5px;
+}
+
+.colorIcon img {
+	height: 36px;
+}
+
+.left {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+/*csslint box-sizing: false*/
+.palette {
+	position: absolute;
+	display: none;
+	box-sizing: border-box;
+	background: url("../img/palette.png");
+	width: 200px;
+	height: 100px;
+	border: 2px solid black;
+}
