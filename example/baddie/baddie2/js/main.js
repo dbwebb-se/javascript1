@@ -54,33 +54,33 @@ Good luck!
 		// Give each call to isBaddieMovable() the right parameters
 		// Call moveBaddie in each case
 		// Call turn-functions where needed
-		switch(key) {
+		switch (key) {
 			case 37:
-				if(isBaddieMovable(0, 0)) {
+				if (isBaddieMovable(0, 0)) {
 					// Go left - Use moveBaddie-function
-					
+
 					// Turn baddie left - Use the given function
-					
+
 				}
 				break;
 			case 38:
-				if(isBaddieMovable(0, 0)) {
+				if (isBaddieMovable(0, 0)) {
 					// Go up - Use moveBaddie-function
-					
+
 				}
 				break;
 			case 39:
-				if(isBaddieMovable(0, 0)) {
+				if (isBaddieMovable(0, 0)) {
 					// Go right - Use moveBaddie-function
-					
+
 					// Turn baddie right - Use the given function
-					
+
 				}
 				break;
 			case 40:
-				if(isBaddieMovable(0, 0)) {
+				if (isBaddieMovable(0, 0)) {
 					// Go down - Use moveBaddie-function
-					
+
 				}
 				break;
 			// ----------------------
@@ -126,27 +126,27 @@ Good luck!
 		// Hint: you can type condition = 10 > 12; for example
 			// The conditoion variable will hold a boolean of the evaluation
 		var condition = false;
-		if(condition) {
+		if (condition) {
 			movable = false;
 			console.log("Baddie collided with left wall");
 		}
 		condition = false;
 		// Top wall collide check - check if newTop is outside content
-		if(condition) {
+		if (condition) {
 			movable = false;
 			console.log("Baddie collided with top wall");
 		}
 		// Right wall collide check
 		// Change max value from 0 to that of content width
 		max = 0;
-		if(newLeft + baddie.offsetWidth > max) {
+		if (newLeft + baddie.offsetWidth > max) {
 			movable = false;
 			console.log("Baddie collided with right wall");
 		}
 		// Bottom wall collide check
 		// Change max value from 0 to that of content height
 		max = 0;
-		if(newTop + baddie.offsetHeight > max) {
+		if (newTop + baddie.offsetHeight > max) {
 			movable = false;
 			console.log("Baddie collided with bottom wall");
 		}
@@ -177,14 +177,14 @@ Good luck!
 	 * Performs 2 moves - up and down, so that it appears as if baddie jumps
 	 */
 // UNCOMMENT THIS SECTION FOR EXTRA ASSIGNMENT
-/*	
+/*
 	var jump = function() {
 		// If baddie won't collide moving up - perform the jump with a timer to come down again
 		if(isBaddieMovable(0, -1)) {
 			// ----------------------
 			// EXTRA ASSIGNMENT
 			// Move baddie up
-			
+
 			// Create a timeout
 
 			// In the timeout move baddie down again (called after the timeout finishes)

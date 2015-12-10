@@ -76,7 +76,7 @@ Good luck!
 		// Write a for-loop that iterates over the gameArea-array
 		// Fill out the missing for-loop conditions
 		// HINT: Make sure that the loop goes through the gameArea array, the full lenght of it
-		for(i; i > 0; i) {
+		for (i; i > 0; i) {
 			// Create the tile
 			tile = document.createElement("div");
 
@@ -110,7 +110,7 @@ Good luck!
 		// ------------------------------
 		// ASSIGNMENT
 		// Copy-paste the switch case you wrote from baddie2 that handles the key variable
-		switch(key) {
+		switch (key) {
 
 
 			default:
@@ -157,7 +157,7 @@ Good luck!
 		// ------------------------------
 		// ASSIGNMENT
 		// Get the tile value from array gameArea and place it in the variable tile
-		
+
 
 		console.log("Move to: " + newLeft + "," + newTop);
 		console.log("Tile " + tilePos + " contains " + gameArea[tilePos]);
@@ -183,7 +183,7 @@ Good luck!
 				// ------------------------------
 				// ASSIGNMENT
 				// Get the next tile from gameArea and place it in the variable nextTile (5b)
-				
+
 
 				console.log("The next tile is: " + nextTile);
 
@@ -195,7 +195,7 @@ Good luck!
 					console.log("Moved a box");
 				} else {
 					// if not empty - don't do anything else
-					console.log("Can't push box - next tile is not empty");					
+					console.log("Can't push box - next tile is not empty");
 				}
 				break;
 			default:
@@ -240,9 +240,9 @@ Good luck!
 		// Switch the tiles
 		// Place tile into the next positon in the array gameArea
 		// Then make sure the current tile is empty in the array gameArea
-		
 
-		
+
+
 		// Give the tiles new classnames to redraw them
 		document.getElementById("n" + next).className = "tile t" + tile; // box tile here
 		document.getElementById("n" + current).className = "tile t" + 10; // current tile will be empty
@@ -271,5 +271,5 @@ Good luck!
 	 * CODE
 	 */
 	init();
-	
+
 })();

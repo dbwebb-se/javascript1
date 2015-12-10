@@ -49,7 +49,7 @@ window.Hangman = (function() {
             console.log("The part is valid: " + part);
             return true;
 
-        }, 
+        },
 
 
         /**
@@ -66,7 +66,7 @@ window.Hangman = (function() {
                 this.partAsElement[part].style.display = "none";
             }
 
-        }, 
+        },
 
 
         /**

@@ -1,17 +1,17 @@
 (function () {
 	'use strict';
-/* 
+/*
  *  Här skapas en variabel, "menuitems" som innehåller de element som vår navigeringsmeny kommer visa.
  *  "title" innehåller den text du vill att menyn ska visa
  *  "url" innehåller sökvägen till den fil du vill öppna.
  */
 	var menuitems = [
-		{title: "Me", url: "me.html"},
-		{title: "Redovisnigar", url: "redovisningar.html"},
-		{title: "Uppgifter", url: "uppgifter.html"}
+		{ title: "Me", url: "me.html" },
+		{ title: "Redovisnigar", url: "redovisningar.html" },
+		{ title: "Uppgifter", url: "uppgifter.html" }
 	];
 /*
- *  Här skapar vi först två variabler. 
+ *  Här skapar vi först två variabler.
  *  "menunav" använder vi för att hämta html-elementet som vi döpte till "menu"
  *  "ul" använder vi för att skapa ett nytt html-element: "ul" (unsorted list)
  */

@@ -221,7 +221,7 @@ Good luck!
 	// Hide hint paragraphs
 	var list = hint.getElementsByTagName("p");
 	//console.log(list);
-	for(var i = 0; i < list.length; i++) {
+	for (var i = 0; i < list.length; i++) {
 		list[i].hidden = true;
 	}
 
@@ -277,11 +277,11 @@ Good luck!
 	village.style.top = "10%";
 	// Add village
 	map.appendChild(village);
-	
+
 	// -------------------------------------------
 	// ASSIGNMENT
 	// Create a tower and fortress and place them out on the map just as with the village
-	
+
 	// Tower
 
 
@@ -299,7 +299,7 @@ Good luck!
 	baddie.style.backgroundImage = "url(img/fox.png)";
 	baddie.style.backgroundSize = "100%";
 	// Position
-	baddie.style.position = "absolute";	
+	baddie.style.position = "absolute";
 	baddie.style.left = "0px";
 	baddie.style.top = "0px";
 	// Index - place baddie on top of map
@@ -334,7 +334,7 @@ Good luck!
 	var villageModal = function() {
 		console.log("Creating modal for not completed village");
 		var btnYes, btnNo, p;
-		
+
 		// -------------------------------------------
 		// ASSIGNMENT
 		// Create some describing text
@@ -372,7 +372,7 @@ Good luck!
 	var villageCompletedModal = function() {
 		console.log("Creating modal for completed village");
 		var p;
-		
+
 		// -------------------------------------------
 		// ASSIGNMENT
 		// Add some text for when village was completed
@@ -395,7 +395,7 @@ Good luck!
 		p = document.createElement("p");
 		p.textContent = "Add your own text here.";
 		modal.appendChild(p);
-		
+
 
 		p = document.createElement("p");
 		p.textContent += "I'm thinking of a number between 1 and 10. Guess which one.";
@@ -441,7 +441,7 @@ Good luck!
 			console.log(key + " was pressed");
 
 			// Do stuff if key was the enter-key
-			if(key == 13) {
+			if (key == 13) {
 				console.log("Input is of type: ", typeof input.value);
 				// A guess was made so increment number
 				guesses++;
@@ -452,7 +452,7 @@ Good luck!
 				// ASSIGNMENT
 				// Check if the number was the right one and show what happened
 				var condition = null;
-				if(condition) {
+				if (condition) {
 					console.log("You won!");
 					// Add some output to textarea - either first or last in textarea
 
@@ -465,7 +465,7 @@ Good luck!
 				} else {
 					console.log("Try again...");
 					// Print out if the guess was higher or lower than the number - either first or last in textarea
-					
+
 				}
 			}
 
@@ -498,13 +498,13 @@ Good luck!
 	toggleHint.addEventListener("click", function() {
 		var list, i;
 		// If id is showHint - show them
-		if(toggleHint.id == "showHint") {
+		if (toggleHint.id == "showHint") {
 			console.log("Showing hints");
 
 			// Get all paragraphs
 			list = hint.getElementsByTagName("p");
 			//console.log(list);
-			for(i = 0; i < list.length; i++) {
+			for (i = 0; i < list.length; i++) {
 				// Unhide them
 				list[i].hidden = false;
 			}
@@ -520,7 +520,7 @@ Good luck!
 			// Get all paragraphs
 			list = hint.getElementsByTagName("p");
 			//console.log(list);
-			for(i = 0; i < list.length; i++) {
+			for (i = 0; i < list.length; i++) {
 				// Hide them
 				list[i].hidden = true;
 			}
@@ -570,7 +570,7 @@ Good luck!
 			showModal(towerCompleted ? towerCompletedModal : towerModal);
 		}, t);
 	});
-	
+
 	// Fortress
 	fortress.addEventListener("click", function(event) {
 		var x, y, t;
@@ -612,7 +612,7 @@ Good luck!
 		key = event.keyCode || event.which;
 		console.log(key + " was pressed");
 
-		switch(key) {
+		switch (key) {
 			case 49:
 				// 1 - complete village
 				completeVillage();
@@ -623,7 +623,7 @@ Good luck!
 				// -------------------------------------------
 				// ASSIGNMENT
 				// Make sure to call the function you declared for completing the tower
-				
+
 				break;
 			case 51:
 				// 3 - complete village & tower & fortress

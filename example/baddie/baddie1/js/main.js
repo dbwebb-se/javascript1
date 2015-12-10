@@ -27,19 +27,19 @@ Good luck!
 	// ------------------------------
 	// ASSIGNMENT
 	// How many pixles should baddie move each step? Assign a number to step
-	
+
 	console.log("Baddie will move", step, "pixels each step");
 	// ------------------------------
 	// ASSIGNMENT
 	// Where should baddie start on the screen? Assign a number to left and top
-	
-	
+
+
 
 	// Places baddie initially
 	baddie.style.left = left + "px";
 	baddie.style.top = top + "px";
 	console.log("Baddie started at " + left + "," + top);
-	
+
 
 	/* ------------------------------------
 	 * EVENTS
@@ -51,12 +51,12 @@ Good luck!
 		// Get which key was pressed
 		key = event.keyCode || event.which;
 		console.log(key + " was pressed");
-		
+
 		// Gets baddie's current position
 		left = baddie.offsetLeft;
 		top = baddie.offsetTop;
 		console.log("Baddie is currently at " + left + "," + top);
-		
+
 		// ------------------------------
 		// ASSIGNMENT
 		// Use an if/else or switch (on key) to calculate where baddie is going
@@ -73,13 +73,13 @@ Good luck!
 		 * 		change the variable top so that baddie will move down
 		 */
 
-		
+
 		// ------------------------------
 		// EXTRA ASSIGNMENT
 		// Handle so that baddie can't move outside of the window's edges
 		// TIP: Use the getSize-example to find how you can get the window width and height
 
-		
+
 
 		// Assign a new position for baddie
 		baddie.style.left = left + "px";

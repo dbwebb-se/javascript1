@@ -1,8 +1,4 @@
-body{
-
-}
 #content{
-	border: 1px solid black;
 	height: 650px;
 	width: 650px;
 	border: 1px solid black;
@@ -16,8 +12,8 @@ body{
 	height:32px;
 	background-image:url(../img/CharacterBoy.png);
 	background-repeat:no-repeat;
-	
-	
+
+
 }
 
 .tile, .t, .block, .b{width:32px;height:32px;float:left;background-repeat:no-repeat;}

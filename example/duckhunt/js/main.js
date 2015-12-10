@@ -39,7 +39,7 @@
      * The function that triggers the game, uses an time interval in milliseconds
      **/
     function startGame() {
-        window.setInterval(newDuck, timer);        
+        window.setInterval(newDuck, timer);
     }
 
     /**

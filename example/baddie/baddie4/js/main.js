@@ -26,13 +26,13 @@ Good luck!
 	 * OBJECTS
 	 * We are going to transfer baddie and area and all the functions to handle them into objects
 	 */
-	
+
 	/**
 	 * Baddie - myBaddie
 	 * Baddie has: size, position in the grid (x,y), direction (left or right), and an element in the DOM
 	 * Baddie can move, be drawn, initiated, turn and attack (new).
 	 */
-	
+
 	// Moved some variables from baddie3 into the object
 		// and gave baddie it's init, draw, move and turn
 	var myBaddie = {
@@ -63,7 +63,7 @@ Good luck!
 			// Use code from turnRight() and turnLeft() in baddie3 and rewrite it to be based on if x is -1 or 1
 			// Turn baddie left or right based in x
 			// HINT: Use this and access direction and element
-			
+
 
 		},
 		/**
@@ -72,7 +72,7 @@ Good luck!
 		 */
 		move: function(pos) {
 			// We check if x is different, because if it is we have a change in horizontal movement - a turn
-			if(this.x != pos.x) {
+			if (this.x != pos.x) {
 				// We want to build in turn() into the movement so we don't have to call it ourselves in the appropriate switch-case
 				this.turn(pos.x - this.x);
 			}
@@ -99,7 +99,7 @@ Good luck!
 	 * GameArea has: size of each tile, size of the grid, tileMap (matrix of map content), DOM element of area
 	 * GameArea can be initiated, drawn into element, refresh tiles, move tiles and destroy tiles.
 	 */
-	
+
 	// We start of my adding properites, our array and the methods init() and draw()
 	var myGameArea = {
 		gridSize: 10,
@@ -116,9 +116,9 @@ Good luck!
 		// HINT: Think in terms of rows and columns
 		// Before:
 		// (1 array with values)
-		//  _ _ _ _ _ _ _ _ _ 
+		//  _ _ _ _ _ _ _ _ _
 		// |_|_|_|_|_|_|_|_|_|
-		// 
+		//
 		// Now:
 		// (1 array with arrays)
 		//  _ _ _
@@ -143,8 +143,8 @@ Good luck!
 			console.log("Initiating all tiles into myGameArea HTML element...");
 			var x, y, tile;
 
-			for(y = 0; y < this.gridSize; y++) {
-				for(x = 0; x < this.gridSize; x++) {
+			for (y = 0; y < this.gridSize; y++) {
+				for (x = 0; x < this.gridSize; x++) {
 					tile = false;
 					// ------------------------------
 					// ASSIGNMENT
@@ -200,7 +200,7 @@ Good luck!
 		console.group();
 
 		// Switch case to decide where baddie is to go
-		switch(key) {
+		switch (key) {
 			// ------------------------------
 			// ASSIGNMENT
 			// Copy case 37-40 from baddie3
@@ -277,7 +277,7 @@ Good luck!
 				if(myGameArea.moveTile(newPos, nextPos)) {
 					movable = true;
 				} else {
-					console.log("Can't push box - next tile is not empty");					
+					console.log("Can't push box - next tile is not empty");
 				}
 				break;
 			default:
@@ -290,7 +290,7 @@ Good luck!
 		// return false if baddie can't move and the new position if he can
 		return movable ? newPos : false;
 	};*/
-	
+
 
 	/**
 	 * Calls the needed methods to move baddie (move and draw)
@@ -308,7 +308,7 @@ Good luck!
 			// Change the position and then change the style to draw him out
 		// HINT: Relevant methods are move and draw
 		// NOTE: Turn is built into myBaddie.move()
-		
+
 
 	};*/
 
@@ -330,13 +330,13 @@ Good luck!
 
 		console.log("Attempting to move tile from ", from, " to ", to, "...");
 		console.group();
-		
+
 		// Get tile to move
 		tile = this.tileMap[from.y][from.x];
 		// Check that next tile is in fact empty
 		nextTile = this.tileMap[to.y][to.x];
 		// If it was empty:
-		if(nextTile == 10) {
+		if (nextTile == 10) {
 			// Empty tile pos
 			this.tileMap[from.y][from.x] = nextTile; // We checked that nextTile is 10
 			// Move tile to new pos
@@ -356,7 +356,7 @@ Good luck!
 			return false;
 		}
 	};
-	
+
 	// 2: Adding a method to refresh a tile that was changed so that it is redrawn (it's style changed)
 	/**
 	 * Changes the class of a tile so that it is refreshed in the screen
@@ -406,7 +406,7 @@ Good luck!
 		var tile;
 		// get tile value
 		tile = this.tileMap[pos.y][pos.x];
-		if(tile == 12) {// box
+		if (tile == 12) {// box
 			// remove tile
 			this.tileMap[pos.y][pos.x] = 10;
 			// Redraw that tile

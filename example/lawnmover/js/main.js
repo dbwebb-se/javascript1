@@ -1,7 +1,7 @@
-/** 
+/**
  * @fileOverview A lawnmover which moves a lawn.
  *
- * @module 
+ * @module
  *
  * @preserve Made by mos@dbwebb.se
  *
@@ -9,7 +9,7 @@
 window.lawnMower = (function(){
     'use strict';
 
-    /** 
+    /**
      * A module for a lawn mover.
      *
      * @module lawnMover
@@ -28,8 +28,8 @@ window.lawnMower = (function(){
         lawnMaxY        = 0,
         lawnMowerSpeed  = 30,
         lawnMowerDirection = 0, // degrees
-        lawnMowerGear   = 0, 
-        lawnMowerSound  = true, 
+        lawnMowerGear   = 0,
+        lawnMowerSound  = true,
         lawnMowerEngine = false,
         lawnMowerRunState = false,
         lastGameTick    = null,
@@ -48,17 +48,17 @@ window.lawnMower = (function(){
 
     /**
      * Create a lawn id for a particular position on the lawn.
-     * 
+     *
      * @param {int} x - position x of lawn id.
      * @param {int} y - position y of lawn id.
      */
     var createLawnId = function (x, y) {
         if (x > lawnMaxX) {
-            lawnMaxX = x;            
+            lawnMaxX = x;
         }
 
         if (y > lawnMaxY) {
-            lawnMaxY = y;            
+            lawnMaxY = y;
         }
 
         return "pos" + x + "x" + y;
@@ -73,7 +73,7 @@ window.lawnMower = (function(){
         var x1 = 0,
             y1 = 0;
 
-        if( x !== 0) {
+        if (x !== 0) {
             x1 = Math.floor(x / 10) * 10;
         }
 
@@ -102,12 +102,12 @@ window.lawnMower = (function(){
 
         if (element.classList.contains("border")) {
             return handlerBorderDetected();
-        }        
+        }
         else if (element.classList.contains("level2")) {
             element.classList.remove("level2");
             lawnLevel.level2--;
             return true;
-        }        
+        }
         else if (element.classList.contains("level1")) {
             element.classList.remove("level1");
             lawnLevel.level1--;
@@ -256,7 +256,7 @@ window.lawnMower = (function(){
 
         console.log("Lawn mower has dimensions of width x height: " + lawnMowerWidth + " x " + lawnMowerHeight);
         console.log("Placing the lawn mower at left, top: " + lawnMowerPosX + ", " + lawnMowerPosY);
-        
+
         lawnMowerMove(lawnMowerPosX, lawnMowerPosY);
 
         console.log("Done.");
@@ -280,7 +280,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Set direction for lawn mower, where its front points, if argument is present. 
+     * Set direction for lawn mower, where its front points, if argument is present.
      * Return current value.
      */
     var setDirection = function (direction) {
@@ -297,7 +297,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Set the gear 0 (neutral), back=-1 or forward=1. 
+     * Set the gear 0 (neutral), back=-1 or forward=1.
      */
     var setGear = function (gear) {
         console.log("Gear is: " + lawnMowerGear);
@@ -317,7 +317,7 @@ window.lawnMower = (function(){
      * Start the sound (true), or shut it off (false). The sound can only be on when the engine is started.
      */
     var setSound = function (level) {
-        
+
         level = level || !lawnMowerSound;
 
         console.log("Sound is: " + lawnMowerSound);
@@ -344,7 +344,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Start engine. 
+     * Start engine.
      */
     var startEngine = function () {
         lawnMowerEngine = true;
@@ -356,7 +356,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Start engine. 
+     * Start engine.
      */
     var stopEngine = function () {
         lawnMowerEngine = false;
@@ -382,7 +382,7 @@ window.lawnMower = (function(){
 
         lookaheadX = lawnMowerPosX + direction * lawnMowerSpeed * Math.cos(radians) * td;
         lookaheadY = lawnMowerPosY + direction * lawnMowerSpeed * Math.sin(radians) * td;
-        
+
         if (!collisionDetectionMower(lookaheadX, lookaheadY)) {
             console.log("Can not move in direction " + direction + ". Setting gear to neutral.");
             setGear(0);
@@ -400,7 +400,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Move forward. 
+     * Move forward.
      */
     var moveForward = function (td) {
         return moveMower(td, 1);
@@ -409,7 +409,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Move backward. 
+     * Move backward.
      */
     var moveBackward = function (td) {
         return moveMower(td, -1);
@@ -418,7 +418,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Move lawn mower to current position. 
+     * Move lawn mower to current position.
      */
     var lawnMowerMove = function () {
         lawnMower.style.left = lawnMowerPosX + "px";
@@ -428,7 +428,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Current state of the lawn mower. 
+     * Current state of the lawn mower.
      */
     var lawnMowerStatus = function () {
         console.log("Engine is on: " + lawnMowerEngine);
@@ -445,14 +445,14 @@ window.lawnMower = (function(){
 
 
     /**
-     * Make the lawn mower go by itself. 
+     * Make the lawn mower go by itself.
      */
     var lawnMowerRun = function (run) {
         if (!lawnMowerEngine) {
             console.log("Can not run, the engine is not started.");
             return;
         }
-        
+
         lawnMowerRunState = (run === undefined) ? !lawnMowerRunState : run;
 
         console.log("Run state is " + lawnMowerRunState);
@@ -468,7 +468,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * The game loop. 
+     * The game loop.
      */
     var gameLoop = function () {
         var now = Date.now();
@@ -490,7 +490,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Update one game tick. 
+     * Update one game tick.
      */
     var update = function (td) {
 
@@ -504,7 +504,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * Click to make lawn mower go in a specific direction. 
+     * Click to make lawn mower go in a specific direction.
      */
     lawnArea.addEventListener("click", function (event) {
         var theta;
@@ -518,14 +518,14 @@ window.lawnMower = (function(){
 
 
     /**
-     * Click to make lawn mower go in a specific direction. 
+     * Click to make lawn mower go in a specific direction.
      */
     document.addEventListener("keydown", function (event) {
         var key;
 
-        // Get which key was pressed       
+        // Get which key was pressed
         key = event.keyCode || event.which;
-        console.log("Pressed key: " + key); 
+        console.log("Pressed key: " + key);
 
         switch (key) {
             case 49: // 1
@@ -606,7 +606,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * The game loop. 
+     * The game loop.
      */
     var help = function () {
         console.log(" ");
@@ -635,7 +635,7 @@ window.lawnMower = (function(){
 
     /**
      * All done, return object exposing functions and variables to the outside world.
-     */ 
+     */
     console.log("Lawn mower is ready!");
     console.log(help());
 
@@ -679,4 +679,3 @@ m.place();
 m.border(-20, -20, 40, 40);
 
 //lawnMower.run();
-

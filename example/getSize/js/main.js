@@ -1,10 +1,10 @@
 (function(){
     'use strict';
-    
+
     var content = document.getElementById('content'),
     browserSizeSpan = document.getElementById('browserSize'),
     divSizeSpan = document.getElementById('divSize'),
-    browserHeight = window.innerHeight, 
+    browserHeight = window.innerHeight,
     browserWidth = window.innerWidth,
     divSize = {};
 
@@ -19,7 +19,7 @@
         posX = element.offsetLeft,
         posY = element.offsetTop;
 
-        return {osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY};
+        return { osWidth: osWidth, osHeight: osHeight, clWidth: clientWidth, clHeight: clientHeight, posLeft: posX, posTop: posY };
     }
     /**
      * A function for creating a div, 100 x 100px
@@ -29,14 +29,14 @@
         var newDiv = document.createElement('div');
         newDiv.style.height = 100+'px';
         newDiv.style.width = 100+'px';
-        
-        return newDiv;         
+
+        return newDiv;
     }
 
     browserSizeSpan.innerHTML = browserWidth + ' X ' + browserHeight + 'px';
     divSize = getSize(content);
     divSizeSpan.innerHTML = '<br>offsetWidth: ' + divSize.osWidth + 'px, offsetHeight: ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + 'px, clientHeight: ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
-    
+
     /**
      * Create the first div, pass it to getSize(..) and print out the data
      **/
@@ -90,7 +90,7 @@
     divSize = getSize(fourthDiv);
     spanFour.innerHTML = '(border: 10, margin: 10, padding: 10)<br>offsetWidth: ' + divSize.osWidth + ' X ' + divSize.osHeight + 'px<br>clientWidth: ' + divSize.clWidth + ' X ' + divSize.clHeight + 'px<br>Pos left: ' + divSize.posLeft + 'px, Pos Top: ' + divSize.posTop + 'px';
     content.appendChild(spanFour);
-    
+
 
     console.log('Sandbox is ready!');
 }());

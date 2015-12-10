@@ -1,14 +1,8 @@
-body{
-
-}
 #content{
 	position: absolute;
 	margin: 0 auto;
 	height: 500px;
 	outline: 1px solid black;
-}
-table{
-	
 }
 table td{
 	outline: 1px solid black;

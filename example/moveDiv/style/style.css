@@ -1,7 +1,3 @@
-body {
-
-}
-
 #content {
 	position: absolute;
 	margin: 0 auto;
@@ -22,4 +18,3 @@ body {
 	width: 224px;
 	outline: 1px solid black;
 }
-

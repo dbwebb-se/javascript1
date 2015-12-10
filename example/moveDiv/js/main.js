@@ -8,7 +8,7 @@ function allowDrop(ev) {
 
 function drag(ev) {
     "use strict";
-	ev.dataTransfer.setData("Text",ev.target.id);
+	ev.dataTransfer.setData("Text", ev.target.id);
 	console.log('id of draggable element: ' + ev.target.id);
 }
 

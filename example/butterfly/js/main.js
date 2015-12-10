@@ -10,14 +10,14 @@
 	obj.style.top = '0px';
 	speed = 5;
 	t = 40;
-	
+
 	console.log('Div height: ' + yMax + ', Div width: ' + xMax);
 	console.log('Object height: ' + objHeight + ', Object width: ' + objWidth);
 
 	function move(){
 		obj.style.left = parseInt(obj.style.left) + speed + 'px';
-		if(parseInt(obj.style.left) + speed > (xMax - objWidth) || parseInt(obj.style.left)+ speed < 0){
-			speed = speed - (speed * 2); 
+		if (parseInt(obj.style.left) + speed > (xMax - objWidth) || parseInt(obj.style.left)+ speed < 0){
+			speed = speed - (speed * 2);
 			console.log('Current speed: ' + speed);
 		}
 		window.setTimeout(move, t);
