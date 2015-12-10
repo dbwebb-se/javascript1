@@ -117,11 +117,11 @@
 		},
 		show : function(e, top, left, input)
 		{
-			if(!this.initialized) {
+			if (!this.initialized) {
 				this.initialize();
 			}
 
-			if(!this.isShowing)
+			if (!this.isShowing)
 			{
 				this.inputID = input;
 
@@ -137,7 +137,7 @@
 		},
 		hide : function(e)
 		{
-			if(this.isShowing)
+			if (this.isShowing)
 			{
 				$("#colorPalette")
 					.css("visibility", "hidden");

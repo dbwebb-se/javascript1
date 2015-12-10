@@ -10,7 +10,7 @@
 	{
 		show : function(e, top, left, input)
 		{
-			if(!this.isShowing)
+			if (!this.isShowing)
 			{
 				this.inputID = input;
 
@@ -25,7 +25,7 @@
 		},
 		hide : function(e)
 		{
-			if(this.isShowing)
+			if (this.isShowing)
 			{
 				$("#palette")
 					.css("display", "none");
@@ -37,7 +37,7 @@
 		changeColor : function(e)
 		{
 			var elePos = $("#palette").position();
-			var relPos = {x: e.pageX - elePos.left, y: e.pageY - elePos.top};
+			var relPos = { x: e.pageX - elePos.left, y: e.pageY - elePos.top };
 
 			var hsl = {
 				h: (relPos.x / $("#palette").width()) * 360,

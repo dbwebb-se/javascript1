@@ -1,5 +1,5 @@
-/** 
- * @preserve Made by dbwebb-staff, staff@dbwebb.se 
+/**
+ * @preserve Made by dbwebb-staff, staff@dbwebb.se
  */
  (function(){
     'use strict';

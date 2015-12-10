@@ -1,8 +1,4 @@
-body{
-
-}
-
-#content {
+.content {
 	height: 320px;
 	width: 320px;
 	position: absolute;
@@ -11,7 +7,7 @@ body{
 /**
  * Baddie
  */
-#baddie {
+.baddie {
 	position: absolute;
 	z-index: 10;
 	width: 32px;
@@ -21,11 +17,12 @@ body{
 	background-repeat: no-repeat;
 }
 
-.baddie-right {}
-
 .baddie-left {
-	transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
 	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 /**
@@ -45,7 +42,7 @@ body{
 	background: url(../img/tiles/dngn_metal_wall.png) -32px -96px;
 }
 .t12 {
-	background: url(../img/tiles/crate.png) 0px -128px;
+	background: url(../img/tiles/crate.png) 0 -128px;
 }
 .t13 {
 	background: url(../img/tiles/dngn_closed_door.png) -64px -128px;

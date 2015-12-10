@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	
+
 	var map, content, google, infowindow;
 	function initialize() {
 		var mapOptions = {
@@ -8,8 +8,8 @@
 		};
 		map = new google.maps.Map(document.getElementById("content"),
 	   	 mapOptions);
-		} 
-	     if(window.navigator.geolocation) {
+		}
+	     if (window.navigator.geolocation) {
 	        window.navigator.geolocation.getCurrentPosition(function(position) {
 	        	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	        	infowindow = new google.maps.InfoWindow({

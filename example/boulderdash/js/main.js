@@ -77,15 +77,15 @@
    */
   function drawGamePlan(gameArea, gameBlocks) {
     var i,e;
-    for(i = 0; i < gameArea.length; i++) {
+    for (i = 0; i < gameArea.length; i++) {
       e = document.createElement('div');
       e.innerHTML = '';
       e.className = 'tile t' + gameArea[i] + (gameBlocks[i] ? ' b' + gameBlocks[i] : '');
       e.id = 'n' + i;
       area.appendChild(e);
-    } 
+    }
   }
-  console.log('Drawing gameplan.');  
+  console.log('Drawing gameplan.');
   drawGamePlan(gameArea, gameBlocks);
 
   /**
@@ -100,20 +100,20 @@
   		console.log(area.offsetLeft + ' top ' + area.offsetTop);
   	}
 
-  	if((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) === 0) {
-      posLeft += moveLeft; 
+  	if ((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) === 0) {
+      posLeft += moveLeft;
       posTop  += moveTop;
       moveIt();
     }
-    else{console.log('aahhh  ');}
+    else {console.log('aahhh  ');}
   }; // end of moveIt
-  move(1,1);
+  move (1, 1);
   document.onkeydown = function(event){
     var key;
-    
+
     key = event.keyCode || event.which;
    	console.log('Moving' + event.keyCode);
-  	switch(key) 
+  	switch (key)
   	{
 	    case 37: move(-1, 0); break;
 	    case 39: move(1, 0);  event.preventDefault(); break;

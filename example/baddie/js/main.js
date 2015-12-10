@@ -11,16 +11,16 @@
   	console.log(container.clientWidth);
 
   	anim = function(moveLeft, moveTop) {
-  		if(parseInt(baddie.style.left) + moveLeft > (container.clientWidth - baddie.clientWidth) || parseInt(baddie.style.left) + moveLeft < 0){
+  		if (parseInt(baddie.style.left) + moveLeft > (container.clientWidth - baddie.clientWidth) || parseInt(baddie.style.left) + moveLeft < 0){
   			console.log('Out of bounds!');
   		}
-  		else{
+  		else {
   			baddie.style.left = (baddie.offsetLeft + moveLeft) + 'px';
   		}
-  		if(parseInt(baddie.style.top) + moveTop > container.clientHeight - baddie.clientHeight || parseInt(baddie.style.top) + moveTop < 0){
+  		if (parseInt(baddie.style.top) + moveTop > container.clientHeight - baddie.clientHeight || parseInt(baddie.style.top) + moveTop < 0){
   			console.log('Out of bounds!');
   		}
-  		else{
+  		else {
   			baddie.style.top  = (baddie.offsetTop + moveTop) + 'px';
   		}
   	};
@@ -30,22 +30,22 @@
             myTimer;
 
 	    key = e.keyCode || e.which;
-	    switch(key) {
-	      case 37:  // ascii value for arrow left 
-	        anim(-step, 0); 
+	    switch (key) {
+	      case 37:  // ascii value for arrow left
+	        anim(-step, 0);
 	        break;
-	      case 39:  // ascii value for arrow right  
-	        anim(step, 0); 
+	      case 39:  // ascii value for arrow right
+	        anim(step, 0);
 	        break;
 	      case 38:  // arrow up
 	      	e.preventDefault();
-	        anim(0, -step); 
+	        anim(0, -step);
 	        break;
 	      case 40:  // arrow down
 	        e.preventDefault();
-	        anim(0, step); 
+	        anim(0, step);
 	        break;
-	      case 72:  // h = home 
+	      case 72:  // h = home
 	        anim(left-baddie.offsetLeft, top-baddie.offsetTop);
 	        break;
 	      case 32:  // space = jump
@@ -58,7 +58,7 @@
 	        break;
 	      default:
 	        break;
-    	}    
+    	}
 	}
 	document.onkeydown = checkKeys;
 }());

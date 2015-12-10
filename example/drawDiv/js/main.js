@@ -39,13 +39,13 @@ var body = document.body,
    */
   function drawDiv(divArea) {
     var i, e;
-    for(i = 0; i < divArea.length; i++) {
+    for (i = 0; i < divArea.length; i++) {
       e = document.createElement('div');
       e.innerHTML = '';
       e.className = 't' + divArea[i];
       e.id = 'n' + i;
       content.appendChild(e);
-    } 
+    }
 
   }
   content.id ="content";

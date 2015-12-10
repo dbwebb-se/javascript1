@@ -3,9 +3,9 @@
 	var gameHeight = 25, gameWidth = 20;
 	var gameArea = new Array(gameHeight),
 		isPlayerOne = true;
-	var boxes;	
+	var boxes;
 
-	for(var i = 0; i < gameArea.length; i++){
+	for (var i = 0; i < gameArea.length; i++){
 		gameArea[i] = new Array(gameWidth);
 	}
 	document.getElementById('content').style.width = (gameArea[0].length*32)+'px';
@@ -13,8 +13,8 @@
 	function initGame(){
 		var content = document.getElementById('content');
 		var box, i, j, id = 0;
-		for(i = 0; i < gameArea.length; i++){
-			for(j = 0; j < gameArea[0].length; j++){
+		for (i = 0; i < gameArea.length; i++){
+			for (j = 0; j < gameArea[0].length; j++){
 				box = document.createElement('div');
 				box.id = id;
 				box.className = 'boxes';
@@ -30,7 +30,7 @@
 			entry.addEventListener("click", function() { regClick(entry); }, false);
 		});
 	}
-	
+
 	function regClick(e){
 		var currBox, i, j, player;
 		player = currPlayer();
@@ -41,15 +41,15 @@
 		console.log('Clicked id is on row: ' + getCurrentRow(e));
 
 		// Set the position in gameArea to the current player and check if win
-		for(i = 0; i < gameArea.length; i++){
-			for(j = 0; j < gameArea[0].length; j++){
-				if(gameArea[i][j] == e.id){
+		for (i = 0; i < gameArea.length; i++){
+			for (j = 0; j < gameArea[0].length; j++){
+				if (gameArea[i][j] == e.id){
 					console.log('GameArea before equals = ' + i + ' ' + j);
 					gameArea[i][j] = player;
 					console.log('GameArea after equals = ' + i + ' ' + j);
-					checkWin(i,j,player);
+					checkWin(i, j, player);
 				}
-			}	
+			}
 		}
 	}
 	function checkWin(x,y,player){
@@ -63,17 +63,17 @@
 	}
 	function currPlayer(){
 		var currentPlayer = "";
-		if(isPlayerOne){
+		if (isPlayerOne){
 			currentPlayer = 'X';
 			isPlayerOne = false;
 		}
-		else{
+		else {
 			currentPlayer = 'O';
 			isPlayerOne = true;
 		}
 		return currentPlayer;
 	}
-	
+
 	initGame();
 	console.log('game ready, Player one (X) begins');
 })();

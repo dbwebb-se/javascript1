@@ -1,5 +1,5 @@
-/** 
- * @preserve Made by dbwebb-staff, staff@dbwebb.se 
+/**
+ * @preserve Made by dbwebb-staff, staff@dbwebb.se
  */
  (function(){
     'use strict';
@@ -12,8 +12,8 @@
 
     function drawFlagElfenbenskusten()  {
         var flagElfenbenskusten = '<div class="flag elfenbenskusten"><div class="part1"></div><div class="part2"></div></div>';
-    
-        console.log("Drawing flag");    
+
+        console.log("Drawing flag");
         flagTarget.innerHTML = flagElfenbenskusten;
     }
 

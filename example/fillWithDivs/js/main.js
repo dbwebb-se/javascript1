@@ -15,10 +15,10 @@
 
 
     // loop for 10 rows
-    for(var i = 0; i<10; i++) {
+    for (var i = 0; i<10; i++) {
     	var pos_y = i * div_height;
     	// loop for 10 divs per row
-    	for(var j = 0; j<10; j++) {
+    	for (var j = 0; j<10; j++) {
     		var pos_x = j * div_width;
 
     		// create the div
