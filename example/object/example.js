@@ -181,6 +181,8 @@ console.log("------------------------------------------------");
 
 /* --------  CONSTRUCTOR ------------------------------------------ */
 
+
+/*
 function Person() {
     this.name = "Spaceball Jack";
 };
@@ -223,3 +225,4 @@ var Kalle = new Person("Kalle", 17, 10000);
 
 John.updateIncome(33500);
 console.log(John.income); // 33500
+*/
