@@ -2,6 +2,32 @@
  *
  */
 
+/*
+(function() {
+
+    function a() {
+        console.log(a);
+    }
+
+    var b = function() {
+        console.log(b);
+    }
+
+    var c = a;
+
+    a();
+    b();
+    c();
+
+    a.toString(); // Has a name
+    b.toString(); // Has no name
+    c.toString(); // Has a name
+}())
+
+//a(); // Not visible
+//b(); // Not visible
+
+
 /* ------------------------------------------------------------- */
 var jack = {
     name: "Spaceball Jack",
