@@ -2,7 +2,9 @@ Programming with JavaScript, HTML and CSS - javascript1
 ===================
 
 [![Join the chat at https://gitter.im/mosbth/javascript1](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mosbth/javascript1?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/mosbth/javascript1.svg)](https://travis-ci.org/mosbth/javascript1)
+[![Build Status](https://travis-ci.org/dbwebb-se/javascript1.svg?branch=master)](https://travis-ci.org/dbwebb-se/javascript1)
+[![CircleCI](https://circleci.com/gh/dbwebb-se/javascript1.svg?style=svg)](https://circleci.com/gh/dbwebb-se/javascript1)
+
 
 Coursematerial for javascript1-course, aimed at a swedish target audience as the first course in programming with JavaScript (in a (web) browser environment) on University level in computer science. 
 
@@ -47,6 +49,10 @@ Feel free to help builing up the repository with more content suited for trainin
 History
 -------------------
 
+
+v2.1.0 (2016-08-17)
+
+* Adding new testsuite for travis and circle.
 
 
 v2.0.1 (2016-08-17)
@@ -103,5 +109,5 @@ v1.0.0 (2014-08-30)
 
 ```                                                            
  .                                                             
-..:  Copyright (c) 2014-15 Mikael Roos, me@mikaelroos.se   
+..:  Copyright (c) 2014-2016 Mikael Roos, me@mikaelroos.se   
 ```                                                            
