@@ -16,9 +16,10 @@ dbwebb init-me
 # https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
 #
 
-cp -ri example/sandbox/* me/kmom01/sandbox
+cp -r example/sandbox/* me/kmom01/sandbox
 cd me/kmom01/sandbox && ls
-cp -ri example/sandbox me/kmom01
+cp -r example/sandbox me/kmom01
+
 
 # --------------------------------------------------------------------------
 #
