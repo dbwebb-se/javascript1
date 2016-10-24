@@ -70,7 +70,7 @@ dbwebb validate lab2
 # https://dbwebb.se/uppgift/gor-svenska-flaggan-med-javascript-html-och-css
 #
 
-cp -r kmom02/flag1/* kmom03/flag2
+cp -r me/kmom02/flag1/* me/kmom03/flag2
 
 #
 # Flytta Baddie på webbsida (#2)
