@@ -50,13 +50,35 @@ cp -r me/kmom01/sandbox/* me/kmom02/flag1
 cp -r example/baddie/baddie1 me/kmom02/
 cd me/kmom02/baddie1 && ls
 
+
+
 # --------------------------------------------------------------------------
-
-
-
 #
 # Kmom03
 #
+
+#
+# Lab 2
+#
+
+cd me/kmom03 && dbwebb recreate lab2
+cd me/kmom03/lab2
+dbwebb validate lab2
+
+#
+# Gör svenska flaggan med JavaScript, HTML och CSS
+# https://dbwebb.se/uppgift/gor-svenska-flaggan-med-javascript-html-och-css
+#
+
+cp -r kmom02/flag1/* kmom03/flag2
+
+#
+# Flytta Baddie på webbsida (#2)
+# https://dbwebb.se/uppgift/flytta-baddie-pa-webbsida-2
+#
+
+cp -r example/baddie/baddie2 me/kmom03/
+cd me/kmom03/baddie2 && ls
 
 
 
