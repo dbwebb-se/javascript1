@@ -50,6 +50,11 @@ History
 -------------------
 
 
+v2.1.1 (2016-11-01)
+
+* Add examples to try on ES6 features `example/es6`.
+
+
 v2.1.0 (2016-08-17)
 
 * Adding new testsuite for travis and circle.
