@@ -1,0 +1,13 @@
+/**
+ * Testing the spread operator
+ */
+var a = [1, 2];
+var b = [...a, 3, 4];
+
+console.log(b);
+
+function c(a, b, c, d) {
+    return a + b + c + d;
+}
+
+console.log(c(...b));

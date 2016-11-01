@@ -1,7 +1,8 @@
 {
-  "undef": true,
-  "unused": true,
-  "predef": ["console", "window", "document"],
-  "laxbreak": true,
-  "loopfunc": true
+    "undef": true,
+    "unused": true,
+    "predef": ["console", "window", "document"],
+    "laxbreak": true,
+    "loopfunc": true,
+    "esversion": 6
 }
