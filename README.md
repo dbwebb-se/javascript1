@@ -50,6 +50,11 @@ History
 -------------------
 
 
+v2.1.2 (2016-11-07)
+
+* Add examples to try out validation tools `example/validation`.
+
+
 v2.1.1 (2016-11-01)
 
 * Add examples to try on ES6 features `example/es6`.
