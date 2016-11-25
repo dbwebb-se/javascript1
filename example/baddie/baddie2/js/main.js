@@ -200,7 +200,7 @@ Good luck!
 // UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
 /*
 	function turnRight() {
-		baddie.className = "baddie-right";
+		baddie.classList.remove("baddie-left");
 	}
 */
 	/**
@@ -209,7 +209,7 @@ Good luck!
 // UNCOMMENT THIS FUNCTION TO BE ABLE TO CONTINUE
 /*
 	function turnLeft() {
-		baddie.className = "baddie-left";
+		baddie.classList.add("baddie-left");
 	}
 */
 }());
