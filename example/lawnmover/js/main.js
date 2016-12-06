@@ -6,7 +6,7 @@
  * @preserve Made by mos@dbwebb.se
  *
  */
-window.lawnMower = (function(){
+window.lawnMower = (function() {
     'use strict';
 
     /**
@@ -606,7 +606,7 @@ window.lawnMower = (function(){
 
 
     /**
-     * The game loop.
+     * Display helptext.
      */
     var help = function () {
         console.log(" ");
@@ -639,7 +639,7 @@ window.lawnMower = (function(){
     console.log("Lawn mower is ready!");
     console.log(help());
 
-    this.exports = {
+    var exports = {
         "element":      lawnMower,
         "speed":        setSpeed,
         //"direction":    setDirection,
@@ -657,7 +657,7 @@ window.lawnMower = (function(){
         "help":         help
     };
 
-    return this.exports;
+    return exports;
 
 })();
 
