@@ -1,4 +1,4 @@
-(function(){
+(function() {
     'use strict';
 
     var area = document.body,
@@ -9,10 +9,16 @@
     score = 0,
     timer = 1000;
 
+
+    /**
+     * Keep track on score.
+     */
     function addAndPrintScore() {
         score = score +1;
         points.innerHTML = score;
     }
+
+
 
     /**
      * Set the attributes for the duck
@@ -23,6 +29,8 @@
     duck.style.top = '0px';
     duck.style.zIndex = 10000;
     duck.addEventListener('click', addAndPrintScore);
+
+
 
     /**
      * A function for displaying the duck in random positions
@@ -35,6 +43,8 @@
         area.appendChild(duck);
     }
 
+
+
     /**
      * The function that triggers the game, uses an time interval in milliseconds
      **/
@@ -42,10 +52,12 @@
         window.setInterval(newDuck, timer);
     }
 
+
+
     /**
      * Start the game
      **/
     startGame();
 
-    console.log('Sandbox is ready!');
+    console.log('Game is ready!');
 })();

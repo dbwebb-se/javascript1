@@ -143,7 +143,7 @@ function Animal(species, sound) {
 }
 
 Animal.prototype.print = function() {
-     console.log(this.species + " says " + this.sound);
+    console.log(this.species + " says " + this.sound);
 };
 
 Animal.moped = "3";

@@ -1,18 +1,20 @@
-(function(){
-	'use strict';
-	var area = document.getElementById('content'),
-		baddie = document.getElementById('baddie1'),
-		tileSize = 32,
-		gridSize = 24,
-		//left = area.offsetLeft,
-    //top  = area.offsetTop,
-		posLeft = 0,
-		posTop = 0,
+(function() {
+    'use strict';
+
+    var area = document.getElementById('content'),
+        baddie = document.getElementById('baddie1'),
+        tileSize = 32,
+        gridSize = 24,
+        //left = area.offsetLeft,
+        //top  = area.offsetTop,
+        posLeft = 0,
+        posTop = 0,
 
 
-	/**
+    /**
      * This is the background for the game area.
      */
+     // jscs:disable requireSpaceAfterComma
     gameArea = [
       12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
       12,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,12,
@@ -70,57 +72,82 @@
       12,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,12,
       12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,
     ];
+    // jscs:enable requireSpaceAfterComma
 
 
-  /**
-   * Draw the initial gameplan
-   */
-  function drawGamePlan(gameArea, gameBlocks) {
-    var i,e;
-    for (i = 0; i < gameArea.length; i++) {
-      e = document.createElement('div');
-      e.innerHTML = '';
-      e.className = 'tile t' + gameArea[i] + (gameBlocks[i] ? ' b' + gameBlocks[i] : '');
-      e.id = 'n' + i;
-      area.appendChild(e);
+
+    /**
+    * Draw the initial gameplan
+    */
+    function drawGamePlan(gameArea, gameBlocks) {
+        var i, e;
+
+        for (i = 0; i < gameArea.length; i++) {
+            e = document.createElement('div');
+            e.innerHTML = '';
+            e.className = 'tile t' + gameArea[i] + (gameBlocks[i] ? ' b' + gameBlocks[i] : '');
+            e.id = 'n' + i;
+            area.appendChild(e);
+        }
     }
-  }
-  console.log('Drawing gameplan.');
-  drawGamePlan(gameArea, gameBlocks);
 
-  /**
-   * Move character
-   * TODO: add "which" to tell sprite the current direction
-   */
-  var move = function(moveLeft, moveTop){
+    console.log('Drawing gameplan.');
+    drawGamePlan(gameArea, gameBlocks);
 
-  	function moveIt(){
-  		baddie.style.left = (area.offsetLeft + posLeft*tileSize) + 'px';//(area.offsetLeft + posLeft*tileSize + tileSize/2) + 'px';
-      	baddie.style.top  = (area.offsetTop + posTop*tileSize) + 'px';
-  		console.log(area.offsetLeft + ' top ' + area.offsetTop);
-  	}
 
-  	if ((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) === 0) {
-      posLeft += moveLeft;
-      posTop  += moveTop;
-      moveIt();
-    }
-    else {console.log('aahhh  ');}
-  }; // end of moveIt
-  move (1, 1);
-  document.onkeydown = function(event){
-    var key;
 
-    key = event.keyCode || event.which;
-   	console.log('Moving' + event.keyCode);
-  	switch (key)
-  	{
-	    case 37: move(-1, 0); break;
-	    case 39: move(1, 0);  event.preventDefault(); break;
-	    case 38: move(0, -1); break;
-	    case 40: move(0, 1);  event.preventDefault(); break;
-	    default: move(0, 0); break;
-	} // end of switch
-	console.log('Keypress: ' + event + ' key: ' + key + ' new pos: ' + baddie.offsetLeft + ', ' + baddie.offsetTop);
-  }; // end of onkeydown
+    /**
+     * Move character
+     * TODO: add "which" to tell sprite the current direction
+     */
+    var move = function(moveLeft, moveTop) {
+
+        function moveIt() {
+            baddie.style.left = (area.offsetLeft + posLeft*tileSize) + 'px';//(area.offsetLeft + posLeft*tileSize + tileSize/2) + 'px';
+            baddie.style.top  = (area.offsetTop + posTop*tileSize) + 'px';
+            console.log(area.offsetLeft + ' top ' + area.offsetTop);
+        }
+
+        if ((gameBlocks[(posLeft+moveLeft)+(posTop+moveTop)*gridSize]-10) === 0) {
+            posLeft += moveLeft;
+            posTop  += moveTop;
+            moveIt();
+        } else {
+            console.log('aahhh  ');
+        }
+    }; // end of moveIt
+
+    move (1, 1);
+    document.onkeydown = function(event) {
+        var key;
+
+        key = event.keyCode || event.which;
+        console.log('Moving' + event.keyCode);
+        switch (key) {
+            case 37:
+                move(-1, 0);
+                break;
+
+            case 39:
+                move(1, 0);
+                event.preventDefault();
+                break;
+
+            case 38:
+                move(0, -1);
+                break;
+
+            case 40:
+                move(0, 1);
+                event.preventDefault();
+                break;
+
+            default:
+                move(0, 0);
+                break;
+        } // end of switch
+
+        console.log('Keypress: ' + event + ' key: ' + key + ' new pos: ' + baddie.offsetLeft + ', ' + baddie.offsetTop);
+    }; // end of onkeydown
+
 })();

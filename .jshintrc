@@ -1,8 +1,19 @@
 {
-    "undef": true,
-    "unused": true,
+    "curly": true,
+    "esversion": 6,
+    "freeze": true,
+    "futurehostile": true,
+    "latedef": true,
+    "maxcomplexity": 15,
+    "maxdepth": 7,
+    "nocomma": true,
+    "nonbsp": true,
+    "nonew": true,
+    "notypeof": true,
     "predef": ["console", "window", "document"],
-    "laxbreak": true,
-    "loopfunc": true,
-    "esversion": 6
+    "undef": true,
+    "strict": true,
+    "unused": true,
+
+    "loopfunc": true
 }
