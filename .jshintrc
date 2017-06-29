@@ -1,5 +1,13 @@
 {
+    "strict": "true",
+
     "curly": true,
+
+    "elision": false,
+
+    "laxbreak": true,
+
+
     "esversion": 6,
     "freeze": true,
     "futurehostile": true,
@@ -12,11 +20,11 @@
     "notypeof": true,
     "predef": ["console", "window", "document"],
     "undef": true,
-    "strict": true,
     "unused": true,
 
     "loopfunc": true,
 
     "node": true,
     "mocha": true
+    
 }
