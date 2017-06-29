@@ -1,3 +1,12 @@
-#test:
-#    override:
-#        - make test
+test:
+    pre:
+        - make install
+
+    #override:
+    #    - make test
+
+notify:
+  webhooks:
+    # A list of hook hashes, containing the url field
+    # gitter hook
+    - url: https://webhooks.gitter.im/e/8bd25c54b645b5a3cf70

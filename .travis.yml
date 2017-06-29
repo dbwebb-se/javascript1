@@ -1,12 +1,10 @@
 language: node_js
 
 node_js:
+    - "node"
     - "6"
     - "5"
     - "4"
-    - "iojs"
-    - "node"
-    #- "4.1"
     #- "0.12"
     #- "0.11"
     #- "0.10"
@@ -24,25 +22,27 @@ git:
 
 addons:
     apt:
+        sources:
+        - debian-sid    # Grab ShellCheck from the Debian repo
         packages:
-            #- php-codesniffer
-            #- phpmd
-            #- shellcheck
+        - shellcheck
+
+
+
+env:
+    - TEST_DIR=example/nodejs/
 
 
 
 before_script:
     # Prepare for automated tests
-    - make automated-tests-prepare
+    - make install
 
 
 
 script:
-    # Check version and environment
-    - make automated-tests-check
-
     # Run tests
-    - make automated-tests-run
+    - make test
 
 
 
@@ -51,7 +51,7 @@ notifications:
 
     webhooks:
         urls:
-            - https://webhooks.gitter.im/e/c72fe747115cfdb6cbbe
+          - https://webhooks.gitter.im/e/c72fe747115cfdb6cbbe
 
         # options: [always|never|change] default: always
         on_success: change

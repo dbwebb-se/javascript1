@@ -15,5 +15,8 @@
     "strict": true,
     "unused": true,
 
-    "loopfunc": true
+    "loopfunc": true,
+
+    "node": true,
+    "mocha": true
 }
