@@ -50,6 +50,11 @@ History
 -------------------
 
 
+v2.1.3 (2017-06-29)
+
+* Before upgrade to dbwebb cli v2.
+
+
 v2.1.2 (2016-11-07)
 
 * Add examples to try out validation tools `example/validation`.
