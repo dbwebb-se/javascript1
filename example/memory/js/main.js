@@ -40,11 +40,11 @@
 
     function toggleClickable() {
         var box = document.getElementsByTagName('td');
+
         for (var i = 0; i < nrOfBlocks; i++) {
             if (box[i].style.pointerEvents === 'none') {
                 box[i].style.pointerEvents = '';
-            }
-            else {
+            } else {
                 box[i].style.pointerEvents = 'none';
             }
         }
@@ -61,20 +61,21 @@
             lockedBlocks[1] = currId;
 
             if (lockedCards[0] === lockedCards[1]) {
-                console.log('yeey a match!');
+                window.console.log('yeey a match!');
             } else {
-                console.log('sorry...no match');
-                console.log('flipping back in 3 secs');
+                window.console.log('sorry...no match');
+                window.console.log('flipping back in 3 secs');
                 toggleClickable();
 
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     for (var i = 0; i < 2; i++) {
                         for (var j = 0; j < nrOfBlocks; j++) {
                             if (hiddenBlocks[j] === lockedCards[i]) {
                                 var box = document.getElementById(lockedBlocks[i]);
+
                                 box.style.backgroundImage = 'none';
                                 box.innerHTML = '?';
-                                box.onclick = function() {
+                                box.onclick = function () {
                                     displayHidden(this.id);
                                 };
                             }
@@ -91,15 +92,16 @@
 
     function displayHidden(currId) {  // jshint ignore:line
         var currBlock = document.getElementById(currId);
+
         currBlock.innerHTML = "";
         currBlock.style.backgroundImage = "url('img/"+hiddenBlocks[currId]+".jpg')";
 
-        currBlock.onclick = function() {
+        currBlock.onclick = function () {
             window.alert('You have to choose another card');
         };
 
         counter++;
-        console.log('Click: ' + counter);
+        window.console.log('Click: ' + counter);
         checkMatch(currId);
     }
 
@@ -107,10 +109,9 @@
 
     for (var i = 0; i < nrOfBlocks; i++) {
         temp[i].setAttribute('id', i);
-        temp[i].onclick = function() {
+        temp[i].onclick = function () {
             displayHidden(this.id);
         };
         randomizeBlocks(i);
     }
-
 }());

@@ -1,7 +1,7 @@
 /**
  * @preserve Made by dbwebb-staff, staff@dbwebb.se
  */
- (function(){
+(function () {
     'use strict';
 
     //var myContent = document.getElementById('content');
@@ -11,14 +11,15 @@
     //myContent.innerHTML = '<h3>This is a MEGA template!</h3>';
 
     function drawFlagElfenbenskusten()  {
-        var flagElfenbenskusten = '<div class="flag elfenbenskusten"><div class="part1"></div><div class="part2"></div></div>';
+        var flagElfenbenskusten = '<div class="flag elfenbenskusten"><div class="part1"></div>' +
+        '<div class="part2"></div></div>';
 
         console.log("Drawing flag");
         flagTarget.innerHTML = flagElfenbenskusten;
     }
 
 
-    flagLink.addEventListener("click", function() {
+    flagLink.addEventListener("click", function () {
         console.log("Event for clicking link elfenbenskusten.");
         drawFlagElfenbenskusten();
     });

@@ -1,7 +1,7 @@
 /**
  * @preserve Made by dbwebb-staff, staff@dbwebb.se
  */
- (function(){
+(function () {
     'use strict';
 
     //var myContent = document.getElementById('content');
