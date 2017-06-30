@@ -11,6 +11,15 @@ dbwebb init-me
 # Kmom01
 #
 
+cd me/kmom01 && dbwebb recreate lab1
+cd me/kmom01/lab1
+
+#
+# Lab 1
+#
+
+dbwebb validate lab1
+
 #
 # En egen anpassad sandbox
 # https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
@@ -28,13 +37,13 @@ dbwebb validate sandbox
 #
 
 #
-# Lab 1
+# Lab 2
 #
 
-cd me/kmom02 && dbwebb recreate lab1
-cd me/kmom02/lab1
+cd me/kmom02 && dbwebb recreate lab2
+cd me/kmom02/lab2
 
-dbwebb validate lab1
+dbwebb validate lab2
 
 #
 # Gör svenska flaggan i HTML och CSS
@@ -62,13 +71,13 @@ dbwebb validate baddie1
 #
 
 #
-# Lab 2
+# Lab 3
 #
 
-cd me/kmom03 && dbwebb recreate lab2
-cd me/kmom03/lab2
+cd me/kmom03 && dbwebb recreate lab3
+cd me/kmom03/lab3
 
-dbwebb validate lab2
+dbwebb validate lab3
 
 #
 # Gör svenska flaggan med JavaScript, HTML och CSS
@@ -95,6 +104,23 @@ dbwebb validate baddie2
 # Kmom04
 #
 
+#
+# Lab 4
+#
+
+cd me/kmom04 && dbwebb recreate lab4
+cd me/kmom04/lab4
+
+dbwebb validate lab4
+
+#
+# Lab 5
+#
+
+cd me/kmom04 && dbwebb recreate lab5
+cd me/kmom04/lab5
+
+dbwebb validate lab5
 
 
 
