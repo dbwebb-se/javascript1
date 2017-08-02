@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     var area = document.getElementById('content'),
@@ -14,6 +14,7 @@
         /**
          * This is the background for the game area.
          */
+        // jscs:disable maximumLineLength
         /* eslint-disable max-len */
         gameArea = [
             12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
@@ -75,6 +76,7 @@
         ];
 
         /* eslint-enable max-len */
+        // jscs:enable maximumLineLength
 
 
     /**
@@ -101,7 +103,7 @@
      * Move character
      * TODO: add "which" to tell sprite the current direction
      */
-    var move = function(moveLeft, moveTop) {
+    var move = function (moveLeft, moveTop) {
         function moveIt() {
             //(area.offsetLeft + posLeft*tileSize + tileSize/2) + 'px';
             baddie.style.left = (area.offsetLeft + posLeft*tileSize) + 'px';
@@ -119,7 +121,7 @@
     }; // end of moveIt
 
     move (1, 1);
-    document.onkeydown = function(event) {
+    document.onkeydown = function (event) {
         var key;
 
         key = event.keyCode || event.which;
@@ -148,8 +150,7 @@
                 break;
         } // end of switch
 
-        console.log('Keypress: ' + event + ' key: ' + key + ' new pos: ' + 
+        console.log('Keypress: ' + event + ' key: ' + key + ' new pos: ' +
         baddie.offsetLeft + ', ' + baddie.offsetTop);
     }; // end of onkeydown
-
 })();
