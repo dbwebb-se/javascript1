@@ -1,6 +1,12 @@
 Revision History
 ===================
 
+v3.0.1 (2017-09-18)
+-------------------
+
+* Example passes validation with eslint.
+
+
 v3.0.0 (2017-06-29)
 -------------------
 
