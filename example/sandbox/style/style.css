@@ -6,7 +6,7 @@ h3 {
 	color: green;
 }
 
-#content {
+.content {
 	border: 1px solid black;
 	background-color: #eee;
 	padding: 2em;

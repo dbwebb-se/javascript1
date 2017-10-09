@@ -11,25 +11,34 @@ dbwebb init-me
 # Kmom01
 #
 
-cd me/kmom01 && dbwebb recreate lab1
-cd me/kmom01/lab1
-
 #
 # Lab 1
 #
-
+cd me/kmom01/lab1
+dbwebb recreate lab1
 dbwebb validate lab1
+
+
 
 #
 # En egen anpassad sandbox
 # https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
 #
-
-cp -r example/sandbox/* me/kmom01/sandbox
-cd me/kmom01/sandbox && ls
 cp -r example/sandbox me/kmom01
-
+cd me/kmom01/sandbox
 dbwebb validate sandbox
+
+
+
+#
+# Bas till me-sidan
+# https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
+#
+cp -r example/redovisa me
+cd me/redovisa
+dbwebb validate redovisa
+
+
 
 # --------------------------------------------------------------------------
 #
@@ -39,30 +48,29 @@ dbwebb validate sandbox
 #
 # Lab 2
 #
-
-cd me/kmom02 && dbwebb recreate lab2
+dbwebb recreate lab2
 cd me/kmom02/lab2
-
 dbwebb validate lab2
+
+
 
 #
 # Gör svenska flaggan i HTML och CSS
 # https://dbwebb.se/uppgift/gor-svenska-flaggan-i-html-och-css
 #
-
 cp -r me/kmom01/sandbox/* me/kmom02/flag1
-
 dbwebb validate flag1
+
+
 
 #
 # Flytta runt en Baddie på webbsidan
 # https://dbwebb.se/uppgift/flytta-runt-en-baddie-pa-webbsidan
 #
-
 cp -r example/baddie/baddie1 me/kmom02/
-cd me/kmom02/baddie1 && ls
-
+cd me/kmom02/baddie1
 dbwebb validate baddie1
+
 
 
 # --------------------------------------------------------------------------
@@ -73,30 +81,29 @@ dbwebb validate baddie1
 #
 # Lab 3
 #
-
-cd me/kmom03 && dbwebb recreate lab3
+dbwebb recreate lab3
 cd me/kmom03/lab3
-
 dbwebb validate lab3
+
+
 
 #
 # Gör svenska flaggan med JavaScript, HTML och CSS
 # https://dbwebb.se/uppgift/gor-svenska-flaggan-med-javascript-html-och-css
 #
-
 cp -r me/kmom02/flag1/* me/kmom03/flag2
-
 dbwebb validate flag2
+
+
 
 #
 # Flytta Baddie på webbsida (#2)
 # https://dbwebb.se/uppgift/flytta-baddie-pa-webbsida-2
 #
-
 cp -r example/baddie/baddie2 me/kmom03/
-cd me/kmom03/baddie2 && ls
-
+cd me/kmom03/baddie2
 dbwebb validate baddie2
+
 
 
 # --------------------------------------------------------------------------
@@ -107,19 +114,17 @@ dbwebb validate baddie2
 #
 # Lab 4
 #
-
-cd me/kmom04 && dbwebb recreate lab4
+dbwebb recreate lab4
 cd me/kmom04/lab4
-
 dbwebb validate lab4
+
+
 
 #
 # Lab 5
 #
-
-cd me/kmom04 && dbwebb recreate lab5
+dbwebb recreate lab5
 cd me/kmom04/lab5
-
 dbwebb validate lab5
 
 

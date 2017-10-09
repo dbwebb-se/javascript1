@@ -10,7 +10,7 @@ h3 {
 	color: green;
 }
 
-#content {
+.content {
 	border: 1px solid black;
 	background: rgb(255,255,255);
 	background: rgba(255,255,255,0.6);
