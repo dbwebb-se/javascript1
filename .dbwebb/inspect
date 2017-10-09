@@ -23,8 +23,7 @@ javascript1()
 #
 function javascript1last()
 {
-    javascript1me
-    #inspectMe "me" "me.html" "redovisning.html"
+    inspectMe "me/redovisa" "me.html" "redovisning.html"
 }
 
 
@@ -109,21 +108,6 @@ javascript1kmom10()
 
 
 #---------------------- BELOW SHOULD BE REPLACED ----------------------------
-
-#
-# Test javascript1 me
-# TODO rearrange structure of me in js1 and remove this function
-#
-javascript1me()
-{
-    headerForTest "-- me-page" "-- ${DBW_WWW}${DBW_COURSE}$KMOM#resultat_redovisning" 
-    openFilesInEditor "me"
-    checkKmomDir "me"
-    printUrl "me.html" "me"  
-    printUrl "redovisning.html" "me"
-}
-
-
 
 #
 # Test javascript1 sandbox
