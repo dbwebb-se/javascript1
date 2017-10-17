@@ -1,6 +1,12 @@
 Revision History
 ===================
 
+v3.0.3 (2017-10-17)
+-------------------
+
+* Changed to stylelint validation for css.
+
+
 v3.0.2 (2017-10-09)
 -------------------
 

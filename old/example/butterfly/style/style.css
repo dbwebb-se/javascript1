@@ -1,13 +1,14 @@
 #content{
-	position: absolute;
-	margin: 0 auto;
-	height: 800px;
-	width: 800px;
-	border: 1px solid black;
+    position: absolute;
+    margin: 0 auto;
+    height: 800px;
+    width: 800px;
+    border: 1px solid black;
 }
+
 #movable{
-	position: absolute;
-	width: 100px;
-	left: 0;
-	top: 0;
+    position: absolute;
+    width: 100px;
+    left: 0;
+    top: 0;
 }

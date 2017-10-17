@@ -21,7 +21,8 @@
             2,
             4,
             {
-              "SwitchCase": 1
+              "SwitchCase": 1,
+              "ArrayExpression": "off"
             }
         ],
         "linebreak-style": [

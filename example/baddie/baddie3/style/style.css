@@ -1,44 +1,47 @@
 .content {
-	height: 320px;
-	width: 320px;
-	position: absolute;
+    height: 320px;
+    width: 320px;
+    position: absolute;
 }
 
 
 .baddie {
-	position: absolute;
-	z-index:10;
-	width:32px;
-	height:32px;
-	background-image:url(../img/Kyubi.png);
-	background-repeat:no-repeat;
+    position: absolute;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    background-image: url(../img/Kyubi.png);
+    background-repeat: no-repeat;
 }
 
 .baddie-left {
-	-o-transform: rotateY(180deg);
-	-ms-transform: rotateY(180deg);
-	-webkit-transform: rotateY(180deg);
-	-moz-transform: rotateY(180deg);
-	transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-.tile, .t {
-	width: 32px;
-	height: 32px;
-	float: left;
-	background-repeat: no-repeat;
+.tile,
+.t {
+    width: 32px;
+    height: 32px;
+    float: left;
+    background-repeat: no-repeat;
 }
 
 .t10 {
-	background: url(../img/tiles/grass0.png);
+    background: url(../img/tiles/grass0.png);
 }
+
 .t11 {
-	background: url(../img/tiles/dngn_metal_wall.png) -32px -96px;
+    background: url(../img/tiles/dngn_metal_wall.png) -32px -96px;
 }
+
 .t12 {
-	background: url(../img/tiles/crate.png) 0 -128px;
+    background: url(../img/tiles/crate.png) 0 -128px;
 }
+
 .t13 {
-	background: url(../img/tiles/dngn_closed_door.png
-) -64px -128px;
+    background: url(../img/tiles/dngn_closed_door.png) -64px -128px;
 }

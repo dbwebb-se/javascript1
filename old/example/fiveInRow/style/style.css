@@ -1,20 +1,22 @@
 body{
-	font-family: tahoma;
+    font-family: tahoma;
 }
+
 #content{
-	position: absolute;
-	margin: 0 auto;
-	height: 800px;
-	/*width: 640px;*/
+    position: absolute;
+    margin: 0 auto;
+    height: 800px;
+
+    /*width: 640px;*/
 }
 
 .boxes{
-	height: 32px;
-	width: 32px;
-	float: left;
-	outline: 0.5px solid #eee;
-	font-size: 1.5em;
-	text-align: center;
+    height: 32px;
+    width: 32px;
+    float: left;
+    outline: 0.5px solid #eee;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 

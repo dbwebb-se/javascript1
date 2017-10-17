@@ -1,0 +1,96 @@
+/** --------------------------------------------------------------
+ * Boulder Dash Gameplan
+ *
+ */
+.flash {
+    overflow: auto;
+    width: 768px; /* 32px each tile x 24 tiles per row */
+}
+
+.tile,
+.t,
+.block,
+.b {
+    width: 32px;  /* tilesize */
+    height: 32px; /* tilesize */
+    float: left;
+    background-repeat: no-repeat;
+}
+
+.t12 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass0.png);
+}
+
+.t13 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass1.png);
+}
+
+.t14 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass2.png);
+}
+
+.t15 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_flowers_red3.png);
+}
+
+.t16 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_flowers_blue3.png);
+}
+
+.t17 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_flowers_yellow3.png);
+}
+
+.t18 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_n.png);
+}
+
+.t19 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_nw.png);
+}
+
+.t20 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_w.png);
+}
+
+.t21 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_full.png);
+}
+
+.t22 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_sw.png);
+}
+
+.t23 {
+    background-image: url(//dbwebb.se/img/tiles/floor/grass_s.png);
+}
+
+.b11 {
+    background-image: url(//dbwebb.se/img/tiles/wall/dngn_metal_wall.png);
+}
+
+.b12 {
+    background-image: url(//dbwebb.se/img/tiles/wall/crystal_wall02.png);
+}
+
+.b13 {
+    background-image: url(//dbwebb.se/img/tiles/wall/dngn_mirrored_wall.png);
+}
+
+.b14 {
+    background-image: url(//dbwebb.se/img/tiles/wall/dngn_green_crystal_wall.png);
+    background-color: green;
+}
+
+.b17 {
+    background-image: url(//dbwebb.se/img/tiles/passage/dngn_open_door.png);
+    background-color: #bbb;
+}
+
+.b18 {
+    background-image: url(//dbwebb.se/img/tiles/passage/dngn_closed_door.png);
+}
+
+.b19 {
+    background-image: url(//dbwebb.se/img/tiles/wall/brick_brown-vines1.png);
+}

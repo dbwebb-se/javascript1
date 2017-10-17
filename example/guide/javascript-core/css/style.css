@@ -1,0 +1,16 @@
+html {
+    background-color: #ccc;
+}
+
+main {
+    margin: 8px auto;
+    max-width: 900px;
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px #999;
+}
+
+.flash {
+    padding: 1em;
+}

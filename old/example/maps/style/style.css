@@ -1,17 +1,19 @@
 #content{
-	height: 650px;
-	width: 650px;
-	border: 1px solid black;
+    height: 650px;
+    width: 650px;
+    border: 1px solid black;
 }
+
 #baddie1{
-	position: absolute;
+    position: absolute;
 }
+
 .baddie{
-	z-index:10;
-	width:32px;
-	height:32px;
-	background-image:url(../img/CharacterBoy.png);
-	background-repeat:no-repeat;
+    z-index:10;
+    width:32px;
+    height:32px;
+    background-image:url(../img/CharacterBoy.png);
+    background-repeat:no-repeat;
 
 
 }
