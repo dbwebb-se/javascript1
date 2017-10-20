@@ -58,7 +58,6 @@
 		"switch",
 		"try",
 		"catch",
-		"function",
 		"return"
 	],
 	"requireSpacesInForStatement": true,

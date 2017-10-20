@@ -21,8 +21,7 @@
             2,
             4,
             {
-              "SwitchCase": 1,
-              "ArrayExpression": "off"
+              "SwitchCase": 1
             }
         ],
         "linebreak-style": [
@@ -86,7 +85,8 @@
             2,
             {
               "beforeColon": false,
-              "afterColon": true
+              "afterColon": true,
+              "mode": "minimum"
             }
         ],
         "padded-blocks": [
@@ -110,6 +110,6 @@
             "error",
             "any"
         ],
-        "no-console": "off"
+        "no-console": 0
     }
 }
