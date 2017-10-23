@@ -7,6 +7,7 @@
 # Start by removing some common -files and add some +subdirs
 -*/.git/*
 -*/build/*
++./build/webroot/*
 -*/cache/*
 -*/docs/*
 -*/lib/*
