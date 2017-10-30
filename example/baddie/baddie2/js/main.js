@@ -125,7 +125,7 @@ Good luck!
         // move outside of the content
         // Left wall collide check - check if newLeft outside content
         // Hint: you can type condition = 10 > 12; for example
-        // The conditoion variable will hold a boolean of the evaluation
+        // The condition variable will hold a boolean of the evaluation
         var condition = false;
 
         if (condition) {
