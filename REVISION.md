@@ -1,6 +1,14 @@
 Revision History
 ===================
 
+v3.0.4 (2017-10-17)
+-------------------
+
+* Update rules for stylelint.
+* Remove validation of jscs and jshint.
+* Add styleguides to package.json (css-styleguide, javascript-style-guide).
+
+
 v3.0.3 (2017-10-17)
 -------------------
 
