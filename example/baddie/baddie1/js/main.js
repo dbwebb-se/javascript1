@@ -29,7 +29,7 @@ Good luck!
     // ASSIGNMENT
     // How many pixles should baddie move each step? Assign a number to step
 
-    console.lo("Baddie will move", step, "pixels each step");
+    console.log("Baddie will move", step, "pixels each step");
     // ------------------------------
     // ASSIGNMENT
     // Where should baddie start on the screen? Assign a number to left and top
