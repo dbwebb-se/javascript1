@@ -1,0 +1,9 @@
+/**
+ * Style for JavaScript slideshow
+ */
+.slideshow {
+    /* background-color: black; */
+    width: 950px;
+    height: 180px;
+    margin-bottom: 10px;
+}

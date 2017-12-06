@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Example slideshow</title>
+<link rel="stylesheet" href="css/slideshow.css">
+</head>
+
+<body>
+
+<div 
+    class="slideshow"
+    data-host=""
+    data-path="img/me/"
+    data-images="img/me/me-1.jpg, img/me/me-2.jpg, img/me/me-4.jpg">
+    <img src="img/me/me-6.jpg" alt="Me" />
+</div>
+
+
+<!-- 
+<div 
+    class="slideshow"
+    data-host=""
+    data-path="img/me/"
+    data-images="img/me/me-1.jpg,img/me/me-2.jpg,img/me/me-4.jpg">
+    <img src="img/me/me-6.jpg" alt="Me" />
+</div>
+-->
+
+
+<script src="js/slideshow.js"></script>
+<script>
+window.slideshow.init({
+    "selectors": ".slideshow"
+});
+</script>
+
+</body>
+</html>
