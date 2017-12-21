@@ -2,9 +2,9 @@ language: node_js
 
 node_js:
     - "node"
+    - "8"
     - "6"
-    - "5"
-    - "4"
+    #- "4"
     #- "0.12"
     #- "0.11"
     #- "0.10"
@@ -20,17 +20,17 @@ git:
 
 
 
-addons:
-    apt:
-        sources:
-        - debian-sid    # Grab ShellCheck from the Debian repo
-        packages:
-        - shellcheck
+# addons:
+#     apt:
+#         sources:
+#         - debian-sid    # Grab ShellCheck from the Debian repo
+#         packages:
+#         - shellcheck
 
 
 
-env:
-    - TEST_DIR=example/nodejs/
+# env:
+#     - TEST_DIR=example/nodejs/
 
 
 

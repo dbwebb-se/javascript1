@@ -16,13 +16,6 @@ The course repo is managed by a [dbwebb command line utility](https://dbwebb.se/
 
 
 
-License
--------------------
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-
-
-
 Acknowledgement
 -------------------
 
@@ -37,5 +30,5 @@ Feel free to help building up the repository with more content suited for traini
 
 ```
  .
-..:  Copyright (c) 2014-2017 Mikael Roos et al, mos@dbwebb.se
+..:  Copyright (c) 2014-2018 dbwebb et al, info@dbwebb.se
 ```
