@@ -1,0 +1,14 @@
+.content {
+    width: 800px;
+    height: 800px;
+    background-color: #ccc;
+    position: relative;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #2ecc40;
+    position: absolute;
+    cursor: pointer;
+}
