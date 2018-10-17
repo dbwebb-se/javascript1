@@ -5,7 +5,7 @@
 #
 
 # kmom01
-me/kmom01/sandbox1
+me/kmom01/sandbox
 me/kmom01/lab1
 
 # kmom02
@@ -27,6 +27,7 @@ me/kmom04/lab5
 # kmom05
 me/kmom05/flag4
 me/kmom05/dom
+me/kmom05/lab6
 
 # kmom06
 me/kmom06/hangman
