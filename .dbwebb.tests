@@ -21,22 +21,12 @@ dbwebb validate lab1
 
 
 #
-# En egen anpassad sandbox
-# https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
+# Sandbox steg 1
+# https://dbwebb.se/kunskap/sandbox-steg-1
 #
 cp -r example/sandbox me/kmom01
 cd me/kmom01/sandbox
 dbwebb validate sandbox
-
-
-
-#
-# Sandbox steg 1
-# https://dbwebb.se/kunskap/sandbox-steg-1
-#
-cp -r me/kmom01/sandbox/* me/kmom01/sandbox1
-cd me/kmom01/sandbox1
-dbwebb validate sandbox1
 
 
 
