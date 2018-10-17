@@ -24,9 +24,9 @@ dbwebb validate lab1
 # En egen anpassad sandbox
 # https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
 #
-cp -r example/sandbox me/kmom01
-cd me/kmom01/sandbox
-dbwebb validate sandbox
+cp -r example/sandbox me/kmom01/sandbox1
+cd me/kmom01/sandbox1
+dbwebb validate sandbox1
 
 
 
