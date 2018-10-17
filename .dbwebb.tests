@@ -31,6 +31,16 @@ dbwebb validate sandbox
 
 
 #
+# Sandbox steg 1
+# https://dbwebb.se/kunskap/sandbox-steg-1
+#
+cp -r me/kmom01/sandbox/* me/kmom01/sandbox1
+cd me/kmom01/sandbox1
+dbwebb validate sandbox1
+
+
+
+#
 # Bas till me-sidan
 # https://dbwebb.se/kunskap/kom-i-gang-med-html-css-och-javascript#egen-sandbox
 #
