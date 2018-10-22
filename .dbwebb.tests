@@ -64,12 +64,12 @@ dbwebb validate flag1
 
 
 #
-# Flytta runt en Baddie på webbsidan
-# https://dbwebb.se/uppgift/flytta-runt-en-baddie-pa-webbsidan
+# Flytta runt ett element på webbsidan
+# https://dbwebb.se/uppgift/sandbox-steg-2
 #
-cp -r example/baddie/baddie1 me/kmom02/
-cd me/kmom02/baddie1
-dbwebb validate baddie1
+cp -r me/kmom01/sandbox/* me/kmom02/sandbox2
+cd me/kmom02/sandbox2
+dbwebb validate sandbox2
 
 
 
