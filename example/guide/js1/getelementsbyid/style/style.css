@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+h3 {
+    color: green;
+}
+
+.content {
+    border: 1px solid black;
+    background-color: #eee;
+    padding: 2em;
+    margin: 0 auto;
+    height: 500px;
+    width: 800px;
+    border-radius: 30px;
+}
