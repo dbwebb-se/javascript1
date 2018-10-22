@@ -100,9 +100,9 @@ dbwebb validate flag2
 # Flytta Baddie på webbsida (#2)
 # https://dbwebb.se/uppgift/flytta-baddie-pa-webbsida-2
 #
-cp -r example/baddie/baddie2 me/kmom03/
-cd me/kmom03/baddie2
-dbwebb validate baddie2
+# cp -r example/baddie/baddie2 me/kmom03/
+# cd me/kmom03/baddie2
+# dbwebb validate baddie2
 
 
 
