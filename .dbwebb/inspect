@@ -34,7 +34,7 @@ function javascript1last()
 javascript1kmom01()
 {
     javascript1exercise "lab1" "answer.html" "uppgift/javascript-med-variabler-loopar-och-inbyggda-funktioner"
-    javascript1exercise "sandbox" "index.html" "uppgift/skapa-din-egen-sandbox-for-javascript-testprogram"
+    javascript1exercise "sandbox" "index.html" "uppgift/sandbox-steg-1"
 }
 
 
@@ -46,7 +46,7 @@ javascript1kmom02()
 {
     javascript1exercise "lab2" "answer.html" "uppgift/javascript-med-funktioner"
     javascript1exercise "flag1" "index.html" "uppgift/gor-svenska-flaggan-i-html-och-css"
-    javascript1exercise "baddie1" "index.html" "uppgift/flytta-runt-en-baddie-pa-webbsidan"
+    javascript1exercise "sandbox2" "index.html" "uppgift/sandbox-steg-2"
 }
 
 
@@ -58,7 +58,7 @@ javascript1kmom03()
 {
     javascript1exercise "lab3" "answer.html" "uppgift/javascript-och-arrayer"
     javascript1exercise "flag2" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-html-och-css"
-    javascript1exercise "baddie2" "index.html" "uppgift/flytta-baddie-pa-webbsida-2"
+    javascript1exercise "sandbox3" "index.html" "uppgift/sandbox-steg-3"
 }
 
 
@@ -71,7 +71,6 @@ javascript1kmom04()
     javascript1exercise "lab4" "answer.html" "uppgift/javascript-och-arrayer"
     javascript1exercise "lab5" "answer.html" "uppgift/javascript-och-objekt"
     javascript1exercise "flag3" "index.html" "uppgift/gor-svenska-flaggan-med-javascript-och-objekt"
-    javascript1exercise "baddie3" "index.html" "uppgift/flytta-baddie-pa-webbsida-3"
 }
 
 
@@ -124,5 +123,5 @@ javascript1exercise()
     openFilesInEditor "$target"
     checkKmomDir "$target"
     fileIsReadable "$target/$main"
-    printUrl "$main" "$target"  
+    printUrl "$main" "$target"
 }
