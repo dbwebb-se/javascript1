@@ -100,7 +100,7 @@ dbwebb validate flag2
 # Skapa egna funktioner i sandboxen
 #
 #
-cp -r example/kmom02/sandbox2/* me/kmom03/sandbox3
+cp -r me/kmom02/sandbox2/* me/kmom03/sandbox3
 cd me/kmom03/sandbox3
 dbwebb validate sandbox3
 
