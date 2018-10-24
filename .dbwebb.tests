@@ -97,12 +97,12 @@ dbwebb validate flag2
 
 
 #
-# SKapa egna funktioner i sandboxen
+# Skapa egna funktioner i sandboxen
 #
 #
-# cp -r example/kmom02/sandbox2/* me/kmom03/sandbox3
-# cd me/kmom03/sandbox3
-# dbwebb validate sandbox3
+cp -r example/kmom02/sandbox2/* me/kmom03/sandbox3
+cd me/kmom03/sandbox3
+dbwebb validate sandbox3
 
 
 
