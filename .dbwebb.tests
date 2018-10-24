@@ -67,7 +67,7 @@ dbwebb validate flag1
 # Flytta runt ett element på webbsidan
 # https://dbwebb.se/uppgift/sandbox-steg-2
 #
-cp -r me/kmom01/sandbox/* me/kmom02/sandbox2
+cp -r me/kmom01/sandbox me/kmom02/sandbox2
 cd me/kmom02/sandbox2
 dbwebb validate sandbox2
 
@@ -100,7 +100,7 @@ dbwebb validate flag2
 # Skapa egna funktioner i sandboxen
 #
 #
-cp -r me/kmom02/sandbox2/* me/kmom03/sandbox3
+cp -r me/kmom02/sandbox2 me/kmom03/sandbox3
 cd me/kmom03/sandbox3
 dbwebb validate sandbox3
 
