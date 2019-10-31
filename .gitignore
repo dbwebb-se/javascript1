@@ -2,6 +2,7 @@ bin/
 build/
 node_modules
 package-lock.json
+me/
 
 # Mac
 .DS_Store
