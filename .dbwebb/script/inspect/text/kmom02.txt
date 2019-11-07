@@ -1,0 +1,9 @@
+Kursmoment 02 klart!
+
+Delarna innefattar en labb, en config-fil som styr din virtual host, en logg-fil samt en skärmdump.
+
+Jag kunde hitta alla delar och de har relevant innehåll. Bra att du använder en config-fil med variabler. Det underlättar skapandet av fler virtuella hostar.
+
+Allt jag kollade på såg bra ut. Kör på.
+
+$TEACHER_SIGNATURE

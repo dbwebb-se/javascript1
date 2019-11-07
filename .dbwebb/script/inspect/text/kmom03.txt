@@ -1,0 +1,7 @@
+Hej,
+
+Nu har vi kommit igång med Docker och Bash-script. Vi skulle skapa ett script som kunde utföra en rad uppgifter. Till det bygger vi vår första Docker image som vi publicerar. Samtidigt tränar vi mer på kommandon i labben.
+
+Jag körde din publicerade image och den exekverar scriptet fint och kommandot "all" gjorde vad det ska. Jag kikade på din labb och även den var korrekt. Mycket bra jobbat med kursmomentet, det är bara att köra vidare!
+
+$TEACHER_SIGNATURE
