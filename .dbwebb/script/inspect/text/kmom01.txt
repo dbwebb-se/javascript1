@@ -4,12 +4,10 @@ Välkommen till kursen Programmering med JavaScript.
 
 Jag har gått igenom din inlämning och tittat på labben, sandboxen och din me-sida. Alla delarna fungerar fint och enligt kraven. Kör på med nästa moment!
 
+Allt är väl, så här långt. Kör på!
+
 Här beskrivs vilken feedback du kan förvänta dig på rättningarna: https://dbwebb.se/kurser/faq/vilken-feedback-far-man-pa-inlamningarna
 
 Kom ihåg att du alltid kan ställa frågor och få feedback på gitter (https://gitter.im/dbwebb-se/javascript1).
-
-// Kenneth
-
-Allt är väl, så här långt. Kör på!
 
 $TEACHER_SIGNATURE

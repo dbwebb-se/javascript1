@@ -589,8 +589,16 @@ makeInspectDocker()
         DBWEBB_INSPECT_PID=
     fi
 
-    setsid make docker-run what="make inspect what=$kmom options='--yes'" > "$LOGFILE_INSPECT" 2>&1 &
-    DBWEBB_INSPECT_PID="$!"
+    if [ $OS_TERMINAL == "linux" ]; then
+        setsid make docker-run what="make inspect what=$kmom options='--yes'" > "$LOGFILE_INSPECT" 2>&1 &
+        DBWEBB_INSPECT_PID="$!"
+    else
+        make docker-run what="make inspect what=$kmom options='--yes'" > "$LOGFILE_INSPECT" 2>&1 &
+        DBWEBB_INSPECT_PID="$!"
+    fi
+
+    # setsid make docker-run what="make inspect what=$kmom options='--yes'" > "$LOGFILE_INSPECT" 2>&1 &
+    # DBWEBB_INSPECT_PID="$!"
 
     #make docker-run what="make inspect what=$kmom options='--yes'" 2>&1  | tee -a "$LOGFILE"
 }

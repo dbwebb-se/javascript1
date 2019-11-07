@@ -1,7 +1,3 @@
 Hej!
 
-Jag testade din mazerunner och den rullar på bra. Det är lätt hänt att det blir ett övermäktigt kursmoment, men du verkar ha bra koll på läget och den fungerar enligt instruktionerna, snyggt jobbat!
-
-Både containrarna och nätverket startar och avslutas snyggt via Bash-scriptet.
-
 $TEACHER_SIGNATURE
